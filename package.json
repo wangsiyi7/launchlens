@@ -1,0 +1,10 @@
+{
+  "name": "launchlens",
+  "version": "1.0.0",
+  "private": true,
+  "description": "UCWS Project Wall readiness copilot for hackathon teams.",
+  "scripts": {
+    "test": "node tests/scoring.test.mjs",
+    "serve": "node tools/serve.mjs"
+  }
+}

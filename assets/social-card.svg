@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">LaunchLens social card</title>
+  <desc id="desc">Submission copilot card for UCWS Singapore 2026.</desc>
+  <rect width="1200" height="630" fill="#111312"/>
+  <rect x="52" y="52" width="1096" height="526" rx="24" fill="#181b1a" stroke="#2f3834" stroke-width="2"/>
+  <g transform="translate(88 96)">
+    <rect width="104" height="104" rx="20" fill="#202523"/>
+    <circle cx="47" cy="45" r="27" fill="none" stroke="#63d6a4" stroke-width="9"/>
+    <path d="M68 66l24 24" stroke="#f0b85a" stroke-width="10" stroke-linecap="round"/>
+    <path d="M40 53l36-36m0 0v27m0-27H49" fill="none" stroke="#5c8dff" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <text x="88" y="255" fill="#63d6a4" font-family="Inter, Arial, sans-serif" font-size="26" font-weight="800" letter-spacing="4">UCWS SINGAPORE 2026 / APPLICATION TRACK</text>
+  <text x="88" y="345" fill="#f5f1e8" font-family="Inter, Arial, sans-serif" font-size="86" font-weight="850">LaunchLens</text>
+  <text x="88" y="420" fill="#f5f1e8" opacity=".72" font-family="Inter, Arial, sans-serif" font-size="34" font-weight="650">Turn rough hackathon ideas into scored, ready-to-submit Project Wall packages.</text>
+  <g transform="translate(88 486)">
+    <rect width="224" height="50" rx="10" fill="#63d6a4"/>
+    <text x="24" y="34" fill="#0c0f0e" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="800">Submission Copilot</text>
+    <rect x="244" width="168" height="50" rx="10" fill="#202523" stroke="#3a4440"/>
+    <text x="270" y="34" fill="#f5f1e8" opacity=".82" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="750">No backend</text>
+    <rect x="432" width="164" height="50" rx="10" fill="#202523" stroke="#3a4440"/>
+    <text x="458" y="34" fill="#f5f1e8" opacity=".82" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="750">Exportable</text>
+  </g>
+</svg>

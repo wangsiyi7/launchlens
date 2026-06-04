@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>LaunchLens - UCWS Submission Copilot</title>
+    <meta
+      name="description"
+      content="A browser-based Project Wall readiness agent for UCWS Singapore Hackathon 2026 teams."
+    />
+    <meta property="og:title" content="LaunchLens - UCWS Submission Copilot" />
+    <meta
+      property="og:description"
+      content="Turn rough hackathon ideas into scored, ready-to-submit Project Wall packages."
+    />
+    <meta property="og:image" content="assets/social-card.svg" />
+    <link rel="icon" href="assets/logo.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand-lockup">
+        <img src="assets/logo.svg" alt="" aria-hidden="true" />
+        <div>
+          <p class="eyebrow">UCWS Singapore 2026 / Application Track</p>
+          <h1>LaunchLens</h1>
+        </div>
+      </div>
+      <div class="toolbar" aria-label="Workspace actions">
+        <button id="sampleBtn" type="button">Load Sample</button>
+        <button id="resetBtn" type="button" class="ghost">Reset</button>
+        <button id="copyBtn" type="button">Copy Markdown</button>
+        <button id="downloadBtn" type="button" class="primary">Download Pack</button>
+      </div>
+    </header>
+
+    <main class="workspace">
+      <section class="panel intake-panel" aria-label="Project intake">
+        <div class="panel-head">
+          <div>
+            <p class="eyebrow">Project Intake</p>
+            <h2>Submission fields</h2>
+          </div>
+          <span id="saveState" class="status-pill">Saved locally</span>
+        </div>
+
+        <form id="projectForm" class="form-grid">
+          <label>
+            Project name
+            <input id="name" name="name" maxlength="100" placeholder="LaunchLens" />
+          </label>
+
+          <label>
+            Track
+            <select id="track" name="track">
+              <option>Application</option>
+              <option>Agent</option>
+              <option>Skill</option>
+              <option>DeepResearch</option>
+            </select>
+          </label>
+
+          <label class="span-2">
+            Tagline
+            <input
+              id="tagline"
+              name="tagline"
+              maxlength="200"
+              placeholder="Turn rough hackathon ideas into scored, ready-to-submit Project Wall packages."
+            />
+          </label>
+
+          <label class="span-2">
+            Target users
+            <input
+              id="audience"
+              name="audience"
+              placeholder="Hackathon teams, solo builders, community reviewers"
+            />
+          </label>
+
+          <label class="span-2">
+            Problem
+            <textarea
+              id="problem"
+              name="problem"
+              rows="3"
+              placeholder="Teams lose time turning real work into clear submission materials before deadline."
+            ></textarea>
+          </label>
+
+          <label class="span-2">
+            Solution
+            <textarea
+              id="solution"
+              name="solution"
+              rows="4"
+              placeholder="LaunchLens analyzes required UCWS fields, scores readiness, and generates a focused submission pack."
+            ></textarea>
+          </label>
+
+          <label>
+            Demo URL
+            <input id="demoUrl" name="demoUrl" placeholder="https://..." />
+          </label>
+
+          <label>
+            Repo URL
+            <input id="repoUrl" name="repoUrl" placeholder="https://github.com/..." />
+          </label>
+
+          <label class="span-2">
+            Tech stack
+            <input
+              id="techStack"
+              name="techStack"
+              placeholder="HTML, CSS, JavaScript, localStorage, optional OpenAI-compatible API"
+            />
+          </label>
+
+          <label class="span-2">
+            Screenshot URLs
+            <input
+              id="screenshotUrls"
+              name="screenshotUrls"
+              placeholder="Comma-separated image URLs after deployment"
+            />
+          </label>
+
+          <label class="span-2">
+            Team members
+            <input id="teamMembers" name="teamMembers" placeholder="Name - role - link" />
+          </label>
+
+          <label class="span-2">
+            README or rough notes
+            <textarea
+              id="notes"
+              name="notes"
+              rows="8"
+              placeholder="Paste README, build notes, judging context, or customer discovery here."
+            ></textarea>
+          </label>
+        </form>
+      </section>
+
+      <section class="panel results-panel" aria-label="Readiness output">
+        <div class="score-strip">
+          <div>
+            <p class="eyebrow">Readiness</p>
+            <strong id="overallScore">0</strong>
+            <span>/ 100</span>
+          </div>
+          <div class="score-meter" aria-hidden="true">
+            <div id="scoreFill"></div>
+          </div>
+        </div>
+
+        <div class="score-grid" id="scoreGrid"></div>
+
+        <div class="agent-row">
+          <button id="reviewBtn" type="button" class="primary">Run Review Agent</button>
+          <button id="generateBtn" type="button">Generate Pack</button>
+          <button id="llmBtn" type="button" class="ghost">Optional LLM</button>
+        </div>
+
+        <section id="llmPanel" class="llm-panel hidden" aria-label="Optional LLM settings">
+          <div class="llm-grid">
+            <label>
+              Endpoint
+              <input id="llmEndpoint" placeholder="https://api.openai.com/v1/chat/completions" />
+            </label>
+            <label>
+              Model
+              <input id="llmModel" placeholder="gpt-4.1-mini" />
+            </label>
+            <label class="span-2">
+              API key
+              <input id="llmKey" type="password" placeholder="Stored only in this browser session" />
+            </label>
+          </div>
+          <button id="enhanceBtn" type="button">Enhance Current Pack</button>
+        </section>
+
+        <nav class="tabs" aria-label="Output tabs">
+          <button class="active" data-tab="pack" type="button">Submission Pack</button>
+          <button data-tab="readme" type="button">README</button>
+          <button data-tab="pitch" type="button">Pitch</button>
+          <button data-tab="sprint" type="button">Sprint Plan</button>
+          <button data-tab="risks" type="button">Fix List</button>
+        </nav>
+
+        <div class="output-shell">
+          <pre id="output" tabindex="0"></pre>
+        </div>
+      </section>
+    </main>
+
+    <template id="scoreCardTemplate">
+      <article class="score-card">
+        <div class="score-card-head">
+          <span class="dot"></span>
+          <span class="score-label"></span>
+          <strong class="score-value"></strong>
+        </div>
+        <p class="score-note"></p>
+      </article>
+    </template>
+
+    <script src="app.js"></script>
+  </body>
+</html>
