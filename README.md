@@ -144,6 +144,8 @@ node tools/complete-submission.mjs launchlens
 - Logo：`assets/logo.svg`
 - 社交图：`assets/social-card.svg`
 - 提交材料：`PROJECT_WALL_FIELDS.md`、`SUBMISSION.md`
+- 评委简报：`JUDGING_BRIEF.md`
+- 演示脚本：`DEMO_VIDEO_SCRIPT.md`
 - 最终执行清单：`FINAL_SUBMISSION_RUNBOOK.md`
 - 最终就绪报告：`FINAL_READINESS_REPORT.md`
 - 空间交互规格：`SPACE_INTERACTION_SPEC.md`

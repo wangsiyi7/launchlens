@@ -63,6 +63,8 @@ const requiredFiles = [
   "styles.css",
   "app.js",
   "README.md",
+  "JUDGING_BRIEF.md",
+  "DEMO_VIDEO_SCRIPT.md",
   "PROJECT_WALL_FIELDS.md",
   "SUBMISSION.md",
   "FINAL_SUBMISSION_RUNBOOK.md",

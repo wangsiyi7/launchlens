@@ -30,6 +30,8 @@
 | `README.md` | GitHub 仓库首页，中英双语版本 |
 | `PROJECT_WALL_FIELDS.md` | Project Wall 字段复制源 |
 | `SUBMISSION.md` | 完整提交文案草稿 |
+| `JUDGING_BRIEF.md` | 面向评委的项目价值、UCWS 适配和证据简报 |
+| `DEMO_VIDEO_SCRIPT.md` | 60-90 秒录屏或现场演示脚本 |
 | `FINAL_SUBMISSION_RUNBOOK.md` | 最终提交执行清单 |
 | `FINAL_READINESS_REPORT.md` | 自动生成的最终就绪报告，列出当前 payload、检查项和外部缺口 |
 | `SPACE_INTERACTION_SPEC.md` | Temple Mode / Classic Mode 空间交互规格 |
@@ -78,4 +80,4 @@ LaunchLens App 已保留 Optional LLM 能力：
 
 ## English Summary
 
-This repository includes the LaunchLens app, implemented Temple Mode and Classic Mode, visual assets, Project Wall copy, final submission checklist, final readiness report, the Temple Mode interaction spec, deployment configs, validation scripts, GitHub publishing scripts, and an optional OpenAI-compatible LLM enhancement slot. The final GitHub README is bilingual and ready for the hackathon repository home page.
+This repository includes the LaunchLens app, implemented Temple Mode and Classic Mode, visual assets, Project Wall copy, judging brief, demo video script, final submission checklist, final readiness report, the Temple Mode interaction spec, deployment configs, validation scripts, GitHub publishing scripts, and an optional OpenAI-compatible LLM enhancement slot. The final GitHub README is bilingual and ready for the hackathon repository home page.
