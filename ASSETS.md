@@ -8,9 +8,9 @@
 
 | 文件 | 用途 |
 | --- | --- |
-| `index.html` | LaunchLens 主界面，包含 Project Wall 表单、评分输出、Optional LLM 面板 |
-| `styles.css` | 页面视觉样式和响应式布局 |
-| `app.js` | 评分逻辑、材料生成、复制导出、本地保存、大模型增强调用 |
+| `index.html` | LaunchLens 主界面，包含 Temple Mode、Classic Mode、Project Wall 表单、评分输出、Optional LLM 面板 |
+| `styles.css` | 页面视觉样式、Temple 背景层、热点布局和响应式布局 |
+| `app.js` | 评分逻辑、材料生成、复制导出、本地保存、Temple 节点交互、大模型增强调用 |
 | `package.json` | 本地运行、测试、payload、GitHub 发布和提交脚本入口 |
 
 ## 视觉资产
@@ -19,8 +19,9 @@
 | --- | --- |
 | `assets/logo.svg` | 项目 logo，可用于 Project Wall logo 字段 |
 | `assets/social-card.svg` | 社交分享图 / GitHub 预览图备用 |
-| `assets/screenshot.png` | 桌面版项目截图 |
-| `assets/screenshot-mobile.png` | 移动版项目截图 |
+| `assets/temple-background.png` | 原创生成的 2.5D 古迹空间背景，用于 Temple Mode |
+| `assets/screenshot.png` | 桌面版 Temple Mode 项目截图 |
+| `assets/screenshot-mobile.png` | 移动版 Temple Mode 项目截图 |
 
 ## 比赛提交材料
 
@@ -75,4 +76,4 @@ LaunchLens App 已保留 Optional LLM 能力：
 
 ## English Summary
 
-This repository includes the LaunchLens app, visual assets, Project Wall copy, final submission checklist, the Temple Mode interaction spec, deployment configs, validation scripts, GitHub publishing scripts, and an optional OpenAI-compatible LLM enhancement slot. The final GitHub README is bilingual and ready for the hackathon repository home page.
+This repository includes the LaunchLens app, implemented Temple Mode and Classic Mode, visual assets, Project Wall copy, final submission checklist, the Temple Mode interaction spec, deployment configs, validation scripts, GitHub publishing scripts, and an optional OpenAI-compatible LLM enhancement slot. The final GitHub README is bilingual and ready for the hackathon repository home page.

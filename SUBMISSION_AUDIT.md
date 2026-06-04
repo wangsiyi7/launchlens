@@ -11,6 +11,9 @@
 | Bilingual GitHub README | Done | `README.md`, Chinese and English sections |
 | Repository asset index | Done | `ASSETS.md` |
 | Screenshot | Done | `assets/screenshot.png`, `assets/screenshot-mobile.png` |
+| Temple Mode UI | Done | `index.html`, `styles.css`, `app.js`, `assets/temple-background.png`; six clickable workflow nodes |
+| Classic Mode fallback | Done | Top-level Temple / Classic toggle preserves the original two-column tool |
+| UI smoke test | Done | Edge + Playwright check: desktop Temple visible, Classic hidden by default, 6 nodes, Oracle opens LLM, Final Door clickable, mobile nav visible, no console errors |
 | Project logo | Done | `assets/logo.svg` |
 | Deployment config | Done | `netlify.toml`, `vercel.json`, `DEPLOYMENT.md` |
 | Local tests | Done | `node tests/scoring.test.mjs` |
@@ -23,7 +26,7 @@
 | Authenticated submit script | Done | `tools/submit-project.mjs`, requires `EPIC_TOKEN` |
 | One-command publish and submit script | Done | `tools/complete-submission.mjs`, requires `GITHUB_TOKEN` and `EPIC_TOKEN` |
 | Final submission runbook | Done | `FINAL_SUBMISSION_RUNBOOK.md` |
-| Space interaction spec | Done | `SPACE_INTERACTION_SPEC.md`; Temple Mode / Classic Mode plan |
+| Space interaction spec | Done | `SPACE_INTERACTION_SPEC.md`; implemented Temple Mode / Classic Mode V1 |
 | Safe local public-root server | Done | `tools/serve-public-root.mjs`, serves only `launchlens/` |
 | Temporary public demo URL | Done | `https://volume-obituaries-half-coaches.trycloudflare.com`, via Cloudflare Quick Tunnel |
 | GitHub Pages workflow | Done | `.github/workflows/pages.yml` |

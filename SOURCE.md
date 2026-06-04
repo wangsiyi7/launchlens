@@ -39,9 +39,11 @@ The final Project Wall `repoUrl` should be the GitHub repository URL. This tempo
 
 ## Contents
 
-- `index.html`, `styles.css`, `app.js`: the app
+- `index.html`, `styles.css`, `app.js`: the app, including Temple Mode and Classic Mode
 - `README.md`: project README
 - `ASSETS.md`: repository asset index
+- `assets/temple-background.png`: original generated spatial background for Temple Mode
+- `assets/screenshot.png`, `assets/screenshot-mobile.png`: refreshed Temple Mode screenshots
 - `PROJECT_WALL_FIELDS.md`: copy-paste Project Wall fields
 - `SUBMISSION.md`: UCWS submission draft
 - `FINAL_SUBMISSION_RUNBOOK.md`: final GitHub and Project Wall execution checklist

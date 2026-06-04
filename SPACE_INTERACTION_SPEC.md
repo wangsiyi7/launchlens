@@ -2,7 +2,33 @@
 
 > 中文 | English
 
-This spec captures the next interaction direction for LaunchLens. It is intentionally a product and implementation specification, not a UI rewrite. The current Classic Mode must remain available and submission-ready.
+This spec captures the spatial interaction direction for LaunchLens and documents the V1 implementation. The current Classic Mode remains available and submission-ready.
+
+## V1 Implementation Status
+
+Implemented in the current app:
+
+```text
+Temple / Classic top-level toggle
+original generated temple background
+six semantic hotspot buttons
+right-side active node panel
+Oracle LLM first-level node
+Final Door submission handoff node
+mobile bottom node navigation
+existing scoring, export, and LLM logic reused
+desktop and mobile screenshots refreshed
+```
+
+Still intentionally out of scope for V1:
+
+```text
+Three.js
+real 3D navigation
+camera walkthrough
+rewritten scoring or LLM logic
+authenticated Project Wall import without user token
+```
 
 ## Product Direction
 

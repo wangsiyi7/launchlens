@@ -17,7 +17,7 @@
     <link rel="icon" href="assets/logo.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="styles.css" />
   </head>
-  <body>
+  <body class="temple-mode">
     <header class="topbar">
       <div class="brand-lockup">
         <img src="assets/logo.svg" alt="" aria-hidden="true" />
@@ -27,12 +27,95 @@
         </div>
       </div>
       <div class="toolbar" aria-label="Workspace actions">
+        <div class="view-toggle" role="group" aria-label="View mode">
+          <button id="templeModeBtn" type="button" class="active" aria-pressed="true">
+            Temple
+          </button>
+          <button id="classicModeBtn" type="button" class="ghost" aria-pressed="false">
+            Classic
+          </button>
+        </div>
         <button id="sampleBtn" type="button">Load Sample</button>
         <button id="resetBtn" type="button" class="ghost">Reset</button>
         <button id="copyBtn" type="button">Copy Markdown</button>
         <button id="downloadBtn" type="button" class="primary">Download Pack</button>
       </div>
     </header>
+
+    <section id="templeView" class="temple-view" aria-label="LaunchLens submission temple">
+      <img
+        class="temple-bg"
+        src="assets/temple-background.png"
+        alt=""
+        aria-hidden="true"
+      />
+      <div class="temple-shade" aria-hidden="true"></div>
+
+      <div class="temple-hud">
+        <div>
+          <p class="eyebrow">Submission Temple</p>
+          <h2 id="templeProjectName">LaunchLens</h2>
+        </div>
+        <div class="temple-score" aria-label="Current readiness score">
+          <strong id="templeScore">0</strong>
+          <span>/ 100</span>
+        </div>
+      </div>
+
+      <div class="temple-stage" aria-label="Temple workflow nodes">
+        <button class="temple-node active" type="button" data-space="intake">
+          <span>01</span>
+          Project Altar
+        </button>
+        <button class="temple-node" type="button" data-space="evidence">
+          <span>02</span>
+          Evidence Steps
+        </button>
+        <button class="temple-node" type="button" data-space="score">
+          <span>03</span>
+          Score Gate
+        </button>
+        <button class="temple-node" type="button" data-space="oracle">
+          <span>04</span>
+          Oracle LLM
+        </button>
+        <button class="temple-node" type="button" data-space="archive">
+          <span>05</span>
+          Archive Hall
+        </button>
+        <button class="temple-node" type="button" data-space="final">
+          <span>06</span>
+          Final Door
+        </button>
+      </div>
+
+      <aside class="temple-card" aria-live="polite">
+        <p id="templeSpaceLabel" class="eyebrow">Project Altar</p>
+        <h3 id="templeSpaceTitle">Shape the project story</h3>
+        <p id="templeSpaceBody">
+          Start with the project name, track, tagline, target users, problem, and solution.
+        </p>
+        <div class="temple-kpis">
+          <span id="templeCommunity">Community 0</span>
+          <span id="templeAi">AI 0</span>
+          <span id="templeExpert">Expert 0</span>
+        </div>
+        <div class="temple-actions">
+          <button id="templePrimaryAction" type="button" class="primary">Open Fields</button>
+          <button id="templeReviewAction" type="button">Run Review</button>
+          <button id="templeCopyAction" type="button" class="ghost">Copy Pack</button>
+        </div>
+      </aside>
+
+      <nav class="temple-mobile-nav" aria-label="Temple node navigation">
+        <button type="button" data-space="intake">Story</button>
+        <button type="button" data-space="evidence">Proof</button>
+        <button type="button" data-space="score">Score</button>
+        <button type="button" data-space="oracle">LLM</button>
+        <button type="button" data-space="archive">Pack</button>
+        <button type="button" data-space="final">Submit</button>
+      </nav>
+    </section>
 
     <main class="workspace">
       <section class="panel intake-panel" aria-label="Project intake">

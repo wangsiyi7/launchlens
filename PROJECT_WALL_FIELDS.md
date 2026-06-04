@@ -22,6 +22,8 @@ LaunchLens is a browser-based submission copilot for hackathon teams, solo build
 
 LaunchLens runs a review agent over UCWS submission fields, scores readiness across community vote, AI evaluation, and expert judging, then generates Markdown, README, pitch, sprint plan, and fix-list outputs. It helps builders move from rough notes to a credible public submission in minutes.
 
+The current version includes Temple Mode, a 2.5D spatial submission workflow with six clickable nodes for project story, evidence, score, Oracle LLM, generated archive, and final GitHub / Project Wall handoff. Classic Mode remains available for fast form editing and stable export.
+
 The first use case is UCWS Singapore 2026, but the product is global: any hackathon, accelerator, or demo-day team can use the same workflow before submitting.
 
 ### Demo URL
@@ -62,7 +64,7 @@ Important: the final Project Wall Repo URL should be an HTTPS GitHub repository 
 
 ### Tech Stack
 
-HTML, CSS, JavaScript, browser localStorage, optional OpenAI-compatible chat completion endpoint
+HTML, CSS, JavaScript, browser localStorage, 2.5D generated bitmap background, optional OpenAI-compatible chat completion endpoint
 
 ### Project Screenshot
 
@@ -111,11 +113,13 @@ node tools/validate-submission.mjs
 
 1. Open LaunchLens.
 2. Load the sample project.
-3. Edit the required fields.
-4. Run Review Agent.
-5. Show the score cards and fix list.
-6. Switch through Submission Pack, README, Pitch, and Sprint Plan.
-7. Copy Markdown or download the JSON submission pack.
+3. Click through Temple Mode nodes: Project Altar, Evidence Steps, Score Gate, Oracle LLM, Archive Hall, and Final Door.
+4. Switch to Classic Mode and edit the required fields.
+5. Run Review Agent.
+6. Show the score cards and fix list.
+7. Open Oracle LLM to show the reserved model endpoint, model, and API key fields.
+8. Switch through Submission Pack, README, Pitch, and Sprint Plan.
+9. Copy Markdown or download the JSON submission pack.
 
 ### LinkedIn URL
 

@@ -35,6 +35,20 @@
     resetBtn: document.querySelector("#resetBtn"),
     copyBtn: document.querySelector("#copyBtn"),
     downloadBtn: document.querySelector("#downloadBtn"),
+    templeModeBtn: document.querySelector("#templeModeBtn"),
+    classicModeBtn: document.querySelector("#classicModeBtn"),
+    templeView: document.querySelector("#templeView"),
+    templeProjectName: document.querySelector("#templeProjectName"),
+    templeScore: document.querySelector("#templeScore"),
+    templeSpaceLabel: document.querySelector("#templeSpaceLabel"),
+    templeSpaceTitle: document.querySelector("#templeSpaceTitle"),
+    templeSpaceBody: document.querySelector("#templeSpaceBody"),
+    templeCommunity: document.querySelector("#templeCommunity"),
+    templeAi: document.querySelector("#templeAi"),
+    templeExpert: document.querySelector("#templeExpert"),
+    templePrimaryAction: document.querySelector("#templePrimaryAction"),
+    templeReviewAction: document.querySelector("#templeReviewAction"),
+    templeCopyAction: document.querySelector("#templeCopyAction"),
     llmBtn: document.querySelector("#llmBtn"),
     llmPanel: document.querySelector("#llmPanel"),
     enhanceBtn: document.querySelector("#enhanceBtn"),
@@ -45,8 +59,60 @@
   };
 
   let activeTab = "pack";
+  let activeTempleSpace = "intake";
   let currentAnalysis = null;
   let generated = null;
+
+  const templeSpaces = {
+    intake: {
+      label: "Project Altar",
+      title: "Shape the project story",
+      body:
+        "Start with the project name, track, tagline, target users, problem, and solution.",
+      primary: "Open Fields",
+      focus: "name",
+    },
+    evidence: {
+      label: "Evidence Steps",
+      title: "Attach proof reviewers can inspect",
+      body:
+        "Add demo URL, GitHub repo, tech stack, screenshots, team members, and rough notes.",
+      primary: "Add Evidence",
+      focus: "demoUrl",
+    },
+    score: {
+      label: "Score Gate",
+      title: "Run the UCWS readiness review",
+      body:
+        "Score the project against community vote, AI evaluation, and expert judging signals.",
+      primary: "Run Score",
+      action: "score",
+    },
+    oracle: {
+      label: "Oracle LLM",
+      title: "Use your own model to refine copy",
+      body:
+        "Open the reserved OpenAI-compatible endpoint, model, and API key panel for optional enhancement.",
+      primary: "Open Oracle",
+      action: "oracle",
+    },
+    archive: {
+      label: "Archive Hall",
+      title: "Review the generated submission pack",
+      body:
+        "Inspect the Markdown pack, README draft, pitch, sprint plan, and fix list before export.",
+      primary: "Open Pack",
+      action: "archive",
+    },
+    final: {
+      label: "Final Door",
+      title: "Prepare GitHub and Project Wall handoff",
+      body:
+        "Use the copied pack with the final GitHub repo URL, stable demo URL, screenshots, and real team names.",
+      primary: "Submit Checklist",
+      action: "final",
+    },
+  };
 
   function $(id) {
     return document.querySelector("#" + id);
@@ -65,6 +131,104 @@
         $(field).value = project[field] || "";
       }
     });
+  }
+
+  function setViewMode(mode) {
+    const temple = mode === "temple";
+    document.body.classList.toggle("temple-mode", temple);
+    document.body.classList.toggle("classic-mode", !temple);
+    els.templeModeBtn.classList.toggle("active", temple);
+    els.classicModeBtn.classList.toggle("active", !temple);
+    els.templeModeBtn.classList.toggle("ghost", !temple);
+    els.classicModeBtn.classList.toggle("ghost", temple);
+    els.templeModeBtn.setAttribute("aria-pressed", String(temple));
+    els.classicModeBtn.setAttribute("aria-pressed", String(!temple));
+    if (temple) {
+      window.scrollTo({ top: 0, behavior: "auto" });
+    }
+    updateTempleStatus();
+  }
+
+  function focusClassicField(field) {
+    setViewMode("classic");
+    requestAnimationFrame(() => {
+      const target = $(field);
+      if (!target) return;
+      target.scrollIntoView({ behavior: "smooth", block: "center" });
+      target.focus();
+    });
+  }
+
+  function selectTempleSpace(space) {
+    if (!templeSpaces[space]) return;
+    activeTempleSpace = space;
+    document.querySelectorAll("[data-space]").forEach((button) => {
+      button.classList.toggle("active", button.dataset.space === space);
+      if (button.tagName === "BUTTON") {
+        button.setAttribute("aria-pressed", String(button.dataset.space === space));
+      }
+    });
+    renderTemplePanel();
+  }
+
+  function renderTemplePanel() {
+    const space = templeSpaces[activeTempleSpace];
+    els.templeSpaceLabel.textContent = space.label;
+    els.templeSpaceTitle.textContent = space.title;
+    els.templeSpaceBody.textContent = space.body;
+    els.templePrimaryAction.textContent = space.primary;
+    updateTempleStatus();
+  }
+
+  function updateTempleStatus() {
+    const project = getProject();
+    const analysis = currentAnalysis || analyze(project);
+    const scoreByKey = Object.fromEntries(
+      analysis.dimensions.map((item) => [item.key, item.score]),
+    );
+    els.templeProjectName.textContent = project.name || "LaunchLens";
+    els.templeScore.textContent = String(analysis.overall);
+    els.templeCommunity.textContent = `Community ${scoreByKey.community || 0}`;
+    els.templeAi.textContent = `AI ${scoreByKey.ai || 0}`;
+    els.templeExpert.textContent = `Expert ${scoreByKey.expert || 0}`;
+  }
+
+  function runTemplePrimaryAction() {
+    const space = templeSpaces[activeTempleSpace];
+    if (space.focus) {
+      focusClassicField(space.focus);
+      return;
+    }
+
+    if (space.action === "score") {
+      runAgent();
+      return;
+    }
+
+    if (space.action === "oracle") {
+      setViewMode("classic");
+      els.llmPanel.classList.remove("hidden");
+      requestAnimationFrame(() => {
+        els.llmEndpoint.scrollIntoView({ behavior: "smooth", block: "center" });
+        els.llmEndpoint.focus();
+      });
+      return;
+    }
+
+    if (space.action === "archive") {
+      runAgent();
+      setActiveTab("pack");
+      setViewMode("classic");
+      requestAnimationFrame(() => els.output.focus());
+      return;
+    }
+
+    if (space.action === "final") {
+      runAgent();
+      setActiveTab("pack");
+      setViewMode("classic");
+      requestAnimationFrame(() => els.copyBtn.focus());
+    }
   }
 
   function saveProject() {
@@ -416,6 +580,8 @@ ${analysis.dimensions.map((item) => `- ${item.label}: ${item.score}/100 - ${item
       node.querySelector(".dot").style.background = [ "var(--blue)", "var(--green)", "var(--amber)" ][index];
       els.scoreGrid.appendChild(node);
     });
+
+    updateTempleStatus();
   }
 
   function renderOutput() {
@@ -538,11 +704,12 @@ ${analysis.dimensions.map((item) => `- ${item.label}: ${item.score}/100 - ${item
         "LaunchLens runs a browser-based review agent over UCWS submission fields, scores readiness across community vote, AI evaluation, and expert judging, then generates Markdown, README, pitch, sprint plan, and fix list outputs.",
       demoUrl: "",
       repoUrl: "",
-      techStack: "HTML, CSS, JavaScript, localStorage, optional OpenAI-compatible API",
+      techStack:
+        "HTML, CSS, JavaScript, localStorage, 2.5D generated bitmap background, optional OpenAI-compatible API",
       screenshotUrls: "",
       teamMembers: "Alex - builder - Project Wall profile",
       notes:
-        "The product is built as a static web app so any team can use it instantly. It aligns to UCWS required fields: name, tagline, description, demo URL, repo URL, track, tech stack, screenshot, team members, project logo, demo video, and demo file. It also mirrors the event scoring model: community clarity, AI-evaluable repo quality, and expert judging around product value and global scalability. The first screen is the usable tool, not a landing page. Outputs can be copied or downloaded for submission.",
+        "The product is built as a static web app so any team can use it instantly. It aligns to UCWS required fields: name, tagline, description, demo URL, repo URL, track, tech stack, screenshot, team members, project logo, demo video, and demo file. It also mirrors the event scoring model: community clarity, AI-evaluable repo quality, and expert judging around product value and global scalability. The first screen is Temple Mode: a 2.5D spatial submission workflow with six clickable nodes for project story, evidence, score, Oracle LLM, generated archive, and final handoff. Classic Mode remains available for fast form editing. Outputs can be copied or downloaded for submission.",
     });
     saveProject();
     runAgent();
@@ -560,6 +727,11 @@ ${analysis.dimensions.map((item) => `- ${item.label}: ${item.score}/100 - ${item
   els.sampleBtn.addEventListener("click", loadSample);
   els.copyBtn.addEventListener("click", copyMarkdown);
   els.downloadBtn.addEventListener("click", downloadPack);
+  els.templeModeBtn.addEventListener("click", () => setViewMode("temple"));
+  els.classicModeBtn.addEventListener("click", () => setViewMode("classic"));
+  els.templePrimaryAction.addEventListener("click", runTemplePrimaryAction);
+  els.templeReviewAction.addEventListener("click", runAgent);
+  els.templeCopyAction.addEventListener("click", copyMarkdown);
   els.enhanceBtn.addEventListener("click", enhanceWithLlm);
 
   els.resetBtn.addEventListener("click", () => {
@@ -577,9 +749,15 @@ ${analysis.dimensions.map((item) => `- ${item.label}: ${item.score}/100 - ${item
     button.addEventListener("click", () => setActiveTab(button.dataset.tab));
   });
 
+  document.querySelectorAll("[data-space]").forEach((button) => {
+    button.addEventListener("click", () => selectTempleSpace(button.dataset.space));
+  });
+
   if (!loadProject()) {
     loadSample();
   } else {
     runAgent();
   }
+  renderTemplePanel();
+  setViewMode("temple");
 })();
