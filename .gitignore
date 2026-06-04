@@ -1,6 +1,7 @@
 node_modules/
 .DS_Store
 *.log
+README-副本*.md
 launchlens-source.zip
 dist/
 .vercel/
