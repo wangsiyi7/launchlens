@@ -12,7 +12,7 @@
 | Project logo | Done | `assets/logo.svg` |
 | Deployment config | Done | `netlify.toml`, `vercel.json`, `DEPLOYMENT.md` |
 | Local tests | Done | `node tests/scoring.test.mjs` |
-| Local Git repo | Done | branch `main`, commit `418f289 Initial LaunchLens UCWS submission app` |
+| Local Git repo | Done | branch `main`, latest commit `ad760ee Add Project Wall payload and submit helpers` |
 | Submission zip | Done | `../LaunchLens_submission_pack.zip` |
 | Project payload generator | Done | `tools/build-project-payload.mjs` |
 | Authenticated submit script | Done | `tools/submit-project.mjs`, requires `EPIC_TOKEN` |
