@@ -27,18 +27,26 @@
         </div>
       </div>
       <div class="toolbar" aria-label="Workspace actions">
+        <div class="lang-toggle" role="group" aria-label="Language">
+          <button id="langEnBtn" type="button" class="active" aria-pressed="true">
+            EN
+          </button>
+          <button id="langZhBtn" type="button" class="ghost" aria-pressed="false">
+            中文
+          </button>
+        </div>
         <div class="view-toggle" role="group" aria-label="View mode">
-          <button id="templeModeBtn" type="button" class="active" aria-pressed="true">
+          <button id="templeModeBtn" type="button" class="active" aria-pressed="true" data-i18n="mode.temple">
             Temple
           </button>
-          <button id="classicModeBtn" type="button" class="ghost" aria-pressed="false">
+          <button id="classicModeBtn" type="button" class="ghost" aria-pressed="false" data-i18n="mode.classic">
             Classic
           </button>
         </div>
-        <button id="sampleBtn" type="button">Load Sample</button>
-        <button id="resetBtn" type="button" class="ghost">Reset</button>
-        <button id="copyBtn" type="button">Copy Markdown</button>
-        <button id="downloadBtn" type="button" class="primary">Download Pack</button>
+        <button id="sampleBtn" type="button" data-i18n="button.sample">Load Sample</button>
+        <button id="resetBtn" type="button" class="ghost" data-i18n="button.reset">Reset</button>
+        <button id="copyBtn" type="button" data-i18n="button.copy">Copy Markdown</button>
+        <button id="downloadBtn" type="button" class="primary" data-i18n="button.download">Download Pack</button>
       </div>
     </header>
 
@@ -53,7 +61,7 @@
 
       <div class="temple-hud">
         <div>
-          <p class="eyebrow">Submission Temple</p>
+          <p class="eyebrow" data-i18n="temple.eyebrow">Submission Temple</p>
           <h2 id="templeProjectName">LaunchLens</h2>
         </div>
         <div class="temple-score" aria-label="Current readiness score">
@@ -65,27 +73,27 @@
       <div class="temple-stage" aria-label="Temple workflow nodes">
         <button class="temple-node active" type="button" data-space="intake">
           <span>01</span>
-          Project Altar
+          <span data-i18n="node.intake.short">Project Altar</span>
         </button>
         <button class="temple-node" type="button" data-space="evidence">
           <span>02</span>
-          Evidence Steps
+          <span data-i18n="node.evidence.short">Evidence Steps</span>
         </button>
         <button class="temple-node" type="button" data-space="score">
           <span>03</span>
-          Score Gate
+          <span data-i18n="node.score.short">Score Gate</span>
         </button>
         <button class="temple-node" type="button" data-space="oracle">
           <span>04</span>
-          Oracle LLM
+          <span data-i18n="node.oracle.short">Oracle LLM</span>
         </button>
         <button class="temple-node" type="button" data-space="archive">
           <span>05</span>
-          Archive Hall
+          <span data-i18n="node.archive.short">Archive Hall</span>
         </button>
         <button class="temple-node" type="button" data-space="final">
           <span>06</span>
-          Final Door
+          <span data-i18n="node.final.short">Final Door</span>
         </button>
       </div>
 
@@ -102,18 +110,18 @@
         </div>
         <div class="temple-actions">
           <button id="templePrimaryAction" type="button" class="primary">Open Fields</button>
-          <button id="templeReviewAction" type="button">Run Review</button>
-          <button id="templeCopyAction" type="button" class="ghost">Copy Pack</button>
+          <button id="templeReviewAction" type="button" data-i18n="button.reviewShort">Run Review</button>
+          <button id="templeCopyAction" type="button" class="ghost" data-i18n="button.copyPack">Copy Pack</button>
         </div>
       </aside>
 
       <nav class="temple-mobile-nav" aria-label="Temple node navigation">
-        <button type="button" data-space="intake">Story</button>
-        <button type="button" data-space="evidence">Proof</button>
-        <button type="button" data-space="score">Score</button>
-        <button type="button" data-space="oracle">LLM</button>
-        <button type="button" data-space="archive">Pack</button>
-        <button type="button" data-space="final">Submit</button>
+        <button type="button" data-space="intake" data-i18n="mobile.story">Story</button>
+        <button type="button" data-space="evidence" data-i18n="mobile.proof">Proof</button>
+        <button type="button" data-space="score" data-i18n="mobile.score">Score</button>
+        <button type="button" data-space="oracle" data-i18n="mobile.llm">LLM</button>
+        <button type="button" data-space="archive" data-i18n="mobile.pack">Pack</button>
+        <button type="button" data-space="final" data-i18n="mobile.submit">Submit</button>
       </nav>
     </section>
 
@@ -121,20 +129,20 @@
       <section class="panel intake-panel" aria-label="Project intake">
         <div class="panel-head">
           <div>
-            <p class="eyebrow">Project Intake</p>
-            <h2>Submission fields</h2>
+            <p class="eyebrow" data-i18n="intake.eyebrow">Project Intake</p>
+            <h2 data-i18n="intake.title">Submission fields</h2>
           </div>
-          <span id="saveState" class="status-pill">Saved locally</span>
+          <span id="saveState" class="status-pill" data-i18n="status.saved">Saved locally</span>
         </div>
 
         <form id="projectForm" class="form-grid">
           <label>
-            Project name
+            <span data-i18n="field.name">Project name</span>
             <input id="name" name="name" maxlength="100" placeholder="LaunchLens" />
           </label>
 
           <label>
-            Track
+            <span data-i18n="field.track">Track</span>
             <select id="track" name="track">
               <option>Application</option>
               <option>Agent</option>
@@ -144,84 +152,91 @@
           </label>
 
           <label class="span-2">
-            Tagline
+            <span data-i18n="field.tagline">Tagline</span>
             <input
               id="tagline"
               name="tagline"
               maxlength="200"
               placeholder="Turn rough hackathon ideas into scored, ready-to-submit Project Wall packages."
+              data-i18n-placeholder="placeholder.tagline"
             />
           </label>
 
           <label class="span-2">
-            Target users
+            <span data-i18n="field.audience">Target users</span>
             <input
               id="audience"
               name="audience"
               placeholder="Hackathon teams, solo builders, community reviewers"
+              data-i18n-placeholder="placeholder.audience"
             />
           </label>
 
           <label class="span-2">
-            Problem
+            <span data-i18n="field.problem">Problem</span>
             <textarea
               id="problem"
               name="problem"
               rows="3"
               placeholder="Teams lose time turning real work into clear submission materials before deadline."
+              data-i18n-placeholder="placeholder.problem"
             ></textarea>
           </label>
 
           <label class="span-2">
-            Solution
+            <span data-i18n="field.solution">Solution</span>
             <textarea
               id="solution"
               name="solution"
               rows="4"
               placeholder="LaunchLens analyzes required UCWS fields, scores readiness, and generates a focused submission pack."
+              data-i18n-placeholder="placeholder.solution"
             ></textarea>
           </label>
 
           <label>
-            Demo URL
+            <span data-i18n="field.demoUrl">Demo URL</span>
             <input id="demoUrl" name="demoUrl" placeholder="https://..." />
           </label>
 
           <label>
-            Repo URL
+            <span data-i18n="field.repoUrl">Repo URL</span>
             <input id="repoUrl" name="repoUrl" placeholder="https://github.com/..." />
           </label>
 
           <label class="span-2">
-            Tech stack
+            <span data-i18n="field.techStack">Tech stack</span>
             <input
               id="techStack"
               name="techStack"
               placeholder="HTML, CSS, JavaScript, localStorage, optional OpenAI-compatible API"
+              data-i18n-placeholder="placeholder.techStack"
             />
           </label>
 
           <label class="span-2">
-            Screenshot URLs
+            <span data-i18n="field.screenshotUrls">Screenshot URLs</span>
             <input
               id="screenshotUrls"
               name="screenshotUrls"
               placeholder="Comma-separated image URLs after deployment"
+              data-i18n-placeholder="placeholder.screenshotUrls"
             />
           </label>
 
           <label class="span-2">
-            Team members
-            <input id="teamMembers" name="teamMembers" placeholder="Name - role - link" />
+            <span data-i18n="field.teamMembers">Team members</span>
+            <input id="teamMembers" name="teamMembers" placeholder="Name - role - link" data-i18n-placeholder="placeholder.teamMembers" />
           </label>
 
           <label class="span-2">
-            README or rough notes
+            <span data-i18n="field.notes">README or rough notes</span>
             <textarea
               id="notes"
               name="notes"
               rows="8"
               placeholder="Paste README, build notes, judging context, or customer discovery here."
+              data-i18n-placeholder="placeholder.notes"
             ></textarea>
           </label>
         </form>
@@ -230,7 +245,7 @@
       <section class="panel results-panel" aria-label="Readiness output">
         <div class="score-strip">
           <div>
-            <p class="eyebrow">Readiness</p>
+            <p class="eyebrow" data-i18n="readiness.eyebrow">Readiness</p>
             <strong id="overallScore">0</strong>
             <span>/ 100</span>
           </div>
@@ -242,35 +257,35 @@
         <div class="score-grid" id="scoreGrid"></div>
 
         <div class="agent-row">
-          <button id="reviewBtn" type="button" class="primary">Run Review Agent</button>
-          <button id="generateBtn" type="button">Generate Pack</button>
-          <button id="llmBtn" type="button" class="ghost">Optional LLM</button>
+          <button id="reviewBtn" type="button" class="primary" data-i18n="button.review">Run Review Agent</button>
+          <button id="generateBtn" type="button" data-i18n="button.generate">Generate Pack</button>
+          <button id="llmBtn" type="button" class="ghost" data-i18n="button.llm">Optional LLM</button>
         </div>
 
         <section id="llmPanel" class="llm-panel hidden" aria-label="Optional LLM settings">
           <div class="llm-grid">
             <label>
-              Endpoint
+              <span data-i18n="llm.endpoint">Endpoint</span>
               <input id="llmEndpoint" placeholder="https://api.openai.com/v1/chat/completions" />
             </label>
             <label>
-              Model
+              <span data-i18n="llm.model">Model</span>
               <input id="llmModel" placeholder="gpt-4.1-mini" />
             </label>
             <label class="span-2">
-              API key
-              <input id="llmKey" type="password" placeholder="Stored only in this browser session" />
+              <span data-i18n="llm.key">API key</span>
+              <input id="llmKey" type="password" placeholder="Stored only in this browser session" data-i18n-placeholder="placeholder.llmKey" />
             </label>
           </div>
-          <button id="enhanceBtn" type="button">Enhance Current Pack</button>
+          <button id="enhanceBtn" type="button" data-i18n="button.enhance">Enhance Current Pack</button>
         </section>
 
         <nav class="tabs" aria-label="Output tabs">
-          <button class="active" data-tab="pack" type="button">Submission Pack</button>
-          <button data-tab="readme" type="button">README</button>
-          <button data-tab="pitch" type="button">Pitch</button>
-          <button data-tab="sprint" type="button">Sprint Plan</button>
-          <button data-tab="risks" type="button">Fix List</button>
+          <button class="active" data-tab="pack" type="button" data-i18n="tab.pack">Submission Pack</button>
+          <button data-tab="readme" type="button" data-i18n="tab.readme">README</button>
+          <button data-tab="pitch" type="button" data-i18n="tab.pitch">Pitch</button>
+          <button data-tab="sprint" type="button" data-i18n="tab.sprint">Sprint Plan</button>
+          <button data-tab="risks" type="button" data-i18n="tab.risks">Fix List</button>
         </nav>
 
         <div class="output-shell">

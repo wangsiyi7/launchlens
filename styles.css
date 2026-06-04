@@ -128,7 +128,8 @@ button.ghost {
   flex-wrap: wrap;
 }
 
-.view-toggle {
+.view-toggle,
+.lang-toggle {
   display: inline-flex;
   align-items: center;
   gap: 0.25rem;
@@ -138,12 +139,14 @@ button.ghost {
   background: rgba(245, 241, 232, 0.055);
 }
 
-.view-toggle button {
+.view-toggle button,
+.lang-toggle button {
   min-height: 2rem;
   padding: 0.38rem 0.62rem;
 }
 
-.view-toggle button.active {
+.view-toggle button.active,
+.lang-toggle button.active {
   border-color: var(--amber);
   background: var(--amber);
   color: var(--ink);
@@ -267,7 +270,7 @@ body.temple-mode .workspace {
   line-height: 1.1;
 }
 
-.temple-node span {
+.temple-node > span:first-child {
   display: grid;
   place-items: center;
   width: 1.9rem;
@@ -277,6 +280,17 @@ body.temple-mode .workspace {
   color: var(--green);
   font-size: 0.72rem;
   font-weight: 900;
+}
+
+.temple-node > span:last-child {
+  display: block;
+  width: auto;
+  height: auto;
+  border-radius: 0;
+  background: transparent;
+  color: inherit;
+  font-size: inherit;
+  font-weight: inherit;
 }
 
 .temple-node.active {

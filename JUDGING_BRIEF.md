@@ -13,7 +13,7 @@ Hackathon teams often build working products, then lose the final hours translat
 | UCWS Lens | LaunchLens Response |
 | --- | --- |
 | Real product value | Helps any UCWS builder prepare a stronger submission before deadline. |
-| Execution quality | Complete browser app with scoring, generated outputs, copy/export, local autosave, Temple Mode, Classic Mode, and optional LLM refinement. |
+| Execution quality | Complete bilingual browser app with scoring, generated outputs, copy/export, local autosave, Temple Mode, Classic Mode, and optional LLM refinement. |
 | Global scalability | Works for hackathons, accelerators, pitch events, demo days, and product launch reviews beyond UCWS. |
 | Community vote | Makes project value readable and shareable in minutes. |
 | AI evaluation | Encourages GitHub repo URL, evidence fields, screenshots, tech stack, README, and structured submission copy. |
@@ -48,6 +48,8 @@ Hackathon teams often build working products, then lose the final hours translat
 ## What Makes It Different
 
 LaunchLens is not a generic writing assistant. It is a deadline-focused submission copilot that maps directly to the UCWS Project Wall and scoring model. Temple Mode gives the project a memorable interface, while Classic Mode keeps the workflow practical and reliable.
+
+The app supports English and Chinese across the UI, Temple nodes, score notes, fix list, generated outputs, and sample data, making it better suited for UCWS' global and Asia-based builder audience.
 
 ## Remaining External Inputs
 

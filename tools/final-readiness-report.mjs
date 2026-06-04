@@ -73,6 +73,7 @@ const requiredFiles = [
   "assets/logo.svg",
   "assets/temple-background.png",
   "assets/screenshot.png",
+  "assets/screenshot-zh.png",
   "assets/screenshot-mobile.png",
   "tests/scoring.test.mjs",
   "tools/build-project-payload.mjs",
@@ -85,6 +86,7 @@ const requiredFiles = [
 const requiredFilesOk = requiredFiles.every((path) => existsSync(path));
 const screenshotOk =
   fileSize("assets/screenshot.png") > 100_000 &&
+  fileSize("assets/screenshot-zh.png") > 100_000 &&
   fileSize("assets/screenshot-mobile.png") > 50_000 &&
   fileSize("assets/temple-background.png") > 100_000;
 
@@ -97,7 +99,7 @@ const envChecks = [
 
 const checks = [
   ["Local source files", requiredFilesOk, requiredFilesOk ? "All required app, docs, scripts, and workflow files exist." : "Some required files are missing."],
-  ["Temple Mode assets", screenshotOk, `Background=${fileSize("assets/temple-background.png")} bytes; desktop screenshot=${fileSize("assets/screenshot.png")} bytes; mobile screenshot=${fileSize("assets/screenshot-mobile.png")} bytes.`],
+  ["Temple Mode assets", screenshotOk, `Background=${fileSize("assets/temple-background.png")} bytes; EN screenshot=${fileSize("assets/screenshot.png")} bytes; ZH screenshot=${fileSize("assets/screenshot-zh.png")} bytes; mobile screenshot=${fileSize("assets/screenshot-mobile.png")} bytes.`],
   ["Git state", !relevantGitStatus, relevantGitStatus ? `Working tree has changes:\n${relevantGitStatus}` : "Clean working tree."],
   ["Git remote", Boolean(remotes), remotes || "No GitHub remote configured yet."],
   ["Local demo", localDemo.ok, localDemo.evidence],

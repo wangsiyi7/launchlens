@@ -15,6 +15,7 @@ Action:
 - Open `http://127.0.0.1:8080/launchlens/`.
 - Show the Temple Mode first screen.
 - Point out the readiness score and the six spatial workflow nodes.
+- Click `中文`, then `EN`, to show bilingual app support.
 
 ## Scene 2: Temple Mode
 

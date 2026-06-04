@@ -9,8 +9,9 @@
 | Project description | Done | `SUBMISSION.md`, generated in app |
 | README | Done | `README.md` |
 | Bilingual GitHub README | Done | `README.md`, Chinese and English sections |
+| Bilingual app UI | Done | EN / 中文 switch in `index.html` and `app.js`; translated UI, Temple nodes, score notes, fixes, and generated outputs |
 | Repository asset index | Done | `ASSETS.md` |
-| Screenshot | Done | `assets/screenshot.png`, `assets/screenshot-mobile.png` |
+| Screenshot | Done | `assets/screenshot.png`, `assets/screenshot-zh.png`, `assets/screenshot-mobile.png` |
 | Temple Mode UI | Done | `index.html`, `styles.css`, `app.js`, `assets/temple-background.png`; six clickable workflow nodes |
 | Classic Mode fallback | Done | Top-level Temple / Classic toggle preserves the original two-column tool |
 | UI smoke test | Done | Edge + Playwright check: desktop Temple visible, Classic hidden by default, 6 nodes, Oracle opens LLM, Final Door clickable, mobile nav visible, no console errors |
