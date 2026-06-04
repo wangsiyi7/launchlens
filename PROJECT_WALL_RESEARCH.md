@@ -47,6 +47,16 @@ Track: Application
 
 Positioning: a practical submission-readiness product for hackathon teams, not a generic writing assistant.
 
+## GitHub repository finding
+
+Official repo checked:
+
+```text
+https://github.com/EpicConnectorAI/UCWS-SINGAPORE-HACKATHON-2026
+```
+
+The official repository currently contains README, RESOURCES, SECURITY, and license files. It describes itself as an archive/showcase repository, but the live clone did not include a project submission folder or the referenced `docs/SUBMISSION_GUIDELINES.md`. The practical GitHub requirement for LaunchLens is therefore to push this project to its own GitHub repo and use that repo URL in the Evol Project Wall submission.
+
 Primary proof:
 
 - Working static app.

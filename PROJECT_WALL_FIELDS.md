@@ -30,9 +30,21 @@ Local review: `http://localhost:8080/launchlens/`
 
 Public demo URL: add after deployment.
 
+If using GitHub Pages:
+
+```text
+https://YOUR_ACCOUNT.github.io/launchlens/
+```
+
 ### Repo URL
 
 Add after pushing to GitHub.
+
+If using the prepared GitHub project:
+
+```text
+https://github.com/YOUR_ACCOUNT/launchlens
+```
 
 ### Tech Stack
 

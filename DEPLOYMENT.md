@@ -25,8 +25,21 @@ The included `netlify.toml` already sets the publish directory and fallback rout
 
 1. Push the repo to GitHub.
 2. In repository settings, enable Pages.
-3. Select the branch and `/launchlens` folder if available, or copy the contents of `launchlens/` to a `docs/` folder.
-4. Add the Pages URL to `SUBMISSION.md` and Project Wall.
+3. Set Pages source to GitHub Actions.
+4. The included `.github/workflows/pages.yml` will publish the static site.
+5. Add the Pages URL to `SUBMISSION.md` and Project Wall.
+
+Push helper:
+
+```powershell
+node tools/push-github.mjs https://github.com/YOUR_ACCOUNT/launchlens.git
+```
+
+After GitHub Pages deploys, the likely public URL will be:
+
+```text
+https://YOUR_ACCOUNT.github.io/launchlens/
+```
 
 ## Local validation
 
