@@ -1,59 +1,113 @@
 # LaunchLens
 
-Turn rough hackathon ideas into scored, ready-to-submit Project Wall packages.
+> 中文 | [English](#english)
 
-LaunchLens is a browser-based submission copilot for UCWS Singapore Hackathon 2026 teams. It reviews required Project Wall fields, scores readiness against UCWS-style evaluation criteria, and generates Markdown, README, pitch, sprint plan, and fix-list outputs.
+把粗糙的 Hackathon 项目想法、README 草稿和比赛笔记，快速整理成可评分、可复制、可提交的 Project Wall 材料包。
 
-## Why this project
+LaunchLens 是为 **UCWS Singapore Hackathon 2026** 准备的浏览器端提交助手。它对齐 Project Wall 字段与比赛评分逻辑，帮助参赛者检查项目完整度、生成提交文案、README、90 秒 pitch、冲刺计划和风险修复清单。
 
-UCWS rewards projects with real user value, strong execution, and global scalability. Many teams have working software but lose time translating their work into a submission that community voters, automated evaluation, and expert judges can quickly understand. LaunchLens solves that last-mile problem.
+![LaunchLens desktop screenshot](assets/screenshot.png)
 
-## Features
+## 项目定位
 
-- UCWS-aligned intake fields: name, track, tagline, description inputs, demo URL, repo URL, tech stack, screenshots, and team members.
-- Readiness scoring for Community Vote, AI Evaluation, and Expert Judges.
-- Actionable fix list ordered around submission risk.
-- Generated submission pack, README, 90-second pitch, and final 24-hour sprint plan.
-- Local autosave with `localStorage`.
-- Markdown copy and JSON export.
-- Optional OpenAI-compatible LLM enhancement using the user's own browser-side API key.
+很多队伍已经做出了可运行产品，但最后一天会卡在“怎么把产品讲清楚”：Demo URL、Repo URL、技术栈、截图、团队成员、项目描述、评委视角、AI 自动评估视角、社区投票视角都要同时兼顾。LaunchLens 解决的是这条最后一公里。
 
-## Local demo
+它不是一个静态宣传页，而是一个第一屏即可使用的 App。
 
-From the workspace root:
+## 适配比赛
 
-```bash
-python -m http.server 8080
+- 比赛：UCWS Singapore Hackathon 2026
+- 赛道：Application
+- 评分视角：Community Vote、AI Evaluation、Expert Judges
+- 提交字段：项目名、赛道、tagline、description、Demo URL、Repo URL、tech stack、screenshots、logo、team members
+- 项目墙限制：最终 Repo URL 应使用 HTTPS GitHub 仓库链接
+
+## 核心功能
+
+- Project Wall 字段体检：检查项目名、赛道、tagline、描述、Demo URL、Repo URL、技术栈、截图和团队成员。
+- 三类评分：按社区可读性、AI 可评估性、专家评审价值生成 readiness score。
+- 自动生成材料：Submission Pack、README、Pitch、Sprint Plan、Fix List。
+- 本地自动保存：使用浏览器 `localStorage` 保存草稿。
+- 一键复制和 JSON 导出：方便直接粘贴到 Project Wall。
+- 预留大模型 API：内置 Optional LLM 面板，支持 OpenAI-compatible chat completions。
+
+## 大模型 API 预留能力
+
+App 里已经预留了大模型增强入口：
+
+- Endpoint：例如 `https://api.openai.com/v1/chat/completions`
+- Model：例如 `gpt-4.1-mini`
+- API key：用户自己的 key，仅在当前浏览器会话中输入使用
+
+点击 `Optional LLM` 后填写 endpoint、model 和 API key，再点击 `Enhance Current Pack`，即可用大模型润色当前生成的提交材料。
+
+说明：
+
+- 默认不需要后端，不需要构建步骤。
+- API key 不写入仓库，也不会被提交到 Git。
+- 该入口兼容 OpenAI-style `chat/completions` 请求格式，后续可以接 OpenAI、私有网关或其他兼容服务。
+
+## 快速运行
+
+```powershell
+cd "C:\Users\35398\Desktop\UCWS 2026\launchlens"
+node tools/serve.mjs
 ```
 
-Open:
+打开：
 
 ```text
 http://localhost:8080/launchlens/
 ```
 
-No build step or backend is required.
+临时公网 Demo：
 
-## GitHub publish
+```text
+https://volume-obituaries-half-coaches.trycloudflare.com
+```
 
-With a GitHub token that can create or push repositories:
+该临时地址只在本地 Cloudflare Quick Tunnel 运行时可用。最终评审建议使用 GitHub Pages、Netlify 或 Vercel。
+
+## GitHub 发布
+
+如果有 GitHub token：
 
 ```powershell
+cd "C:\Users\35398\Desktop\UCWS 2026\launchlens"
 $env:GITHUB_TOKEN="your-github-token"
+$env:LAUNCHLENS_TEAM_MEMBERS="Your Name"
 node tools/publish-github.mjs launchlens
 ```
 
-The helper creates or reuses `launchlens`, updates the Project Wall payload with the GitHub repo and Pages URLs, commits that payload if needed, then pushes `main`.
+脚本会：
 
-For the final competition handoff, follow `FINAL_SUBMISSION_RUNBOOK.md`.
+- 创建或复用 `launchlens` GitHub 仓库。
+- 生成包含 GitHub Repo URL 和 GitHub Pages URL 的 `project-payload.json`。
+- 如果 payload 有变化，自动提交。
+- 推送 `main` 分支。
 
-Before submitting to the Project Wall, validate the payload:
+如果已有仓库 remote：
+
+```powershell
+node tools/push-github.mjs https://github.com/YOUR_ACCOUNT/launchlens.git
+```
+
+## Project Wall 提交
+
+提交前验证 payload：
 
 ```powershell
 node tools/validate-submission.mjs
 ```
 
-With both GitHub and Epic Connector tokens available, the full completion command is:
+有 Epic Connector token 时：
+
+```powershell
+$env:EPIC_TOKEN="your-epic-token"
+node tools/submit-project.mjs
+```
+
+GitHub 和 Epic token 都准备好时：
 
 ```powershell
 $env:GITHUB_TOKEN="your-github-token"
@@ -62,31 +116,128 @@ $env:LAUNCHLENS_TEAM_MEMBERS="Your Name"
 node tools/complete-submission.mjs launchlens
 ```
 
-## Tech stack
+最终操作请按：
+
+- `FINAL_SUBMISSION_RUNBOOK.md`
+- `PROJECT_WALL_FIELDS.md`
+- `SUBMISSION.md`
+
+## 资产清单
+
+完整资产索引见 `ASSETS.md`。
+
+关键资产：
+
+- App：`index.html`、`styles.css`、`app.js`
+- 截图：`assets/screenshot.png`、`assets/screenshot-mobile.png`
+- Logo：`assets/logo.svg`
+- 社交图：`assets/social-card.svg`
+- 提交材料：`PROJECT_WALL_FIELDS.md`、`SUBMISSION.md`
+- 最终执行清单：`FINAL_SUBMISSION_RUNBOOK.md`
+- 自动化脚本：`tools/`
+
+## 技术栈
 
 - HTML
 - CSS
 - JavaScript
 - Browser localStorage
 - Optional OpenAI-compatible chat completion endpoint
+- GitHub Pages workflow
+- Netlify/Vercel static deploy config
 
-## UCWS submission fields
+## English
 
-- Project name: LaunchLens
+Turn rough hackathon ideas, README notes, and build context into scored, copy-ready, submission-ready Project Wall packages.
+
+LaunchLens is a browser-based submission copilot built for **UCWS Singapore Hackathon 2026**. It aligns with Project Wall fields and judging criteria, then helps builders review readiness, generate submission copy, draft README content, prepare a 90-second pitch, plan the final sprint, and identify submission risks.
+
+## What It Solves
+
+Many teams can build working software, but lose momentum when they need to explain it clearly for voters, AI evaluation, and expert judges. LaunchLens focuses on that final mile: turning real product work into a credible public submission.
+
+This is a usable app on the first screen, not a marketing landing page.
+
+## Hackathon Fit
+
+- Event: UCWS Singapore Hackathon 2026
 - Track: Application
-- Tagline: Turn rough hackathon ideas into scored, ready-to-submit Project Wall packages.
-- Demo URL for local review: `http://localhost:8080/launchlens/`
-- Public demo URL: add the hosted URL after deployment
-- Repo URL: add the GitHub repository URL after pushing
-- Tech stack: HTML, CSS, JavaScript, localStorage, optional OpenAI-compatible API
-- Screenshot: `assets/screenshot.png`
-- Mobile screenshot: `assets/screenshot-mobile.png`
-- Project logo: `assets/logo.svg`
-- Social card: `assets/social-card.svg`
+- Evaluation lens: Community Vote, AI Evaluation, Expert Judges
+- Submission fields: project name, track, tagline, description, demo URL, repo URL, tech stack, screenshots, logo, team members
+- Project Wall constraint: the final repo URL should be an HTTPS GitHub repository link
 
-## Roadmap
+## Features
 
-- Authenticated Project Wall import using the user's own Epic Connector token.
-- GitHub README fetch and repo-health checks through a small backend proxy.
-- Multi-event templates for other hackathons and demo days.
-- Team collaboration mode for 1-4 member UCWS teams.
+- Project Wall field review for required submission fields.
+- Readiness scoring across community clarity, AI-evaluable repo quality, and expert-judge product value.
+- Generated outputs: Submission Pack, README, Pitch, Sprint Plan, and Fix List.
+- Local autosave through browser `localStorage`.
+- Copy Markdown and export JSON.
+- Reserved LLM API enhancement through an Optional LLM panel.
+
+## Reserved LLM API
+
+LaunchLens includes an optional OpenAI-compatible LLM slot:
+
+- Endpoint, for example `https://api.openai.com/v1/chat/completions`
+- Model, for example `gpt-4.1-mini`
+- API key supplied by the user in the browser
+
+Open `Optional LLM`, enter the endpoint, model, and key, then click `Enhance Current Pack` to improve the current generated output.
+
+Notes:
+
+- No backend is required by default.
+- API keys are not committed to the repo.
+- The integration follows the OpenAI-style `chat/completions` request shape and can be pointed at compatible providers or private gateways.
+
+## Run Locally
+
+```powershell
+cd "C:\Users\35398\Desktop\UCWS 2026\launchlens"
+node tools/serve.mjs
+```
+
+Open:
+
+```text
+http://localhost:8080/launchlens/
+```
+
+Temporary public demo:
+
+```text
+https://volume-obituaries-half-coaches.trycloudflare.com
+```
+
+This temporary URL only works while the local Cloudflare Quick Tunnel is running. Use GitHub Pages, Netlify, or Vercel for final judging.
+
+## Publish To GitHub
+
+With a GitHub token:
+
+```powershell
+cd "C:\Users\35398\Desktop\UCWS 2026\launchlens"
+$env:GITHUB_TOKEN="your-github-token"
+$env:LAUNCHLENS_TEAM_MEMBERS="Your Name"
+node tools/publish-github.mjs launchlens
+```
+
+The helper creates or reuses the GitHub repo, regenerates the Project Wall payload with GitHub URLs, commits the payload if needed, and pushes `main`.
+
+## Submit
+
+Validate first:
+
+```powershell
+node tools/validate-submission.mjs
+```
+
+Submit with an Epic Connector token:
+
+```powershell
+$env:EPIC_TOKEN="your-epic-token"
+node tools/submit-project.mjs
+```
+
+For the final handoff, follow `FINAL_SUBMISSION_RUNBOOK.md`.

@@ -8,6 +8,8 @@
 | UCWS-aligned fields | Done | `PROJECT_WALL_FIELDS.md`, `SUBMISSION.md` |
 | Project description | Done | `SUBMISSION.md`, generated in app |
 | README | Done | `README.md` |
+| Bilingual GitHub README | Done | `README.md`, Chinese and English sections |
+| Repository asset index | Done | `ASSETS.md` |
 | Screenshot | Done | `assets/screenshot.png`, `assets/screenshot-mobile.png` |
 | Project logo | Done | `assets/logo.svg` |
 | Deployment config | Done | `netlify.toml`, `vercel.json`, `DEPLOYMENT.md` |

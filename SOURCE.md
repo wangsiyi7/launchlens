@@ -41,6 +41,7 @@ The final Project Wall `repoUrl` should be the GitHub repository URL. This tempo
 
 - `index.html`, `styles.css`, `app.js`: the app
 - `README.md`: project README
+- `ASSETS.md`: repository asset index
 - `PROJECT_WALL_FIELDS.md`: copy-paste Project Wall fields
 - `SUBMISSION.md`: UCWS submission draft
 - `FINAL_SUBMISSION_RUNBOOK.md`: final GitHub and Project Wall execution checklist
