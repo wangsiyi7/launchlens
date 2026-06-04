@@ -22,7 +22,7 @@
 | One-command publish and submit script | Done | `tools/complete-submission.mjs`, requires `GITHUB_TOKEN` and `EPIC_TOKEN` |
 | Final submission runbook | Done | `FINAL_SUBMISSION_RUNBOOK.md` |
 | Safe local public-root server | Done | `tools/serve-public-root.mjs`, serves only `launchlens/` |
-| Temporary public demo URL | Done | `https://vendors-pride-returning-empirical.trycloudflare.com`, via Cloudflare Quick Tunnel |
+| Temporary public demo URL | Done | `https://volume-obituaries-half-coaches.trycloudflare.com`, via Cloudflare Quick Tunnel |
 | GitHub Pages workflow | Done | `.github/workflows/pages.yml` |
 | GitHub push helper | Done | `tools/push-github.mjs`, requires a target GitHub remote |
 | GitHub create/publish helper | Done | `tools/create-github-repo.mjs`, `tools/publish-github.mjs`, requires `GITHUB_TOKEN` |

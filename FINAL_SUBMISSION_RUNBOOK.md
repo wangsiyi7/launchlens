@@ -8,7 +8,7 @@ Use this as the last-mile checklist for submitting LaunchLens to the UCWS Singap
 | --- | --- | --- |
 | Working app | Ready | `index.html`, `styles.css`, `app.js` |
 | Local Git repo | Ready | branch `main` |
-| Temporary public demo | Ready while tunnel runs | `https://vendors-pride-returning-empirical.trycloudflare.com` |
+| Temporary public demo | Ready while tunnel runs | `https://volume-obituaries-half-coaches.trycloudflare.com` |
 | Screenshots | Ready | `assets/screenshot.png`, `assets/screenshot-mobile.png` |
 | Project Wall copy | Ready | `PROJECT_WALL_FIELDS.md`, `SUBMISSION.md` |
 | GitHub repository | Needs account access | provide remote URL or `GITHUB_TOKEN` |
@@ -161,8 +161,8 @@ The first use case is UCWS Singapore 2026, but the product is global: any hackat
 These are temporary fallbacks only:
 
 ```text
-https://vendors-pride-returning-empirical.trycloudflare.com/SOURCE.md
-https://vendors-pride-returning-empirical.trycloudflare.com/launchlens-source.zip
+https://volume-obituaries-half-coaches.trycloudflare.com/SOURCE.md
+https://volume-obituaries-half-coaches.trycloudflare.com/launchlens-source.zip
 ```
 
 The final Repo URL must be:

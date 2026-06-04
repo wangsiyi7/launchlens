@@ -13,7 +13,7 @@ launchlens-source.zip
 Expected public URL while the Cloudflare Quick Tunnel is running:
 
 ```text
-https://vendors-pride-returning-empirical.trycloudflare.com/launchlens-source.zip
+https://volume-obituaries-half-coaches.trycloudflare.com/launchlens-source.zip
 ```
 
 ## Stable GitHub repository

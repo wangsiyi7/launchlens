@@ -25,7 +25,7 @@ Local review URL: `http://localhost:8080/launchlens/`
 Temporary public URL:
 
 ```text
-https://vendors-pride-returning-empirical.trycloudflare.com
+https://volume-obituaries-half-coaches.trycloudflare.com
 ```
 
 Replace with a stable GitHub Pages / Netlify / Vercel URL before final judging if possible.
@@ -37,13 +37,13 @@ Stable GitHub URL to be added after pushing.
 Temporary public source page:
 
 ```text
-https://vendors-pride-returning-empirical.trycloudflare.com/SOURCE.md
+https://volume-obituaries-half-coaches.trycloudflare.com/SOURCE.md
 ```
 
 Temporary source bundle:
 
 ```text
-https://vendors-pride-returning-empirical.trycloudflare.com/launchlens-source.zip
+https://volume-obituaries-half-coaches.trycloudflare.com/launchlens-source.zip
 ```
 
 ## Tech Stack
@@ -58,7 +58,7 @@ https://vendors-pride-returning-empirical.trycloudflare.com/launchlens-source.zi
 
 - `assets/screenshot.png`
 - `assets/screenshot-mobile.png`
-- Temporary public screenshot: `https://vendors-pride-returning-empirical.trycloudflare.com/assets/screenshot.png`
+- Temporary public screenshot: `https://volume-obituaries-half-coaches.trycloudflare.com/assets/screenshot.png`
 
 ## Project Logo
 

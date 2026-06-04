@@ -31,7 +31,7 @@ Local review: `http://localhost:8080/launchlens/`
 Temporary public demo URL:
 
 ```text
-https://vendors-pride-returning-empirical.trycloudflare.com
+https://volume-obituaries-half-coaches.trycloudflare.com
 ```
 
 Use this only while the local Cloudflare Quick Tunnel is running. Replace it with a stable GitHub Pages / Netlify / Vercel URL before final judging if possible.
@@ -55,7 +55,7 @@ https://github.com/YOUR_ACCOUNT/launchlens
 Temporary public source URL while the Cloudflare Quick Tunnel is running:
 
 ```text
-https://vendors-pride-returning-empirical.trycloudflare.com/SOURCE.md
+https://volume-obituaries-half-coaches.trycloudflare.com/SOURCE.md
 ```
 
 Important: the final Project Wall Repo URL should be an HTTPS GitHub repository URL. The temporary source page is only a review fallback while GitHub publishing is pending.
@@ -69,7 +69,7 @@ HTML, CSS, JavaScript, browser localStorage, optional OpenAI-compatible chat com
 Temporary public screenshot URL:
 
 ```text
-https://vendors-pride-returning-empirical.trycloudflare.com/assets/screenshot.png
+https://volume-obituaries-half-coaches.trycloudflare.com/assets/screenshot.png
 ```
 
 Local screenshot file:
