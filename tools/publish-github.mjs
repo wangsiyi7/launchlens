@@ -69,6 +69,19 @@ const repoUrl = `https://github.com/${owner}/${repoName}`;
 const remoteUrl = `${repoUrl}.git`;
 const pagesUrl = `https://${owner}.github.io/${repoName}/`;
 
+run("node", ["tools/build-project-payload.mjs"], {
+  env: {
+    LAUNCHLENS_DEMO_URL: pagesUrl,
+    LAUNCHLENS_REPO_URL: repoUrl,
+  },
+});
+
+const payloadStatus = run("git", ["status", "--short", "--", "project-payload.json"], { capture: true }).trim();
+if (payloadStatus) {
+  run("git", ["add", "project-payload.json"]);
+  run("git", ["commit", "-m", "Update GitHub submission payload"]);
+}
+
 const remotes = run("git", ["remote"], { capture: true })
   .split(/\r?\n/)
   .map((line) => line.trim())
@@ -88,13 +101,6 @@ run("git", ["push", "-u", "origin", "main"], {
     GIT_CONFIG_COUNT: "1",
     GIT_CONFIG_KEY_0: "http.https://github.com/.extraheader",
     GIT_CONFIG_VALUE_0: `Authorization: Basic ${basic}`,
-  },
-});
-
-run("node", ["tools/build-project-payload.mjs"], {
-  env: {
-    LAUNCHLENS_DEMO_URL: pagesUrl,
-    LAUNCHLENS_REPO_URL: repoUrl,
   },
 });
 

@@ -34,6 +34,17 @@ http://localhost:8080/launchlens/
 
 No build step or backend is required.
 
+## GitHub publish
+
+With a GitHub token that can create or push repositories:
+
+```powershell
+$env:GITHUB_TOKEN="your-github-token"
+node tools/publish-github.mjs launchlens
+```
+
+The helper creates or reuses `launchlens`, updates the Project Wall payload with the GitHub repo and Pages URLs, commits that payload if needed, then pushes `main`.
+
 ## Tech stack
 
 - HTML

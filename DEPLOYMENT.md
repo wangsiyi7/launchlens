@@ -42,7 +42,7 @@ $env:GITHUB_TOKEN="your-github-token"
 node tools/publish-github.mjs launchlens
 ```
 
-This can create the GitHub repository, push `main`, and regenerate `project-payload.json` with the expected GitHub Pages URL.
+This can create or reuse the GitHub repository, regenerate and commit `project-payload.json` with the expected GitHub Pages URL, then push `main`.
 
 After GitHub Pages deploys, the likely public URL will be:
 
