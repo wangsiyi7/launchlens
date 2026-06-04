@@ -32,7 +32,19 @@ Replace with a stable GitHub Pages / Netlify / Vercel URL before final judging i
 
 ## Repository URL
 
-To be added after pushing to GitHub.
+Stable GitHub URL to be added after pushing.
+
+Temporary public source page:
+
+```text
+https://vendors-pride-returning-empirical.trycloudflare.com/SOURCE.md
+```
+
+Temporary source bundle:
+
+```text
+https://vendors-pride-returning-empirical.trycloudflare.com/launchlens-source.zip
+```
 
 ## Tech Stack
 

@@ -14,6 +14,8 @@
 | Local tests | Done | `node tests/scoring.test.mjs` |
 | Local Git repo | Done | branch `main`; run `git log --oneline -1` for the latest commit |
 | Submission zip | Done | `../LaunchLens_submission_pack.zip` |
+| Temporary public source page | Done | `SOURCE.md`, public URL through Cloudflare tunnel |
+| Temporary source bundle | Done | `launchlens-source.zip`, regenerated locally |
 | Project payload generator | Done | `tools/build-project-payload.mjs` |
 | Authenticated submit script | Done | `tools/submit-project.mjs`, requires `EPIC_TOKEN` |
 | Safe local public-root server | Done | `tools/serve-public-root.mjs`, serves only `launchlens/` |

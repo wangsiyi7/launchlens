@@ -52,6 +52,12 @@ If using the prepared GitHub project:
 https://github.com/YOUR_ACCOUNT/launchlens
 ```
 
+Temporary public source URL while the Cloudflare Quick Tunnel is running:
+
+```text
+https://vendors-pride-returning-empirical.trycloudflare.com/SOURCE.md
+```
+
 ### Tech Stack
 
 HTML, CSS, JavaScript, browser localStorage, optional OpenAI-compatible chat completion endpoint
