@@ -22,7 +22,13 @@ The first use case is UCWS Singapore 2026, where teams need to submit a project 
 
 Local review URL: `http://localhost:8080/launchlens/`
 
-Public URL to add after deployment.
+Temporary public URL:
+
+```text
+https://vendors-pride-returning-empirical.trycloudflare.com
+```
+
+Replace with a stable GitHub Pages / Netlify / Vercel URL before final judging if possible.
 
 ## Repository URL
 
@@ -40,6 +46,7 @@ To be added after pushing to GitHub.
 
 - `assets/screenshot.png`
 - `assets/screenshot-mobile.png`
+- Temporary public screenshot: `https://vendors-pride-returning-empirical.trycloudflare.com/assets/screenshot.png`
 
 ## Project Logo
 

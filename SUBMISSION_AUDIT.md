@@ -17,6 +17,7 @@
 | Project payload generator | Done | `tools/build-project-payload.mjs` |
 | Authenticated submit script | Done | `tools/submit-project.mjs`, requires `EPIC_TOKEN` |
 | Safe local public-root server | Done | `tools/serve-public-root.mjs`, serves only `launchlens/` |
+| Temporary public demo URL | Done | `https://vendors-pride-returning-empirical.trycloudflare.com`, via Cloudflare Quick Tunnel |
 | GitHub Pages workflow | Done | `.github/workflows/pages.yml` |
 | GitHub push helper | Done | `tools/push-github.mjs`, requires a target GitHub remote |
 | GitHub create/publish helper | Done | `tools/create-github-repo.mjs`, `tools/publish-github.mjs`, requires `GITHUB_TOKEN` |

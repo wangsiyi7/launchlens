@@ -28,7 +28,13 @@ The first use case is UCWS Singapore 2026, but the product is global: any hackat
 
 Local review: `http://localhost:8080/launchlens/`
 
-Public demo URL: add after deployment.
+Temporary public demo URL:
+
+```text
+https://vendors-pride-returning-empirical.trycloudflare.com
+```
+
+Use this only while the local Cloudflare Quick Tunnel is running. Replace it with a stable GitHub Pages / Netlify / Vercel URL before final judging if possible.
 
 If using GitHub Pages:
 
@@ -52,7 +58,17 @@ HTML, CSS, JavaScript, browser localStorage, optional OpenAI-compatible chat com
 
 ### Project Screenshot
 
-`assets/screenshot.png`
+Temporary public screenshot URL:
+
+```text
+https://vendors-pride-returning-empirical.trycloudflare.com/assets/screenshot.png
+```
+
+Local screenshot file:
+
+```text
+assets/screenshot.png
+```
 
 ### Team Members
 
