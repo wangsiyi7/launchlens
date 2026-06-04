@@ -81,6 +81,15 @@ https://YOUR_ACCOUNT.github.io/launchlens/
 
 ## Step 3: Validate Payload
 
+Generate the readiness report:
+
+```powershell
+cd "C:\Users\35398\Desktop\UCWS 2026\launchlens"
+node tools/final-readiness-report.mjs
+```
+
+Then validate the Project Wall payload:
+
 ```powershell
 cd "C:\Users\35398\Desktop\UCWS 2026\launchlens"
 node tools/validate-submission.mjs
