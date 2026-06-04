@@ -43,6 +43,7 @@ The final Project Wall `repoUrl` should be the GitHub repository URL. This tempo
 - `README.md`: project README
 - `PROJECT_WALL_FIELDS.md`: copy-paste Project Wall fields
 - `SUBMISSION.md`: UCWS submission draft
+- `FINAL_SUBMISSION_RUNBOOK.md`: final GitHub and Project Wall execution checklist
 - `tests/scoring.test.mjs`: scoring logic test
 - `tools/`: local serve, payload validation, GitHub, and Epic submit helpers
 - `.github/workflows/pages.yml`: GitHub Pages deployment workflow

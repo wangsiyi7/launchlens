@@ -45,6 +45,8 @@ node tools/publish-github.mjs launchlens
 
 The helper creates or reuses `launchlens`, updates the Project Wall payload with the GitHub repo and Pages URLs, commits that payload if needed, then pushes `main`.
 
+For the final competition handoff, follow `FINAL_SUBMISSION_RUNBOOK.md`.
+
 Before submitting to the Project Wall, validate the payload:
 
 ```powershell
