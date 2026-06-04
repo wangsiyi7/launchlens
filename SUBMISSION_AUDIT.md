@@ -17,7 +17,9 @@
 | Temporary public source page | Done | `SOURCE.md`, public URL through Cloudflare tunnel |
 | Temporary source bundle | Done | `launchlens-source.zip`, regenerated locally |
 | Project payload generator | Done | `tools/build-project-payload.mjs` |
+| Project payload validator | Done | `tools/validate-submission.mjs`; blocks non-GitHub repo URL and placeholder team member |
 | Authenticated submit script | Done | `tools/submit-project.mjs`, requires `EPIC_TOKEN` |
+| One-command publish and submit script | Done | `tools/complete-submission.mjs`, requires `GITHUB_TOKEN` and `EPIC_TOKEN` |
 | Safe local public-root server | Done | `tools/serve-public-root.mjs`, serves only `launchlens/` |
 | Temporary public demo URL | Done | `https://vendors-pride-returning-empirical.trycloudflare.com`, via Cloudflare Quick Tunnel |
 | GitHub Pages workflow | Done | `.github/workflows/pages.yml` |
@@ -31,13 +33,14 @@
 ## Known External Blockers
 
 - Project Wall list and submission endpoint require login. Anonymous `/api/projects` requests return HTTP 401.
+- Final repo URL must be an HTTPS GitHub URL. The temporary Cloudflare `SOURCE.md` page is only a fallback for review, not a final hackathon repo URL.
 - Public deployment requires a chosen hosting account or explicit permission to create a new site.
-- Public repo URL requires a chosen Git provider account.
+- Public repo URL requires a chosen GitHub account, repo remote, or token.
 
 ## Fastest Completion Path
 
 1. Push `launchlens/` to a GitHub repo.
 2. Deploy `launchlens/` with Netlify, Vercel, or GitHub Pages.
-3. Replace placeholder demo/repo URLs in `PROJECT_WALL_FIELDS.md`.
+3. Generate and validate `project-payload.json`.
 4. Log in to Epic Connector.
-5. Submit the fields from `PROJECT_WALL_FIELDS.md`.
+5. Submit the fields from `PROJECT_WALL_FIELDS.md` or run `tools/submit-project.mjs`.

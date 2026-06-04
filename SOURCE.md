@@ -35,6 +35,8 @@ $env:GITHUB_TOKEN="your-github-token"
 node tools/publish-github.mjs launchlens
 ```
 
+The final Project Wall `repoUrl` should be the GitHub repository URL. This temporary source page is only a review fallback while GitHub publishing is pending.
+
 ## Contents
 
 - `index.html`, `styles.css`, `app.js`: the app
@@ -42,5 +44,5 @@ node tools/publish-github.mjs launchlens
 - `PROJECT_WALL_FIELDS.md`: copy-paste Project Wall fields
 - `SUBMISSION.md`: UCWS submission draft
 - `tests/scoring.test.mjs`: scoring logic test
-- `tools/`: local serve, payload, GitHub, and Epic submit helpers
+- `tools/`: local serve, payload validation, GitHub, and Epic submit helpers
 - `.github/workflows/pages.yml`: GitHub Pages deployment workflow

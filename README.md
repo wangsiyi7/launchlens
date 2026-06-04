@@ -45,6 +45,21 @@ node tools/publish-github.mjs launchlens
 
 The helper creates or reuses `launchlens`, updates the Project Wall payload with the GitHub repo and Pages URLs, commits that payload if needed, then pushes `main`.
 
+Before submitting to the Project Wall, validate the payload:
+
+```powershell
+node tools/validate-submission.mjs
+```
+
+With both GitHub and Epic Connector tokens available, the full completion command is:
+
+```powershell
+$env:GITHUB_TOKEN="your-github-token"
+$env:EPIC_TOKEN="your-epic-token"
+$env:LAUNCHLENS_TEAM_MEMBERS="Your Name"
+node tools/complete-submission.mjs launchlens
+```
+
 ## Tech stack
 
 - HTML

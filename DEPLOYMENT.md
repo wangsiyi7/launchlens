@@ -91,6 +91,14 @@ node tools/build-project-payload.mjs
 
 This writes `project-payload.json`.
 
+Validate it before submitting:
+
+```powershell
+node tools/validate-submission.mjs
+```
+
+The validator intentionally blocks non-GitHub `repoUrl` values and placeholder team members, because the Project Wall form accepts GitHub repository links for hackathon project submissions.
+
 ## Submit to Epic Connector with your own token
 
 The Project Wall API requires authentication. After logging in, provide your own token as `EPIC_TOKEN`:
@@ -98,6 +106,15 @@ The Project Wall API requires authentication. After logging in, provide your own
 ```powershell
 $env:EPIC_TOKEN="your-epic-token"
 node tools/submit-project.mjs
+```
+
+If both tokens are available, you can publish to GitHub, validate the payload, and submit to Epic Connector in one sequence:
+
+```powershell
+$env:GITHUB_TOKEN="your-github-token"
+$env:EPIC_TOKEN="your-epic-token"
+$env:LAUNCHLENS_TEAM_MEMBERS="Your Name"
+node tools/complete-submission.mjs launchlens
 ```
 
 The script loads the official event ID from:

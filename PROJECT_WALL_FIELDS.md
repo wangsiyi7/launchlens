@@ -58,6 +58,8 @@ Temporary public source URL while the Cloudflare Quick Tunnel is running:
 https://vendors-pride-returning-empirical.trycloudflare.com/SOURCE.md
 ```
 
+Important: the final Project Wall Repo URL should be an HTTPS GitHub repository URL. The temporary source page is only a review fallback while GitHub publishing is pending.
+
 ### Tech Stack
 
 HTML, CSS, JavaScript, browser localStorage, optional OpenAI-compatible chat completion endpoint
@@ -98,6 +100,12 @@ node tools/build-project-payload.mjs
 ```
 
 This generates `project-payload.json`, which can be submitted manually or through `tools/submit-project.mjs` with your own Epic Connector token.
+
+Before submitting, run:
+
+```powershell
+node tools/validate-submission.mjs
+```
 
 ### Demo Video Script
 

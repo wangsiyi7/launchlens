@@ -1,4 +1,5 @@
 import { readFile } from "node:fs/promises";
+import { execFileSync } from "node:child_process";
 
 const API_ORIGIN = process.env.EPIC_ORIGIN || "https://evol.epicconnector.ai";
 const EVENT_SLUG =
@@ -13,6 +14,15 @@ if (!token) {
   process.exit(1);
 }
 
+try {
+  execFileSync("node", ["tools/validate-submission.mjs"], {
+    stdio: "inherit",
+    env: process.env,
+  });
+} catch {
+  process.exit(1);
+}
+
 const eventRes = await fetch(`${API_ORIGIN}/api/events?slug=${encodeURIComponent(EVENT_SLUG)}`);
 const eventJson = await eventRes.json();
 
@@ -23,7 +33,7 @@ if (!eventRes.ok || !eventJson.success || !eventJson.data?.id) {
 }
 
 const eventId = eventJson.data.id;
-const rawPayload = JSON.parse(await readFile(payloadPath, "utf8"));
+const rawPayload = JSON.parse((await readFile(payloadPath, "utf8")).replace(/^\uFEFF/, ""));
 const body = {
   ...rawPayload,
   eventId,

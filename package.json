@@ -8,9 +8,11 @@
     "serve": "node tools/serve.mjs",
     "serve:public-root": "node tools/serve-public-root.mjs",
     "payload": "node tools/build-project-payload.mjs",
+    "validate:submission": "node tools/validate-submission.mjs",
     "create:github": "node tools/create-github-repo.mjs",
     "publish:github": "node tools/publish-github.mjs",
     "push:github": "node tools/push-github.mjs",
+    "complete:submission": "node tools/complete-submission.mjs",
     "submit": "node tools/submit-project.mjs"
   }
 }
