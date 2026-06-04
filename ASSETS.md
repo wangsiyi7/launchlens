@@ -30,6 +30,7 @@
 | `PROJECT_WALL_FIELDS.md` | Project Wall 字段复制源 |
 | `SUBMISSION.md` | 完整提交文案草稿 |
 | `FINAL_SUBMISSION_RUNBOOK.md` | 最终提交执行清单 |
+| `SPACE_INTERACTION_SPEC.md` | Temple Mode / Classic Mode 空间交互规格 |
 | `SUBMISSION_AUDIT.md` | 当前完成度、阻塞项和验证状态 |
 | `HACKATHON_STRATEGY.md` | 参赛策略与定位 |
 | `PROJECT_WALL_RESEARCH.md` | 官方 Project Wall/API 研究记录 |
@@ -74,4 +75,4 @@ LaunchLens App 已保留 Optional LLM 能力：
 
 ## English Summary
 
-This repository includes the LaunchLens app, visual assets, Project Wall copy, final submission checklist, deployment configs, validation scripts, GitHub publishing scripts, and an optional OpenAI-compatible LLM enhancement slot. The final GitHub README is bilingual and ready for the hackathon repository home page.
+This repository includes the LaunchLens app, visual assets, Project Wall copy, final submission checklist, the Temple Mode interaction spec, deployment configs, validation scripts, GitHub publishing scripts, and an optional OpenAI-compatible LLM enhancement slot. The final GitHub README is bilingual and ready for the hackathon repository home page.
