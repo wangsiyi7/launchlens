@@ -30,13 +30,13 @@ The first use case is UCWS Singapore 2026, but the product is global: any hackat
 
 Local review: `http://localhost:8080/launchlens/`
 
-Temporary public demo URL:
+Public demo URL:
 
 ```text
-https://volume-obituaries-half-coaches.trycloudflare.com
+https://your-demo-url.example.com
 ```
 
-Use this only while the local Cloudflare Quick Tunnel is running. Replace it with a stable GitHub Pages / Netlify / Vercel URL before final judging if possible.
+Replace this placeholder with a stable GitHub Pages / Netlify / Vercel URL before final judging.
 
 If using GitHub Pages:
 
@@ -54,13 +54,13 @@ If using the prepared GitHub project:
 https://github.com/YOUR_ACCOUNT/launchlens
 ```
 
-Temporary public source URL while the Cloudflare Quick Tunnel is running:
+Temporary public source URL:
 
 ```text
-https://volume-obituaries-half-coaches.trycloudflare.com/SOURCE.md
+Not currently available. Use the GitHub repository URL after push.
 ```
 
-Important: the final Project Wall Repo URL should be an HTTPS GitHub repository URL. The temporary source page is only a review fallback while GitHub publishing is pending.
+Important: the final Project Wall Repo URL should be an HTTPS GitHub repository URL.
 
 ### Tech Stack
 
@@ -68,10 +68,10 @@ HTML, CSS, JavaScript, browser localStorage, 2.5D generated bitmap background, o
 
 ### Project Screenshot
 
-Temporary public screenshot URL:
+Public screenshot URL:
 
 ```text
-https://volume-obituaries-half-coaches.trycloudflare.com/assets/screenshot.png
+https://your-demo-url.example.com/assets/screenshot.png
 ```
 
 Local screenshot file:

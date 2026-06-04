@@ -1,6 +1,6 @@
 import { writeFile } from "node:fs/promises";
 
-const demoUrl = process.env.LAUNCHLENS_DEMO_URL || "https://YOUR_PUBLIC_DEMO_URL";
+const demoUrl = process.env.LAUNCHLENS_DEMO_URL || "https://your-demo-url.example.com";
 const repoUrl = process.env.LAUNCHLENS_REPO_URL || "https://github.com/YOUR_ACCOUNT/launchlens";
 const screenshotUrl =
   process.env.LAUNCHLENS_SCREENSHOT_URL || `${demoUrl.replace(/\/$/, "")}/assets/screenshot.png`;

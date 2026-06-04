@@ -19,7 +19,7 @@
 | Local tests | Done | `node tests/scoring.test.mjs` |
 | Local Git repo | Done | branch `main`; run `git log --oneline -1` for the latest commit |
 | Submission zip | Done | `../LaunchLens_submission_pack.zip` |
-| Temporary public source page | Done | `SOURCE.md`, public URL through Cloudflare tunnel |
+| Temporary public source page | Not currently public | `SOURCE.md`; local source bundle exists, but public tunnels are failing |
 | Temporary source bundle | Done | `launchlens-source.zip`, regenerated locally |
 | Project payload generator | Done | `tools/build-project-payload.mjs` |
 | Project payload validator | Done | `tools/validate-submission.mjs`; blocks non-GitHub repo URL and placeholder team member |
@@ -28,7 +28,7 @@
 | Final submission runbook | Done | `FINAL_SUBMISSION_RUNBOOK.md` |
 | Space interaction spec | Done | `SPACE_INTERACTION_SPEC.md`; implemented Temple Mode / Classic Mode V1 |
 | Safe local public-root server | Done | `tools/serve-public-root.mjs`, serves only `launchlens/` |
-| Temporary public demo URL | Done | `https://volume-obituaries-half-coaches.trycloudflare.com`, via Cloudflare Quick Tunnel |
+| Temporary public demo URL | Unavailable | Cloudflare returned 530 / TLS edge errors; localtunnel returned 502 / 503 |
 | GitHub Pages workflow | Done | `.github/workflows/pages.yml` |
 | GitHub push helper | Done | `tools/push-github.mjs`, requires a target GitHub remote |
 | GitHub create/publish helper | Done | `tools/create-github-repo.mjs`, `tools/publish-github.mjs`, requires `GITHUB_TOKEN` |
@@ -41,6 +41,7 @@
 
 - Project Wall list and submission endpoint require login. Anonymous `/api/projects` requests return HTTP 401.
 - Final repo URL must be an HTTPS GitHub URL. The temporary Cloudflare `SOURCE.md` page is only a fallback for review, not a final hackathon repo URL.
+- Current temporary tunnel attempts are not reliable enough for review; use local demo until GitHub Pages, Netlify, or Vercel is available.
 - Public deployment requires a chosen hosting account or explicit permission to create a new site.
 - Public repo URL requires a chosen GitHub account, repo remote, or token.
 

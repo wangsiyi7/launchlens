@@ -70,13 +70,13 @@ node tools/serve.mjs
 http://localhost:8080/launchlens/
 ```
 
-临时公网 Demo：
+临时公网 Demo 状态：
 
 ```text
-https://volume-obituaries-half-coaches.trycloudflare.com
+当前没有可靠的临时公网 tunnel。
 ```
 
-该临时地址只在本地 Cloudflare Quick Tunnel 运行时可用。最终评审建议使用 GitHub Pages、Netlify 或 Vercel。
+Cloudflare Quick Tunnel 和 localtunnel 已重新测试，但当前网络环境返回 530 / 502。最终评审请使用 GitHub Pages、Netlify 或 Vercel。状态说明见 `../TEMP_PUBLIC_DEMO_URL.md`。
 
 ## GitHub 发布
 
@@ -227,13 +227,13 @@ Open:
 http://localhost:8080/launchlens/
 ```
 
-Temporary public demo:
+Temporary public demo status:
 
 ```text
-https://volume-obituaries-half-coaches.trycloudflare.com
+No reliable temporary public tunnel is currently available.
 ```
 
-This temporary URL only works while the local Cloudflare Quick Tunnel is running. Use GitHub Pages, Netlify, or Vercel for final judging.
+Cloudflare Quick Tunnel and localtunnel were re-tested, but the current network returned 530 / 502. Use GitHub Pages, Netlify, or Vercel for final judging. See `../TEMP_PUBLIC_DEMO_URL.md`.
 
 ## Publish To GitHub
 

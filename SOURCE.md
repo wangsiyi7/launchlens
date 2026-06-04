@@ -10,11 +10,13 @@ Download the current source bundle while the local temporary tunnel is running:
 launchlens-source.zip
 ```
 
-Expected public URL while the Cloudflare Quick Tunnel is running:
+Public URL status:
 
 ```text
-https://volume-obituaries-half-coaches.trycloudflare.com/launchlens-source.zip
+No reliable temporary public tunnel is currently available.
 ```
+
+Use the local `launchlens-source.zip` or the final GitHub repository after push.
 
 ## Stable GitHub repository
 

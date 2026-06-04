@@ -62,6 +62,10 @@ if (payload.demoUrl && !isHttpsUrl(payload.demoUrl)) {
   errors.push("demoUrl must be an HTTPS URL.");
 }
 
+if (payload.demoUrl && /YOUR_PUBLIC|your-demo-url|example\.com/i.test(payload.demoUrl)) {
+  errors.push("demoUrl still contains a placeholder.");
+}
+
 if (payload.repoUrl && !isGitHubUrl(payload.repoUrl)) {
   errors.push("repoUrl must be an HTTPS GitHub URL.");
 }
@@ -70,9 +74,16 @@ if (payload.logoUrl && !isHttpsUrl(payload.logoUrl)) {
   errors.push("logoUrl must be an HTTPS URL.");
 }
 
+if (payload.logoUrl && /YOUR_PUBLIC|your-demo-url|example\.com/i.test(payload.logoUrl)) {
+  errors.push("logoUrl still contains a placeholder.");
+}
+
 const screenshotUrls = parseJsonArray(payload.screenshotUrls, "screenshotUrls", errors);
 if (!screenshotUrls.some((url) => typeof url === "string" && isHttpsUrl(url))) {
   errors.push("At least one screenshot URL must be HTTPS.");
+}
+if (screenshotUrls.some((url) => /YOUR_PUBLIC|your-demo-url|example\.com/i.test(String(url)))) {
+  errors.push("screenshotUrls still contain a placeholder.");
 }
 
 const teamMembers = parseJsonArray(payload.teamMembers, "teamMembers", errors);
@@ -95,6 +106,10 @@ for (const [index, member] of teamMembers.entries()) {
 
 if (/trycloudflare\.com/i.test(payload.demoUrl || "")) {
   warnings.push("demoUrl is a temporary Cloudflare tunnel. Prefer a stable GitHub Pages, Netlify, or Vercel URL before final judging.");
+}
+
+if (/loca\.lt/i.test(payload.demoUrl || "")) {
+  warnings.push("demoUrl is a temporary localtunnel URL. Prefer a stable GitHub Pages, Netlify, or Vercel URL before final judging.");
 }
 
 if (payload.repoUrl && /YOUR_ACCOUNT|YOUR_PUBLIC/i.test(payload.repoUrl)) {

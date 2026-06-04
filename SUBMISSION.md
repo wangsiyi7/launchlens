@@ -24,13 +24,13 @@ The first use case is UCWS Singapore 2026, where teams need to submit a project 
 
 Local review URL: `http://localhost:8080/launchlens/`
 
-Temporary public URL:
+Public URL placeholder:
 
 ```text
-https://volume-obituaries-half-coaches.trycloudflare.com
+https://your-demo-url.example.com
 ```
 
-Replace with a stable GitHub Pages / Netlify / Vercel URL before final judging if possible.
+Replace with a stable GitHub Pages / Netlify / Vercel URL before final judging.
 
 ## Repository URL
 
@@ -39,13 +39,13 @@ Stable GitHub URL to be added after pushing.
 Temporary public source page:
 
 ```text
-https://volume-obituaries-half-coaches.trycloudflare.com/SOURCE.md
+Not currently available. Use the GitHub repository URL after push.
 ```
 
-Temporary source bundle:
+Local source bundle:
 
 ```text
-https://volume-obituaries-half-coaches.trycloudflare.com/launchlens-source.zip
+launchlens-source.zip
 ```
 
 ## Tech Stack
@@ -61,7 +61,7 @@ https://volume-obituaries-half-coaches.trycloudflare.com/launchlens-source.zip
 
 - `assets/screenshot.png`
 - `assets/screenshot-mobile.png`
-- Temporary public screenshot: `https://volume-obituaries-half-coaches.trycloudflare.com/assets/screenshot.png`
+- Public screenshot placeholder: `https://your-demo-url.example.com/assets/screenshot.png`
 
 ## Project Logo
 

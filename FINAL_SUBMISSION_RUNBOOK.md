@@ -8,11 +8,11 @@ Use this as the last-mile checklist for submitting LaunchLens to the UCWS Singap
 | --- | --- | --- |
 | Working app | Ready | `index.html`, `styles.css`, `app.js` |
 | Local Git repo | Ready | branch `main` |
-| Temporary public demo | Ready while tunnel runs | `https://volume-obituaries-half-coaches.trycloudflare.com` |
+| Temporary public demo | Currently unavailable | Cloudflare returned 530 / TLS edge errors; localtunnel returned 502 / 503 |
 | Screenshots | Ready | `assets/screenshot.png`, `assets/screenshot-mobile.png` |
 | Project Wall copy | Ready | `PROJECT_WALL_FIELDS.md`, `SUBMISSION.md` |
 | GitHub repository | Needs account access | provide remote URL or `GITHUB_TOKEN` |
-| Final Project Wall payload | Needs final GitHub URL and team names | `project-payload.json` currently uses temporary fallback values |
+| Final Project Wall payload | Needs final demo URL, GitHub URL, and team names | `project-payload.json` intentionally uses placeholders |
 | Actual Project Wall submission | Needs Epic login token | `EPIC_TOKEN` |
 
 ## Official Constraints Already Reflected
@@ -143,7 +143,7 @@ Turn rough hackathon ideas into scored, ready-to-submit Project Wall packages.
 Tech stack:
 
 ```text
-HTML, CSS, JavaScript, browser localStorage, optional OpenAI-compatible chat completion endpoint
+HTML, CSS, JavaScript, browser localStorage, 2.5D generated bitmap background, optional OpenAI-compatible chat completion endpoint
 ```
 
 Description:
@@ -153,16 +153,19 @@ LaunchLens is a browser-based submission copilot for hackathon teams, solo build
 
 LaunchLens runs a review agent over UCWS submission fields, scores readiness across community vote, AI evaluation, and expert judging, then generates Markdown, README, pitch, sprint plan, and fix-list outputs. It helps builders move from rough notes to a credible public submission in minutes.
 
+The current version includes Temple Mode, a 2.5D spatial submission workflow with six clickable nodes for project story, evidence, score, Oracle LLM, generated archive, and final GitHub / Project Wall handoff. Classic Mode remains available for fast form editing and stable export.
+
 The first use case is UCWS Singapore 2026, but the product is global: any hackathon, accelerator, or demo-day team can use the same workflow before submitting.
 ```
 
 ## Do Not Submit These As Final Values
 
-These are temporary fallbacks only:
+These are placeholders or failed temporary tunnel attempts:
 
 ```text
-https://volume-obituaries-half-coaches.trycloudflare.com/SOURCE.md
-https://volume-obituaries-half-coaches.trycloudflare.com/launchlens-source.zip
+https://your-demo-url.example.com
+https://avi-investment-moderate-thats.trycloudflare.com
+https://nasty-bags-pull.loca.lt
 ```
 
 The final Repo URL must be:
