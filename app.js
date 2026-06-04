@@ -13,6 +13,9 @@
     "repoUrl",
     "techStack",
     "screenshotUrls",
+    "logoUrl",
+    "demoVideoUrl",
+    "demoFileUrl",
     "teamMembers",
     "notes",
   ];
@@ -25,6 +28,7 @@
 
   const strings = {
     en: {
+      "brand.eyebrow": "UCWS Singapore 2026 / Builder Collaboration App",
       "mode.temple": "Temple",
       "mode.classic": "Classic",
       "button.sample": "Load Sample",
@@ -54,6 +58,9 @@
       "field.repoUrl": "Repo URL",
       "field.techStack": "Tech stack",
       "field.screenshotUrls": "Screenshot URLs",
+      "field.logoUrl": "Logo URL",
+      "field.demoVideoUrl": "Demo video URL",
+      "field.demoFileUrl": "Demo file URL",
       "field.teamMembers": "Team members",
       "field.notes": "README or rough notes",
       "placeholder.tagline": "Turn rough hackathon ideas into scored, ready-to-submit Project Wall packages.",
@@ -62,6 +69,9 @@
       "placeholder.solution": "LaunchLens analyzes required UCWS fields, scores readiness, and generates a focused submission pack.",
       "placeholder.techStack": "HTML, CSS, JavaScript, localStorage, optional OpenAI-compatible API",
       "placeholder.screenshotUrls": "Comma-separated image URLs after deployment",
+      "placeholder.logoUrl": "Public logo URL used on Project Wall",
+      "placeholder.demoVideoUrl": "Optional Loom, YouTube, or hosted demo video",
+      "placeholder.demoFileUrl": "Optional public demo file or downloadable artifact",
       "placeholder.teamMembers": "Name - role - link",
       "placeholder.notes": "Paste README, build notes, judging context, or customer discovery here.",
       "placeholder.llmKey": "Stored only in this browser session",
@@ -74,6 +84,40 @@
       "tab.pitch": "Pitch",
       "tab.sprint": "Sprint Plan",
       "tab.risks": "Fix List",
+      "audit.eyebrow": "Field Audit",
+      "audit.title": "Project Wall coverage",
+      "tasks.eyebrow": "Next Actions",
+      "tasks.title": "Submission task board",
+      "repo.eyebrow": "Repo Scanner",
+      "repo.title": "GitHub evidence",
+      "repo.scan": "Scan",
+      "repo.empty": "Add a GitHub repo URL to scan.",
+      "repo.scanning": "Scanning public GitHub signals...",
+      "repo.invalid": "Use an HTTPS GitHub repository URL.",
+      "repo.ready": "Repo evidence is inspectable.",
+      "repo.weak": "Repo exists, but evidence is thin.",
+      "repo.failed": "Repo scan failed",
+      "repo.exists": "Repository exists",
+      "repo.readme": "README present",
+      "repo.entry": "App entry present",
+      "repo.tests": "Tests or QA path present",
+      "repo.deploy": "Deployment config present",
+      "repo.recent": "Recent commit activity",
+      "handoff.eyebrow": "Handoff",
+      "handoff.title": "Final submit readiness",
+      "handoff.ready": "Ready",
+      "handoff.draft": "Draft",
+      "audit.required": "Required",
+      "audit.recommended": "Recommended",
+      "audit.ready": "Ready",
+      "audit.missing": "Missing",
+      "task.ready": "No blockers detected. Run one final human review before submitting.",
+      "task.fixFirst": "Fix first",
+      "handoff.demo": "Stable demo",
+      "handoff.repo": "GitHub repo",
+      "handoff.assets": "Screenshots and logo",
+      "handoff.team": "Real team",
+      "handoff.copy": "Copy-ready pack",
       "mobile.story": "Story",
       "mobile.proof": "Proof",
       "mobile.score": "Score",
@@ -119,6 +163,9 @@
       "fix.demo": "Add a public demo URL. UCWS reviewers and voters need immediate access.",
       "fix.repo": "Add a GitHub repo URL with a clear README and setup path.",
       "fix.screenshot": "Add at least one project screenshot URL after deployment.",
+      "fix.logo": "Add a public logo URL so the Project Wall card looks credible.",
+      "fix.video": "Add a short demo video URL if time allows; it helps voters understand the flow fast.",
+      "fix.file": "Add an optional demo file URL only if it improves judging evidence.",
       "fix.tagline": "Strengthen the tagline so value is clear in one sentence.",
       "fix.problem": "Name the target user's concrete pain, not only the technology.",
       "fix.solution": "Explain what the product does and what output users get.",
@@ -138,6 +185,7 @@
       "sample.notes": "The product is built as a static web app so any team can use it instantly. It aligns to UCWS required fields: name, tagline, description, demo URL, repo URL, track, tech stack, screenshot, team members, project logo, demo video, and demo file. It also mirrors the event scoring model: community clarity, AI-evaluable repo quality, and expert judging around product value and global scalability. The first screen is Temple Mode: a 2.5D spatial submission workflow with six clickable nodes for project story, evidence, score, Oracle LLM, generated archive, and final handoff. Classic Mode remains available for fast form editing. Outputs can be copied or downloaded for submission.",
     },
     zh: {
+      "brand.eyebrow": "UCWS Singapore 2026 / 开发者协作应用",
       "mode.temple": "神殿",
       "mode.classic": "经典",
       "button.sample": "载入示例",
@@ -167,6 +215,9 @@
       "field.repoUrl": "仓库链接",
       "field.techStack": "技术栈",
       "field.screenshotUrls": "截图链接",
+      "field.logoUrl": "Logo 链接",
+      "field.demoVideoUrl": "演示视频链接",
+      "field.demoFileUrl": "演示文件链接",
       "field.teamMembers": "团队成员",
       "field.notes": "README 或草稿笔记",
       "placeholder.tagline": "把粗糙的黑客松想法变成可评分、可提交的 Project Wall 材料包。",
@@ -175,6 +226,9 @@
       "placeholder.solution": "LaunchLens 检查 UCWS 必填字段，生成评分、修复建议和提交材料包。",
       "placeholder.techStack": "HTML, CSS, JavaScript, localStorage, 可选 OpenAI-compatible API",
       "placeholder.screenshotUrls": "部署后的图片链接，用逗号分隔",
+      "placeholder.logoUrl": "Project Wall 使用的公开 logo 链接",
+      "placeholder.demoVideoUrl": "可选 Loom、YouTube 或托管演示视频",
+      "placeholder.demoFileUrl": "可选公开演示文件或可下载产物",
       "placeholder.teamMembers": "姓名 - 角色 - 链接",
       "placeholder.notes": "粘贴 README、构建笔记、评审背景或用户调研。",
       "placeholder.llmKey": "仅在当前浏览器会话中使用",
@@ -187,6 +241,40 @@
       "tab.pitch": "演示稿",
       "tab.sprint": "冲刺计划",
       "tab.risks": "修复清单",
+      "audit.eyebrow": "字段审计",
+      "audit.title": "Project Wall 覆盖率",
+      "tasks.eyebrow": "下一步",
+      "tasks.title": "提交任务板",
+      "repo.eyebrow": "仓库扫描",
+      "repo.title": "GitHub 证据",
+      "repo.scan": "扫描",
+      "repo.empty": "添加 GitHub 仓库链接后即可扫描。",
+      "repo.scanning": "正在扫描公开 GitHub 信号...",
+      "repo.invalid": "请使用 HTTPS GitHub 仓库链接。",
+      "repo.ready": "仓库证据可被检查。",
+      "repo.weak": "仓库存在，但证据还偏薄。",
+      "repo.failed": "仓库扫描失败",
+      "repo.exists": "仓库存在",
+      "repo.readme": "README 已存在",
+      "repo.entry": "App 入口已存在",
+      "repo.tests": "测试或 QA 路径已存在",
+      "repo.deploy": "部署配置已存在",
+      "repo.recent": "近期提交活动",
+      "handoff.eyebrow": "交接",
+      "handoff.title": "最终提交就绪度",
+      "handoff.ready": "就绪",
+      "handoff.draft": "草稿",
+      "audit.required": "必填",
+      "audit.recommended": "建议",
+      "audit.ready": "就绪",
+      "audit.missing": "缺失",
+      "task.ready": "没有发现关键阻塞。提交前再做一次人工复核。",
+      "task.fixFirst": "优先修复",
+      "handoff.demo": "稳定 Demo",
+      "handoff.repo": "GitHub 仓库",
+      "handoff.assets": "截图和 Logo",
+      "handoff.team": "真实团队",
+      "handoff.copy": "可复制材料包",
       "mobile.story": "故事",
       "mobile.proof": "证据",
       "mobile.score": "评分",
@@ -232,6 +320,9 @@
       "fix.demo": "添加公开 Demo URL，评委和投票者需要能立刻访问。",
       "fix.repo": "添加 GitHub 仓库 URL，并确保 README 与运行路径清楚。",
       "fix.screenshot": "部署后至少添加一张项目截图 URL。",
+      "fix.logo": "添加公开 Logo URL，让 Project Wall 卡片更可信。",
+      "fix.video": "如果时间允许，添加简短演示视频链接，帮助投票者快速理解流程。",
+      "fix.file": "只有在能增加评审证据时，才添加可选演示文件链接。",
       "fix.tagline": "加强一句话介绍，让价值在一句话内清楚。",
       "fix.problem": "写出目标用户的具体痛点，而不只是技术描述。",
       "fix.solution": "说明产品做什么、用户会得到什么输出。",
@@ -258,6 +349,12 @@
     overallScore: document.querySelector("#overallScore"),
     scoreFill: document.querySelector("#scoreFill"),
     scoreGrid: document.querySelector("#scoreGrid"),
+    auditCount: document.querySelector("#auditCount"),
+    auditGrid: document.querySelector("#auditGrid"),
+    taskCount: document.querySelector("#taskCount"),
+    taskList: document.querySelector("#taskList"),
+    handoffState: document.querySelector("#handoffState"),
+    handoffGrid: document.querySelector("#handoffGrid"),
     output: document.querySelector("#output"),
     reviewBtn: document.querySelector("#reviewBtn"),
     generateBtn: document.querySelector("#generateBtn"),
@@ -287,14 +384,52 @@
     llmEndpoint: document.querySelector("#llmEndpoint"),
     llmModel: document.querySelector("#llmModel"),
     llmKey: document.querySelector("#llmKey"),
+    scanRepoBtn: document.querySelector("#scanRepoBtn"),
+    repoSignal: document.querySelector("#repoSignal"),
+    repoList: document.querySelector("#repoList"),
     scoreCardTemplate: document.querySelector("#scoreCardTemplate"),
   };
 
-  let language = localStorage.getItem(LANGUAGE_KEY) === "zh" ? "zh" : "en";
+  const params = new URLSearchParams(window.location.search);
+  const initialLanguage =
+    params.get("lang") === "zh" || params.get("locale") === "zh-CN"
+      ? "zh"
+      : localStorage.getItem(LANGUAGE_KEY) === "zh"
+        ? "zh"
+        : "en";
+  let language = initialLanguage;
   let activeTab = "pack";
   let activeTempleSpace = "intake";
   let currentAnalysis = null;
   let generated = null;
+  let repoScan = null;
+  let scannedRepoUrl = "";
+  let particleCooldown = 0;
+
+  const auditDefinitions = [
+    { key: "name", labelKey: "field.name", required: true },
+    { key: "track", labelKey: "field.track", required: true },
+    { key: "tagline", labelKey: "field.tagline", required: true },
+    { key: "problem", labelKey: "field.problem", required: true },
+    { key: "solution", labelKey: "field.solution", required: true },
+    { key: "demo", labelKey: "field.demoUrl", required: true },
+    { key: "repo", labelKey: "field.repoUrl", required: true },
+    { key: "stack", labelKey: "field.techStack", required: true },
+    { key: "screenshot", labelKey: "field.screenshotUrls", required: true },
+    { key: "logo", labelKey: "field.logoUrl", required: true },
+    { key: "team", labelKey: "field.teamMembers", required: true },
+    { key: "notes", labelKey: "field.notes", required: false },
+    { key: "video", labelKey: "field.demoVideoUrl", required: false },
+    { key: "file", labelKey: "field.demoFileUrl", required: false },
+  ];
+
+  const handoffDefinitions = [
+    { key: "demo", labelKey: "handoff.demo" },
+    { key: "repo", labelKey: "handoff.repo" },
+    { key: "assets", labelKey: "handoff.assets" },
+    { key: "team", labelKey: "handoff.team" },
+    { key: "copy", labelKey: "handoff.copy" },
+  ];
 
   const templeSpaces = {
     intake: {
@@ -377,6 +512,9 @@
     if (!els.enhanceBtn.disabled) {
       els.enhanceBtn.textContent = t("button.enhance");
     }
+    if (!els.scanRepoBtn.disabled) {
+      els.scanRepoBtn.textContent = t("repo.scan");
+    }
   }
 
   function setLanguage(nextLanguage) {
@@ -386,6 +524,7 @@
     generated = null;
     runAgent();
     renderTemplePanel();
+    renderRepoScan();
   }
 
   function getProject() {
@@ -405,6 +544,7 @@
 
   function setViewMode(mode) {
     const temple = mode === "temple";
+    document.body.classList.add("view-switching");
     document.body.classList.toggle("temple-mode", temple);
     document.body.classList.toggle("classic-mode", !temple);
     els.templeModeBtn.classList.toggle("active", temple);
@@ -417,6 +557,7 @@
       window.scrollTo({ top: 0, behavior: "auto" });
     }
     updateTempleStatus();
+    window.setTimeout(() => document.body.classList.remove("view-switching"), 260);
   }
 
   function focusClassicField(field) {
@@ -521,8 +662,46 @@
     return terms.reduce((count, term) => count + (source.includes(term) ? 1 : 0), 0);
   }
 
+  function isHttpsUrl(value) {
+    try {
+      const url = new URL(value);
+      return url.protocol === "https:";
+    } catch {
+      return false;
+    }
+  }
+
+  function parseGithubRepoUrl(value) {
+    try {
+      const url = new URL(value);
+      if (url.protocol !== "https:" || url.hostname !== "github.com") return null;
+      const [owner, repo] = url.pathname.replace(/^\/|\/$/g, "").split("/");
+      if (!owner || !repo) return null;
+      return { owner, repo: repo.replace(/\.git$/i, "") };
+    } catch {
+      return null;
+    }
+  }
+
   function clampScore(score) {
     return Math.max(0, Math.min(100, Math.round(score)));
+  }
+
+  function buildAudit(has) {
+    return auditDefinitions.map((item) => ({
+      ...item,
+      ready: Boolean(has[item.key]),
+    }));
+  }
+
+  function buildHandoff(has, overall) {
+    return [
+      { key: "demo", ready: has.demo },
+      { key: "repo", ready: has.repo },
+      { key: "assets", ready: has.screenshot && has.logo },
+      { key: "team", ready: has.team },
+      { key: "copy", ready: overall >= 75 },
+    ];
   }
 
   function analyze(project) {
@@ -544,10 +723,13 @@
       audience: project.audience.length >= 10,
       problem: project.problem.length >= 40,
       solution: project.solution.length >= 60,
-      demo: /^https?:\/\//i.test(project.demoUrl),
-      repo: /^https?:\/\/(www\.)?github\.com\//i.test(project.repoUrl),
+      demo: isHttpsUrl(project.demoUrl),
+      repo: Boolean(parseGithubRepoUrl(project.repoUrl)),
       stack: project.techStack.split(",").filter(Boolean).length >= 3,
-      screenshot: project.screenshotUrls.length > 8,
+      screenshot: listFromCsv(project.screenshotUrls).some(isHttpsUrl),
+      logo: isHttpsUrl(project.logoUrl),
+      video: !project.demoVideoUrl || isHttpsUrl(project.demoVideoUrl),
+      file: !project.demoFileUrl || isHttpsUrl(project.demoFileUrl),
       team: project.teamMembers.length > 4,
       notes: project.notes.length >= 280,
     };
@@ -620,8 +802,9 @@
         (has.problem ? 16 : 0) +
         (has.solution ? 16 : 0) +
         (has.demo ? 12 : 0) +
-        (has.screenshot ? 10 : 0) +
-        Math.min(18, userSignals * 3),
+        (has.screenshot ? 8 : 0) +
+        (has.logo ? 4 : 0) +
+        Math.min(16, userSignals * 3),
     );
 
     const ai = clampScore(
@@ -630,7 +813,8 @@
         (has.notes ? 18 : 0) +
         (has.demo ? 10 : 0) +
         (has.solution ? 14 : 0) +
-        Math.min(22, engineeringSignals * 3),
+        (has.screenshot ? 5 : 0) +
+        Math.min(17, engineeringSignals * 3),
     );
 
     const expert = clampScore(
@@ -639,7 +823,8 @@
         (has.solution ? 18 : 0) +
         (has.demo ? 12 : 0) +
         (has.repo ? 8 : 0) +
-        Math.min(24, businessSignals * 4) +
+        (has.logo ? 4 : 0) +
+        Math.min(20, businessSignals * 4) +
         (combined.includes("global") ? 8 : 0),
     );
 
@@ -651,6 +836,9 @@
     if (!has.demo) fixes.push(t("fix.demo"));
     if (!has.repo) fixes.push(t("fix.repo"));
     if (!has.screenshot) fixes.push(t("fix.screenshot"));
+    if (!has.logo) fixes.push(t("fix.logo"));
+    if (!has.video) fixes.push(t("fix.video"));
+    if (!has.file) fixes.push(t("fix.file"));
     if (!has.tagline) fixes.push(t("fix.tagline"));
     if (!has.problem) fixes.push(t("fix.problem"));
     if (!has.solution) fixes.push(t("fix.solution"));
@@ -683,6 +871,8 @@
       ],
       fixes,
       has,
+      audit: buildAudit(has),
+      handoff: buildHandoff(has, overall),
     };
   }
 
@@ -695,6 +885,263 @@
       .split(",")
       .map((item) => item.trim())
       .filter(Boolean);
+  }
+
+  function exampleFor(key) {
+    const examples = {
+      en: {
+        demo: "Example: GitHub Pages, Netlify, Vercel, or a stable hosted demo.",
+        repo: "Example: https://github.com/team/project with README and setup path.",
+        screenshot: "Example: public PNG/JPG URL showing the actual first screen.",
+        logo: "Example: an SVG or PNG logo URL that renders on the Project Wall card.",
+        tagline: "Example: One sentence naming the user, pain, and outcome.",
+        problem: "Example: describe the deadline or collaboration pain a team actually feels.",
+        solution: "Example: explain the workflow and output the user receives.",
+        stack: "Example: HTML, CSS, JavaScript, GitHub Pages, optional OpenAI API.",
+        notes: "Example: paste build notes, demo script, limitations, and judging context.",
+      },
+      zh: {
+        demo: "示例：GitHub Pages、Netlify、Vercel 或稳定托管 Demo。",
+        repo: "示例：https://github.com/team/project，并包含 README 和运行路径。",
+        screenshot: "示例：展示真实第一屏的公开 PNG/JPG 链接。",
+        logo: "示例：Project Wall 卡片可渲染的 SVG 或 PNG logo 链接。",
+        tagline: "示例：一句话说清用户、痛点和结果。",
+        problem: "示例：写出团队真实感受到的截止时间或协作痛点。",
+        solution: "示例：说明使用流程，以及用户最终得到什么输出。",
+        stack: "示例：HTML, CSS, JavaScript, GitHub Pages, 可选 OpenAI API。",
+        notes: "示例：粘贴构建笔记、演示脚本、限制和评审背景。",
+      },
+    };
+    return examples[language][key] || examples[language].notes;
+  }
+
+  function buildTasks(analysis) {
+    const missingRequired = analysis.audit.filter((item) => item.required && !item.ready);
+    const missingRecommended = analysis.audit.filter((item) => !item.required && !item.ready);
+    const candidates = [...missingRequired, ...missingRecommended].slice(0, 5);
+    if (!candidates.length && analysis.overall >= 75) {
+      return [{ key: "ready", text: t("task.ready"), example: "" }];
+    }
+    return candidates.map((item, index) => ({
+      key: item.key,
+      text: `${index + 1}. ${t("task.fixFirst")}: ${t(item.labelKey)}`,
+      example: exampleFor(item.key),
+    }));
+  }
+
+  function renderAudit(analysis) {
+    const required = analysis.audit.filter((item) => item.required);
+    const requiredReady = required.filter((item) => item.ready).length;
+    els.auditCount.textContent = `${requiredReady}/${required.length}`;
+    els.auditGrid.innerHTML = "";
+
+    analysis.audit.forEach((item) => {
+      const node = document.createElement("div");
+      node.className = `audit-item ${item.ready ? "ready" : "missing"}`;
+      node.innerHTML = `
+        <span>${item.ready ? "✓" : "!"}</span>
+        <strong>${t(item.labelKey)}</strong>
+        <small>${item.required ? t("audit.required") : t("audit.recommended")} · ${item.ready ? t("audit.ready") : t("audit.missing")}</small>
+      `;
+      els.auditGrid.appendChild(node);
+    });
+  }
+
+  function renderTasks(analysis) {
+    const tasks = buildTasks(analysis);
+    els.taskCount.textContent = String(tasks[0]?.key === "ready" ? 0 : tasks.length);
+    els.taskList.innerHTML = "";
+    tasks.forEach((task) => {
+      const node = document.createElement("li");
+      node.innerHTML = `<strong>${task.text}</strong>${task.example ? `<span>${task.example}</span>` : ""}`;
+      els.taskList.appendChild(node);
+    });
+  }
+
+  function renderHandoff(analysis) {
+    const handoff = analysis.handoff;
+    const ready = handoff.every((item) => item.ready);
+    els.handoffState.textContent = ready ? t("handoff.ready") : t("handoff.draft");
+    els.handoffState.classList.toggle("ready", ready);
+    els.handoffGrid.innerHTML = "";
+
+    handoffDefinitions.forEach((definition) => {
+      const state = handoff.find((item) => item.key === definition.key);
+      const node = document.createElement("div");
+      node.className = `handoff-item ${state?.ready ? "ready" : "missing"}`;
+      node.innerHTML = `<span>${state?.ready ? "✓" : "•"}</span><strong>${t(definition.labelKey)}</strong>`;
+      els.handoffGrid.appendChild(node);
+    });
+  }
+
+  function renderWorkflowState(analysis) {
+    const spaceReady = {
+      intake:
+        analysis.has.name &&
+        analysis.has.tagline &&
+        analysis.has.audience &&
+        analysis.has.problem &&
+        analysis.has.solution,
+      evidence:
+        analysis.has.demo &&
+        analysis.has.repo &&
+        analysis.has.screenshot &&
+        analysis.has.logo &&
+        analysis.has.team,
+      score: analysis.overall >= 70,
+      oracle: true,
+      archive: Boolean(generated),
+      final: analysis.handoff.every((item) => item.ready),
+    };
+
+    document.querySelectorAll("[data-space]").forEach((button) => {
+      const ready = Boolean(spaceReady[button.dataset.space]);
+      button.classList.toggle("ready", ready);
+      button.classList.toggle("missing", !ready);
+    });
+  }
+
+  function renderRepoScan() {
+    if (!repoScan) {
+      els.repoSignal.textContent = t("repo.empty");
+      els.repoSignal.className = "repo-signal";
+      els.repoList.innerHTML = "";
+      return;
+    }
+
+    els.repoSignal.textContent = repoScan.error
+      ? `${t(repoScan.messageKey)}: ${repoScan.error}`
+      : t(repoScan.messageKey);
+    els.repoSignal.className = `repo-signal ${repoScan.status}`;
+    els.repoList.innerHTML = "";
+
+    repoScan.checks.forEach((check) => {
+      const node = document.createElement("li");
+      node.className = check.ready ? "ready" : "missing";
+      node.innerHTML = `<span>${check.ready ? "✓" : "!"}</span><strong>${check.labelKey ? t(check.labelKey) : check.label}</strong><small>${check.detail}</small>`;
+      els.repoList.appendChild(node);
+    });
+  }
+
+  async function scanRepository() {
+    const project = getProject();
+    scannedRepoUrl = project.repoUrl;
+    const repo = parseGithubRepoUrl(project.repoUrl);
+    if (!repo) {
+      repoScan = {
+        status: "missing",
+        messageKey: "repo.invalid",
+        checks: [],
+      };
+      renderRepoScan();
+      return;
+    }
+
+    els.scanRepoBtn.disabled = true;
+    els.scanRepoBtn.textContent = t("repo.scanning");
+    repoScan = {
+      status: "pending",
+      messageKey: "repo.scanning",
+      checks: [],
+    };
+    renderRepoScan();
+
+    try {
+      const base = `https://api.github.com/repos/${repo.owner}/${repo.repo}`;
+      const [repoResponse, readmeResponse, contentsResponse, commitsResponse] =
+        await Promise.all([
+          fetch(base),
+          fetch(`${base}/readme`),
+          fetch(`${base}/contents`),
+          fetch(`${base}/commits?per_page=1`),
+        ]);
+
+      if (!repoResponse.ok) {
+        throw new Error(`GitHub returned ${repoResponse.status}`);
+      }
+
+      const repoData = await repoResponse.json();
+      const contents = contentsResponse.ok ? await contentsResponse.json() : [];
+      const commits = commitsResponse.ok ? await commitsResponse.json() : [];
+      const names = Array.isArray(contents)
+        ? contents.map((item) => String(item.name || "").toLowerCase())
+        : [];
+      const latestCommitDate = commits[0]?.commit?.committer?.date || repoData.updated_at;
+      const recent =
+        latestCommitDate &&
+        Date.now() - new Date(latestCommitDate).getTime() < 1000 * 60 * 60 * 24 * 45;
+
+      const checks = [
+        {
+          labelKey: "repo.exists",
+          ready: true,
+          detail: `${repo.owner}/${repo.repo}`,
+        },
+        {
+          labelKey: "repo.readme",
+          ready: readmeResponse.ok,
+          detail: readmeResponse.ok ? "README.md" : "README missing",
+        },
+        {
+          labelKey: "repo.entry",
+          ready: names.some((name) => ["index.html", "package.json", "src"].includes(name)),
+          detail: names.filter((name) => ["index.html", "package.json", "src"].includes(name)).join(", ") || "No obvious app entry",
+        },
+        {
+          labelKey: "repo.tests",
+          ready: names.some((name) => ["tests", "test", "playwright.config.js", "vitest.config.js"].includes(name)),
+          detail: names.filter((name) => ["tests", "test", "playwright.config.js", "vitest.config.js"].includes(name)).join(", ") || "No obvious tests",
+        },
+        {
+          labelKey: "repo.deploy",
+          ready: names.some((name) => ["netlify.toml", "vercel.json", ".github"].includes(name)),
+          detail: names.filter((name) => ["netlify.toml", "vercel.json", ".github"].includes(name)).join(", ") || "No deploy config",
+        },
+        {
+          labelKey: "repo.recent",
+          ready: Boolean(recent),
+          detail: latestCommitDate ? new Date(latestCommitDate).toLocaleDateString() : "No commit date",
+        },
+      ];
+
+      const readyCount = checks.filter((check) => check.ready).length;
+      repoScan = {
+        status: readyCount >= 4 ? "ready" : "weak",
+        messageKey: readyCount >= 4 ? "repo.ready" : "repo.weak",
+        checks,
+        scannedAt: new Date().toISOString(),
+      };
+    } catch (error) {
+      repoScan = {
+        status: "missing",
+        messageKey: "repo.failed",
+        error: error.message,
+        checks: [],
+      };
+    } finally {
+      els.scanRepoBtn.disabled = false;
+      els.scanRepoBtn.textContent = t("repo.scan");
+      renderRepoScan();
+    }
+  }
+
+  function emitTempleParticle(event) {
+    if (!document.body.classList.contains("temple-mode")) return;
+    const target = event.target.closest(".temple-node, .temple-card, .temple-score");
+    if (!target) return;
+    const now = performance.now();
+    if (now - particleCooldown < 65) return;
+    particleCooldown = now;
+
+    const particle = document.createElement("span");
+    particle.className = "temple-particle";
+    const rect = els.templeView.getBoundingClientRect();
+    particle.style.left = `${event.clientX - rect.left}px`;
+    particle.style.top = `${event.clientY - rect.top}px`;
+    particle.style.setProperty("--drift-x", `${Math.random() * 34 - 17}px`);
+    particle.style.setProperty("--drift-y", `${-18 - Math.random() * 24}px`);
+    els.templeView.appendChild(particle);
+    window.setTimeout(() => particle.remove(), 720);
   }
 
   function generate(project, analysis) {
@@ -721,6 +1168,9 @@
     const demoUrl = fallback(project.demoUrl, "[Add public demo URL]");
     const repoUrl = fallback(project.repoUrl, "[Add GitHub repo URL]");
     const screenshots = fallback(project.screenshotUrls, "[Add screenshot URL]");
+    const logoUrl = fallback(project.logoUrl, "[Add logo URL]");
+    const demoVideoUrl = fallback(project.demoVideoUrl, "[Optional demo video URL]");
+    const demoFileUrl = fallback(project.demoFileUrl, "[Optional demo file URL]");
     const topFixes = analysis.fixes.slice(0, 6);
 
     if (language === "zh") {
@@ -752,6 +1202,15 @@ ${stack.length ? stack.map((item) => `- ${item}`).join("\n") : "- HTML\n- CSS\n-
 ## 项目截图
 ${screenshots}
 
+## Logo URL
+${logoUrl}
+
+## 演示视频 URL
+${demoVideoUrl}
+
+## 演示文件 URL
+${demoFileUrl}
+
 ## 团队成员
 ${team}
 
@@ -764,6 +1223,9 @@ ${team}
 ## 当前就绪度
 - 总分：${analysis.overall}/100
 ${analysis.dimensions.map((item) => `- ${item.label}: ${item.score}/100`).join("\n")}
+
+## Project Wall 字段审计
+${analysis.audit.map((item) => `- ${t(item.labelKey)}: ${item.ready ? t("audit.ready") : t("audit.missing")}`).join("\n")}
 
 ## 立即修复
 ${topFixes.length ? topFixes.map((item) => `- ${item}`).join("\n") : `- ${t("fix.ready")}`}`;
@@ -804,6 +1266,9 @@ python -m http.server 8080
 - Demo URL：${demoUrl}
 - Repo URL：${repoUrl}
 - Screenshot URL：${screenshots}
+- Logo URL：${logoUrl}
+- 演示视频 URL：${demoVideoUrl}
+- 演示文件 URL：${demoFileUrl}
 
 ## 路线图
 - 在用户提供 event token 后加入认证 Project Wall 导入。
@@ -890,6 +1355,15 @@ ${stack.length ? stack.map((item) => `- ${item}`).join("\n") : "- HTML\n- CSS\n-
 ## Project Screenshot
 ${screenshots}
 
+## Logo URL
+${logoUrl}
+
+## Demo Video URL
+${demoVideoUrl}
+
+## Demo File URL
+${demoFileUrl}
+
 ## Team Members
 ${team}
 
@@ -902,6 +1376,9 @@ ${team}
 ## Current Readiness
 - Overall: ${analysis.overall}/100
 ${analysis.dimensions.map((item) => `- ${item.label}: ${item.score}/100`).join("\n")}
+
+## Project Wall Field Audit
+${analysis.audit.map((item) => `- ${t(item.labelKey)}: ${item.ready ? t("audit.ready") : t("audit.missing")}`).join("\n")}
 
 ## Immediate Fixes
 ${topFixes.length ? topFixes.map((item) => `- ${item}`).join("\n") : "- Ready for submission review."}`;
@@ -942,6 +1419,9 @@ Open \`http://localhost:8080/launchlens/\`.
 - Demo URL: ${demoUrl}
 - Repo URL: ${repoUrl}
 - Screenshot URL: ${screenshots}
+- Logo URL: ${logoUrl}
+- Demo video URL: ${demoVideoUrl}
+- Demo file URL: ${demoFileUrl}
 
 ## Roadmap
 - Add authenticated Project Wall import once users provide their own event token.
@@ -1014,6 +1494,10 @@ ${analysis.dimensions.map((item) => `- ${item.label}: ${item.score}/100 - ${item
       els.scoreGrid.appendChild(node);
     });
 
+    renderAudit(analysis);
+    renderTasks(analysis);
+    renderHandoff(analysis);
+    renderWorkflowState(analysis);
     updateTempleStatus();
   }
 
@@ -1040,6 +1524,9 @@ ${analysis.dimensions.map((item) => `- ${item.label}: ${item.score}/100 - ${item
     document.querySelectorAll(".tabs button").forEach((button) => {
       button.classList.toggle("active", button.dataset.tab === tab);
     });
+    els.output.classList.remove("tab-flash");
+    void els.output.offsetWidth;
+    els.output.classList.add("tab-flash");
     renderOutput();
   }
 
@@ -1058,6 +1545,7 @@ ${analysis.dimensions.map((item) => `- ${item.label}: ${item.score}/100 - ${item
     const payload = {
       project,
       analysis: currentAnalysis,
+      repoScan,
       generated,
       exportedAt: new Date().toISOString(),
     };
@@ -1148,6 +1636,12 @@ ${analysis.dimensions.map((item) => `- ${item.label}: ${item.score}/100 - ${item
 
   els.form.addEventListener("input", () => {
     els.saveState.textContent = t("status.saving");
+    const nextRepoUrl = getProject().repoUrl;
+    if (repoScan && nextRepoUrl !== scannedRepoUrl) {
+      repoScan = null;
+      scannedRepoUrl = "";
+      renderRepoScan();
+    }
     saveProject();
     generated = null;
     runAgent();
@@ -1166,11 +1660,18 @@ ${analysis.dimensions.map((item) => `- ${item.label}: ${item.score}/100 - ${item
   els.templeReviewAction.addEventListener("click", runAgent);
   els.templeCopyAction.addEventListener("click", copyMarkdown);
   els.enhanceBtn.addEventListener("click", enhanceWithLlm);
+  els.scanRepoBtn.addEventListener("click", () => {
+    scannedRepoUrl = getProject().repoUrl;
+    scanRepository();
+  });
 
   els.resetBtn.addEventListener("click", () => {
     localStorage.removeItem(STORAGE_KEY);
     setProject({});
     generated = null;
+    repoScan = null;
+    scannedRepoUrl = "";
+    renderRepoScan();
     runAgent();
   });
 
@@ -1183,8 +1684,15 @@ ${analysis.dimensions.map((item) => `- ${item.label}: ${item.score}/100 - ${item
   });
 
   document.querySelectorAll("[data-space]").forEach((button) => {
-    button.addEventListener("click", () => selectTempleSpace(button.dataset.space));
+    button.addEventListener("click", () => {
+      selectTempleSpace(button.dataset.space);
+      if (button.closest(".workflow-rail")) {
+        runTemplePrimaryAction();
+      }
+    });
   });
+
+  els.templeView.addEventListener("pointermove", emitTempleParticle);
 
   applyTranslations();
 
@@ -1193,6 +1701,7 @@ ${analysis.dimensions.map((item) => `- ${item.label}: ${item.score}/100 - ${item
   } else {
     runAgent();
   }
+  renderRepoScan();
   renderTemplePanel();
-  setViewMode("temple");
+  setViewMode(params.get("mode") === "classic" ? "classic" : "temple");
 })();

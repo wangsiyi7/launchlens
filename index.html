@@ -22,7 +22,7 @@
       <div class="brand-lockup">
         <img src="assets/logo.svg" alt="" aria-hidden="true" />
         <div>
-          <p class="eyebrow">UCWS Singapore 2026 / Application Track</p>
+          <p class="eyebrow" data-i18n="brand.eyebrow">UCWS Singapore 2026 / Builder Collaboration App</p>
           <h1>LaunchLens</h1>
         </div>
       </div>
@@ -224,6 +224,36 @@
             />
           </label>
 
+          <label>
+            <span data-i18n="field.logoUrl">Logo URL</span>
+            <input
+              id="logoUrl"
+              name="logoUrl"
+              placeholder="https://.../logo.svg"
+              data-i18n-placeholder="placeholder.logoUrl"
+            />
+          </label>
+
+          <label>
+            <span data-i18n="field.demoVideoUrl">Demo video URL</span>
+            <input
+              id="demoVideoUrl"
+              name="demoVideoUrl"
+              placeholder="https://..."
+              data-i18n-placeholder="placeholder.demoVideoUrl"
+            />
+          </label>
+
+          <label class="span-2">
+            <span data-i18n="field.demoFileUrl">Demo file URL</span>
+            <input
+              id="demoFileUrl"
+              name="demoFileUrl"
+              placeholder="https://..."
+              data-i18n-placeholder="placeholder.demoFileUrl"
+            />
+          </label>
+
           <label class="span-2">
             <span data-i18n="field.teamMembers">Team members</span>
             <input id="teamMembers" name="teamMembers" placeholder="Name - role - link" data-i18n-placeholder="placeholder.teamMembers" />
@@ -255,6 +285,80 @@
         </div>
 
         <div class="score-grid" id="scoreGrid"></div>
+
+        <section class="workflow-rail" aria-label="LaunchLens workflow">
+          <button type="button" data-space="intake">
+            <span>01</span>
+            <strong data-i18n="node.intake.short">Project Altar</strong>
+          </button>
+          <button type="button" data-space="evidence">
+            <span>02</span>
+            <strong data-i18n="node.evidence.short">Evidence Steps</strong>
+          </button>
+          <button type="button" data-space="score">
+            <span>03</span>
+            <strong data-i18n="node.score.short">Score Gate</strong>
+          </button>
+          <button type="button" data-space="oracle">
+            <span>04</span>
+            <strong data-i18n="node.oracle.short">Oracle LLM</strong>
+          </button>
+          <button type="button" data-space="archive">
+            <span>05</span>
+            <strong data-i18n="node.archive.short">Archive Hall</strong>
+          </button>
+          <button type="button" data-space="final">
+            <span>06</span>
+            <strong data-i18n="node.final.short">Final Door</strong>
+          </button>
+        </section>
+
+        <section class="ops-grid" aria-label="Project Wall operations">
+          <article class="ops-card">
+            <div class="ops-head">
+              <div>
+                <p class="eyebrow" data-i18n="audit.eyebrow">Field Audit</p>
+                <h3 data-i18n="audit.title">Project Wall coverage</h3>
+              </div>
+              <strong id="auditCount">0/0</strong>
+            </div>
+            <div id="auditGrid" class="audit-grid"></div>
+          </article>
+
+          <article class="ops-card">
+            <div class="ops-head">
+              <div>
+                <p class="eyebrow" data-i18n="tasks.eyebrow">Next Actions</p>
+                <h3 data-i18n="tasks.title">Submission task board</h3>
+              </div>
+              <strong id="taskCount">0</strong>
+            </div>
+            <ol id="taskList" class="task-list"></ol>
+          </article>
+
+          <article class="ops-card">
+            <div class="ops-head">
+              <div>
+                <p class="eyebrow" data-i18n="repo.eyebrow">Repo Scanner</p>
+                <h3 data-i18n="repo.title">GitHub evidence</h3>
+              </div>
+              <button id="scanRepoBtn" type="button" class="ghost" data-i18n="repo.scan">Scan</button>
+            </div>
+            <div id="repoSignal" class="repo-signal">Add a GitHub repo URL to scan.</div>
+            <ul id="repoList" class="repo-list"></ul>
+          </article>
+        </section>
+
+        <section class="handoff-panel" aria-label="Final handoff">
+          <div class="ops-head">
+            <div>
+              <p class="eyebrow" data-i18n="handoff.eyebrow">Handoff</p>
+              <h3 data-i18n="handoff.title">Final submit readiness</h3>
+            </div>
+            <span id="handoffState" class="status-pill">Draft</span>
+          </div>
+          <div id="handoffGrid" class="handoff-grid"></div>
+        </section>
 
         <div class="agent-row">
           <button id="reviewBtn" type="button" class="primary" data-i18n="button.review">Run Review Agent</button>
