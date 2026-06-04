@@ -12,6 +12,8 @@
 | Project logo | Done | `assets/logo.svg` |
 | Deployment config | Done | `netlify.toml`, `vercel.json`, `DEPLOYMENT.md` |
 | Local tests | Done | `node tests/scoring.test.mjs` |
+| Local Git repo | Done | branch `main`, commit `418f289 Initial LaunchLens UCWS submission app` |
+| Submission zip | Done | `../LaunchLens_submission_pack.zip` |
 | Public demo URL | Pending account/deploy step | Requires selected hosting account |
 | Public repo URL | Pending account/repo step | Requires GitHub or other repo host |
 | Actual Project Wall submission | Pending login | Epic Connector `/api/projects` requires authenticated token |
