@@ -31,6 +31,7 @@
 | `PROJECT_WALL_FIELDS.md` | Project Wall 字段复制源 |
 | `SUBMISSION.md` | 完整提交文案草稿 |
 | `FINAL_SUBMISSION_RUNBOOK.md` | 最终提交执行清单 |
+| `FINAL_READINESS_REPORT.md` | 自动生成的最终就绪报告，列出当前 payload、检查项和外部缺口 |
 | `SPACE_INTERACTION_SPEC.md` | Temple Mode / Classic Mode 空间交互规格 |
 | `SUBMISSION_AUDIT.md` | 当前完成度、阻塞项和验证状态 |
 | `HACKATHON_STRATEGY.md` | 参赛策略与定位 |
@@ -45,6 +46,7 @@
 | `tools/serve-public-root.mjs` | 只暴露 `launchlens/` 目录给临时公网 tunnel |
 | `tools/build-project-payload.mjs` | 生成 `project-payload.json` |
 | `tools/validate-submission.mjs` | 提交前验证 payload，拦截非 GitHub Repo URL 和占位团队成员 |
+| `tools/final-readiness-report.mjs` | 生成 `FINAL_READINESS_REPORT.md`，汇总本地就绪状态和外部输入缺口 |
 | `tools/publish-github.mjs` | 使用 GitHub token 创建/复用仓库、生成 payload、提交并 push |
 | `tools/push-github.mjs` | 推送到已存在的 GitHub remote |
 | `tools/create-github-repo.mjs` | 单独创建 GitHub 仓库 |
@@ -76,4 +78,4 @@ LaunchLens App 已保留 Optional LLM 能力：
 
 ## English Summary
 
-This repository includes the LaunchLens app, implemented Temple Mode and Classic Mode, visual assets, Project Wall copy, final submission checklist, the Temple Mode interaction spec, deployment configs, validation scripts, GitHub publishing scripts, and an optional OpenAI-compatible LLM enhancement slot. The final GitHub README is bilingual and ready for the hackathon repository home page.
+This repository includes the LaunchLens app, implemented Temple Mode and Classic Mode, visual assets, Project Wall copy, final submission checklist, final readiness report, the Temple Mode interaction spec, deployment configs, validation scripts, GitHub publishing scripts, and an optional OpenAI-compatible LLM enhancement slot. The final GitHub README is bilingual and ready for the hackathon repository home page.

@@ -76,7 +76,7 @@ http://localhost:8080/launchlens/
 当前没有可靠的临时公网 tunnel。
 ```
 
-Cloudflare Quick Tunnel 和 localtunnel 已重新测试，但当前网络环境返回 530 / 502。最终评审请使用 GitHub Pages、Netlify 或 Vercel。状态说明见 `../TEMP_PUBLIC_DEMO_URL.md`。
+Cloudflare Quick Tunnel 和 localtunnel 已重新测试，但当前网络环境返回 530 / 502。最终评审请使用 GitHub Pages、Netlify 或 Vercel。当前状态也记录在 `SUBMISSION_AUDIT.md` 和 `FINAL_READINESS_REPORT.md`。
 
 ## GitHub 发布
 
@@ -145,6 +145,7 @@ node tools/complete-submission.mjs launchlens
 - 社交图：`assets/social-card.svg`
 - 提交材料：`PROJECT_WALL_FIELDS.md`、`SUBMISSION.md`
 - 最终执行清单：`FINAL_SUBMISSION_RUNBOOK.md`
+- 最终就绪报告：`FINAL_READINESS_REPORT.md`
 - 空间交互规格：`SPACE_INTERACTION_SPEC.md`
 - 自动化脚本：`tools/`
 
@@ -233,7 +234,7 @@ Temporary public demo status:
 No reliable temporary public tunnel is currently available.
 ```
 
-Cloudflare Quick Tunnel and localtunnel were re-tested, but the current network returned 530 / 502. Use GitHub Pages, Netlify, or Vercel for final judging. See `../TEMP_PUBLIC_DEMO_URL.md`.
+Cloudflare Quick Tunnel and localtunnel were re-tested, but the current network returned 530 / 502. Use GitHub Pages, Netlify, or Vercel for final judging. Current status is also recorded in `SUBMISSION_AUDIT.md` and `FINAL_READINESS_REPORT.md`.
 
 ## Publish To GitHub
 
