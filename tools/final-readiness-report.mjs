@@ -20,6 +20,11 @@ function run(command, args) {
   }
 }
 
+function sourceExists(path) {
+  if (existsSync(path)) return true;
+  return Boolean(run("git", ["cat-file", "-e", `HEAD:${path}`]));
+}
+
 function runValidation() {
   const result = spawnSync("node", ["tools/validate-submission.mjs"], {
     encoding: "utf8",
@@ -84,7 +89,7 @@ const requiredFiles = [
   ".github/workflows/pages.yml",
 ];
 
-const requiredFilesOk = requiredFiles.every((path) => existsSync(path));
+const requiredFilesOk = requiredFiles.every((path) => sourceExists(path));
 const screenshotOk =
   fileSize("assets/screenshot.png") > 100_000 &&
   fileSize("assets/screenshot-zh.png") > 100_000 &&

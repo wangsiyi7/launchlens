@@ -1,52 +1,29 @@
-# UCWS Project Wall Submission
+# LaunchLens Submission Summary
 
-## Project Name
+LaunchLens is a browser-based Evidence Gate for hackathon teams. It helps builders turn rough project material into a clean, inspectable Project Wall package with demo links, repository evidence, screenshots, scoring, bilingual copy, and optional LLM refinement.
 
-LaunchLens
+## Official Fields
 
-## Track
+| Field | Value |
+| --- | --- |
+| Project name | LaunchLens |
+| Track | Application |
+| Tagline | Turn rough hackathon ideas into scored, ready-to-submit Project Wall packages. |
+| Demo URL | https://wangsiyi7.github.io/launchlens/ |
+| GitHub repository | https://github.com/wangsiyi7/launchlens |
+| Logo URL | https://wangsiyi7.github.io/launchlens/assets/logo.svg |
 
-Application
-
-## Tagline
-
-Turn rough hackathon ideas into scored, ready-to-submit Project Wall packages.
+For the full copy-ready version, use the root-level `PROJECT_WALL_SUBMISSION.md`.
 
 ## Description
 
-LaunchLens is a browser-based submission copilot for hackathon teams, solo builders, community reviewers, and demo-day organizers. Builders often have real work but lose the last day converting product notes into clear submissions that voters, AI evaluators, and judges can understand quickly. LaunchLens runs a review agent over UCWS submission fields, scores readiness across community vote, AI evaluation, and expert judging, then generates Markdown, README, pitch, sprint plan, and fix-list outputs.
+LaunchLens is a browser-based submission evidence collaboration app for hackathon teams, solo builders, community reviewers, and demo-day organizers.
 
-The current version adds a 2.5D Temple Mode inspired by a spatial submission hall: six clickable nodes guide users through project story, evidence, scoring, Oracle LLM enhancement, generated archives, and the final GitHub / Project Wall handoff. A Classic Mode remains available for fast form editing and reliable export.
+Hackathon teams often build something real, but lose momentum at the final submission layer: unstable demo links, unclear repositories, missing screenshots, incomplete README paths, weak proof, and narratives that do not match how community voters, AI evaluators, and expert judges inspect work.
 
-The first use case is UCWS Singapore 2026, where teams need to submit a project name, tagline, description, demo URL, repo URL, track, tech stack, screenshots, and team members. The broader use case is global: any hackathon, accelerator, or demo-day team can use the same workflow to move from rough notes to a credible public submission.
+LaunchLens turns that final handoff into an interactive Evidence Gate. Teams enter their Project Wall fields, then the app audits required evidence, scans public GitHub repository signals, scores readiness across Community Vote, AI Evaluation, and Expert Judges, and generates a copy-ready submission pack, README draft, pitch, sprint plan, and fix list.
 
-## Demo URL
-
-Local review URL: `http://localhost:8080/launchlens/`
-
-Public URL placeholder:
-
-```text
-https://your-demo-url.example.com
-```
-
-Replace with a stable GitHub Pages / Netlify / Vercel URL before final judging.
-
-## Repository URL
-
-Stable GitHub URL to be added after pushing.
-
-Temporary public source page:
-
-```text
-Not currently available. Use the GitHub repository URL after push.
-```
-
-Local source bundle:
-
-```text
-launchlens-source.zip
-```
+UCWS is the first use case, but LaunchLens is designed as a long-term collaboration tool for hackathons, accelerator demo days, open-source showcases, and internal product reviews.
 
 ## Tech Stack
 
@@ -54,43 +31,20 @@ launchlens-source.zip
 - CSS
 - JavaScript
 - Browser localStorage
-- Optional OpenAI-compatible chat completion endpoint
-- 2.5D generated bitmap background for Temple Mode
+- GitHub public API repository scanning
+- GitHub Pages and Vercel-ready static deployment
+- Optional OpenAI-compatible `chat/completions` endpoint
 
-## Project Screenshot
+## Review Checklist
 
-- `assets/screenshot.png`
-- `assets/screenshot-mobile.png`
-- Public screenshot placeholder: `https://your-demo-url.example.com/assets/screenshot.png`
+- Open the demo and confirm Temple Mode appears.
+- Switch between Temple Mode and Classic Mode.
+- Run the Evidence Gate review.
+- Scan the GitHub repository URL.
+- Confirm screenshots and logo URLs load.
+- Run `npm.cmd test`.
+- Run `node tools/validate-submission.mjs`.
 
-## Project Logo
+## Vercel Note
 
-- `assets/logo.svg`
-
-## Social Card
-
-- `assets/social-card.svg`
-
-## Team Members
-
-To be filled by the submitting team.
-
-## Optional Demo Video
-
-Recommended: 60-90 second screen recording showing:
-
-1. Load sample project.
-2. Click the Temple Mode nodes: Project Altar, Evidence Steps, Score Gate, Oracle LLM, Archive Hall, Final Door.
-3. Switch to Classic Mode and edit required submission fields.
-4. Run Review Agent.
-5. Open Oracle LLM to show the reserved OpenAI-compatible API slot.
-6. Switch between Submission Pack, README, Pitch, Sprint Plan, and Fix List.
-7. Copy Markdown or download JSON.
-
-## Why It Fits UCWS
-
-- Real user value: helps every UCWS team prepare a clearer public submission before deadline.
-- Strong product execution: complete browser app with Temple Mode, Classic Mode, autosave, scoring, generation, copy, export, and optional LLM enhancement.
-- Global scalability: works for any hackathon or demo-day submission process.
-- Community appeal: other teams can test it immediately and use it to improve their own submissions.
-- AI evaluation readiness: repo contains clear source files, README, and submission documentation.
+Vercel deployment is configured but requires account authorization. Use `tools/deploy-vercel.mjs` with `VERCEL_TOKEN`; then replace the demo URL with the Vercel production URL if preferred.

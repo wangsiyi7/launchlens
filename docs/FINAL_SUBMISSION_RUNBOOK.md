@@ -1,184 +1,76 @@
 # Final Submission Runbook
 
-Use this as the last-mile checklist for submitting LaunchLens to the UCWS Singapore Hackathon 2026 Project Wall.
+This is the last-mile checklist for LaunchLens as a UCWS Singapore Hackathon 2026 Project Wall entry.
 
-## Current Readiness
+## Current Public Assets
 
-| Item | Status | Evidence |
+| Asset | Status | URL or file |
 | --- | --- | --- |
-| Working app | Ready | `index.html`, `styles.css`, `app.js` |
-| Local Git repo | Ready | branch `main` |
-| Temporary public demo | Currently unavailable | Cloudflare returned 530 / TLS edge errors; localtunnel returned 502 / 503 |
-| Screenshots | Ready | `assets/screenshot.png`, `assets/screenshot-mobile.png` |
-| Project Wall copy | Ready | `PROJECT_WALL_FIELDS.md`, `SUBMISSION.md` |
-| GitHub repository | Needs account access | provide remote URL or `GITHUB_TOKEN` |
-| Final Project Wall payload | Needs final demo URL, GitHub URL, and team names | `project-payload.json` intentionally uses placeholders |
-| Actual Project Wall submission | Needs Epic login token | `EPIC_TOKEN` |
+| GitHub repository | Ready | https://github.com/wangsiyi7/launchlens |
+| Public demo | Ready | https://wangsiyi7.github.io/launchlens/ |
+| Vercel deployment | Awaiting Vercel token | `node tools/deploy-vercel.mjs` |
+| Copy-ready submission fields | Ready | `PROJECT_WALL_SUBMISSION.md` |
+| Machine-readable payload | Ready | `project-payload.json` |
+| Source package | Ready | `launchlens-source.zip` and `../LaunchLens_submission_pack.zip` |
 
-## Official Constraints Already Reflected
+## Project Wall Fields
 
-- Event: UCWS Singapore Hackathon 2026.
-- Tracks: Agent, Skill, Application, DeepResearch.
-- Selected track: Application.
-- Public Project Wall project list and project submission endpoint require authentication.
-- Hackathon project form requires an HTTPS GitHub repository URL.
-- Scoring lens: Community Vote, AI Evaluation, Expert Judges.
+Use the root-level `PROJECT_WALL_SUBMISSION.md` as the authoritative copy source. It contains the official project name, track, tagline, description, demo URL, repository URL, tech stack, screenshot URLs, logo URL, and team member field.
 
-## Step 1: Publish To GitHub
+If Vercel is deployed, replace the Demo URL and asset URLs in:
 
-Preferred token-based path:
+- `PROJECT_WALL_SUBMISSION.md`
+- `project-payload.json`
+- `README.md`
+- `docs/FINAL_READINESS_REPORT.md`
 
-```powershell
-cd "C:\Users\35398\Desktop\UCWS 2026\launchlens"
-$env:GITHUB_TOKEN="your-github-token"
-$env:LAUNCHLENS_TEAM_MEMBERS="Your Name"
-node tools/publish-github.mjs launchlens
-```
+## Vercel Finalization
 
-What this does:
+The repository includes `vercel.json` and `.vercelignore`, so Vercel can deploy the static app without a build step.
 
-- Creates or reuses `https://github.com/YOUR_ACCOUNT/launchlens`.
-- Generates `project-payload.json` with:
-  - `repoUrl`: `https://github.com/YOUR_ACCOUNT/launchlens`
-  - `demoUrl`: `https://YOUR_ACCOUNT.github.io/launchlens/`
-- Commits the payload update if it changed.
-- Pushes `main`.
-
-Remote-only path, if the GitHub repo already exists and local Git authentication is available:
+Token path:
 
 ```powershell
 cd "C:\Users\35398\Desktop\UCWS 2026\launchlens"
-node tools/push-github.mjs https://github.com/YOUR_ACCOUNT/launchlens.git
+$env:VERCEL_TOKEN="your-vercel-token"
+node tools/deploy-vercel.mjs
 ```
 
-Then regenerate the payload:
+After the script prints the production URL:
 
 ```powershell
-$env:LAUNCHLENS_DEMO_URL="https://YOUR_ACCOUNT.github.io/launchlens/"
-$env:LAUNCHLENS_REPO_URL="https://github.com/YOUR_ACCOUNT/launchlens"
-$env:LAUNCHLENS_TEAM_MEMBERS="Your Name"
+$env:LAUNCHLENS_DEMO_URL="https://your-vercel-url.vercel.app/"
+$env:LAUNCHLENS_REPO_URL="https://github.com/wangsiyi7/launchlens"
+$env:LAUNCHLENS_TEAM_MEMBERS="wangsiyi7"
 node tools/build-project-payload.mjs
-git add project-payload.json
-git commit -m "Update final Project Wall payload"
-git push
-```
-
-## Step 2: Enable GitHub Pages
-
-In the GitHub repo:
-
-1. Open Settings.
-2. Open Pages.
-3. Set Source to GitHub Actions.
-4. Wait for `.github/workflows/pages.yml` to deploy.
-5. Open the deployed site and confirm LaunchLens loads.
-
-Expected URL:
-
-```text
-https://YOUR_ACCOUNT.github.io/launchlens/
-```
-
-## Step 3: Validate Payload
-
-Generate the readiness report:
-
-```powershell
-cd "C:\Users\35398\Desktop\UCWS 2026\launchlens"
+node tools/validate-submission.mjs
 node tools/final-readiness-report.mjs
 ```
 
-Then validate the Project Wall payload:
+Then update the visible markdown fields and push the final commit.
+
+## Manual Project Wall Submission
+
+1. Open the UCWS Project Wall form.
+2. Copy fields from `PROJECT_WALL_SUBMISSION.md`.
+3. Use `https://github.com/wangsiyi7/launchlens` as the repository URL.
+4. Use the Vercel production URL if available; otherwise use `https://wangsiyi7.github.io/launchlens/` as the public demo URL.
+5. Confirm the screenshots and logo load from the chosen demo domain.
+
+## Validation Commands
 
 ```powershell
 cd "C:\Users\35398\Desktop\UCWS 2026\launchlens"
+npm.cmd test
 node tools/validate-submission.mjs
 ```
 
-The validator must pass before automatic Project Wall submission. It blocks:
+Both commands should pass before any final copy-paste submission.
 
-- non-GitHub repo URLs
-- placeholder team member names
-- missing HTTPS screenshot/logo/demo links
-- malformed Project Wall array fields
+## Official Submission Notes
 
-## Step 4: Submit To Project Wall
-
-Manual path:
-
-- Open `PROJECT_WALL_FIELDS.md`.
-- Copy fields into the UCWS Project Wall submission form.
-- Use the GitHub repo URL as Repo URL.
-- Use the GitHub Pages, Netlify, or Vercel URL as Demo URL.
-
-Token-based path:
-
-```powershell
-cd "C:\Users\35398\Desktop\UCWS 2026\launchlens"
-$env:EPIC_TOKEN="your-epic-token"
-node tools/submit-project.mjs
-```
-
-One-command path, when both tokens are available:
-
-```powershell
-cd "C:\Users\35398\Desktop\UCWS 2026\launchlens"
-$env:GITHUB_TOKEN="your-github-token"
-$env:EPIC_TOKEN="your-epic-token"
-$env:LAUNCHLENS_TEAM_MEMBERS="Your Name"
-node tools/complete-submission.mjs launchlens
-```
-
-## Exact Project Wall Copy
-
-Project name:
-
-```text
-LaunchLens
-```
-
-Track:
-
-```text
-Application
-```
-
-Tagline:
-
-```text
-Turn rough hackathon ideas into scored, ready-to-submit Project Wall packages.
-```
-
-Tech stack:
-
-```text
-HTML, CSS, JavaScript, browser localStorage, 2.5D generated bitmap background, optional OpenAI-compatible chat completion endpoint
-```
-
-Description:
-
-```text
-LaunchLens is a browser-based submission copilot for hackathon teams, solo builders, community reviewers, and demo-day organizers. Builders often have real work but lose the last day converting product notes into clear submissions that voters, AI evaluators, and judges can understand quickly.
-
-LaunchLens runs a review agent over UCWS submission fields, scores readiness across community vote, AI evaluation, and expert judging, then generates Markdown, README, pitch, sprint plan, and fix-list outputs. It helps builders move from rough notes to a credible public submission in minutes.
-
-The current version includes Temple Mode, a 2.5D spatial submission workflow with six clickable nodes for project story, evidence, score, Oracle LLM, generated archive, and final GitHub / Project Wall handoff. Classic Mode remains available for fast form editing and stable export.
-
-The first use case is UCWS Singapore 2026, but the product is global: any hackathon, accelerator, or demo-day team can use the same workflow before submitting.
-```
-
-## Do Not Submit These As Final Values
-
-These are placeholders or failed temporary tunnel attempts:
-
-```text
-https://your-demo-url.example.com
-https://avi-investment-moderate-thats.trycloudflare.com
-https://nasty-bags-pull.loca.lt
-```
-
-The final Repo URL must be:
-
-```text
-https://github.com/YOUR_ACCOUNT/launchlens
-```
+- Event: UCWS Singapore Hackathon 2026.
+- Track: Application.
+- Judging lens: Community Vote, AI Evaluation, Expert Judges.
+- Current status: repository, public GitHub Pages demo, copy fields, payload, tests, and source package are ready.
+- Remaining external dependency: Vercel account authorization if a Vercel URL is required.
