@@ -17,6 +17,9 @@
 | Project payload generator | Done | `tools/build-project-payload.mjs` |
 | Authenticated submit script | Done | `tools/submit-project.mjs`, requires `EPIC_TOKEN` |
 | Safe local public-root server | Done | `tools/serve-public-root.mjs`, serves only `launchlens/` |
+| GitHub Pages workflow | Done | `.github/workflows/pages.yml` |
+| GitHub push helper | Done | `tools/push-github.mjs`, requires a target GitHub remote |
+| Official repo patch | Done | `../LaunchLens_official_repo_submission.patch` |
 | Public demo URL | Pending account/deploy step | Requires selected hosting account |
 | Public repo URL | Pending account/repo step | Requires GitHub or other repo host |
 | Actual Project Wall submission | Pending login | Epic Connector `/api/projects` requires authenticated token |
