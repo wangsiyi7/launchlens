@@ -14,6 +14,9 @@
 | Local tests | Done | `node tests/scoring.test.mjs` |
 | Local Git repo | Done | branch `main`, commit `418f289 Initial LaunchLens UCWS submission app` |
 | Submission zip | Done | `../LaunchLens_submission_pack.zip` |
+| Project payload generator | Done | `tools/build-project-payload.mjs` |
+| Authenticated submit script | Done | `tools/submit-project.mjs`, requires `EPIC_TOKEN` |
+| Safe local public-root server | Done | `tools/serve-public-root.mjs`, serves only `launchlens/` |
 | Public demo URL | Pending account/deploy step | Requires selected hosting account |
 | Public repo URL | Pending account/repo step | Requires GitHub or other repo host |
 | Actual Project Wall submission | Pending login | Epic Connector `/api/projects` requires authenticated token |

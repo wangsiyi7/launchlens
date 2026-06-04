@@ -46,3 +46,48 @@ Run tests:
 ```bash
 node tests/scoring.test.mjs
 ```
+
+## Build Project Wall payload
+
+After you have public demo and repo URLs:
+
+```bash
+set LAUNCHLENS_DEMO_URL=https://your-demo-url
+set LAUNCHLENS_REPO_URL=https://github.com/your-account/launchlens
+set LAUNCHLENS_TEAM_MEMBERS=Your Name
+node tools/build-project-payload.mjs
+```
+
+PowerShell equivalent:
+
+```powershell
+$env:LAUNCHLENS_DEMO_URL="https://your-demo-url"
+$env:LAUNCHLENS_REPO_URL="https://github.com/your-account/launchlens"
+$env:LAUNCHLENS_TEAM_MEMBERS="Your Name"
+node tools/build-project-payload.mjs
+```
+
+This writes `project-payload.json`.
+
+## Submit to Epic Connector with your own token
+
+The Project Wall API requires authentication. After logging in, provide your own token as `EPIC_TOKEN`:
+
+```powershell
+$env:EPIC_TOKEN="your-epic-token"
+node tools/submit-project.mjs
+```
+
+The script loads the official event ID from:
+
+```text
+https://evol.epicconnector.ai/api/events?slug=ucws-singapore-hackathon---2026-cxgy
+```
+
+Then it posts `project-payload.json` to:
+
+```text
+https://evol.epicconnector.ai/api/projects
+```
+
+Do not share your token publicly.

@@ -52,6 +52,19 @@ Add the submitting team members.
 
 `assets/logo.svg`
 
+### JSON payload helper
+
+After deployment, run:
+
+```powershell
+$env:LAUNCHLENS_DEMO_URL="https://your-demo-url"
+$env:LAUNCHLENS_REPO_URL="https://github.com/your-account/launchlens"
+$env:LAUNCHLENS_TEAM_MEMBERS="Your Name"
+node tools/build-project-payload.mjs
+```
+
+This generates `project-payload.json`, which can be submitted manually or through `tools/submit-project.mjs` with your own Epic Connector token.
+
 ### Demo Video Script
 
 1. Open LaunchLens.
