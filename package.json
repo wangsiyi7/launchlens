@@ -10,6 +10,7 @@
     "payload": "node tools/build-project-payload.mjs",
     "validate:submission": "node tools/validate-submission.mjs",
     "readiness": "node tools/final-readiness-report.mjs",
+    "deploy:vercel": "node tools/deploy-vercel.mjs",
     "create:github": "node tools/create-github-repo.mjs",
     "publish:github": "node tools/publish-github.mjs",
     "push:github": "node tools/push-github.mjs",

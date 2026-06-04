@@ -1,0 +1,8 @@
+.git
+.vercel
+.netlify
+dist
+node_modules
+launchlens-source.zip
+vercel-deploy-result.*
+*.log
