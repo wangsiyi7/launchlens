@@ -22,6 +22,14 @@ This file records external projects, sources, and methodology references that in
 - LaunchLens usage: product and interaction reference only. LaunchLens references the concepts of a graph-first HUD, physical/cognitive relationship layers, token-frugal `overview` / `neighborhood` graph APIs, narrated/inspectable workflows, and agent interoperability. LaunchLens does not copy RepoScape source code, assets, parser code, daemon code, prompts, or Skill files.
 - Product placement: Hackathon Hub graph, direct relation inspector, Project Manager, Codex Bridge, OpenAPI graph contract, Codex API example payload, changelog, and integration notes.
 
+## UCWS Hackathon Singapore 2026 Official Repository
+
+- Project: `UCWS-SINGAPORE-HACKATHON-2026`
+- Repository: https://github.com/EpicConnectorAI/UCWS-SINGAPORE-HACKATHON-2026
+- License: no open-source license stated in the official README
+- LaunchLens usage: official event archive and source reference only. LaunchLens links to the official repository and reads local project archive metadata through the sibling `ucws-project-aggregator` folder. LaunchLens does not copy private project code from other teams.
+- Product placement: UCWS Project Radar link strip, companion aggregator documentation, and README online access links.
+
 ## Attribution Rule For Future Updates
 
 When adding a third-party project:

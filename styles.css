@@ -741,6 +741,31 @@ body.view-switching .workspace {
   justify-content: flex-end;
 }
 
+.radar-link-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-top: 0.55rem;
+}
+
+.radar-link-strip a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 1.85rem;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 0 0.55rem;
+  background: rgba(245, 241, 232, 0.045);
+  color: var(--green);
+  font-size: 0.78rem;
+  font-weight: 750;
+  text-decoration: none;
+}
+
+.radar-link-strip a:hover {
+  text-decoration: underline;
+}
+
 .radar-stats {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));

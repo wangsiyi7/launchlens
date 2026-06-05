@@ -20,6 +20,7 @@ This folder keeps supporting materials out of the repository root while preservi
 - `HACKATHON_STRATEGY.md`: initial competition strategy
 - `PROJECT_WALL_RESEARCH.md`: event and Project Wall research notes
 - `UCWS_PROJECT_RADAR.md`: authenticated Project Wall sync, GitHub automation, and radar UI setup
+- `UCWS_COMPANION_AGGREGATOR.md`: sibling UCWS project aggregator, demo, norms, and Skill interop notes
 - `CODEX_DELIVERY_RETROSPECTIVE.md`: full Codex delivery replay and reusable Skill/plugin specification
 - `CODEX_API.md`: machine-readable workspace contract for Codex and tool integrations
 - `SUPABASE.md`: optional Supabase backend setup for shared LaunchLens workspaces
