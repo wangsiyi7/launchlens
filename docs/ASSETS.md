@@ -8,9 +8,10 @@
 
 | 文件 | 用途 |
 | --- | --- |
-| `index.html` | LaunchLens 主界面，包含中英切换、Temple Mode、Classic Mode、Project Wall 表单、评分输出、Optional LLM 面板 |
-| `styles.css` | 页面视觉样式、Temple 背景层、热点布局和响应式布局 |
-| `app.js` | 评分逻辑、材料生成、复制导出、本地保存、Temple 节点交互、大模型增强调用 |
+| `index.html` | LaunchLens 主界面，包含中英切换、Temple Mode、Hub Mode、Classic/Platform Console、Project Wall 表单、评分输出、Optional LLM 面板 |
+| `styles.css` | 页面视觉样式、Temple 背景层、Hub 星空 HUD、热点布局、平台控制台和响应式布局 |
+| `app.js` | 评分逻辑、材料生成、复制导出、本地保存、Temple 节点交互、Hub 星图渲染、Agent Studio、Supabase 同步、大模型增强调用 |
+| `platform-core.js` | 平台核心数据模型：流程步骤、教程、工具推荐、本地 Agent、想法图谱、Supabase 请求、Codex API 快照 |
 | `package.json` | 本地运行、测试、payload、GitHub 发布和提交脚本入口 |
 
 ## 视觉资产
@@ -20,6 +21,8 @@
 | `assets/logo.svg` | 项目 logo，可用于 Project Wall logo 字段 |
 | `assets/social-card.svg` | 社交分享图 / GitHub 预览图备用 |
 | `assets/temple-background.png` | 原创生成的 2.5D 古迹空间背景，用于 Temple Mode |
+| `assets/screenshot-hub.png` | 英文桌面版 Hub Mode 星空项目图谱截图 |
+| `assets/screenshot-platform.png` | 英文桌面版 Platform Console 截图 |
 | `assets/screenshot.png` | 英文桌面版 Temple Mode 项目截图 |
 | `assets/screenshot-zh.png` | 中文桌面版 Temple Mode 项目截图 |
 | `assets/screenshot-mobile.png` | 移动版 Temple Mode 项目截图 |
@@ -40,6 +43,11 @@
 | `HACKATHON_STRATEGY.md` | 参赛策略与定位 |
 | `PROJECT_WALL_RESEARCH.md` | 官方 Project Wall/API 研究记录 |
 | `SOURCE.md` | 临时公开源码说明页 |
+| `CODEX_API.md` | 面向 Codex 和工具集成的结构化工作区 API 说明 |
+| `SUPABASE.md` | 可选 Supabase 后端设置说明 |
+| `../api/openapi.json` | LaunchLens Workspace API OpenAPI 合约 |
+| `../api/examples/codex-workspace-snapshot.json` | Codex 工作区快照示例 |
+| `../supabase/schema.sql` | Supabase workspace table 与 demo RLS policy |
 
 ## 自动化脚本
 
@@ -81,4 +89,4 @@ LaunchLens App 已保留 Optional LLM 能力：
 
 ## English Summary
 
-This repository includes the bilingual LaunchLens app, implemented Temple Mode and Classic Mode, visual assets, Project Wall copy, judging brief, demo video script, final submission checklist, final readiness report, the Temple Mode interaction spec, deployment configs, validation scripts, GitHub publishing scripts, and an optional OpenAI-compatible LLM enhancement slot. The final GitHub README is bilingual and ready for the hackathon repository home page.
+This repository includes the bilingual LaunchLens app, Temple Mode, Hub Mode, Platform Console, visual assets, Project Wall copy, judging brief, demo video script, final submission checklist, final readiness report, interaction specs, Codex API contract, optional Supabase backend schema, deployment configs, validation scripts, GitHub publishing scripts, and an optional OpenAI-compatible LLM enhancement slot. The final GitHub README is bilingual and ready for the hackathon repository home page.
