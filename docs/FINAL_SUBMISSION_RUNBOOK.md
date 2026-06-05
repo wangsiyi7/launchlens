@@ -41,7 +41,7 @@ After the script prints the production URL:
 ```powershell
 $env:LAUNCHLENS_DEMO_URL="https://your-vercel-url.vercel.app/"
 $env:LAUNCHLENS_REPO_URL="https://github.com/wangsiyi7/launchlens"
-$env:LAUNCHLENS_TEAM_MEMBERS="wangsiyi7"
+$env:LAUNCHLENS_TEAM_MEMBERS_JSON='[{"name":"Annie","role":"Team Captain","links":{"github":"https://github.com/Anniefsh/"}},{"name":"Yiang","role":"Technical Development","links":{"github":"https://github.com/3231656738-creator"}},{"name":"Hu Yinghui","role":"Product Manager","links":{"github":"https://github.com/hu-xiao-yu"}}]'
 node tools/build-project-payload.mjs
 node tools/validate-submission.mjs
 node tools/final-readiness-report.mjs

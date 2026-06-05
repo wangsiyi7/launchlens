@@ -81,10 +81,24 @@ Not provided.
 ```json
 [
   {
-    "name": "wangsiyi7",
-    "role": "Builder",
+    "name": "Annie",
+    "role": "Team Captain",
     "links": {
-      "github": "https://github.com/wangsiyi7"
+      "github": "https://github.com/Anniefsh/"
+    }
+  },
+  {
+    "name": "Yiang",
+    "role": "Technical Development",
+    "links": {
+      "github": "https://github.com/3231656738-creator"
+    }
+  },
+  {
+    "name": "Hu Yinghui",
+    "role": "Product Manager",
+    "links": {
+      "github": "https://github.com/hu-xiao-yu"
     }
   }
 ]

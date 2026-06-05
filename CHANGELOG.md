@@ -2,6 +2,21 @@
 
 All notable LaunchLens updates should be recorded here before pushing to GitHub and refreshing the public demo.
 
+## 2026-06-05 - Huiyoung Logo And Team Submission Update
+
+### Updated
+
+- Rebuilt `assets/logo.svg` as a lizard-green 汇young team emblem with Annie, Yiang, and Hu Yinghui identity marks.
+- Updated English, Chinese, and root Project Wall submission files with the final team roles and GitHub links.
+- Updated the Project Wall payload generator to emit structured team member JSON for Annie, Yiang, and Hu Yinghui.
+- Refreshed deployment and final-submission runbooks to use `LAUNCHLENS_TEAM_MEMBERS_JSON`.
+- Regenerated `project-payload.json` and `docs/FINAL_READINESS_REPORT.md`.
+
+### Verified
+
+- Submission payload validation passed.
+- Node.js test suite passed.
+
 ## 2026-06-05 - UCWS Companion Aggregator Links
 
 ### Added

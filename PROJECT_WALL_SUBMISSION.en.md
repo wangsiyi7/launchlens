@@ -15,7 +15,7 @@ Use this file as the copy source for UCWS Singapore Hackathon 2026 on Epic Conne
 | Logo URL | https://wangsiyi7.github.io/launchlens/assets/logo.svg |
 | Demo File URL | Not required. The official event API currently reports demoUploadEnabled=false, and the live browser app is the demo artifact. |
 | LinkedIn URL | Not provided |
-| Team Member | wangsiyi7 - Builder - https://github.com/wangsiyi7 |
+| Team Members | Annie - Team Captain - https://github.com/Anniefsh/; Yiang - Technical Development - https://github.com/3231656738-creator; Hu Yinghui - Product Manager - https://github.com/hu-xiao-yu |
 
 ## 2. Screenshot URLs
 
@@ -117,10 +117,24 @@ node tools\validate-submission.mjs
   "logoUrl": "https://wangsiyi7.github.io/launchlens/assets/logo.svg",
   "teamMembers": [
     {
-      "name": "wangsiyi7",
-      "role": "Builder",
+      "name": "Annie",
+      "role": "Team Captain",
       "links": {
-        "github": "https://github.com/wangsiyi7"
+        "github": "https://github.com/Anniefsh/"
+      }
+    },
+    {
+      "name": "Yiang",
+      "role": "Technical Development",
+      "links": {
+        "github": "https://github.com/3231656738-creator"
+      }
+    },
+    {
+      "name": "Hu Yinghui",
+      "role": "Product Manager",
+      "links": {
+        "github": "https://github.com/hu-xiao-yu"
       }
     }
   ]

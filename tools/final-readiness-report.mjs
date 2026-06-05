@@ -59,6 +59,9 @@ async function checkLocalDemo() {
 const validation = runValidation();
 const localDemo = await checkLocalDemo();
 const payload = JSON.parse(readFileSync("project-payload.json", "utf8").replace(/^\uFEFF/, ""));
+const ucwsSnapshot = existsSync("data/ucws-project-wall.json")
+  ? JSON.parse(readFileSync("data/ucws-project-wall.json", "utf8").replace(/^\uFEFF/, ""))
+  : null;
 const gitStatus = run("git", ["status", "--short", "-uall"]);
 const remotes = run("git", ["remote", "-v"]);
 const relevantGitStatus = gitStatus
@@ -85,18 +88,30 @@ const requiredFiles = [
   "docs/SPACE_INTERACTION_SPEC.md",
   "docs/ATTRIBUTION.md",
   "docs/RE_FORGE_INTEGRATION.md",
+  "docs/REPOSCAPE_HUB_INTEGRATION.md",
+  "docs/UCWS_PROJECT_RADAR.md",
+  "docs/UCWS_COMPANION_AGGREGATOR.md",
   "docs/ASSETS.md",
+  "api/openapi.json",
+  "api/examples/codex-workspace-snapshot.json",
+  "supabase/schema.sql",
+  "data/ucws-project-wall.json",
+  "data/ucws-project-wall.md",
   "assets/logo.svg",
   "assets/temple-background.png",
   "assets/screenshot.png",
   "assets/screenshot-zh.png",
   "assets/screenshot-mobile.png",
   "tests/scoring.test.mjs",
+  "tests/platform-core.test.mjs",
+  "tests/ucws-sync.test.mjs",
   "tools/build-project-payload.mjs",
   "tools/validate-submission.mjs",
+  "tools/sync-ucws-project-wall.mjs",
   "tools/publish-github.mjs",
   "tools/submit-project.mjs",
   ".github/workflows/pages.yml",
+  ".github/workflows/ucws-project-wall-sync.yml",
 ];
 
 const requiredFilesOk = requiredFiles.every((path) => sourceExists(path));
@@ -114,6 +129,37 @@ const reForgeReady =
   readFileSync("app.js", "utf8").includes("externalReferences") &&
   payload.description.includes("re-forge") &&
   payload.techStack.includes("re-forge");
+
+const repoScapeReady =
+  sourceExists("docs/REPOSCAPE_HUB_INTEGRATION.md") &&
+  readFileSync("platform-core.js", "utf8").includes("RepoScape") &&
+  readFileSync("app.js", "utf8").includes("agent-codex-bridge") &&
+  readFileSync("app.js", "utf8").includes("hubNodePositions") &&
+  readFileSync("api/openapi.json", "utf8").includes("/api/graph/neighborhood") &&
+  payload.description.includes("RepoScape") &&
+  payload.techStack.includes("RepoScape");
+
+const codexBridgeReady =
+  readFileSync("app.js", "utf8").includes("buildAgentBridgePayload") &&
+  readFileSync("platform-core.js", "utf8").includes("buildAgentInterop") &&
+  readFileSync("api/examples/codex-workspace-snapshot.json", "utf8").includes("ClaudeCodex") &&
+  readFileSync("docs/CODEX_API.md", "utf8").includes("selectedNeighborhood");
+
+const projectManagerReady =
+  readFileSync("index.html", "utf8").includes("workspaceList") &&
+  readFileSync("app.js", "utf8").includes("createWorkspaceSnapshot") &&
+  readFileSync("app.js", "utf8").includes("WORKSPACE_LIBRARY_KEY");
+
+const ucwsSyncReady =
+  sourceExists("tools/sync-ucws-project-wall.mjs") &&
+  sourceExists(".github/workflows/ucws-project-wall-sync.yml") &&
+  Boolean(ucwsSnapshot?.event?.id) &&
+  ucwsSnapshot?.errors?.some((error) => error.code === "TOKEN_MISSING");
+
+const companionReady =
+  sourceExists("docs/UCWS_COMPANION_AGGREGATOR.md") &&
+  readFileSync("README.md", "utf8").includes("ucws-project-aggregator") &&
+  readFileSync("index.html", "utf8").includes("radar-link-strip");
 
 const teamMembersReady = (() => {
   try {
@@ -135,6 +181,11 @@ const envChecks = [
 const checks = [
   ["Local source files", requiredFilesOk, requiredFilesOk ? "All required app, docs, scripts, and workflow files exist." : "Some required files are missing."],
   ["Re-forge integration", reForgeReady, reForgeReady ? "Re-Forge Gate Agent, external references, attribution, changelog, and Project Wall payload are present." : "Re-forge integration evidence is incomplete."],
+  ["RepoScape-inspired Hub", repoScapeReady, repoScapeReady ? "Draggable Hub graph, persisted node positions, graph API contract, attribution, and payload references are present." : "RepoScape-inspired Hub evidence is incomplete."],
+  ["Project Manager", projectManagerReady, projectManagerReady ? "Workspace snapshot save/load/copy UI and local persistence key are present." : "Project Manager evidence is incomplete."],
+  ["Codex and ClaudeCodex Bridge", codexBridgeReady, codexBridgeReady ? "Agent bridge payload, graph overview/neighborhood helpers, example JSON, and Codex API docs are present." : "Codex bridge evidence is incomplete."],
+  ["UCWS Project Wall sync", ucwsSyncReady, ucwsSyncReady ? `Event snapshot exists; authenticated project list still requires EPIC_TOKEN. Current public participants=${ucwsSnapshot?.event?.currentParticipants || "unknown"}.` : "UCWS sync tooling or public event snapshot is incomplete."],
+  ["Companion aggregator links", companionReady, companionReady ? "README, docs, and Project Radar link strip point to the sibling aggregator and official UCWS archive." : "Companion aggregator evidence is incomplete."],
   ["Temple Mode assets", screenshotOk, `Background=${fileSize("assets/temple-background.png")} bytes; EN screenshot=${fileSize("assets/screenshot.png")} bytes; ZH screenshot=${fileSize("assets/screenshot-zh.png")} bytes; mobile screenshot=${fileSize("assets/screenshot-mobile.png")} bytes.`],
   ["Git state", !relevantGitStatus, relevantGitStatus ? `Working tree has changes:\n${relevantGitStatus}` : "Clean working tree."],
   ["Git remote", Boolean(remotes), remotes || "No GitHub remote configured yet."],
@@ -151,9 +202,9 @@ Generated by \`node tools/final-readiness-report.mjs\`.
 
 ## Summary / 摘要
 
-LaunchLens is ready as a GitHub repository, public GitHub Pages demo, source package, and Project Wall payload. It now includes a documented re-forge-inspired adversarial gate, attribution record, changelog, and Codex API external-reference metadata. Vercel deployment is configured and only needs Vercel account authorization. The remaining official action is to paste the prepared fields into Epic Connector Project Wall, or provide an Epic Connector token for scripted submission.
+LaunchLens is ready as a GitHub repository, public GitHub Pages demo, source package, and Project Wall payload. It now includes a RepoScape-inspired draggable Hub, Project Manager, Codex/ClaudeCodex Bridge, documented re-forge-inspired adversarial gate, attribution records, changelog, UCWS Project Radar sync tooling, and Codex graph API metadata. Vercel deployment is configured and only needs Vercel account authorization. The remaining official action is to paste the prepared fields into Epic Connector Project Wall, or provide an Epic Connector token for scripted submission and full authenticated Project Wall ingestion.
 
-LaunchLens 的 GitHub 仓库、GitHub Pages 公开 Demo、源码包和 Project Wall payload 已经就绪。项目现在包含受 re-forge 启发的对抗校验门、归因记录、更新日志和 Codex API 外部引用元数据。Vercel 部署配置已经完成，只差 Vercel 账号授权。剩余官方动作是把准备好的字段复制到 Epic Connector Project Wall，或提供 Epic Connector token 进行脚本提交。
+LaunchLens 的 GitHub 仓库、GitHub Pages 公开 Demo、源码包和 Project Wall payload 已经就绪。项目现在包含 RepoScape 风格可拖拽 Hub、Project Manager、Codex/ClaudeCodex Bridge、受 re-forge 启发的对抗校验门、归因记录、更新日志、UCWS Project Radar 同步工具和 Codex 图谱 API 元数据。Vercel 部署配置已经完成，只差 Vercel 账号授权。剩余官方动作是把准备好的字段复制到 Epic Connector Project Wall，或提供 Epic Connector token 进行脚本提交和完整项目墙抓取。
 
 ## Current Payload / 当前 Payload
 
@@ -186,6 +237,7 @@ ${envChecks.map(([name, present]) => `| ${escapeCell(name)} | ${present ? "Ready
 3. Run \`node tools/validate-submission.mjs\` again after any URL change.
 4. Optional: deploy to Vercel with \`VERCEL_TOKEN\` and \`node tools/deploy-vercel.mjs\`, then replace the demo URL.
 5. Optional: submit with \`node tools/submit-project.mjs\` if \`EPIC_TOKEN\` is available.
+6. Optional: refresh authenticated Project Wall inspiration data with \`npm.cmd run sync:ucws\` after \`EPIC_TOKEN\` is set.
 
 ## Validation Output / 校验输出
 

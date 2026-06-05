@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "generatedAt": "2026-06-05T12:09:08.045Z",
+  "generatedAt": "2026-06-05T13:03:17.709Z",
   "source": {
     "baseUrl": "https://evol.epicconnector.ai",
     "eventSlug": "ucws-singapore-hackathon---2026-cxgy",
@@ -25,6 +25,12 @@
     "title": "UCWS Singapore Hackathon -- 2026",
     "eventType": "hackathon",
     "status": "active",
+    "currentParticipants": 565,
+    "startDate": "2026-04-25T09:00:00.000Z",
+    "endDate": "2026-06-13T15:59:00.000Z",
+    "timezone": "Asia/Singapore",
+    "applicationsOpen": true,
+    "autoGrantSubmitProject": true,
     "tracks": [
       {
         "name": "Agent",

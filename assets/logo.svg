@@ -1,9 +1,56 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
-  <title id="title">LaunchLens logo</title>
-  <desc id="desc">A lens mark with a launch arrow for the LaunchLens UCWS project.</desc>
-  <rect width="512" height="512" rx="80" fill="#111312"/>
-  <circle cx="232" cy="222" r="116" fill="none" stroke="#63d6a4" stroke-width="34"/>
-  <path d="M315 306l84 84" stroke="#f0b85a" stroke-width="38" stroke-linecap="round"/>
-  <path d="M200 252l112-112m0 0v82m0-82h-82" fill="none" stroke="#5c8dff" stroke-width="28" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M130 378h186" stroke="#f5f1e8" stroke-opacity=".32" stroke-width="20" stroke-linecap="round"/>
+  <title id="title">汇young LaunchLens team logo</title>
+  <desc id="desc">A lizard-green emblem for team 汇young, carrying Annie, Yiang, and Hu Yinghui.</desc>
+  <defs>
+    <radialGradient id="lizardGlow" cx="48%" cy="38%" r="72%">
+      <stop offset="0%" stop-color="#7af0b5"/>
+      <stop offset="46%" stop-color="#236a4f"/>
+      <stop offset="100%" stop-color="#0d1713"/>
+    </radialGradient>
+    <linearGradient id="lensLine" x1="104" y1="126" x2="398" y2="390" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#b6f3ff"/>
+      <stop offset="48%" stop-color="#63d6a4"/>
+      <stop offset="100%" stop-color="#f0b85a"/>
+    </linearGradient>
+    <filter id="softGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="7" result="blur"/>
+      <feColorMatrix in="blur" type="matrix" values="0 0 0 0 0.38 0 0 0 0 0.84 0 0 0 0 0.64 0 0 0 .75 0"/>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <rect width="512" height="512" rx="82" fill="#0d1713"/>
+  <rect x="18" y="18" width="476" height="476" rx="70" fill="url(#lizardGlow)" opacity=".92"/>
+
+  <path
+    d="M71 314c44-34 90-47 137-40 35 5 63 19 94 5 28-13 47-45 88-49 22-2 42 5 58 19-25 3-43 13-57 30-21 25-42 46-81 47-33 1-59-13-91-16-48-5-96 8-148 48 14-18 14-28 0-44z"
+    fill="#06100d"
+    opacity=".46"
+  />
+  <path
+    d="M95 260c36-45 86-67 147-68 62-1 105 29 142 27 20-1 37-9 53-24-6 33-28 58-68 75-44 18-86 10-127 1-50-11-98-11-147 29 7-13 7-26 0-40z"
+    fill="#8df7be"
+    opacity=".2"
+  />
+  <path d="M387 207c22-26 45-40 70-43-13 20-26 37-40 51" fill="none" stroke="#b6f3ff" stroke-opacity=".42" stroke-width="12" stroke-linecap="round"/>
+  <circle cx="393" cy="217" r="6" fill="#f5f1e8"/>
+
+  <circle cx="238" cy="226" r="112" fill="rgba(13,23,19,.52)" stroke="url(#lensLine)" stroke-width="24" filter="url(#softGlow)"/>
+  <path d="M318 306l74 74" stroke="#f0b85a" stroke-width="30" stroke-linecap="round"/>
+  <path d="M195 242l94-94m0 0v69m0-69h-69" fill="none" stroke="#b6f3ff" stroke-width="22" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <text x="256" y="252" text-anchor="middle" fill="#f5f1e8" font-family="'Segoe UI', 'Microsoft YaHei', Arial, sans-serif" font-size="54" font-weight="800" letter-spacing="0">汇young</text>
+  <text x="256" y="287" text-anchor="middle" fill="#b6f3ff" font-family="'Segoe UI', Arial, sans-serif" font-size="18" font-weight="700">gathering builders</text>
+
+  <g font-family="'Segoe UI', 'Microsoft YaHei', Arial, sans-serif" font-size="19" font-weight="800">
+    <rect x="68" y="404" width="112" height="38" rx="19" fill="#0d1713" fill-opacity=".76" stroke="#63d6a4" stroke-opacity=".7"/>
+    <text x="124" y="429" text-anchor="middle" fill="#63d6a4">a【Annie】</text>
+    <rect x="196" y="404" width="120" height="38" rx="19" fill="#0d1713" fill-opacity=".76" stroke="#b6f3ff" stroke-opacity=".7"/>
+    <text x="256" y="429" text-anchor="middle" fill="#b6f3ff">y【Yiang】</text>
+    <rect x="332" y="404" width="124" height="38" rx="19" fill="#0d1713" fill-opacity=".76" stroke="#f0b85a" stroke-opacity=".75"/>
+    <text x="394" y="429" text-anchor="middle" fill="#f0b85a">h【胡英辉】</text>
+  </g>
 </svg>

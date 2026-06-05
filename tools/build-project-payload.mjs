@@ -5,8 +5,32 @@ const repoUrl = process.env.LAUNCHLENS_REPO_URL || "https://github.com/wangsiyi7
 const screenshotUrl =
   process.env.LAUNCHLENS_SCREENSHOT_URL || `${demoUrl.replace(/\/$/, "")}/assets/screenshot.png`;
 const logoUrl = process.env.LAUNCHLENS_LOGO_URL || `${demoUrl.replace(/\/$/, "")}/assets/logo.svg`;
-const teamMembers = process.env.LAUNCHLENS_TEAM_MEMBERS || "wangsiyi7";
-const teamGithub = process.env.LAUNCHLENS_TEAM_GITHUB || "https://github.com/wangsiyi7";
+const defaultTeamMembers = [
+  {
+    name: "Annie",
+    role: "Team Captain",
+    links: {
+      github: "https://github.com/Anniefsh/",
+    },
+  },
+  {
+    name: "Yiang",
+    role: "Technical Development",
+    links: {
+      github: "https://github.com/3231656738-creator",
+    },
+  },
+  {
+    name: "Hu Yinghui",
+    role: "Product Manager",
+    links: {
+      github: "https://github.com/hu-xiao-yu",
+    },
+  },
+];
+const teamMembers = process.env.LAUNCHLENS_TEAM_MEMBERS_JSON
+  ? JSON.parse(process.env.LAUNCHLENS_TEAM_MEMBERS_JSON)
+  : defaultTeamMembers;
 
 const payload = {
   name: "LaunchLens",
@@ -26,15 +50,7 @@ const payload = {
   logoUrl,
   demoFileUrl: null,
   linkedinUrl: null,
-  teamMembers: JSON.stringify([
-    {
-      name: teamMembers,
-      role: "Builder",
-      links: {
-        github: teamGithub,
-      },
-    },
-  ]),
+  teamMembers: JSON.stringify(teamMembers),
 };
 
 await writeFile("project-payload.json", JSON.stringify(payload, null, 2));

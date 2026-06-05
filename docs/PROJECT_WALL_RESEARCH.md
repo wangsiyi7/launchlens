@@ -12,7 +12,7 @@
 
 The Project Wall frontend loads the event metadata publicly, but the project list endpoint returns HTTP 401 without a logged-in Epic Connector token. The static page and frontend chunks confirm that project list data is fetched from `/api/projects`, but complete anonymous export is blocked.
 
-Latest re-check on June 5, 2026 (Asia/Shanghai): event metadata is still public, project submission and editing are still enabled, current participants are 562, and the anonymous Project API still returns HTTP 401 for:
+Latest re-check on June 5, 2026 (Asia/Shanghai): event metadata is still public, project submission and editing are still enabled, current participants are 565, and the anonymous Project API still returns HTTP 401 for:
 
 ```text
 https://evol.epicconnector.ai/api/projects?eventId=364d3219-5907-48b6-a34d-e95f90b10579&sort=popular&limit=20&offset=0
@@ -29,7 +29,7 @@ Additional live re-check on June 5, 2026 (Asia/Shanghai):
   - `PUT /api/projects` for project updates, with the token included in the request body.
 - Public web search did not expose a reliable index of the submitted UCWS Project Wall entries.
 
-Conclusion: the official Project Wall is publicly visible as a shell, but the complete project list and submission actions require an authenticated Epic Connector session. LaunchLens can therefore be completed as a repository, demo, and copy-ready Project Wall package, while official publication still requires manual login or `EPIC_TOKEN`.
+Conclusion: the official Project Wall is publicly visible as a shell, but the complete project list and submission actions require an authenticated Epic Connector session. LaunchLens can therefore be completed as a repository, demo, and copy-ready Project Wall package, while official publication and full authenticated project-wall ingestion still require manual login or `EPIC_TOKEN`.
 
 Event ID discovered:
 
@@ -42,7 +42,7 @@ Event ID discovered:
 - Title: UCWS Singapore Hackathon -- 2026
 - Format: hybrid
 - Location: Singapore
-- Participants: 562 current participants reported by the API on June 5, 2026
+- Participants: 565 current participants reported by the API on June 5, 2026
 - Tracks: Agent, Skill, Application, DeepResearch
 - Submission enabled: true
 - Project edit enabled: true
@@ -59,6 +59,7 @@ LaunchLens targets that gap:
 - It mirrors the event's evaluation dimensions.
 - It creates outputs that improve community clarity, AI-evaluable repo quality, and judge-facing product narrative.
 - It is a complete browser app, so the demo is simple to deploy and test.
+- The later Hub upgrade turns this into a long-running project graph with Project Manager snapshots and Codex/ClaudeCodex bridge context, so future development sessions can inspect why decisions exist instead of only reading static Markdown.
 
 ## Submission strategy
 

@@ -16,7 +16,7 @@
 | Logo URL | https://wangsiyi7.github.io/launchlens/assets/logo.svg |
 | Demo File URL | 不需要。当前 UCWS 官方事件接口显示 demoUploadEnabled=false，在线浏览器应用本身就是演示资产。 |
 | LinkedIn URL | 未提供 |
-| Team Member | wangsiyi7 - Builder - https://github.com/wangsiyi7 |
+| Team Members | Annie - 队长 - https://github.com/Anniefsh/；Yiang - 技术开发 - https://github.com/3231656738-creator；胡英辉 - 产品经理 - https://github.com/hu-xiao-yu |
 
 ## 2. Screenshot URLs
 
@@ -130,10 +130,24 @@ node tools\validate-submission.mjs
   "logoUrl": "https://wangsiyi7.github.io/launchlens/assets/logo.svg",
   "teamMembers": [
     {
-      "name": "wangsiyi7",
-      "role": "Builder",
+      "name": "Annie",
+      "role": "Team Captain",
       "links": {
-        "github": "https://github.com/wangsiyi7"
+        "github": "https://github.com/Anniefsh/"
+      }
+    },
+    {
+      "name": "Yiang",
+      "role": "Technical Development",
+      "links": {
+        "github": "https://github.com/3231656738-creator"
+      }
+    },
+    {
+      "name": "Hu Yinghui",
+      "role": "Product Manager",
+      "links": {
+        "github": "https://github.com/hu-xiao-yu"
       }
     }
   ]

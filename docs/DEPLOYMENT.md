@@ -74,7 +74,7 @@ After you have public demo and repo URLs:
 ```bash
 set LAUNCHLENS_DEMO_URL=https://your-demo-url
 set LAUNCHLENS_REPO_URL=https://github.com/your-account/launchlens
-set LAUNCHLENS_TEAM_MEMBERS=Your Name
+set LAUNCHLENS_TEAM_MEMBERS_JSON=[{"name":"Annie","role":"Team Captain","links":{"github":"https://github.com/Anniefsh/"}},{"name":"Yiang","role":"Technical Development","links":{"github":"https://github.com/3231656738-creator"}},{"name":"Hu Yinghui","role":"Product Manager","links":{"github":"https://github.com/hu-xiao-yu"}}]
 node tools/build-project-payload.mjs
 ```
 
@@ -83,7 +83,7 @@ PowerShell equivalent:
 ```powershell
 $env:LAUNCHLENS_DEMO_URL="https://your-vercel-url.vercel.app/"
 $env:LAUNCHLENS_REPO_URL="https://github.com/wangsiyi7/launchlens"
-$env:LAUNCHLENS_TEAM_MEMBERS="wangsiyi7"
+$env:LAUNCHLENS_TEAM_MEMBERS_JSON='[{"name":"Annie","role":"Team Captain","links":{"github":"https://github.com/Anniefsh/"}},{"name":"Yiang","role":"Technical Development","links":{"github":"https://github.com/3231656738-creator"}},{"name":"Hu Yinghui","role":"Product Manager","links":{"github":"https://github.com/hu-xiao-yu"}}]'
 node tools/build-project-payload.mjs
 ```
 
@@ -111,7 +111,7 @@ If both tokens are available, you can publish to GitHub, validate the payload, a
 ```powershell
 $env:GITHUB_TOKEN="your-github-token"
 $env:EPIC_TOKEN="your-epic-token"
-$env:LAUNCHLENS_TEAM_MEMBERS="Your Name"
+$env:LAUNCHLENS_TEAM_MEMBERS_JSON='[{"name":"Annie","role":"Team Captain","links":{"github":"https://github.com/Anniefsh/"}},{"name":"Yiang","role":"Technical Development","links":{"github":"https://github.com/3231656738-creator"}},{"name":"Hu Yinghui","role":"Product Manager","links":{"github":"https://github.com/hu-xiao-yu"}}]'
 node tools/complete-submission.mjs launchlens
 ```
 
