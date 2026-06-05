@@ -2,6 +2,19 @@
 
 All notable LaunchLens updates should be recorded here before pushing to GitHub and refreshing the public demo.
 
+## 2026-06-05 - Letter-Integrated Lizard Logo Revision
+
+### Updated
+
+- Replaced the previous name-label logo treatment with a cleaner lizard-toned SVG emblem.
+- Integrated Annie, Yiang, and Hu Yinghui through A/Y/H node marks instead of full pasted labels.
+- Added lizard-skin scale texture, sampled jade/sandstone tones, and a quieter LaunchLens lens mark.
+
+### Verified
+
+- Rendered the SVG locally through headless Chrome for visual inspection.
+- Submission payload validation passed.
+
 ## 2026-06-05 - Huiyoung Logo And Team Submission Update
 
 ### Updated
