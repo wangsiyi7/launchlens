@@ -1,6 +1,6 @@
 # Completion Audit
 
-Generated from the final Codex audit on 2026-06-05 and refreshed after the Hackathon Hub platform upgrade.
+Generated from the final Codex audit on 2026-06-05 and refreshed after the Hackathon Hub and re-forge protocol integration upgrades.
 
 ## Objective
 
@@ -13,9 +13,11 @@ Build a fast, submit-ready UCWS Singapore Hackathon 2026 project by studying the
 | Working app exists | `index.html`, `app.js`, `styles.css`, assets, tests, and tools are present in the repository. |
 | Hackathon Hub is implemented | `/?mode=hub` exposes a Canvas star-map view with idea input, node inspection, filters, and Codex API copy action. |
 | Platform Console is implemented | `/?mode=classic` exposes process guidance, Agent Studio, demo tutorial, idea archive, tool recommendations, Supabase sync, Evidence Gate, and export tools. |
-| Local agents exist | `platform-core.js` defines strategy, evidence, build, demo, tool-scout, and risk agents; `tests/platform-core.test.mjs` validates structured agent output. |
+| Local agents exist | `platform-core.js` defines strategy, evidence, build, demo, tool-scout, risk, and Re-Forge Gate agents; `tests/platform-core.test.mjs` validates structured agent output. |
+| Re-forge protocol reference is integrated | `platform-core.js` exposes an Adversarial Gate process step, `Re-Forge Gate Agent`, linked `re-forge` tool recommendation, and `externalReferences`; `docs/ATTRIBUTION.md` and `docs/RE_FORGE_INTEGRATION.md` record source and license usage. |
+| Changelog discipline exists | `CHANGELOG.md` records the re-forge integration, bilingual submission files, and Hackathon Hub upgrade so future releases can stay traceable. |
 | Idea relationship archive exists | `platform-core.js` creates idea records, parent links, related links, and graph edges; `tests/platform-core.test.mjs` validates the graph. |
-| Codex API contract exists | `api/openapi.json` and `api/examples/codex-workspace-snapshot.json` are committed and public. |
+| Codex API contract exists | `api/openapi.json` and `api/examples/codex-workspace-snapshot.json` are committed and public, including external-reference metadata for re-forge. |
 | Optional Supabase backend exists | `supabase/schema.sql` and `docs/SUPABASE.md` are committed; Supabase REST request construction is tested. |
 | Public demo works | `https://wangsiyi7.github.io/launchlens/?mode=hub` returned HTTP 200. |
 | GitHub repository works | `https://github.com/wangsiyi7/launchlens` returned HTTP 200. |
@@ -24,7 +26,7 @@ Build a fast, submit-ready UCWS Singapore Hackathon 2026 project by studying the
 | Payload validates | `node tools/validate-submission.mjs` passed. |
 | Tests pass | `npm.cmd test` passed. |
 | Public screenshot assets work | `assets/screenshot-hub.png`, `assets/screenshot-platform.png`, and `assets/screenshot.png` returned HTTP 200 from GitHub Pages. |
-| GitHub Pages source is current | `origin/main` and `origin/gh-pages` both point to `048af17 Refresh final readiness report`. |
+| GitHub Pages source is current | `origin/main` and `origin/gh-pages` are synchronized from the latest local release branch after the re-forge integration. |
 | Skill/plugin retrospective is preserved | `docs/CODEX_DELIVERY_RETROSPECTIVE.md` and `plugins/hackathon-project-delivery/` are committed and public. |
 | Codex skill draft validates | Official `quick_validate.py` reported `Skill is valid!`. |
 | Codex plugin draft validates | Official `validate_plugin.py` reported `Plugin validation passed`. |
