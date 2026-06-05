@@ -19,10 +19,12 @@ This folder keeps supporting materials out of the repository root while preservi
 - `DEMO_VIDEO_SCRIPT.md`: 60-90 second demo script
 - `HACKATHON_STRATEGY.md`: initial competition strategy
 - `PROJECT_WALL_RESEARCH.md`: event and Project Wall research notes
+- `UCWS_PROJECT_RADAR.md`: authenticated Project Wall sync, GitHub automation, and radar UI setup
 - `CODEX_DELIVERY_RETROSPECTIVE.md`: full Codex delivery replay and reusable Skill/plugin specification
 - `CODEX_API.md`: machine-readable workspace contract for Codex and tool integrations
 - `SUPABASE.md`: optional Supabase backend setup for shared LaunchLens workspaces
 - `RE_FORGE_INTEGRATION.md`: re-forge methodology integration notes
+- `REPOSCAPE_HUB_INTEGRATION.md`: RepoScape-inspired Hub graph and agent-interoperability notes
 - `ATTRIBUTION.md`: external project links and license attribution
 
 ## Codex Skill And Plugin

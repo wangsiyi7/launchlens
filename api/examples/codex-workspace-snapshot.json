@@ -11,14 +11,75 @@
     "Read project, analysis, ideas, agentRuns, and generated materials before modifying the app.",
     "Use idea graph edges to understand why a feature exists before refactoring.",
     "Write new implementation notes back as ideas or agentRuns.",
-    "Apply the re-forge-inspired gate before major upgrades: challenge assumptions, verify evidence, then update the changelog."
+    "Apply the re-forge-inspired gate before major upgrades: challenge assumptions, verify evidence, then update the changelog.",
+    "Use graphOverview and selectedNeighborhood before broad edits, following the RepoScape-style topology-first workflow."
   ],
+  "graph": {
+    "nodes": [
+      { "id": "project", "type": "project", "title": "LaunchLens", "body": "Turn hackathon ideas into scored, linked, and ready-to-submit project workspaces.", "x": 0, "y": 0 },
+      { "id": "idea-platform-hub", "type": "idea", "title": "Hackathon collaboration hub", "body": "Unify submission assets, agent recommendations, tool choices, and project thinking in one visual workspace.", "x": -300, "y": 10 },
+      { "id": "idea-codex-api", "type": "idea", "title": "Codex API snapshot", "body": "Expose structured JSON so Codex and other tools can read project context.", "x": -230, "y": 58 },
+      { "id": "agent-codex-bridge", "type": "agent", "title": "Codex Bridge", "body": "Exports the current star map, project fields, agent output, and Supabase contract to Codex.", "x": 285, "y": -85 }
+    ],
+    "edges": [
+      { "from": "project", "to": "idea-platform-hub", "type": "cognitive", "relation": "parent" },
+      { "from": "idea-platform-hub", "to": "idea-codex-api", "type": "cognitive", "relation": "parent" },
+      { "from": "project", "to": "agent-codex-bridge", "type": "bridge", "relation": "agent bridge" },
+      { "from": "agent-codex-bridge", "to": "idea-platform-hub", "type": "bridge", "relation": "reads graph" }
+    ]
+  },
+  "interop": {
+    "supportedAgents": ["Codex", "Claude Code", "ClaudeCodex", "Cursor", "RepoScape-compatible graph consumers"],
+    "graphApis": {
+      "overview": "/api/graph/overview",
+      "neighborhood": "/api/graph/neighborhood?node=<node-id>&depth=1",
+      "workspace": "/rest/v1/launchlens_workspace"
+    },
+    "prompts": {
+      "codex": "Read the LaunchLens workspace JSON, inspect graphOverview first, then plan changes around the project neighborhood.",
+      "claudeCode": "Treat this LaunchLens graph context as project memory. Explain direct relations first, then propose the smallest verifiable change."
+    },
+    "projectName": "LaunchLens",
+    "graphOverview": {
+      "nodeCount": 4,
+      "edgeCount": 4,
+      "byType": { "project": 1, "idea": 2, "agent": 1 },
+      "edgeTypes": { "cognitive": 2, "bridge": 2 },
+      "hubs": [
+        { "id": "idea-platform-hub", "title": "Hackathon collaboration hub", "type": "idea", "degree": 3 },
+        { "id": "project", "title": "LaunchLens", "type": "project", "degree": 2 }
+      ]
+    },
+    "selectedNeighborhood": {
+      "root": "project",
+      "depth": 2,
+      "nodes": [
+        { "id": "project", "type": "project", "title": "LaunchLens" },
+        { "id": "idea-platform-hub", "type": "idea", "title": "Hackathon collaboration hub" },
+        { "id": "idea-codex-api", "type": "idea", "title": "Codex API snapshot" },
+        { "id": "agent-codex-bridge", "type": "agent", "title": "Codex Bridge" }
+      ],
+      "edges": [
+        { "from": "project", "to": "idea-platform-hub", "type": "cognitive", "relation": "parent" },
+        { "from": "idea-platform-hub", "to": "idea-codex-api", "type": "cognitive", "relation": "parent" },
+        { "from": "project", "to": "agent-codex-bridge", "type": "bridge", "relation": "agent bridge" },
+        { "from": "agent-codex-bridge", "to": "idea-platform-hub", "type": "bridge", "relation": "reads graph" }
+      ],
+      "truncated": false
+    }
+  },
   "externalReferences": [
     {
       "name": "re-forge",
       "url": "https://github.com/Akasxh/re-forge",
       "license": "MIT",
       "use": "Methodology reference for multi-agent adversarial gates, evidence substrate, cross-session memory, and capability evolution. LaunchLens does not copy source code from it."
+    },
+    {
+      "name": "RepoScape",
+      "url": "https://github.com/ThomasLix7/RepoScape",
+      "license": "MIT",
+      "use": "Product reference for the Hub: all-node HUD, physical/cognitive graph relations, token-frugal graph overview/neighborhood APIs, and agent interoperability. LaunchLens does not copy source code from it."
     }
   ],
   "snapshot": {
@@ -60,7 +121,10 @@
         "evidence": true,
         "tool": true,
         "process": true
-      }
+      },
+      "hubNodePositions": {},
+      "hubViewport": { "x": 0, "y": 0, "scale": 1 },
+      "hubSearch": ""
     },
     "generated": null,
     "repoScan": null,
@@ -70,6 +134,12 @@
         "url": "https://github.com/Akasxh/re-forge",
         "license": "MIT",
         "use": "Methodology reference for multi-agent adversarial gates, evidence substrate, cross-session memory, and capability evolution. LaunchLens does not copy source code from it."
+      },
+      {
+        "name": "RepoScape",
+        "url": "https://github.com/ThomasLix7/RepoScape",
+        "license": "MIT",
+        "use": "Product reference for the Hub: all-node HUD, physical/cognitive graph relations, token-frugal graph overview/neighborhood APIs, and agent interoperability. LaunchLens does not copy source code from it."
       }
     ],
     "savedAt": "2026-06-05T00:00:00.000Z"

@@ -148,6 +148,7 @@
           <button id="hubBuildBtn" type="button" class="primary" data-i18n="button.buildStarMap">Build Star Map</button>
           <button id="hubGuideBtn" type="button" data-i18n="button.openGuide">Open Guide</button>
           <button id="hubApiBtn" type="button" class="ghost" data-i18n="button.copyApi">Copy Codex API JSON</button>
+          <button id="hubSaveWorkspaceBtn" type="button" class="ghost" data-i18n="button.saveWorkspace">Save Workspace</button>
         </div>
       </div>
 
@@ -158,7 +159,9 @@
         <p id="hubNodeBody" class="hub-body">
           Select a star node to inspect the idea, agent, evidence, tool, or delivery step.
         </p>
+        <input id="hubSearch" class="hub-search" placeholder="Search nodes..." data-i18n-placeholder="placeholder.hubSearch" />
         <div id="hubStats" class="hub-stats"></div>
+        <div id="hubRelations" class="hub-relations"></div>
       </aside>
 
       <nav class="hub-orbit-controls" aria-label="Hub filters">
@@ -262,6 +265,83 @@
             </div>
             <p id="syncStatus" class="sync-status" data-i18n="sync.localOnly">Local only until Supabase credentials are added.</p>
           </section>
+
+          <section class="platform-block">
+            <div class="ops-head">
+              <div>
+                <p class="eyebrow" data-i18n="manager.eyebrow">Project Manager</p>
+                <h3 data-i18n="manager.title">Save and reload workspaces</h3>
+              </div>
+            </div>
+            <div class="workspace-manager">
+              <input id="workspaceName" placeholder="Workspace name" data-i18n-placeholder="placeholder.workspaceName" />
+              <div class="sync-actions">
+                <button id="saveWorkspaceBtn" type="button" data-i18n="button.saveWorkspace">Save Workspace</button>
+                <button id="copyWorkspaceBtn" type="button" class="ghost" data-i18n="button.copyWorkspace">Copy Snapshot</button>
+              </div>
+              <div id="workspaceList" class="workspace-list"></div>
+            </div>
+          </section>
+
+          <section class="platform-block">
+            <div class="ops-head">
+              <div>
+                <p class="eyebrow" data-i18n="bridge.eyebrow">Codex Bridge</p>
+                <h3 data-i18n="bridge.title">Share graph context with agents</h3>
+              </div>
+            </div>
+            <div class="bridge-actions">
+              <button id="copyCodexCommandBtn" type="button" data-i18n="button.copyCodexCommand">Copy Codex Command</button>
+              <button id="copyClaudeCommandBtn" type="button" data-i18n="button.copyClaudeCommand">Copy Claude Code Command</button>
+              <button id="copyGraphContextBtn" type="button" class="ghost" data-i18n="button.copyGraphContext">Copy Graph Context</button>
+            </div>
+            <pre id="codexBridgePreview" class="bridge-preview"></pre>
+          </section>
+        </div>
+      </section>
+
+      <section id="projectRadarPanel" class="radar-panel" aria-label="UCWS Project Radar">
+        <div class="panel-head">
+          <div>
+            <p class="eyebrow" data-i18n="radar.eyebrow">UCWS Project Radar</p>
+            <h2 data-i18n="radar.title">Search, classify, and compare projects</h2>
+          </div>
+          <div class="radar-status">
+            <span id="radarUpdated" class="status-pill" data-i18n="radar.loading">Loading project wall data</span>
+            <button id="radarReloadBtn" type="button" class="ghost" data-i18n="button.reloadRadar">Reload</button>
+          </div>
+        </div>
+
+        <div id="radarStats" class="radar-stats"></div>
+
+        <div class="radar-controls">
+          <input id="radarSearch" placeholder="Search project, stack, category, judging signal..." data-i18n-placeholder="placeholder.radarSearch" />
+          <select id="radarTrack" aria-label="Radar track filter">
+            <option>All</option>
+          </select>
+          <select id="radarDimension" aria-label="Radar judging dimension">
+            <option value="all" data-i18n="radar.dimension.all">All signals</option>
+            <option value="repo" data-i18n="radar.dimension.repo">Has GitHub repo</option>
+            <option value="demo" data-i18n="radar.dimension.demo">Has demo</option>
+            <option value="screenshots" data-i18n="radar.dimension.screenshots">Has screenshots</option>
+            <option value="votes" data-i18n="radar.dimension.votes">Has vote activity</option>
+            <option value="gaps" data-i18n="radar.dimension.gaps">Evidence gaps</option>
+          </select>
+        </div>
+
+        <div class="radar-layout">
+          <div id="radarList" class="radar-list"></div>
+          <aside class="radar-assist" aria-label="AI-assisted project synthesis">
+            <div class="ops-head">
+              <div>
+                <p class="eyebrow" data-i18n="radar.assist.eyebrow">AI Assist</p>
+                <h3 data-i18n="radar.assist.title">Synthesize judge notes</h3>
+              </div>
+            </div>
+            <textarea id="radarAiPrompt" rows="5" placeholder="Example: compare Agent projects by repo evidence and demo clarity" data-i18n-placeholder="placeholder.radarAiPrompt"></textarea>
+            <button id="radarAssistBtn" type="button" class="primary" data-i18n="button.radarAssist">Synthesize</button>
+            <div id="radarAssist" class="radar-assist-output"></div>
+          </aside>
         </div>
       </section>
 

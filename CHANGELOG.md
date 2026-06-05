@@ -2,6 +2,29 @@
 
 All notable LaunchLens updates should be recorded here before pushing to GitHub and refreshing the public demo.
 
+## 2026-06-05 - RepoScape-Inspired Hub And Agent Bridge
+
+### Added
+
+- Added a RepoScape-inspired Hub graph model with draggable nodes, persistent node coordinates, pan/zoom viewport storage, search, relation inspection, and clearer edge types.
+- Added Codex Bridge and ClaudeCodex interoperability exports with `graphOverview`, `selectedNeighborhood`, and ready-to-copy agent commands.
+- Added Project Manager for local workspace snapshots, including project fields, Hub coordinates, ideas, agent runs, generated materials, repo scan state, and Codex payload.
+- Added OpenAPI contract paths for `GET /api/graph/overview`, `GET /api/graph/neighborhood`, and `GET /api/agent/bridge`.
+- Added `docs/REPOSCAPE_HUB_INTEGRATION.md` and RepoScape attribution records.
+- Restored and rewrote the root `README.md` as a formal bilingual GitHub landing page.
+
+### Updated
+
+- Updated the Hub screenshot asset to show the upgraded graph HUD.
+- Updated Codex API examples with graph and interoperability payloads.
+- Updated platform-core tests to protect RepoScape attribution, graph overview, neighborhood slicing, and ClaudeCodex support.
+
+### Public Demo Status
+
+- GitHub Pages demo: https://wangsiyi7.github.io/launchlens/
+- GitHub Pages Hub demo: https://wangsiyi7.github.io/launchlens/?mode=hub
+- Vercel production demo: pending account authorization. The repository keeps `vercel.json` ready for deployment.
+
 ## 2026-06-05 - Re-Forge Protocol Integration
 
 ### Added
@@ -49,4 +72,3 @@ All notable LaunchLens updates should be recorded here before pushing to GitHub 
 
 - Node.js tests passed.
 - Public GitHub Pages demo returned HTTP 200.
-

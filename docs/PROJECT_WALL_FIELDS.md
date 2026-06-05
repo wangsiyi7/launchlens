@@ -27,15 +27,15 @@ The authoritative copy source is the root-level `PROJECT_WALL_SUBMISSION.md`. Th
 
 ## Description
 
-LaunchLens is a browser-based hackathon collaboration hub for hackathon teams, solo builders, community reviewers, and demo-day organizers. It turns the final Project Wall handoff into an operating workspace: teams enter official fields, build a RepoScape-inspired idea star map, run focused project agents, archive linked ideas, audit required proof, scan public GitHub repository signals, score readiness across Community Vote, AI Evaluation, and Expert Judges, and generate copy-ready submission materials.
+LaunchLens is a browser-based hackathon collaboration hub for hackathon teams, solo builders, community reviewers, and demo-day organizers. It turns the final Project Wall handoff into an operating workspace: teams enter official fields, build a RepoScape-inspired idea star map, drag and persist graph nodes, inspect direct relationships, run focused project agents, archive linked ideas, audit required proof, scan public GitHub repository signals, score readiness across Community Vote, AI Evaluation, and Expert Judges, and generate copy-ready submission materials.
 
-The current version includes Hackathon Hub, a full-screen star-map view for ideas, agents, evidence, tools, and delivery steps; Temple Mode, a 2.5D spatial workflow with six clickable nodes; Platform Console, a guided operating view with Agent Studio, demo tutorial, idea archive, tool recommendations, Supabase sync, field entry, evidence auditing, repo scanning, and material export; plus a Codex API JSON contract for future tool integration.
+The current version includes Hackathon Hub, a full-screen draggable star-map view for ideas, agents, evidence, tools, and delivery steps; Project Manager for saved workspaces; Codex Bridge for Codex, Claude Code, ClaudeCodex, and graph-consumer interoperability; Temple Mode, a 2.5D spatial workflow with six clickable nodes; Platform Console, a guided operating view with Agent Studio, demo tutorial, idea archive, tool recommendations, Supabase sync, field entry, evidence auditing, repo scanning, and material export; plus a Codex API JSON contract for future tool integration.
 
 UCWS is the first use case, but LaunchLens is designed as a long-term collaboration tool for hackathons, accelerator demo days, open-source showcases, and internal product reviews.
 
 ## Tech Stack
 
-HTML, CSS, JavaScript, Canvas star-map rendering, browser localStorage, optional Supabase REST backend, GitHub Pages, Vercel-ready static deployment, 2.5D generated bitmap background, GitHub public API repo scanning, OpenAPI JSON contract, optional OpenAI-compatible chat completion endpoint
+HTML, CSS, JavaScript, Canvas draggable star-map rendering, browser localStorage workspace persistence, optional Supabase REST backend, GitHub Pages, Vercel-ready static deployment, 2.5D generated bitmap background, GitHub public API repo scanning, OpenAPI graph contract, Codex/ClaudeCodex bridge JSON, optional OpenAI-compatible chat completion endpoint
 
 ## External Methodology Reference
 
@@ -46,6 +46,14 @@ https://github.com/Akasxh/re-forge
 ```
 
 LaunchLens does not copy source code from `re-forge`; it uses the project as a protocol reference and records attribution in `docs/ATTRIBUTION.md`.
+
+LaunchLens also references `ThomasLix7/RepoScape` as an MIT-licensed product reference for graph-first HUDs, physical/cognitive graph relations, token-frugal graph APIs, and agent interoperability:
+
+```text
+https://github.com/ThomasLix7/RepoScape
+```
+
+LaunchLens does not copy source code from `RepoScape`; it uses the project as a product/interaction reference and records attribution in `docs/ATTRIBUTION.md`.
 
 ## Team Members
 

@@ -36,9 +36,9 @@ LaunchLens 是一个面向黑客松团队、独立开发者、社区评审和 De
 
 很多黑客松项目并不是没有做出来，而是在最后提交阶段失去清晰度：Demo 链接不稳定，GitHub 仓库信息不完整，截图、README、技术栈、证据链和评审叙事之间无法对应，最终很难同时满足社区投票、AI 评估和专家评审的检查方式。
 
-LaunchLens 把这个最后交付层变成一个可以持续运行的项目工作台。团队可以输入 Project Wall 字段，构建类似 RepoScape 的想法星图，运行本地项目 Agent，归档不同想法之间的关系，检查必须提交的证据，扫描公开 GitHub 仓库信号，并按 Community Vote、AI Evaluation、Expert Judges 三个维度评估提交准备度，最后生成可直接复制的提交材料。
+LaunchLens 把这个最后交付层变成一个可以持续运行的项目工作台。团队可以输入 Project Wall 字段，构建类似 RepoScape 的想法星图，拖拽并持久保存图谱节点，检查直接关系，运行本地项目 Agent，归档不同想法之间的关系，检查必须提交的证据，扫描公开 GitHub 仓库信号，并按 Community Vote、AI Evaluation、Expert Judges 三个维度评估提交准备度，最后生成可直接复制的提交材料。
 
-当前版本包含 Hackathon Hub、2.5D Temple Mode、Platform Console、Agent Studio、Idea Archive、Evidence Gate、Repo Scanner、Codex API JSON 导出、可选 Supabase 同步、中英文界面，以及可选的 OpenAI-compatible LLM 文案优化入口。
+当前版本包含 Hackathon Hub、Project Manager、Codex Bridge、2.5D Temple Mode、Platform Console、Agent Studio、Idea Archive、Evidence Gate、Repo Scanner、Codex API JSON 导出、可选 Supabase 同步、中英文界面，以及可选的 OpenAI-compatible LLM 文案优化入口。Codex Bridge 可导出给 Codex、Claude Code、ClaudeCodex 和其他图谱消费工具使用的 `graphOverview` 与 `selectedNeighborhood`。
 
 UCWS 是 LaunchLens 的第一个完整使用场景，但它不是一次性填表工具。它被设计成一个长期黑客松协作平台，可以扩展到加速器 Demo Day、开源项目展示、内部创新评审和跨团队产品复盘。
 
@@ -48,9 +48,9 @@ LaunchLens is a browser-based hackathon collaboration hub for teams, solo builde
 
 Hackathon teams often build something real, but lose momentum at the final submission layer: unstable demo links, unclear repositories, missing screenshots, incomplete README paths, weak proof, and narratives that do not match how community voters, AI evaluators, and expert judges inspect work.
 
-LaunchLens turns that final handoff into an operating workspace. Teams can enter Project Wall fields, build a RepoScape-inspired idea star map, run focused project agents, archive relationships between ideas, audit required evidence, scan public GitHub repository signals, score readiness across Community Vote, AI Evaluation, and Expert Judges, and generate copy-ready submission materials.
+LaunchLens turns that final handoff into an operating workspace. Teams can enter Project Wall fields, build a RepoScape-inspired idea star map, drag and persist graph nodes, inspect direct relationships, run focused project agents, archive relationships between ideas, audit required evidence, scan public GitHub repository signals, score readiness across Community Vote, AI Evaluation, and Expert Judges, and generate copy-ready submission materials.
 
-The current version includes Hackathon Hub, a full-screen star-map view; Temple Mode, a 2.5D spatial workflow; Platform Console, a guided operating view; local strategy/evidence/build/demo/tool/risk agents; linked idea archive; Codex API JSON export; optional Supabase workspace sync; bilingual UX; and optional OpenAI-compatible LLM refinement.
+The current version includes Hackathon Hub, a full-screen draggable star-map view; Project Manager for persistent workspace snapshots; Codex Bridge for Codex, Claude Code, ClaudeCodex, and graph-consumer interoperability; Temple Mode, a 2.5D spatial workflow; Platform Console, a guided operating view; local strategy/evidence/build/demo/tool/risk agents; linked idea archive; Codex API JSON export; optional Supabase workspace sync; bilingual UX; and optional OpenAI-compatible LLM refinement.
 
 UCWS is the first use case, but LaunchLens is designed as a long-term collaboration platform for hackathons, accelerator demo days, open-source showcases, and internal product reviews.
 
@@ -59,12 +59,12 @@ UCWS is the first use case, but LaunchLens is designed as a long-term collaborat
 | 层级 | 技术 |
 | --- | --- |
 | Frontend | HTML, CSS, JavaScript |
-| Visual Interaction | Canvas star-map rendering, 2.5D generated bitmap background, hover particles, spatial node interaction |
-| State | Browser localStorage, structured workspace snapshot |
+| Visual Interaction | Canvas draggable star-map rendering, 2.5D generated bitmap background, hover particles, spatial node interaction |
+| State | Browser localStorage, structured workspace snapshot, persisted Hub coordinates |
 | Agents | Local strategy, evidence, build, demo, tool-scout, and risk agents in JavaScript |
 | Backend Option | Optional Supabase REST backend and SQL schema |
 | Repository Signals | GitHub public API repo scanning |
-| API Contract | OpenAPI JSON contract and Codex workspace snapshot example |
+| API Contract | OpenAPI graph contract, Codex workspace snapshot example, Codex/ClaudeCodex bridge JSON |
 | Deployment | GitHub Pages, Vercel-ready static deployment, Netlify config |
 | LLM Slot | Optional OpenAI-compatible chat completion endpoint supplied by the user |
 | QA | Node.js tests, submission payload validator, public asset checks |
@@ -72,6 +72,8 @@ UCWS is the first use case, but LaunchLens is designed as a long-term collaborat
 ## 5.1 外部方法论引用
 
 LaunchLens 在本次升级中参考了 [`Akasxh/re-forge`](https://github.com/Akasxh/re-forge) 的多 Agent 对抗校验、证据基底、跨会话记忆和能力演进思路，并将其转化为产品内的 `Re-Forge Gate Agent`、Adversarial Gate 流程、工具推荐卡和更新日志纪律。`re-forge` 使用 MIT License。LaunchLens 仅做方法论参考，没有复制其源码、Agent 文件、脚本、hooks、assets 或安装文件。完整归因见 `docs/ATTRIBUTION.md`。
+
+LaunchLens 也参考了 [`ThomasLix7/RepoScape`](https://github.com/ThomasLix7/RepoScape) 的图谱优先 HUD、物理/认知关系层、低 token 图谱 overview/neighborhood API 和 Agent 互操作模式。`RepoScape` 使用 MIT License。LaunchLens 仅做产品/交互参考，没有复制其源码、parser、daemon、React 组件、skills、prompts 或 assets。完整说明见 `docs/ATTRIBUTION.md` 与 `docs/REPOSCAPE_HUB_INTEGRATION.md`。
 
 ## 6. UCWS 标准适配
 
@@ -101,7 +103,7 @@ LaunchLens 在本次升级中参考了 [`Akasxh/re-forge`](https://github.com/Ak
 4. 进入 Platform Console，运行本地 Agent，生成下一步建议。
 5. 打开 Evidence Gate，确认 Demo、GitHub、截图、Logo、技术栈和团队信息是否完整。
 6. 使用 Repo Scanner 检查公开仓库信号。
-7. 导出 Project Wall copy 或 Codex workspace JSON，把内容传给后续开发、评审或提交流程。
+7. 导出 Project Wall copy 或 Codex/ClaudeCodex graph context，把内容传给后续开发、评审或提交流程。
 
 ## 9. 官方提交注意事项
 

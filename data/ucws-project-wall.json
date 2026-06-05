@@ -1,0 +1,69 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-06-05T12:09:08.045Z",
+  "source": {
+    "baseUrl": "https://evol.epicconnector.ai",
+    "eventSlug": "ucws-singapore-hackathon---2026-cxgy",
+    "eventApiPath": "/api/events?slug=ucws-singapore-hackathon---2026-cxgy",
+    "projectWallUrl": "https://evol.epicconnector.ai/events/ucws-singapore-hackathon---2026-cxgy/project-wall",
+    "projectListApiPath": "/api/projects",
+    "projectDetailApiPath": "/api/projects/{projectId}",
+    "sorts": [
+      "all",
+      "popular",
+      "judge",
+      "stars"
+    ],
+    "limit": 20,
+    "search": "",
+    "track": "",
+    "requiresToken": true
+  },
+  "event": {
+    "id": "364d3219-5907-48b6-a34d-e95f90b10579",
+    "slug": "ucws-singapore-hackathon---2026-cxgy",
+    "title": "UCWS Singapore Hackathon -- 2026",
+    "eventType": "hackathon",
+    "status": "active",
+    "tracks": [
+      {
+        "name": "Agent",
+        "prize": "USD $3000 CASH+ 2000 USD GOOGLE CLOUD API + 200 USD KIMI TOKEN",
+        "description": ""
+      },
+      {
+        "name": "Skill",
+        "prize": "USD $3000 CASH+ 2000 USD GOOGLE CLOUD API + 200 USD KIMI TOKEN",
+        "description": ""
+      },
+      {
+        "name": "Application",
+        "prize": "USD $3000 CASH+ 2000 USD GOOGLE CLOUD API + 200 USD KIMI TOKEN",
+        "description": ""
+      },
+      {
+        "name": "DeepResearch",
+        "prize": "USD $3000 Credit *3",
+        "description": "Build with the MirorMind Deep Research API."
+      }
+    ],
+    "projectWallEnabled": true,
+    "projectSubmitEnabled": true,
+    "projectEditEnabled": true
+  },
+  "totals": {
+    "projects": 0,
+    "withRepo": 0,
+    "withDemo": 0,
+    "withScreenshots": 0,
+    "tracks": 0
+  },
+  "projects": [],
+  "projectLinks": [],
+  "errors": [
+    {
+      "code": "TOKEN_MISSING",
+      "message": "EPIC_TOKEN is required to read the authenticated Project Wall API. Log in to Epic Connector and provide the localStorage token as an environment variable."
+    }
+  ]
+}

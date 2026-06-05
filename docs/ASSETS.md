@@ -8,10 +8,10 @@
 
 | 文件 | 用途 |
 | --- | --- |
-| `index.html` | LaunchLens 主界面，包含中英切换、Temple Mode、Hub Mode、Classic/Platform Console、Project Wall 表单、评分输出、Optional LLM 面板 |
+| `index.html` | LaunchLens 主界面，包含中英切换、Temple Mode、Hub Mode、Project Manager、Codex Bridge、Classic/Platform Console、Project Wall 表单、评分输出、Optional LLM 面板 |
 | `styles.css` | 页面视觉样式、Temple 背景层、Hub 星空 HUD、热点布局、平台控制台和响应式布局 |
-| `app.js` | 评分逻辑、材料生成、复制导出、本地保存、Temple 节点交互、Hub 星图渲染、Agent Studio、Supabase 同步、大模型增强调用 |
-| `platform-core.js` | 平台核心数据模型：流程步骤、教程、工具推荐、本地 Agent、想法图谱、Supabase 请求、Codex API 快照 |
+| `app.js` | 评分逻辑、材料生成、复制导出、本地保存、Temple 节点交互、可拖拽 Hub 星图、Project Manager、Codex Bridge、Agent Studio、Supabase 同步、大模型增强调用 |
+| `platform-core.js` | 平台核心数据模型：流程步骤、教程、工具推荐、本地 Agent、想法图谱、graph overview/neighborhood、Agent 互操作、Supabase 请求、Codex API 快照 |
 | `package.json` | 本地运行、测试、payload、GitHub 发布和提交脚本入口 |
 
 ## 视觉资产
@@ -45,6 +45,9 @@
 | `SOURCE.md` | 临时公开源码说明页 |
 | `CODEX_API.md` | 面向 Codex 和工具集成的结构化工作区 API 说明 |
 | `SUPABASE.md` | 可选 Supabase 后端设置说明 |
+| `RE_FORGE_INTEGRATION.md` | re-forge 方法论集成说明 |
+| `REPOSCAPE_HUB_INTEGRATION.md` | RepoScape 风格 Hub 图谱与 Agent 互操作集成说明 |
+| `ATTRIBUTION.md` | 外部项目链接、许可证与使用边界 |
 | `../api/openapi.json` | LaunchLens Workspace API OpenAPI 合约 |
 | `../api/examples/codex-workspace-snapshot.json` | Codex 工作区快照示例 |
 | `../supabase/schema.sql` | Supabase workspace table 与 demo RLS policy |
@@ -63,12 +66,14 @@
 | `tools/create-github-repo.mjs` | 单独创建 GitHub 仓库 |
 | `tools/submit-project.mjs` | 使用 Epic Connector token 提交 Project Wall |
 | `tools/complete-submission.mjs` | GitHub 发布、payload 验证、Project Wall 提交的一键流程 |
+| `tools/sync-ucws-project-wall.mjs` | 使用 Epic Connector token 同步 UCWS Project Wall 数据到 `data/` |
 
 ## 配置与部署
 
 | 文件 | 用途 |
 | --- | --- |
 | `.github/workflows/pages.yml` | GitHub Pages 自动部署 workflow |
+| `.github/workflows/ucws-project-wall-sync.yml` | 可选 UCWS Project Wall 定时同步 workflow，需要 `EPIC_TOKEN` |
 | `netlify.toml` | Netlify 静态部署配置 |
 | `vercel.json` | Vercel 静态部署配置 |
 | `.gitignore` | 忽略本地依赖、日志、临时源码包和部署缓存 |
@@ -89,4 +94,4 @@ LaunchLens App 已保留 Optional LLM 能力：
 
 ## English Summary
 
-This repository includes the bilingual LaunchLens app, Temple Mode, Hub Mode, Platform Console, visual assets, Project Wall copy, judging brief, demo video script, final submission checklist, final readiness report, interaction specs, Codex API contract, optional Supabase backend schema, deployment configs, validation scripts, GitHub publishing scripts, and an optional OpenAI-compatible LLM enhancement slot. The final GitHub README is bilingual and ready for the hackathon repository home page.
+This repository includes the bilingual LaunchLens app, Temple Mode, draggable Hub Mode, Project Manager, Codex Bridge, Platform Console, visual assets, Project Wall copy, judging brief, demo video script, final submission checklist, final readiness report, interaction specs, Codex/ClaudeCodex graph API contract, optional Supabase backend schema, deployment configs, validation scripts, GitHub publishing scripts, UCWS Project Wall sync tooling, and an optional OpenAI-compatible LLM enhancement slot. The final GitHub README is bilingual and ready for the hackathon repository home page.

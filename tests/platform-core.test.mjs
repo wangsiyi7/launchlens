@@ -62,6 +62,8 @@ assert.equal(reForgeTool?.url, "https://github.com/Akasxh/re-forge");
 const references = Core.externalReferences("en");
 assert.equal(references[0].license, "MIT");
 assert.ok(references[0].use.includes("does not copy source code"));
+assert.equal(references[1].name, "RepoScape");
+assert.ok(references[1].use.includes("overview/neighborhood"));
 
 const snapshot = Core.buildWorkspaceSnapshot({
   project: { name: "LaunchLens" },
@@ -73,6 +75,37 @@ const snapshot = Core.buildWorkspaceSnapshot({
 assert.equal(snapshot.schemaVersion, Core.schemaVersion);
 assert.equal(snapshot.project.name, "LaunchLens");
 assert.equal(snapshot.externalReferences[0].name, "re-forge");
+
+const hubGraph = {
+  nodes: [
+    { id: "project", type: "project", title: "LaunchLens" },
+    { id: "idea-a", type: "idea", title: "Supabase sync" },
+    { id: "agent-codex", type: "agent", title: "Codex Bridge" },
+  ],
+  edges: [
+    { from: "project", to: "idea-a", type: "cognitive", relation: "parent" },
+    { from: "agent-codex", to: "idea-a", type: "bridge", relation: "reads graph" },
+  ],
+};
+
+const overview = Core.buildGraphOverview(hubGraph);
+assert.equal(overview.nodeCount, 3);
+assert.equal(overview.edgeTypes.bridge, 1);
+assert.equal(overview.hubs[0].id, "idea-a");
+
+const neighborhood = Core.buildGraphNeighborhood(hubGraph, "idea-a", 1, 4);
+assert.equal(neighborhood.root, "idea-a");
+assert.equal(neighborhood.nodes.length, 3);
+assert.ok(neighborhood.edges.some((edge) => edge.relation === "reads graph"));
+
+const interop = Core.buildAgentInterop({
+  language: "en",
+  project: { name: "LaunchLens" },
+  graph: hubGraph,
+  selectedNodeId: "idea-a",
+});
+assert.ok(interop.supportedAgents.includes("ClaudeCodex"));
+assert.equal(interop.selectedNeighborhood.root, "idea-a");
 
 const requests = Core.buildSupabaseRequests(
   {

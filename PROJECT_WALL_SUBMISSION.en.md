@@ -35,9 +35,9 @@ LaunchLens is a browser-based hackathon collaboration hub for teams, solo builde
 
 Hackathon teams often build something real, but lose momentum at the final submission layer: unstable demo links, unclear repositories, missing screenshots, incomplete README paths, weak proof, and narratives that do not match how community voters, AI evaluators, and expert judges inspect work.
 
-LaunchLens turns that final handoff into an operating workspace. Teams can enter Project Wall fields, build a RepoScape-inspired idea star map, run focused project agents, archive relationships between ideas, audit required evidence, scan public GitHub repository signals, score readiness across Community Vote, AI Evaluation, and Expert Judges, and generate copy-ready submission materials.
+LaunchLens turns that final handoff into an operating workspace. Teams can enter Project Wall fields, build a RepoScape-inspired idea star map, drag and persist graph nodes, inspect direct relationships, run focused project agents, archive relationships between ideas, audit required evidence, scan public GitHub repository signals, score readiness across Community Vote, AI Evaluation, and Expert Judges, and generate copy-ready submission materials.
 
-The current version includes Hackathon Hub, a full-screen star-map view; Temple Mode, a 2.5D spatial workflow; Platform Console, a guided operating view; local strategy/evidence/build/demo/tool/risk agents; linked idea archive; Codex API JSON export; optional Supabase workspace sync; bilingual UX; and optional OpenAI-compatible LLM refinement.
+The current version includes Hackathon Hub, a full-screen draggable star-map view; Project Manager for persistent workspace snapshots; Codex Bridge for Codex, Claude Code, ClaudeCodex, and graph-consumer interoperability; Temple Mode, a 2.5D spatial workflow; Platform Console, a guided operating view; local strategy/evidence/build/demo/tool/risk agents; linked idea archive; Codex API JSON export; optional Supabase workspace sync; bilingual UX; and optional OpenAI-compatible LLM refinement.
 
 UCWS is the first use case, but LaunchLens is designed as a long-term collaboration platform for hackathons, accelerator demo days, open-source showcases, and internal product reviews.
 
@@ -46,12 +46,12 @@ UCWS is the first use case, but LaunchLens is designed as a long-term collaborat
 | Layer | Technology |
 | --- | --- |
 | Frontend | HTML, CSS, JavaScript |
-| Visual Interaction | Canvas star-map rendering, 2.5D generated bitmap background, hover particles, spatial node interaction |
-| State | Browser localStorage, structured workspace snapshot |
+| Visual Interaction | Canvas draggable star-map rendering, 2.5D generated bitmap background, hover particles, spatial node interaction |
+| State | Browser localStorage, structured workspace snapshot, persisted Hub coordinates |
 | Agents | Local strategy, evidence, build, demo, tool-scout, and risk agents in JavaScript |
 | Backend Option | Optional Supabase REST backend and SQL schema |
 | Repository Signals | GitHub public API repo scanning |
-| API Contract | OpenAPI JSON contract and Codex workspace snapshot example |
+| API Contract | OpenAPI graph contract, Codex workspace snapshot example, Codex/ClaudeCodex bridge JSON |
 | Deployment | GitHub Pages, Vercel-ready static deployment, Netlify config |
 | LLM Slot | Optional OpenAI-compatible chat completion endpoint supplied by the user |
 | QA | Node.js tests, submission payload validator, public asset checks |
@@ -59,6 +59,8 @@ UCWS is the first use case, but LaunchLens is designed as a long-term collaborat
 ## 4.1 External Methodology Reference
 
 This upgrade references [`Akasxh/re-forge`](https://github.com/Akasxh/re-forge) for its multi-agent adversarial gates, evidence substrate, cross-session memory, and capability-evolution patterns. LaunchLens translates those ideas into the in-product `Re-Forge Gate Agent`, Adversarial Gate process step, tool recommendation card, and changelog discipline. `re-forge` is MIT licensed. LaunchLens uses it as a methodology reference only and does not copy its source code, agent files, scripts, hooks, assets, or setup files. See `docs/ATTRIBUTION.md` for the attribution record.
+
+This upgrade also references [`ThomasLix7/RepoScape`](https://github.com/ThomasLix7/RepoScape) for its graph-first HUD, physical/cognitive relation model, token-frugal graph overview/neighborhood APIs, and agent-interoperability pattern. `RepoScape` is MIT licensed. LaunchLens uses it as a product reference only and does not copy its source code, parser, daemon, React components, skills, prompts, or assets. See `docs/ATTRIBUTION.md` and `docs/REPOSCAPE_HUB_INTEGRATION.md`.
 
 ## 5. UCWS Fit
 
@@ -88,7 +90,7 @@ This upgrade references [`Akasxh/re-forge`](https://github.com/Akasxh/re-forge) 
 4. Open Platform Console and run the local agents for structured next steps.
 5. Open Evidence Gate to confirm demo, GitHub, screenshots, logo, tech stack, and team coverage.
 6. Use Repo Scanner to inspect public repository signals.
-7. Export Project Wall copy or Codex workspace JSON for future development, judging, or submission flows.
+7. Export Project Wall copy or Codex/ClaudeCodex graph context for future development, judging, or submission flows.
 
 ## 8. Official Submission Notes
 

@@ -239,6 +239,14 @@
           ? "作为方法论参考：多 Agent 对抗校验、证据基底、跨会话记忆和能力演进流程。LaunchLens 未复制其源码。"
           : "Methodology reference for multi-agent adversarial gates, evidence substrate, cross-session memory, and capability evolution. LaunchLens does not copy source code from it.",
       },
+      {
+        name: "RepoScape",
+        url: "https://github.com/ThomasLix7/RepoScape",
+        license: "MIT",
+        use: zh
+          ? "作为 Hub 产品参考：全量节点 HUD、物理/认知关系图、低 token graph overview/neighborhood API、Agent 互操作工作流。LaunchLens 未复制其源码。"
+          : "Product reference for the Hub: all-node HUD, physical/cognitive graph relations, token-frugal graph overview/neighborhood APIs, and agent interoperability. LaunchLens does not copy source code from it.",
+      },
     ];
   }
 
@@ -384,6 +392,99 @@
     };
   }
 
+  function buildGraphOverview(graph = {}) {
+    const nodes = Array.isArray(graph.nodes) ? graph.nodes : [];
+    const edges = Array.isArray(graph.edges) ? graph.edges : [];
+    const degree = new Map(nodes.map((node) => [node.id, 0]));
+    edges.forEach((edge) => {
+      degree.set(edge.from, (degree.get(edge.from) || 0) + 1);
+      degree.set(edge.to, (degree.get(edge.to) || 0) + 1);
+    });
+    const byType = nodes.reduce((acc, node) => {
+      acc[node.type || "unknown"] = (acc[node.type || "unknown"] || 0) + 1;
+      return acc;
+    }, {});
+    const edgeTypes = edges.reduce((acc, edge) => {
+      acc[edge.type || "unknown"] = (acc[edge.type || "unknown"] || 0) + 1;
+      return acc;
+    }, {});
+    const hubs = nodes
+      .map((node) => ({
+        id: node.id,
+        title: node.title || node.id,
+        type: node.type || "unknown",
+        degree: degree.get(node.id) || 0,
+      }))
+      .sort((a, b) => b.degree - a.degree || a.title.localeCompare(b.title))
+      .slice(0, 8);
+    return {
+      nodeCount: nodes.length,
+      edgeCount: edges.length,
+      byType,
+      edgeTypes,
+      hubs,
+    };
+  }
+
+  function buildGraphNeighborhood(graph = {}, nodeId = "", depth = 1, limit = 24) {
+    const nodes = Array.isArray(graph.nodes) ? graph.nodes : [];
+    const edges = Array.isArray(graph.edges) ? graph.edges : [];
+    const byId = new Map(nodes.map((node) => [node.id, node]));
+    if (!byId.has(nodeId)) {
+      return { root: nodeId, depth, nodes: [], edges: [], truncated: false };
+    }
+
+    const maxDepth = Math.max(0, Math.min(4, Number(depth) || 1));
+    const maxNodes = Math.max(1, Math.min(80, Number(limit) || 24));
+    const visited = new Set([nodeId]);
+    const queue = [{ id: nodeId, depth: 0 }];
+    for (let index = 0; index < queue.length; index += 1) {
+      const current = queue[index];
+      if (current.depth >= maxDepth || visited.size >= maxNodes) continue;
+      edges
+        .filter((edge) => edge.from === current.id || edge.to === current.id)
+        .forEach((edge) => {
+          const nextId = edge.from === current.id ? edge.to : edge.from;
+          if (!byId.has(nextId) || visited.has(nextId) || visited.size >= maxNodes) return;
+          visited.add(nextId);
+          queue.push({ id: nextId, depth: current.depth + 1 });
+        });
+    }
+
+    const resultNodes = nodes.filter((node) => visited.has(node.id));
+    const resultEdges = edges.filter((edge) => visited.has(edge.from) && visited.has(edge.to));
+    return {
+      root: nodeId,
+      depth: maxDepth,
+      nodes: resultNodes,
+      edges: resultEdges,
+      truncated: visited.size >= maxNodes,
+    };
+  }
+
+  function buildAgentInterop({ language = "en", project = {}, graph = {}, selectedNodeId = "project" }) {
+    const zh = language === "zh";
+    return {
+      supportedAgents: ["Codex", "Claude Code", "ClaudeCodex", "Cursor", "RepoScape-compatible graph consumers"],
+      graphApis: {
+        overview: "/api/graph/overview",
+        neighborhood: "/api/graph/neighborhood?node=<node-id>&depth=1",
+        workspace: "/rest/v1/launchlens_workspace",
+      },
+      prompts: {
+        codex: zh
+          ? `读取 LaunchLens 工作区 JSON，先查看 graphOverview，再围绕 ${selectedNodeId} 的 neighborhood 制定改动计划。`
+          : `Read the LaunchLens workspace JSON, inspect graphOverview first, then plan changes around the ${selectedNodeId} neighborhood.`,
+        claudeCode: zh
+          ? `把这份 LaunchLens graph context 当作项目记忆。先解释直接关系，再提出最小可验证改动。`
+          : "Treat this LaunchLens graph context as project memory. Explain direct relations first, then propose the smallest verifiable change.",
+      },
+      projectName: projectName(project),
+      graphOverview: buildGraphOverview(graph),
+      selectedNeighborhood: buildGraphNeighborhood(graph, selectedNodeId, 2, 32),
+    };
+  }
+
   function buildWorkspaceSnapshot({ project, platform, analysis, generated, repoScan, externalReferences = [] }) {
     return {
       schemaVersion,
@@ -452,6 +553,9 @@
     buildAgentResult,
     createIdea,
     buildIdeaGraph,
+    buildGraphOverview,
+    buildGraphNeighborhood,
+    buildAgentInterop,
     buildWorkspaceSnapshot,
     normalizeSupabaseConfig,
     buildSupabaseRequests,

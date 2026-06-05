@@ -20,18 +20,20 @@ LaunchLens is a browser-based hackathon collaboration hub for teams, solo builde
 
 Hackathon teams often build something real, but lose momentum at the final submission layer: unstable demo links, unclear repositories, missing screenshots, incomplete README paths, weak proof, and narratives that do not match how community voters, AI evaluators, and expert judges inspect work.
 
-LaunchLens turns that final handoff into an operating workspace. Teams can enter Project Wall fields, build a RepoScape-inspired idea star map, run focused project agents, archive relationships between ideas, audit required evidence, scan public GitHub repository signals, score readiness across Community Vote, AI Evaluation, and Expert Judges, and generate copy-ready submission materials.
+LaunchLens turns that final handoff into an operating workspace. Teams can enter Project Wall fields, build a RepoScape-inspired idea star map, drag and persist graph nodes, inspect direct relationships, run focused project agents, archive relationships between ideas, audit required evidence, scan public GitHub repository signals, score readiness across Community Vote, AI Evaluation, and Expert Judges, and generate copy-ready submission materials.
 
 The current version includes:
 
-- Hackathon Hub: a full-screen star-map view that converts rough idea input into linked nodes for ideas, agents, evidence, tools, and delivery steps.
+- Hackathon Hub: a full-screen draggable star-map view that converts rough idea input into linked nodes for ideas, agents, evidence, tools, and delivery steps.
+- Project Manager: local workspace snapshots for project fields, Hub coordinates, ideas, Agent runs, generated materials, and repo scan state.
+- Codex Bridge: graph context exports for Codex, Claude Code, ClaudeCodex, and RepoScape-compatible graph consumers.
 - Temple Mode: a 2.5D spatial workflow with six clickable nodes for project story, evidence, score, optional LLM refinement, archive review, and final handoff.
 - Platform Console: a stable operational view for guided process steps, Agent Studio, demo tutorial, idea archive, tool recommendations, Supabase sync, field entry, evidence auditing, repo scanning, and material export.
 - Agent Studio: local strategy, evidence, build, demo, tool-scout, and risk agents that generate actionable next steps without requiring an API key.
 - Idea Archive: linked idea records with parent and related-node relationships, visualized inside the Hub.
 - Evidence Gate: Project Wall coverage audit for demo, repo, tech stack, screenshots, logo, team, and optional demo assets.
 - Repo Scanner: public GitHub checks for README, app entry, tests or QA path, deployment config, and recent commits.
-- Codex API: a machine-readable workspace JSON contract for passing project context, idea graph, agent runs, generated materials, and evidence status into future Codex work.
+- Codex API: a machine-readable workspace JSON contract for passing project context, graph overview, selected-node neighborhood, idea graph, agent runs, generated materials, and evidence status into future Codex or ClaudeCodex work.
 - Optional Supabase backend: a static-friendly workspace snapshot layer for teams that want cross-device collaboration.
 - Bilingual UX: English and Chinese interface, scoring, task suggestions, and generated outputs.
 - Optional LLM slot: user-supplied OpenAI-compatible endpoint, model, and API key for copy refinement.
@@ -48,7 +50,7 @@ https://github.com/wangsiyi7/launchlens
 
 ## Tech Stack
 
-HTML, CSS, JavaScript, Canvas star-map rendering, browser localStorage, optional Supabase REST backend, GitHub Pages, Vercel-ready static deployment, 2.5D generated bitmap background, GitHub public API repo scanning, OpenAPI JSON contract, optional OpenAI-compatible chat completion endpoint
+HTML, CSS, JavaScript, Canvas draggable star-map rendering, browser localStorage workspace persistence, optional Supabase REST backend, GitHub Pages, Vercel-ready static deployment, 2.5D generated bitmap background, GitHub public API repo scanning, OpenAPI graph contract, Codex/ClaudeCodex bridge JSON, optional OpenAI-compatible chat completion endpoint
 
 ## Screenshot URLs
 
@@ -92,4 +94,4 @@ Not provided.
 
 LaunchLens should be evaluated as a working application and long-term hackathon platform, not only as a documentation generator. The core product behavior is the Hackathon Hub plus Evidence Gate: it converts rough ideas into a visual project graph, connects those ideas to agents and evidence, and gives teams a practical sequence for improving their Project Wall submission.
 
-The project intentionally keeps the frontend clean and operational. The 2.5D Temple Mode and Hub star map add spatial interaction and memorability, but the main value remains concrete: organize thinking, run local agents, archive idea relationships, audit evidence, scan repository signals, score readiness, export Codex-readable context, and prepare official submission fields.
+The project intentionally keeps the frontend clean and operational. The 2.5D Temple Mode and Hub star map add spatial interaction and memorability, but the main value remains concrete: organize thinking, drag and persist project graph nodes, run local agents, archive idea relationships, audit evidence, scan repository signals, score readiness, export Codex/ClaudeCodex-readable graph context, and prepare official submission fields.
