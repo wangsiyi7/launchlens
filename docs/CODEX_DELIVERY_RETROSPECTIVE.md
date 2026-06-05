@@ -423,3 +423,25 @@ npm.cmd run plugin:install
 ```
 
 The first command only prints the planned target paths. The second command copies the plugin to the personal Codex plugin directory and updates the personal marketplace entry. Do not run the install command unless the user explicitly wants this workflow installed globally.
+
+## 10. Standalone Open-Source Skill Repository
+
+The reusable workflow has also been extracted into a standalone MIT-licensed repository:
+
+```text
+https://github.com/wangsiyi7/hackathon-project-delivery
+```
+
+That repository includes:
+
+- English README
+- Chinese README
+- MIT license
+- Codex plugin manifest
+- `hackathon-project-delivery` Skill
+- English and Chinese delivery replay references
+- English and Chinese adaptation guides for UCWS and future hackathons
+- dry-run-first installer
+- structure validation script
+
+The standalone repository is the preferred long-term source for reuse across UCWS and other hackathon workflows. The copy inside LaunchLens remains as project-local provenance.

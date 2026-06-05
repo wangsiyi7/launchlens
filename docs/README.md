@@ -8,6 +8,7 @@ This folder keeps supporting materials out of the repository root while preservi
 - `SUBMISSION.md`: expanded UCWS submission draft
 - `FINAL_SUBMISSION_RUNBOOK.md`: operational submission checklist
 - `FINAL_READINESS_REPORT.md`: generated readiness report
+- `COMPLETION_AUDIT.md`: final evidence-based completion audit
 - `SUBMISSION_AUDIT.md`: audit history and known constraints
 
 ## Product And Strategy
@@ -23,6 +24,7 @@ This folder keeps supporting materials out of the repository root while preservi
 
 - `../plugins/hackathon-project-delivery/`: validated Codex plugin draft
 - `../tools/install-codex-plugin.mjs`: dry-run-first personal plugin installer
+- Standalone open-source repository: `https://github.com/wangsiyi7/hackathon-project-delivery`
 
 ## Assets And Source
 
