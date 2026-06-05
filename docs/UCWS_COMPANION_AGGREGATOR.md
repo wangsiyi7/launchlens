@@ -1,4 +1,4 @@
-# UCWS Companion Project Aggregator
+# UCWS Companion Project Searcher
 
 LaunchLens now has a sibling project folder at:
 
@@ -6,7 +6,7 @@ LaunchLens now has a sibling project folder at:
 C:\Users\35398\Desktop\UCWS 2026\ucws-project-aggregator
 ```
 
-The companion project aggregates UCWS project sources, adds evidence norms, exposes a static judge-facing demo, and provides a reusable Codex skill.
+The companion project aggregates UCWS project sources, official resources, local official snapshot files, and commit history. It adds evidence norms, exposes a static judge-facing searcher demo, and provides a reusable Codex skill.
 
 ## Linked Sources
 
