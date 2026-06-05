@@ -16,7 +16,7 @@ LaunchLens 的 GitHub 仓库、GitHub Pages 公开 Demo、源码包和 Project W
 | Track | Application |
 | Demo URL | https://wangsiyi7.github.io/launchlens/ |
 | Repo URL | https://github.com/wangsiyi7/launchlens |
-| Screenshot URLs | ["https://wangsiyi7.github.io/launchlens/assets/screenshot.png"] |
+| Screenshot URLs | ["https://wangsiyi7.github.io/launchlens/assets/screenshot-hub.png","https://wangsiyi7.github.io/launchlens/assets/screenshot-platform.png","https://wangsiyi7.github.io/launchlens/assets/screenshot.png"] |
 | Logo URL | https://wangsiyi7.github.io/launchlens/assets/logo.svg |
 | Team Members | [{"name":"wangsiyi7","role":"Builder","links":{}}] |
 
