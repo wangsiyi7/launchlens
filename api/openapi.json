@@ -1,0 +1,180 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "LaunchLens Workspace API",
+    "version": "2.0.0-platform",
+    "description": "Machine-readable workspace snapshot contract for Codex, Supabase, and hackathon collaboration tooling."
+  },
+  "paths": {
+    "/rest/v1/launchlens_workspace": {
+      "get": {
+        "summary": "Load a LaunchLens workspace snapshot",
+        "parameters": [
+          {
+            "name": "workspace_key",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "eq.ucws-team-launchlens"
+            }
+          },
+          {
+            "name": "select",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "example": "workspace_key,payload,updated_at"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Workspace rows",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/WorkspaceRow"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Upsert a LaunchLens workspace snapshot",
+        "parameters": [
+          {
+            "name": "on_conflict",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "example": "workspace_key"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Workspace snapshot saved"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "WorkspaceRow": {
+        "type": "object",
+        "required": ["workspace_key", "payload", "updated_at"],
+        "properties": {
+          "workspace_key": {
+            "type": "string"
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "payload": {
+            "$ref": "#/components/schemas/LaunchLensWorkspace"
+          }
+        }
+      },
+      "LaunchLensWorkspace": {
+        "type": "object",
+        "required": ["schemaVersion", "project", "platform"],
+        "properties": {
+          "schemaVersion": {
+            "type": "string",
+            "example": "2.0.0-platform"
+          },
+          "project": {
+            "type": "object",
+            "description": "Project Wall fields and submission metadata."
+          },
+          "analysis": {
+            "type": ["object", "null"],
+            "description": "Readiness score, evidence audit, and fix list."
+          },
+          "platform": {
+            "type": "object",
+            "properties": {
+              "ideas": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Idea"
+                }
+              },
+              "agentRuns": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/AgentRun"
+                }
+              },
+              "tutorialDone": {
+                "type": "object"
+              },
+              "hubFilters": {
+                "type": "object"
+              }
+            }
+          },
+          "generated": {
+            "type": ["object", "null"],
+            "description": "Generated Markdown outputs."
+          },
+          "repoScan": {
+            "type": ["object", "null"],
+            "description": "Public GitHub evidence scan."
+          },
+          "savedAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "Idea": {
+        "type": "object",
+        "required": ["id", "title"],
+        "properties": {
+          "id": { "type": "string" },
+          "title": { "type": "string" },
+          "summary": { "type": "string" },
+          "stage": { "type": "string" },
+          "tags": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "parentId": { "type": "string" },
+          "relatedIds": {
+            "type": "array",
+            "items": { "type": "string" }
+          }
+        }
+      },
+      "AgentRun": {
+        "type": "object",
+        "required": ["agentId", "title", "summary", "checklist"],
+        "properties": {
+          "agentId": { "type": "string" },
+          "title": { "type": "string" },
+          "summary": { "type": "string" },
+          "checklist": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "linkedIdeas": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "generatedAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      }
+    }
+  }
+}

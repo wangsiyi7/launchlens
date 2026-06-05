@@ -4,7 +4,7 @@
   "private": true,
   "description": "UCWS Project Wall readiness copilot for hackathon teams.",
   "scripts": {
-    "test": "node tests/scoring.test.mjs && node tests/evidence-gate.test.mjs",
+    "test": "node tests/scoring.test.mjs && node tests/evidence-gate.test.mjs && node tests/platform-core.test.mjs",
     "serve": "node tools/serve.mjs",
     "serve:public-root": "node tools/serve-public-root.mjs",
     "payload": "node tools/build-project-payload.mjs",

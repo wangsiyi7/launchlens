@@ -1,0 +1,60 @@
+{
+  "kind": "launchlens.codex.workspace",
+  "version": "2.0.0-platform",
+  "generatedAt": "2026-06-05T00:00:00.000Z",
+  "endpoints": {
+    "staticContract": "api/openapi.json",
+    "supabaseTable": "launchlens_workspace",
+    "workspaceKey": "ucws-team-launchlens"
+  },
+  "suggestedCodexUse": [
+    "Read project, analysis, ideas, agentRuns, and generated materials before modifying the app.",
+    "Use idea graph edges to understand why a feature exists before refactoring.",
+    "Write new implementation notes back as ideas or agentRuns."
+  ],
+  "snapshot": {
+    "schemaVersion": "2.0.0-platform",
+    "project": {
+      "name": "LaunchLens",
+      "track": "Application",
+      "tagline": "Turn hackathon ideas into scored, linked, and ready-to-submit project workspaces."
+    },
+    "analysis": {
+      "overall": 82
+    },
+    "platform": {
+      "ideas": [
+        {
+          "id": "idea-platform-hub",
+          "title": "Hackathon collaboration hub",
+          "summary": "Unify submission assets, agent recommendations, tool choices, and project thinking in one visual workspace.",
+          "stage": "seed",
+          "tags": ["hub", "agent", "archive"],
+          "parentId": "",
+          "relatedIds": ["idea-codex-api"]
+        },
+        {
+          "id": "idea-codex-api",
+          "title": "Codex API snapshot",
+          "summary": "Expose structured JSON so Codex and other tools can read project context.",
+          "stage": "seed",
+          "tags": ["api", "codex", "workflow"],
+          "parentId": "idea-platform-hub",
+          "relatedIds": ["idea-platform-hub"]
+        }
+      ],
+      "agentRuns": [],
+      "tutorialDone": {},
+      "hubFilters": {
+        "idea": true,
+        "agent": true,
+        "evidence": true,
+        "tool": true,
+        "process": true
+      }
+    },
+    "generated": null,
+    "repoScan": null,
+    "savedAt": "2026-06-05T00:00:00.000Z"
+  }
+}

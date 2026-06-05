@@ -39,6 +39,9 @@
           <button id="templeModeBtn" type="button" class="active" aria-pressed="true" data-i18n="mode.temple">
             Temple
           </button>
+          <button id="hubModeBtn" type="button" class="ghost" aria-pressed="false" data-i18n="mode.hub">
+            Hub
+          </button>
           <button id="classicModeBtn" type="button" class="ghost" aria-pressed="false" data-i18n="mode.classic">
             Classic
           </button>
@@ -125,7 +128,143 @@
       </nav>
     </section>
 
+    <section id="hubView" class="hub-view" aria-label="LaunchLens hackathon hub">
+      <canvas id="hubCanvas" aria-label="Hackathon idea star map"></canvas>
+      <div class="hub-vignette" aria-hidden="true"></div>
+
+      <div class="hub-overlay hub-left">
+        <p class="eyebrow" data-i18n="hub.eyebrow">Hackathon Hub</p>
+        <h2 data-i18n="hub.title">Idea star map</h2>
+        <p data-i18n="hub.body">
+          Paste rough ideas, requirements, risks, or Codex notes. LaunchLens turns them into linked project nodes.
+        </p>
+        <textarea
+          id="hubIdeaInput"
+          rows="7"
+          placeholder="One idea per line. Example: Supabase sync, 2.5D demo tour, Codex API export..."
+          data-i18n-placeholder="placeholder.hubIdeaInput"
+        ></textarea>
+        <div class="hub-actions">
+          <button id="hubBuildBtn" type="button" class="primary" data-i18n="button.buildStarMap">Build Star Map</button>
+          <button id="hubGuideBtn" type="button" data-i18n="button.openGuide">Open Guide</button>
+          <button id="hubApiBtn" type="button" class="ghost" data-i18n="button.copyApi">Copy Codex API JSON</button>
+        </div>
+      </div>
+
+      <aside class="hub-overlay hub-right">
+        <p class="eyebrow" data-i18n="hub.inspect">Inspect</p>
+        <h3 id="hubNodeTitle">LaunchLens</h3>
+        <p id="hubNodeMeta" class="hub-meta">Project core</p>
+        <p id="hubNodeBody" class="hub-body">
+          Select a star node to inspect the idea, agent, evidence, tool, or delivery step.
+        </p>
+        <div id="hubStats" class="hub-stats"></div>
+      </aside>
+
+      <nav class="hub-orbit-controls" aria-label="Hub filters">
+        <button type="button" class="active" data-hub-filter="idea" data-i18n="hub.filter.ideas">Ideas</button>
+        <button type="button" class="active" data-hub-filter="agent" data-i18n="hub.filter.agents">Agents</button>
+        <button type="button" class="active" data-hub-filter="evidence" data-i18n="hub.filter.evidence">Evidence</button>
+        <button type="button" class="active" data-hub-filter="tool" data-i18n="hub.filter.tools">Tools</button>
+        <button type="button" class="active" data-hub-filter="process" data-i18n="hub.filter.process">Process</button>
+      </nav>
+    </section>
+
     <main class="workspace">
+      <section id="platformPanel" class="platform-panel" aria-label="Hackathon platform workspace">
+        <div class="panel-head">
+          <div>
+            <p class="eyebrow" data-i18n="platform.eyebrow">Platform Console</p>
+            <h2 data-i18n="platform.title">Build, reason, archive, and sync</h2>
+          </div>
+          <span id="platformState" class="status-pill" data-i18n="platform.local">Local workspace</span>
+        </div>
+
+        <div class="platform-grid">
+          <section class="platform-block">
+            <div class="ops-head">
+              <div>
+                <p class="eyebrow" data-i18n="process.eyebrow">Process</p>
+                <h3 data-i18n="process.title">Guided hackathon path</h3>
+              </div>
+            </div>
+            <ol id="processSteps" class="process-list"></ol>
+          </section>
+
+          <section class="platform-block">
+            <div class="ops-head">
+              <div>
+                <p class="eyebrow" data-i18n="agent.eyebrow">Agent Studio</p>
+                <h3 data-i18n="agent.title">Run focused project agents</h3>
+              </div>
+            </div>
+            <div class="agent-studio">
+              <select id="agentSelect" aria-label="Agent selector"></select>
+              <button id="runPlatformAgentBtn" type="button" class="primary" data-i18n="button.runAgent">Run Agent</button>
+            </div>
+            <div id="agentOutput" class="agent-output"></div>
+          </section>
+
+          <section class="platform-block">
+            <div class="ops-head">
+              <div>
+                <p class="eyebrow" data-i18n="tutorial.eyebrow">Demo Tutorial</p>
+                <h3 data-i18n="tutorial.title">Show the platform in six moves</h3>
+              </div>
+            </div>
+            <ol id="tutorialSteps" class="tutorial-list"></ol>
+          </section>
+
+          <section class="platform-block">
+            <div class="ops-head">
+              <div>
+                <p class="eyebrow" data-i18n="ideas.eyebrow">Idea Archive</p>
+                <h3 data-i18n="ideas.title">Record linked project thinking</h3>
+              </div>
+            </div>
+            <div class="idea-editor">
+              <input id="ideaTitle" placeholder="Idea title" data-i18n-placeholder="placeholder.ideaTitle" />
+              <textarea id="ideaSummary" rows="3" placeholder="Why it matters, what it changes, or what it unlocks." data-i18n-placeholder="placeholder.ideaSummary"></textarea>
+              <input id="ideaTags" placeholder="agent, demo, backend" data-i18n-placeholder="placeholder.ideaTags" />
+              <select id="ideaParent" aria-label="Parent idea"></select>
+              <button id="addIdeaBtn" type="button" data-i18n="button.archiveIdea">Archive Idea</button>
+            </div>
+            <div id="ideaList" class="idea-list"></div>
+          </section>
+
+          <section class="platform-block">
+            <div class="ops-head">
+              <div>
+                <p class="eyebrow" data-i18n="tools.eyebrow">Tool Stack</p>
+                <h3 data-i18n="tools.title">Recommended builder tools</h3>
+              </div>
+            </div>
+            <div id="toolGrid" class="tool-grid"></div>
+          </section>
+
+          <section class="platform-block">
+            <div class="ops-head">
+              <div>
+                <p class="eyebrow" data-i18n="sync.eyebrow">Supabase Sync</p>
+                <h3 data-i18n="sync.title">Optional backend workspace</h3>
+              </div>
+            </div>
+            <div class="sync-grid">
+              <input id="supabaseUrl" placeholder="https://PROJECT.supabase.co" />
+              <input id="supabaseAnonKey" type="password" placeholder="Supabase anon key" data-i18n-placeholder="placeholder.supabaseAnonKey" />
+              <input id="supabaseTable" placeholder="launchlens_workspace" />
+              <input id="supabaseWorkspaceKey" placeholder="ucws-team-workspace" />
+            </div>
+            <div class="sync-actions">
+              <button id="saveSupabaseBtn" type="button" data-i18n="button.saveSupabase">Save Snapshot</button>
+              <button id="loadSupabaseBtn" type="button" data-i18n="button.loadSupabase">Load Snapshot</button>
+              <button id="copyApiBtn" type="button" class="ghost" data-i18n="button.copyApi">Copy Codex API JSON</button>
+            </div>
+            <p id="syncStatus" class="sync-status" data-i18n="sync.localOnly">Local only until Supabase credentials are added.</p>
+          </section>
+        </div>
+      </section>
+
       <section class="panel intake-panel" aria-label="Project intake">
         <div class="panel-head">
           <div>
@@ -409,6 +548,7 @@
       </article>
     </template>
 
+    <script src="platform-core.js"></script>
     <script src="app.js"></script>
   </body>
 </html>

@@ -19,6 +19,9 @@
     "teamMembers",
     "notes",
   ];
+  const Core = window.LaunchLensPlatformCore;
+  const PLATFORM_KEY = "launchlens.ucws.platform";
+  const SUPABASE_KEY = "launchlens.ucws.supabase";
 
   const weights = {
     community: 30,
@@ -30,6 +33,7 @@
     en: {
       "brand.eyebrow": "UCWS Singapore 2026 / Builder Collaboration App",
       "mode.temple": "Temple",
+      "mode.hub": "Hub",
       "mode.classic": "Classic",
       "button.sample": "Load Sample",
       "button.reset": "Reset",
@@ -43,7 +47,53 @@
       "button.enhance": "Enhance Current Pack",
       "button.enhancing": "Enhancing...",
       "button.copyPack": "Copy Pack",
+      "button.buildStarMap": "Build Star Map",
+      "button.openGuide": "Open Guide",
+      "button.copyApi": "Copy Codex API JSON",
+      "button.runAgent": "Run Agent",
+      "button.archiveIdea": "Archive Idea",
+      "button.saveSupabase": "Save Snapshot",
+      "button.loadSupabase": "Load Snapshot",
       "temple.eyebrow": "Submission Temple",
+      "hub.eyebrow": "Hackathon Hub",
+      "hub.title": "Idea star map",
+      "hub.body": "Paste rough ideas, requirements, risks, or Codex notes. LaunchLens turns them into linked project nodes.",
+      "hub.inspect": "Inspect",
+      "hub.filter.ideas": "Ideas",
+      "hub.filter.agents": "Agents",
+      "hub.filter.evidence": "Evidence",
+      "hub.filter.tools": "Tools",
+      "hub.filter.process": "Process",
+      "platform.eyebrow": "Platform Console",
+      "platform.title": "Build, reason, archive, and sync",
+      "platform.local": "Local workspace",
+      "process.eyebrow": "Process",
+      "process.title": "Guided hackathon path",
+      "agent.eyebrow": "Agent Studio",
+      "agent.title": "Run focused project agents",
+      "tutorial.eyebrow": "Demo Tutorial",
+      "tutorial.title": "Show the platform in six moves",
+      "ideas.eyebrow": "Idea Archive",
+      "ideas.title": "Record linked project thinking",
+      "tools.eyebrow": "Tool Stack",
+      "tools.title": "Recommended builder tools",
+      "sync.eyebrow": "Supabase Sync",
+      "sync.title": "Optional backend workspace",
+      "sync.localOnly": "Local only until Supabase credentials are added.",
+      "sync.saved": "Workspace snapshot saved to Supabase.",
+      "sync.loaded": "Workspace snapshot loaded.",
+      "sync.failed": "Supabase sync failed",
+      "agent.empty": "Run an agent to generate focused next actions.",
+      "ideas.empty": "Archive ideas or paste them in Hub to build the star map.",
+      "ideas.parentNone": "No parent idea",
+      "ideas.seed": "Seed",
+      "ideas.linked": "Linked",
+      "api.copied": "Codex API JSON copied.",
+      "placeholder.hubIdeaInput": "One idea per line. Example: Supabase sync, 2.5D demo tour, Codex API export...",
+      "placeholder.ideaTitle": "Idea title",
+      "placeholder.ideaSummary": "Why it matters, what it changes, or what it unlocks.",
+      "placeholder.ideaTags": "agent, demo, backend",
+      "placeholder.supabaseAnonKey": "Supabase anon key",
       "intake.eyebrow": "Project Intake",
       "intake.title": "Submission fields",
       "status.saved": "Saved locally",
@@ -187,6 +237,7 @@
     zh: {
       "brand.eyebrow": "UCWS Singapore 2026 / 开发者协作应用",
       "mode.temple": "神殿",
+      "mode.hub": "星图",
       "mode.classic": "经典",
       "button.sample": "载入示例",
       "button.reset": "重置",
@@ -200,7 +251,53 @@
       "button.enhance": "优化当前材料",
       "button.enhancing": "优化中...",
       "button.copyPack": "复制材料包",
+      "button.buildStarMap": "构建星图",
+      "button.openGuide": "打开引导",
+      "button.copyApi": "复制 Codex API JSON",
+      "button.runAgent": "运行 Agent",
+      "button.archiveIdea": "归档想法",
+      "button.saveSupabase": "保存快照",
+      "button.loadSupabase": "读取快照",
       "temple.eyebrow": "提交神殿",
+      "hub.eyebrow": "黑客松 Hub",
+      "hub.title": "想法星图",
+      "hub.body": "粘贴粗糙想法、需求、风险或 Codex 笔记，LaunchLens 会把它们转成有关联的项目节点。",
+      "hub.inspect": "检查",
+      "hub.filter.ideas": "想法",
+      "hub.filter.agents": "Agent",
+      "hub.filter.evidence": "证据",
+      "hub.filter.tools": "工具",
+      "hub.filter.process": "流程",
+      "platform.eyebrow": "平台控制台",
+      "platform.title": "构建、思考、归档与同步",
+      "platform.local": "本地工作区",
+      "process.eyebrow": "流程",
+      "process.title": "黑客松引导路径",
+      "agent.eyebrow": "Agent 工作室",
+      "agent.title": "运行聚焦的项目 Agent",
+      "tutorial.eyebrow": "演示教程",
+      "tutorial.title": "用六步讲清平台",
+      "ideas.eyebrow": "想法归档",
+      "ideas.title": "记录项目思考的关联",
+      "tools.eyebrow": "工具栈",
+      "tools.title": "推荐的开发工具",
+      "sync.eyebrow": "Supabase 同步",
+      "sync.title": "可选后端工作区",
+      "sync.localOnly": "填写 Supabase 凭据前仅本地保存。",
+      "sync.saved": "工作区快照已保存到 Supabase。",
+      "sync.loaded": "工作区快照已读取。",
+      "sync.failed": "Supabase 同步失败",
+      "agent.empty": "运行一个 Agent 后，这里会生成聚焦的下一步行动。",
+      "ideas.empty": "归档想法，或在星图 Hub 中粘贴想法来构建节点。",
+      "ideas.parentNone": "无父级想法",
+      "ideas.seed": "种子",
+      "ideas.linked": "已关联",
+      "api.copied": "Codex API JSON 已复制。",
+      "placeholder.hubIdeaInput": "每行一个想法。例如：Supabase 同步、2.5D 演示教程、Codex API 导出...",
+      "placeholder.ideaTitle": "想法标题",
+      "placeholder.ideaSummary": "它为什么重要、改变什么、解锁什么能力。",
+      "placeholder.ideaTags": "agent, demo, backend",
+      "placeholder.supabaseAnonKey": "Supabase anon key",
       "intake.eyebrow": "项目输入",
       "intake.title": "提交字段",
       "status.saved": "已本地保存",
@@ -365,8 +462,40 @@
     langEnBtn: document.querySelector("#langEnBtn"),
     langZhBtn: document.querySelector("#langZhBtn"),
     templeModeBtn: document.querySelector("#templeModeBtn"),
+    hubModeBtn: document.querySelector("#hubModeBtn"),
     classicModeBtn: document.querySelector("#classicModeBtn"),
     templeView: document.querySelector("#templeView"),
+    hubView: document.querySelector("#hubView"),
+    hubCanvas: document.querySelector("#hubCanvas"),
+    hubIdeaInput: document.querySelector("#hubIdeaInput"),
+    hubBuildBtn: document.querySelector("#hubBuildBtn"),
+    hubGuideBtn: document.querySelector("#hubGuideBtn"),
+    hubApiBtn: document.querySelector("#hubApiBtn"),
+    hubNodeTitle: document.querySelector("#hubNodeTitle"),
+    hubNodeMeta: document.querySelector("#hubNodeMeta"),
+    hubNodeBody: document.querySelector("#hubNodeBody"),
+    hubStats: document.querySelector("#hubStats"),
+    platformState: document.querySelector("#platformState"),
+    processSteps: document.querySelector("#processSteps"),
+    agentSelect: document.querySelector("#agentSelect"),
+    runPlatformAgentBtn: document.querySelector("#runPlatformAgentBtn"),
+    agentOutput: document.querySelector("#agentOutput"),
+    tutorialSteps: document.querySelector("#tutorialSteps"),
+    ideaTitle: document.querySelector("#ideaTitle"),
+    ideaSummary: document.querySelector("#ideaSummary"),
+    ideaTags: document.querySelector("#ideaTags"),
+    ideaParent: document.querySelector("#ideaParent"),
+    addIdeaBtn: document.querySelector("#addIdeaBtn"),
+    ideaList: document.querySelector("#ideaList"),
+    toolGrid: document.querySelector("#toolGrid"),
+    supabaseUrl: document.querySelector("#supabaseUrl"),
+    supabaseAnonKey: document.querySelector("#supabaseAnonKey"),
+    supabaseTable: document.querySelector("#supabaseTable"),
+    supabaseWorkspaceKey: document.querySelector("#supabaseWorkspaceKey"),
+    saveSupabaseBtn: document.querySelector("#saveSupabaseBtn"),
+    loadSupabaseBtn: document.querySelector("#loadSupabaseBtn"),
+    copyApiBtn: document.querySelector("#copyApiBtn"),
+    syncStatus: document.querySelector("#syncStatus"),
     templeProjectName: document.querySelector("#templeProjectName"),
     templeScore: document.querySelector("#templeScore"),
     templeSpaceLabel: document.querySelector("#templeSpaceLabel"),
@@ -405,6 +534,35 @@
   let repoScan = null;
   let scannedRepoUrl = "";
   let particleCooldown = 0;
+  let platformState = {
+    ideas: [],
+    agentRuns: [],
+    tutorialDone: {},
+    selectedAgent: "strategy",
+    selectedNodeId: "project",
+    hubFilters: {
+      idea: true,
+      agent: true,
+      evidence: true,
+      tool: true,
+      process: true,
+    },
+  };
+  let supabaseConfig = {
+    url: "",
+    anonKey: "",
+    table: "launchlens_workspace",
+    workspaceKey: "ucws-team-workspace",
+  };
+  let hubAnimationFrame = null;
+  let hubGraph = { nodes: [], edges: [] };
+  let hubPointer = { x: 0, y: 0, active: false };
+  let hubStarSeed = Array.from({ length: 110 }, (_, index) => ({
+    x: (index * 73) % 997,
+    y: (index * 149) % 991,
+    size: 0.45 + ((index * 17) % 8) / 10,
+    pulse: (index * 29) % 100,
+  }));
 
   const auditDefinitions = [
     { key: "name", labelKey: "field.name", required: true },
@@ -525,6 +683,8 @@
     runAgent();
     renderTemplePanel();
     renderRepoScan();
+    renderPlatform();
+    updateHubGraph();
   }
 
   function getProject() {
@@ -544,19 +704,26 @@
 
   function setViewMode(mode) {
     const temple = mode === "temple";
+    const hub = mode === "hub";
+    const classic = !temple && !hub;
     document.body.classList.add("view-switching");
     document.body.classList.toggle("temple-mode", temple);
-    document.body.classList.toggle("classic-mode", !temple);
+    document.body.classList.toggle("hub-mode", hub);
+    document.body.classList.toggle("classic-mode", classic);
     els.templeModeBtn.classList.toggle("active", temple);
-    els.classicModeBtn.classList.toggle("active", !temple);
+    els.hubModeBtn.classList.toggle("active", hub);
+    els.classicModeBtn.classList.toggle("active", classic);
     els.templeModeBtn.classList.toggle("ghost", !temple);
-    els.classicModeBtn.classList.toggle("ghost", temple);
+    els.hubModeBtn.classList.toggle("ghost", !hub);
+    els.classicModeBtn.classList.toggle("ghost", !classic);
     els.templeModeBtn.setAttribute("aria-pressed", String(temple));
-    els.classicModeBtn.setAttribute("aria-pressed", String(!temple));
-    if (temple) {
+    els.hubModeBtn.setAttribute("aria-pressed", String(hub));
+    els.classicModeBtn.setAttribute("aria-pressed", String(classic));
+    if (temple || hub) {
       window.scrollTo({ top: 0, behavior: "auto" });
     }
     updateTempleStatus();
+    updateHubGraph();
     window.setTimeout(() => document.body.classList.remove("view-switching"), 260);
   }
 
@@ -655,6 +822,177 @@
     } catch {
       return false;
     }
+  }
+
+  function loadPlatform() {
+    const raw = localStorage.getItem(PLATFORM_KEY);
+    if (raw) {
+      try {
+        platformState = {
+          ...platformState,
+          ...JSON.parse(raw),
+          hubFilters: {
+            ...platformState.hubFilters,
+            ...(JSON.parse(raw).hubFilters || {}),
+          },
+        };
+      } catch {
+        platformState = { ...platformState };
+      }
+    }
+
+    const syncRaw = localStorage.getItem(SUPABASE_KEY);
+    if (syncRaw) {
+      try {
+        supabaseConfig = { ...supabaseConfig, ...JSON.parse(syncRaw) };
+      } catch {
+        supabaseConfig = { ...supabaseConfig };
+      }
+    }
+
+    if (!platformState.ideas.length) {
+      const now = new Date().toISOString();
+      platformState.ideas = [
+        Core.createIdea({
+          id: "idea-platform-hub",
+          title: language === "zh" ? "黑客松协作 Hub" : "Hackathon collaboration hub",
+          summary:
+            language === "zh"
+              ? "把提交材料、Agent 建议、工具选择和项目思考统一到一个可视化空间。"
+              : "Unify submission assets, agent recommendations, tool choices, and project thinking in one visual workspace.",
+          tags: "hub, agent, archive",
+        }, now),
+        Core.createIdea({
+          id: "idea-codex-api",
+          title: language === "zh" ? "Codex API 快照" : "Codex API snapshot",
+          summary:
+            language === "zh"
+              ? "释放结构化 JSON，让 Codex 或其他开发工具读取项目上下文。"
+              : "Expose structured JSON so Codex and other tools can read project context.",
+          tags: "api, codex, workflow",
+          parentId: "idea-platform-hub",
+        }, now),
+      ].filter(Boolean);
+      savePlatform();
+    }
+  }
+
+  function savePlatform() {
+    localStorage.setItem(PLATFORM_KEY, JSON.stringify(platformState));
+  }
+
+  function saveSupabaseConfig() {
+    supabaseConfig = {
+      url: els.supabaseUrl.value.trim(),
+      anonKey: els.supabaseAnonKey.value.trim(),
+      table: els.supabaseTable.value.trim() || "launchlens_workspace",
+      workspaceKey: els.supabaseWorkspaceKey.value.trim() || "ucws-team-workspace",
+    };
+    localStorage.setItem(SUPABASE_KEY, JSON.stringify(supabaseConfig));
+  }
+
+  function applySupabaseConfig() {
+    els.supabaseUrl.value = supabaseConfig.url || "";
+    els.supabaseAnonKey.value = supabaseConfig.anonKey || "";
+    els.supabaseTable.value = supabaseConfig.table || "launchlens_workspace";
+    els.supabaseWorkspaceKey.value = supabaseConfig.workspaceKey || "ucws-team-workspace";
+  }
+
+  function inferIdeaTags(text) {
+    const source = text.toLowerCase();
+    const tagRules = [
+      ["agent", ["agent", "助手", "代理", "智能体"]],
+      ["api", ["api", "接口", "codex", "json"]],
+      ["backend", ["supabase", "postgres", "后端", "sync", "同步"]],
+      ["demo", ["demo", "演示", "tour", "教程"]],
+      ["visual", ["2.5d", "visual", "星图", "可视化", "hub", "空间"]],
+      ["repo", ["github", "repo", "仓库", "readme"]],
+      ["judging", ["judge", "评分", "评审", "project wall", "提交"]],
+      ["deploy", ["vercel", "netlify", "pages", "部署"]],
+      ["product", ["商业", "product", "用户", "价值", "平台"]],
+    ];
+    const tags = tagRules
+      .filter(([, terms]) => terms.some((term) => source.includes(term)))
+      .map(([tag]) => tag);
+    return [...new Set(tags.length ? tags : ["seed"])];
+  }
+
+  function deriveIdeasFromText(text) {
+    const lines = String(text || "")
+      .split(/\n+/)
+      .map((line) => line.trim())
+      .filter(Boolean);
+    const createdAt = new Date().toISOString();
+    return lines
+      .map((line, index) => {
+        const explicitTags = [...line.matchAll(/#([\w\u4e00-\u9fa5-]+)/g)].map((match) => match[1]);
+        const cleaned = line.replace(/#([\w\u4e00-\u9fa5-]+)/g, "").trim();
+        const title = cleaned.length > 64 ? `${cleaned.slice(0, 61)}...` : cleaned;
+        const tags = [...new Set([...inferIdeaTags(line), ...explicitTags])];
+        const parentId =
+          index > 0 && tags.some((tag) => platformState.ideas[platformState.ideas.length - 1]?.tags?.includes(tag))
+            ? platformState.ideas[platformState.ideas.length - 1].id
+            : "";
+        return Core.createIdea({
+          title,
+          summary: cleaned,
+          tags: tags.join(", "),
+          parentId,
+        }, createdAt);
+      })
+      .filter(Boolean);
+  }
+
+  function mergeRelatedIdeas(ideas) {
+    const all = [...platformState.ideas, ...ideas];
+    return all.map((idea, index) => {
+      const shared = all
+        .filter((other, otherIndex) => {
+          if (otherIndex === index || other.id === idea.id) return false;
+          return (idea.tags || []).some((tag) => (other.tags || []).includes(tag));
+        })
+        .slice(0, 3)
+        .map((other) => other.id);
+      return {
+        ...idea,
+        relatedIds: [...new Set([...(idea.relatedIds || []), ...shared])],
+      };
+    });
+  }
+
+  function buildCodexApiPayload() {
+    const project = getProject();
+    const analysis = currentAnalysis || analyze(project);
+    const snapshot = Core.buildWorkspaceSnapshot({
+      project,
+      platform: platformState,
+      analysis,
+      generated,
+      repoScan,
+    });
+    return {
+      kind: "launchlens.codex.workspace",
+      version: Core.schemaVersion,
+      generatedAt: new Date().toISOString(),
+      endpoints: {
+        staticContract: "api/openapi.json",
+        supabaseTable: supabaseConfig.table || "launchlens_workspace",
+        workspaceKey: supabaseConfig.workspaceKey || "ucws-team-workspace",
+      },
+      suggestedCodexUse: [
+        "Read project, analysis, ideas, agentRuns, and generated materials before modifying the app.",
+        "Use idea graph edges to understand why a feature exists before refactoring.",
+        "Write new implementation notes back as ideas or agentRuns.",
+      ],
+      snapshot,
+    };
+  }
+
+  async function copyCodexApiJson() {
+    const payload = JSON.stringify(buildCodexApiPayload(), null, 2);
+    await navigator.clipboard.writeText(payload);
+    els.syncStatus.textContent = t("api.copied");
+    els.platformState.textContent = t("api.copied");
   }
 
   function countHits(text, terms) {
@@ -1144,6 +1482,422 @@
     window.setTimeout(() => particle.remove(), 720);
   }
 
+  function renderProcessSteps() {
+    els.processSteps.innerHTML = "";
+    Core.processSteps(language).forEach((step, index) => {
+      const node = document.createElement("li");
+      node.innerHTML = `<span>${String(index + 1).padStart(2, "0")}</span><strong>${step.title}</strong><p>${step.body}</p><small>${step.output}</small>`;
+      els.processSteps.appendChild(node);
+    });
+  }
+
+  function renderAgentStudio() {
+    const selected = platformState.selectedAgent || "strategy";
+    els.agentSelect.innerHTML = "";
+    Core.agentDefinitions(language).forEach((agent) => {
+      const option = document.createElement("option");
+      option.value = agent.id;
+      option.textContent = `${agent.label} - ${agent.role}`;
+      option.selected = agent.id === selected;
+      els.agentSelect.appendChild(option);
+    });
+
+    const latest = platformState.agentRuns[0];
+    if (!latest) {
+      els.agentOutput.textContent = t("agent.empty");
+      return;
+    }
+    els.agentOutput.innerHTML = `
+      <strong>${latest.title}</strong>
+      <p>${latest.summary}</p>
+      <ul>${latest.checklist.map((item) => `<li>${item}</li>`).join("")}</ul>
+      ${latest.linkedIdeas?.length ? `<small>${latest.linkedIdeas.join(" / ")}</small>` : ""}
+    `;
+  }
+
+  function renderTutorial() {
+    els.tutorialSteps.innerHTML = "";
+    Core.tutorialSteps(language).forEach((step, index) => {
+      const done = Boolean(platformState.tutorialDone[step.id]);
+      const node = document.createElement("li");
+      node.className = done ? "done" : "";
+      node.innerHTML = `<button type="button" data-tutorial-id="${step.id}">${done ? "✓" : index + 1}</button><strong>${step.title}</strong><p>${step.action}</p>`;
+      els.tutorialSteps.appendChild(node);
+    });
+  }
+
+  function renderIdeas() {
+    els.ideaParent.innerHTML = "";
+    const none = document.createElement("option");
+    none.value = "";
+    none.textContent = t("ideas.parentNone");
+    els.ideaParent.appendChild(none);
+    platformState.ideas.forEach((idea) => {
+      const option = document.createElement("option");
+      option.value = idea.id;
+      option.textContent = idea.title;
+      els.ideaParent.appendChild(option);
+    });
+
+    els.ideaList.innerHTML = "";
+    if (!platformState.ideas.length) {
+      els.ideaList.textContent = t("ideas.empty");
+      return;
+    }
+    const graph = Core.buildIdeaGraph(platformState.ideas);
+    platformState.ideas.slice().reverse().forEach((idea) => {
+      const degree = graph.edges.filter((edge) => edge.from === idea.id || edge.to === idea.id).length;
+      const node = document.createElement("button");
+      node.type = "button";
+      node.className = platformState.selectedNodeId === idea.id ? "active" : "";
+      node.dataset.ideaId = idea.id;
+      node.innerHTML = `<strong>${idea.title}</strong><span>${idea.tags?.join(" / ") || t("ideas.seed")} · ${degree} ${t("ideas.linked")}</span>`;
+      els.ideaList.appendChild(node);
+    });
+  }
+
+  function renderTools() {
+    els.toolGrid.innerHTML = "";
+    Core.toolRecommendations(language).forEach((tool) => {
+      const node = document.createElement("div");
+      node.className = "tool-item";
+      node.innerHTML = `<span>${tool.category}</span><strong>${tool.name}</strong><p>${tool.fit}</p>`;
+      els.toolGrid.appendChild(node);
+    });
+  }
+
+  function renderSupabasePanel() {
+    applySupabaseConfig();
+    if (!els.syncStatus.textContent || els.syncStatus.textContent === t("sync.loaded") || els.syncStatus.textContent === t("sync.saved")) {
+      return;
+    }
+    els.syncStatus.textContent = t("sync.localOnly");
+  }
+
+  function renderPlatform() {
+    renderProcessSteps();
+    renderAgentStudio();
+    renderTutorial();
+    renderIdeas();
+    renderTools();
+    renderSupabasePanel();
+  }
+
+  function runPlatformAgent() {
+    const project = getProject();
+    const analysis = currentAnalysis || analyze(project);
+    const agentId = els.agentSelect.value || "strategy";
+    const result = Core.buildAgentResult({
+      agentId,
+      language,
+      project,
+      analysis,
+      ideas: platformState.ideas,
+    });
+    platformState.selectedAgent = agentId;
+    platformState.agentRuns = [result, ...platformState.agentRuns].slice(0, 20);
+    savePlatform();
+    renderPlatform();
+    updateHubGraph();
+  }
+
+  function addIdeaFromEditor() {
+    const idea = Core.createIdea({
+      title: els.ideaTitle.value,
+      summary: els.ideaSummary.value,
+      tags: els.ideaTags.value,
+      parentId: els.ideaParent.value,
+    });
+    if (!idea) return;
+    platformState.ideas = mergeRelatedIdeas([idea]);
+    platformState.selectedNodeId = idea.id;
+    els.ideaTitle.value = "";
+    els.ideaSummary.value = "";
+    els.ideaTags.value = "";
+    savePlatform();
+    renderPlatform();
+    updateHubGraph();
+  }
+
+  function addIdeasFromHubInput() {
+    const ideas = deriveIdeasFromText(els.hubIdeaInput.value);
+    if (!ideas.length) return;
+    platformState.ideas = mergeRelatedIdeas(ideas);
+    platformState.selectedNodeId = ideas[0].id;
+    els.hubIdeaInput.value = "";
+    savePlatform();
+    renderPlatform();
+    updateHubGraph();
+  }
+
+  function buildHubGraph() {
+    const project = getProject();
+    const analysis = currentAnalysis || analyze(project);
+    const nodes = [
+      {
+        id: "project",
+        type: "project",
+        title: project.name || "LaunchLens",
+        body: project.tagline || t("hub.body"),
+        radius: 0,
+        angle: 0,
+        size: 18,
+      },
+    ];
+    const edges = [];
+
+    Core.processSteps(language).forEach((step, index) => {
+      const id = `process-${step.id}`;
+      nodes.push({
+        id,
+        type: "process",
+        title: step.title,
+        body: step.body,
+        radius: 0.24,
+        angle: index * 1.05,
+        size: 9,
+      });
+      edges.push({ from: "project", to: id, type: "process" });
+    });
+
+    platformState.ideas.forEach((idea, index) => {
+      nodes.push({
+        id: idea.id,
+        type: "idea",
+        title: idea.title,
+        body: idea.summary || idea.tags?.join(", ") || "",
+        radius: 0.42 + (index % 4) * 0.075,
+        angle: index * 0.88 + 0.45,
+        size: 8 + Math.min(5, (idea.tags || []).length),
+      });
+      edges.push({ from: idea.parentId || "project", to: idea.id, type: "idea" });
+      (idea.relatedIds || []).forEach((relatedId) => edges.push({ from: idea.id, to: relatedId, type: "related" }));
+    });
+
+    platformState.agentRuns.slice(0, 6).forEach((run, index) => {
+      const id = `agent-${run.agentId}-${index}`;
+      nodes.push({
+        id,
+        type: "agent",
+        title: run.title,
+        body: run.summary,
+        radius: 0.34 + (index % 2) * 0.08,
+        angle: index * 1.1 + 2.8,
+        size: 10,
+      });
+      edges.push({ from: "project", to: id, type: "agent" });
+    });
+
+    [
+      ["demo", "Demo URL", analysis.has.demo],
+      ["repo", "GitHub Repo", analysis.has.repo],
+      ["screenshot", "Screenshots", analysis.has.screenshot],
+      ["logo", "Logo", analysis.has.logo],
+      ["team", "Team", analysis.has.team],
+    ].forEach(([key, title, ready], index) => {
+      const id = `evidence-${key}`;
+      nodes.push({
+        id,
+        type: "evidence",
+        title,
+        body: ready ? t("audit.ready") : t("audit.missing"),
+        radius: 0.66,
+        angle: index * 1.18 + 0.25,
+        size: ready ? 8 : 6,
+        ready,
+      });
+      edges.push({ from: "project", to: id, type: "evidence" });
+    });
+
+    Core.toolRecommendations(language).slice(0, 7).forEach((tool, index) => {
+      const id = `tool-${index}`;
+      nodes.push({
+        id,
+        type: "tool",
+        title: tool.name,
+        body: tool.fit,
+        radius: 0.76,
+        angle: index * 0.9 + 1.3,
+        size: 7,
+      });
+      edges.push({ from: "project", to: id, type: "tool" });
+    });
+
+    return {
+      nodes: nodes.filter((node) => node.type === "project" || platformState.hubFilters[node.type]),
+      edges,
+    };
+  }
+
+  function nodeColor(node) {
+    const colors = {
+      project: "#63d6a4",
+      process: "#f0b85a",
+      idea: "#5c8dff",
+      agent: "#ff7ab6",
+      evidence: node.ready ? "#63d6a4" : "#f0b85a",
+      tool: "#b6f3ff",
+    };
+    return colors[node.type] || "#f5f1e8";
+  }
+
+  function updateHubGraph() {
+    hubGraph = buildHubGraph();
+    renderHubInspect();
+  }
+
+  function renderHubInspect() {
+    const selected =
+      hubGraph.nodes.find((node) => node.id === platformState.selectedNodeId) ||
+      hubGraph.nodes.find((node) => node.id === "project");
+    if (!selected) return;
+    platformState.selectedNodeId = selected.id;
+    els.hubNodeTitle.textContent = selected.title;
+    els.hubNodeMeta.textContent = selected.type;
+    els.hubNodeBody.textContent = selected.body || "";
+    const byType = hubGraph.nodes.reduce((acc, node) => {
+      acc[node.type] = (acc[node.type] || 0) + 1;
+      return acc;
+    }, {});
+    els.hubStats.innerHTML = Object.entries(byType)
+      .map(([type, count]) => `<span>${type}<strong>${count}</strong></span>`)
+      .join("");
+  }
+
+  function drawHub() {
+    const canvas = els.hubCanvas;
+    if (!canvas) return;
+    const rect = canvas.getBoundingClientRect();
+    const dpr = window.devicePixelRatio || 1;
+    if (canvas.width !== Math.floor(rect.width * dpr) || canvas.height !== Math.floor(rect.height * dpr)) {
+      canvas.width = Math.floor(rect.width * dpr);
+      canvas.height = Math.floor(rect.height * dpr);
+    }
+    const ctx = canvas.getContext("2d");
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.clearRect(0, 0, rect.width, rect.height);
+
+    const time = performance.now() / 1000;
+    ctx.fillStyle = "#0d1117";
+    ctx.fillRect(0, 0, rect.width, rect.height);
+    hubStarSeed.forEach((star) => {
+      const x = (star.x / 997) * rect.width;
+      const y = (star.y / 991) * rect.height;
+      const alpha = 0.15 + Math.sin(time * 1.2 + star.pulse) * 0.08;
+      ctx.fillStyle = `rgba(245,241,232,${alpha})`;
+      ctx.beginPath();
+      ctx.arc(x, y, star.size, 0, Math.PI * 2);
+      ctx.fill();
+    });
+
+    const center = { x: rect.width * 0.52, y: rect.height * 0.53 };
+    const maxR = Math.min(rect.width, rect.height) * 0.48;
+    const positioned = new Map();
+    hubGraph.nodes.forEach((node) => {
+      const wobble = Math.sin(time + node.angle * 2) * 0.018;
+      const radius = node.radius * maxR;
+      positioned.set(node.id, {
+        ...node,
+        x: center.x + Math.cos(node.angle + wobble) * radius,
+        y: center.y + Math.sin(node.angle + wobble) * radius * 0.72,
+      });
+    });
+
+    ctx.lineWidth = 1;
+    hubGraph.edges.forEach((edge) => {
+      const from = positioned.get(edge.from);
+      const to = positioned.get(edge.to);
+      if (!from || !to) return;
+      ctx.strokeStyle = edge.type === "related" ? "rgba(92,141,255,0.24)" : "rgba(245,241,232,0.14)";
+      ctx.beginPath();
+      ctx.moveTo(from.x, from.y);
+      ctx.lineTo(to.x, to.y);
+      ctx.stroke();
+    });
+
+    let hoverNode = null;
+    positioned.forEach((node) => {
+      const dx = hubPointer.x - node.x;
+      const dy = hubPointer.y - node.y;
+      const hit = hubPointer.active && Math.sqrt(dx * dx + dy * dy) < node.size + 9;
+      if (hit) hoverNode = node;
+      const active = platformState.selectedNodeId === node.id;
+      ctx.shadowColor = nodeColor(node);
+      ctx.shadowBlur = active || hit ? 24 : 10;
+      ctx.fillStyle = nodeColor(node);
+      ctx.beginPath();
+      ctx.arc(node.x, node.y, node.size + (active ? 3 : hit ? 2 : 0), 0, Math.PI * 2);
+      ctx.fill();
+      ctx.shadowBlur = 0;
+
+      if (active || hit || node.type === "project") {
+        ctx.font = "700 12px Inter, system-ui, sans-serif";
+        ctx.fillStyle = "rgba(245,241,232,0.92)";
+        ctx.fillText(node.title.slice(0, 28), node.x + node.size + 7, node.y + 4);
+      }
+    });
+    canvas.style.cursor = hoverNode ? "pointer" : "crosshair";
+    canvas.dataset.hoverNode = hoverNode?.id || "";
+    hubAnimationFrame = requestAnimationFrame(drawHub);
+  }
+
+  function startHubAnimation() {
+    if (!hubAnimationFrame) {
+      hubAnimationFrame = requestAnimationFrame(drawHub);
+    }
+  }
+
+  async function saveSnapshotToSupabase() {
+    saveSupabaseConfig();
+    const project = getProject();
+    const snapshot = Core.buildWorkspaceSnapshot({
+      project,
+      platform: platformState,
+      analysis: currentAnalysis || analyze(project),
+      generated,
+      repoScan,
+    });
+    try {
+      const request = Core.buildSupabaseRequests(supabaseConfig, snapshot).upsert;
+      const response = await fetch(request.url, {
+        ...request.options,
+        body: JSON.stringify(request.options.body),
+      });
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      els.syncStatus.textContent = t("sync.saved");
+      els.platformState.textContent = t("sync.saved");
+    } catch (error) {
+      els.syncStatus.textContent = `${t("sync.failed")}: ${error.message}`;
+    }
+  }
+
+  async function loadSnapshotFromSupabase() {
+    saveSupabaseConfig();
+    try {
+      const request = Core.buildSupabaseRequests(supabaseConfig, {}).select;
+      const response = await fetch(request.url, request.options);
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      const rows = await response.json();
+      const snapshot = rows[0]?.payload;
+      if (!snapshot) throw new Error("No workspace snapshot found");
+      if (snapshot.project) setProject(snapshot.project);
+      if (snapshot.platform) platformState = { ...platformState, ...snapshot.platform };
+      generated = snapshot.generated || null;
+      repoScan = snapshot.repoScan || null;
+      currentAnalysis = snapshot.analysis || analyze(getProject());
+      saveProject();
+      savePlatform();
+      runAgent();
+      renderRepoScan();
+      renderPlatform();
+      updateHubGraph();
+      els.syncStatus.textContent = t("sync.loaded");
+      els.platformState.textContent = t("sync.loaded");
+    } catch (error) {
+      els.syncStatus.textContent = `${t("sync.failed")}: ${error.message}`;
+    }
+  }
+
   function generate(project, analysis) {
     const name = fallback(project.name, "LaunchLens");
     const track = fallback(project.track, "Application");
@@ -1517,6 +2271,8 @@ ${analysis.dimensions.map((item) => `- ${item.label}: ${item.score}/100 - ${item
     generated = generate(project, currentAnalysis);
     renderScores(currentAnalysis);
     renderOutput();
+    renderPlatform();
+    updateHubGraph();
   }
 
   function setActiveTab(tab) {
@@ -1655,6 +2411,7 @@ ${analysis.dimensions.map((item) => `- ${item.label}: ${item.score}/100 - ${item
   els.langEnBtn.addEventListener("click", () => setLanguage("en"));
   els.langZhBtn.addEventListener("click", () => setLanguage("zh"));
   els.templeModeBtn.addEventListener("click", () => setViewMode("temple"));
+  els.hubModeBtn.addEventListener("click", () => setViewMode("hub"));
   els.classicModeBtn.addEventListener("click", () => setViewMode("classic"));
   els.templePrimaryAction.addEventListener("click", runTemplePrimaryAction);
   els.templeReviewAction.addEventListener("click", runAgent);
@@ -1664,6 +2421,71 @@ ${analysis.dimensions.map((item) => `- ${item.label}: ${item.score}/100 - ${item
     scannedRepoUrl = getProject().repoUrl;
     scanRepository();
   });
+  els.runPlatformAgentBtn.addEventListener("click", runPlatformAgent);
+  els.addIdeaBtn.addEventListener("click", addIdeaFromEditor);
+  els.hubBuildBtn.addEventListener("click", addIdeasFromHubInput);
+  els.hubGuideBtn.addEventListener("click", () => {
+    setViewMode("classic");
+    requestAnimationFrame(() => els.platformState.scrollIntoView({ behavior: "smooth", block: "start" }));
+  });
+  els.hubApiBtn.addEventListener("click", copyCodexApiJson);
+  els.copyApiBtn.addEventListener("click", copyCodexApiJson);
+  els.saveSupabaseBtn.addEventListener("click", saveSnapshotToSupabase);
+  els.loadSupabaseBtn.addEventListener("click", loadSnapshotFromSupabase);
+  [els.supabaseUrl, els.supabaseAnonKey, els.supabaseTable, els.supabaseWorkspaceKey].forEach((input) => {
+    input.addEventListener("change", saveSupabaseConfig);
+  });
+
+  els.tutorialSteps.addEventListener("click", (event) => {
+    const button = event.target.closest("[data-tutorial-id]");
+    if (!button) return;
+    const id = button.dataset.tutorialId;
+    platformState.tutorialDone[id] = !platformState.tutorialDone[id];
+    savePlatform();
+    renderTutorial();
+  });
+
+  els.ideaList.addEventListener("click", (event) => {
+    const button = event.target.closest("[data-idea-id]");
+    if (!button) return;
+    platformState.selectedNodeId = button.dataset.ideaId;
+    savePlatform();
+    renderIdeas();
+    updateHubGraph();
+    setViewMode("hub");
+  });
+
+  document.querySelectorAll("[data-hub-filter]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const key = button.dataset.hubFilter;
+      platformState.hubFilters[key] = !platformState.hubFilters[key];
+      button.classList.toggle("active", platformState.hubFilters[key]);
+      savePlatform();
+      updateHubGraph();
+    });
+  });
+
+  els.hubCanvas.addEventListener("pointermove", (event) => {
+    const rect = els.hubCanvas.getBoundingClientRect();
+    hubPointer = {
+      x: event.clientX - rect.left,
+      y: event.clientY - rect.top,
+      active: true,
+    };
+  });
+
+  els.hubCanvas.addEventListener("pointerleave", () => {
+    hubPointer.active = false;
+  });
+
+  els.hubCanvas.addEventListener("click", () => {
+    const id = els.hubCanvas.dataset.hoverNode;
+    if (!id) return;
+    platformState.selectedNodeId = id;
+    savePlatform();
+    renderHubInspect();
+    renderIdeas();
+  });
 
   els.resetBtn.addEventListener("click", () => {
     localStorage.removeItem(STORAGE_KEY);
@@ -1671,6 +2493,10 @@ ${analysis.dimensions.map((item) => `- ${item.label}: ${item.score}/100 - ${item
     generated = null;
     repoScan = null;
     scannedRepoUrl = "";
+    platformState.ideas = [];
+    platformState.agentRuns = [];
+    platformState.tutorialDone = {};
+    savePlatform();
     renderRepoScan();
     runAgent();
   });
@@ -1695,6 +2521,8 @@ ${analysis.dimensions.map((item) => `- ${item.label}: ${item.score}/100 - ${item
   els.templeView.addEventListener("pointermove", emitTempleParticle);
 
   applyTranslations();
+  loadPlatform();
+  applySupabaseConfig();
 
   if (!loadProject()) {
     loadSample();
@@ -1702,6 +2530,9 @@ ${analysis.dimensions.map((item) => `- ${item.label}: ${item.score}/100 - ${item
     runAgent();
   }
   renderRepoScan();
+  renderPlatform();
+  updateHubGraph();
+  startHubAnimation();
   renderTemplePanel();
-  setViewMode(params.get("mode") === "classic" ? "classic" : "temple");
+  setViewMode(params.get("mode") === "classic" ? "classic" : params.get("mode") === "hub" ? "hub" : "temple");
 })();
