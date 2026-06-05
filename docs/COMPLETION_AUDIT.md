@@ -56,7 +56,7 @@ Confirmed event facts:
 - Project submission deadline: June 5, 2026 23:59 SGT.
 - Demo Day: June 13, 2026 in Singapore.
 - Project submission and project editing are enabled.
-- Current participants reported by the API: 565.
+- Current participants reported by the API: 566.
 - Local unauthenticated Project Wall sync writes event metadata and a `TOKEN_MISSING` diagnostic into `data/ucws-project-wall.json`.
 
 The project list API still returned HTTP 401 Unauthorized:

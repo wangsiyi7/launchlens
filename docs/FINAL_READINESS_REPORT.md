@@ -29,7 +29,7 @@ LaunchLens 的 GitHub 仓库、GitHub Pages 公开 Demo、源码包和 Project W
 | RepoScape-inspired Hub | Ready | Draggable Hub graph, persisted node positions, graph API contract, attribution, and payload references are present. |
 | Project Manager | Ready | Workspace snapshot save/load/copy UI and local persistence key are present. |
 | Codex and ClaudeCodex Bridge | Ready | Agent bridge payload, graph overview/neighborhood helpers, example JSON, and Codex API docs are present. |
-| UCWS Project Wall sync | Ready | Event snapshot exists; authenticated project list still requires EPIC_TOKEN. Current public participants=565. |
+| UCWS Project Wall sync | Ready | Event snapshot exists; authenticated project list still requires EPIC_TOKEN. Current public participants=566. |
 | Companion aggregator links | Ready | README, docs, and Project Radar link strip point to the sibling aggregator and official UCWS archive. |
 | Temple Mode assets | Ready | Background=2899711 bytes; EN screenshot=1477309 bytes; ZH screenshot=1478907 bytes; mobile screenshot=194364 bytes. |
 | Git state | Ready | Clean working tree. |

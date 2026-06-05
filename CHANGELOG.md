@@ -2,6 +2,20 @@
 
 All notable LaunchLens updates should be recorded here before pushing to GitHub and refreshing the public demo.
 
+## 2026-06-05 - UCWS Public Snapshot Refresh
+
+### Updated
+
+- Refreshed the public UCWS event snapshot and readiness evidence.
+- Updated current public participant count from 565 to 566.
+- Fast-forwarded the `gh-pages` branch so the public demo serves the latest logo and submission assets.
+
+### Verified
+
+- GitHub Pages demo and Hub returned HTTP 200.
+- Public logo asset returned the latest letter-integrated lizard SVG.
+- Submission payload validation passed.
+
 ## 2026-06-05 - Letter-Integrated Lizard Logo Revision
 
 ### Updated

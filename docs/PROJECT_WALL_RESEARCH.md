@@ -12,7 +12,7 @@
 
 The Project Wall frontend loads the event metadata publicly, but the project list endpoint returns HTTP 401 without a logged-in Epic Connector token. The static page and frontend chunks confirm that project list data is fetched from `/api/projects`, but complete anonymous export is blocked.
 
-Latest re-check on June 5, 2026 (Asia/Shanghai): event metadata is still public, project submission and editing are still enabled, current participants are 565, and the anonymous Project API still returns HTTP 401 for:
+Latest re-check on June 5, 2026 (Asia/Shanghai): event metadata is still public, project submission and editing are still enabled, current participants are 566, and the anonymous Project API still returns HTTP 401 for:
 
 ```text
 https://evol.epicconnector.ai/api/projects?eventId=364d3219-5907-48b6-a34d-e95f90b10579&sort=popular&limit=20&offset=0
@@ -42,7 +42,7 @@ Event ID discovered:
 - Title: UCWS Singapore Hackathon -- 2026
 - Format: hybrid
 - Location: Singapore
-- Participants: 565 current participants reported by the API on June 5, 2026
+- Participants: 566 current participants reported by the API on June 5, 2026
 - Tracks: Agent, Skill, Application, DeepResearch
 - Submission enabled: true
 - Project edit enabled: true
