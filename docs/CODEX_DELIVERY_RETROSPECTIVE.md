@@ -441,7 +441,27 @@ That repository includes:
 - `hackathon-project-delivery` Skill
 - English and Chinese delivery replay references
 - English and Chinese adaptation guides for UCWS and future hackathons
+- English and Chinese detailed delivery checklists
 - dry-run-first installer
 - structure validation script
 
 The standalone repository is the preferred long-term source for reuse across UCWS and other hackathon workflows. The copy inside LaunchLens remains as project-local provenance.
+
+The repository was later upgraded to version `0.2.0` with finer-grained bilingual README guidance, explicit delivery gates, evidence matrices, and checklist documents:
+
+```text
+https://github.com/wangsiyi7/hackathon-project-delivery
+README.md
+README.zh-CN.md
+docs/CHECKLIST.md
+docs/CHECKLIST.zh-CN.md
+```
+
+Version `0.2.0` passed:
+
+```text
+npm.cmd run validate
+npm.cmd run plugin:install:dry-run
+Skill is valid!
+Plugin validation passed
+```

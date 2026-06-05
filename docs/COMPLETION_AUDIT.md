@@ -22,6 +22,7 @@ Build a fast, submit-ready UCWS Singapore Hackathon 2026 project by studying the
 | Codex plugin draft validates | Official `validate_plugin.py` reported `Plugin validation passed`. |
 | Safe plugin install path exists | `npm.cmd run plugin:install:dry-run` prints target paths without writing global config. |
 | Standalone open-source skill repo exists | `https://github.com/wangsiyi7/hackathon-project-delivery` returned HTTP 200. |
+| Standalone skill repo is granular and bilingual | Version `0.2.0` includes detailed English/Chinese READMEs and `docs/CHECKLIST.md` / `docs/CHECKLIST.zh-CN.md`, all verified with HTTP 200. |
 | Final submission package exists | `C:\Users\35398\Desktop\UCWS 2026\LaunchLens_submission_pack.zip` was regenerated from Git HEAD. |
 
 ## Official Event Surface

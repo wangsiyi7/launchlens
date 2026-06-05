@@ -25,6 +25,7 @@ This folder keeps supporting materials out of the repository root while preservi
 - `../plugins/hackathon-project-delivery/`: validated Codex plugin draft
 - `../tools/install-codex-plugin.mjs`: dry-run-first personal plugin installer
 - Standalone open-source repository: `https://github.com/wangsiyi7/hackathon-project-delivery`
+- Standalone repository version `0.2.0`: detailed English/Chinese READMEs plus English/Chinese delivery checklists
 
 ## Assets And Source
 
