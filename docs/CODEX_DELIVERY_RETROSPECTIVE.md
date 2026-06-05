@@ -414,3 +414,12 @@ Plugin validation passed: C:\Users\35398\Desktop\UCWS 2026\launchlens\plugins\ha
 The validation used the official Codex `skill-creator` and `plugin-creator` scripts with PyYAML installed into a temporary dependency directory, so the repository and global Python environment were not modified.
 
 To turn this draft into an installed personal plugin later, copy or scaffold the same folder under the Codex personal plugin location and add a marketplace entry. Keep the repository copy as the source of truth until the user explicitly chooses to install it globally.
+
+The repository also includes a safe install helper:
+
+```powershell
+npm.cmd run plugin:install:dry-run
+npm.cmd run plugin:install
+```
+
+The first command only prints the planned target paths. The second command copies the plugin to the personal Codex plugin directory and updates the personal marketplace entry. Do not run the install command unless the user explicitly wants this workflow installed globally.

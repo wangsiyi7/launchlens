@@ -19,6 +19,11 @@ This folder keeps supporting materials out of the repository root while preservi
 - `PROJECT_WALL_RESEARCH.md`: event and Project Wall research notes
 - `CODEX_DELIVERY_RETROSPECTIVE.md`: full Codex delivery replay and reusable Skill/plugin specification
 
+## Codex Skill And Plugin
+
+- `../plugins/hackathon-project-delivery/`: validated Codex plugin draft
+- `../tools/install-codex-plugin.mjs`: dry-run-first personal plugin installer
+
 ## Assets And Source
 
 - `ASSETS.md`: generated asset inventory
