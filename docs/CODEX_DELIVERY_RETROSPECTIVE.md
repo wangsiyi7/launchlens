@@ -389,3 +389,28 @@ Do not mark a similar task complete until all applicable items are proven:
 - external auth blockers are named honestly
 
 This is the main lesson: a Codex delivery is not complete when the code looks plausible. It is complete when the user's external review path is actually usable.
+
+## 9. Current Skill and Plugin Artifacts
+
+The reusable workflow has been materialized inside this repository as a reviewable plugin draft:
+
+```text
+plugins/hackathon-project-delivery/
+  .codex-plugin/plugin.json
+  skills/hackathon-project-delivery/SKILL.md
+  skills/hackathon-project-delivery/agents/openai.yaml
+  skills/hackathon-project-delivery/references/delivery-replay.md
+```
+
+The `SKILL.md` file is intentionally concise. It contains the trigger description, operating principle, workflow gates, required artifacts, validation commands, and failure rules. The detailed story is kept in `references/delivery-replay.md` so future Codex runs can load it only when the precedent is useful.
+
+Validation performed:
+
+```text
+Skill is valid!
+Plugin validation passed: C:\Users\35398\Desktop\UCWS 2026\launchlens\plugins\hackathon-project-delivery
+```
+
+The validation used the official Codex `skill-creator` and `plugin-creator` scripts with PyYAML installed into a temporary dependency directory, so the repository and global Python environment were not modified.
+
+To turn this draft into an installed personal plugin later, copy or scaffold the same folder under the Codex personal plugin location and add a marketplace entry. Keep the repository copy as the source of truth until the user explicitly chooses to install it globally.

@@ -17,6 +17,7 @@ This folder keeps supporting materials out of the repository root while preservi
 - `DEMO_VIDEO_SCRIPT.md`: 60-90 second demo script
 - `HACKATHON_STRATEGY.md`: initial competition strategy
 - `PROJECT_WALL_RESEARCH.md`: event and Project Wall research notes
+- `CODEX_DELIVERY_RETROSPECTIVE.md`: full Codex delivery replay and reusable Skill/plugin specification
 
 ## Assets And Source
 
