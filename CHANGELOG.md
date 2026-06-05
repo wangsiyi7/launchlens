@@ -49,12 +49,13 @@ All notable LaunchLens updates should be recorded here before pushing to GitHub 
 ### Added
 
 - Added links from the UCWS Project Radar UI to the official UCWS GitHub archive and the sibling `ucws-project-aggregator` local and Pages demo targets.
+- Added the live `ucws-project-aggregator` GitHub repository link to the Project Radar link strip.
 - Added `docs/UCWS_COMPANION_AGGREGATOR.md` to document the cross-repository data flow, commands, and demo targets.
 - Added official UCWS repository attribution notes.
 
 ### Updated
 
-- Updated the root README and documentation index with companion aggregator demo links and interop notes.
+- Updated the root README and documentation index with live companion aggregator repository/demo links and interop notes.
 
 ## 2026-06-05 - RepoScape-Inspired Hub And Agent Bridge
 
