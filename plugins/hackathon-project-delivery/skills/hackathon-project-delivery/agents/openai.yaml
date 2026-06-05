@@ -1,0 +1,5 @@
+interface:
+  display_name: "Hackathon Project Delivery"
+  short_description: "Ship competition apps with proof-ready submissions"
+  brand_color: "#B86B43"
+  default_prompt: "Use $hackathon-project-delivery to ship my hackathon idea as a public demo, GitHub repo, and submission package."

@@ -6,3 +6,4 @@ launchlens-source.zip
 dist/
 .vercel/
 .netlify/
+vercel-deploy-result.*

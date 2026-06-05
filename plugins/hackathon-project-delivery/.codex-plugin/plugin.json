@@ -1,0 +1,38 @@
+{
+  "name": "hackathon-project-delivery",
+  "version": "0.1.0",
+  "description": "A Codex workflow plugin for turning hackathon or demo-day ideas into shipped web apps, GitHub repositories, public demos, and copy-ready submission packages.",
+  "author": {
+    "name": "wangsiyi7",
+    "url": "https://github.com/wangsiyi7"
+  },
+  "homepage": "https://github.com/wangsiyi7/launchlens",
+  "repository": "https://github.com/wangsiyi7/launchlens",
+  "license": "UNLICENSED",
+  "keywords": [
+    "hackathon",
+    "delivery",
+    "github",
+    "deployment",
+    "submission"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Hackathon Project Delivery",
+    "shortDescription": "Ship competition apps with GitHub, demos, and submission proof.",
+    "longDescription": "A repeatable Codex workflow for researching competition requirements, shaping a product, building a working app, publishing to GitHub, deploying a public demo, preparing official submission fields, and verifying final readiness.",
+    "developerName": "wangsiyi7",
+    "category": "Productivity",
+    "capabilities": [
+      "Write",
+      "Code",
+      "Deploy"
+    ],
+    "defaultPrompt": [
+      "Use $hackathon-project-delivery to turn this hackathon idea into a shipped submission.",
+      "Use $hackathon-project-delivery to audit my repo, demo link, and Project Wall fields.",
+      "Use $hackathon-project-delivery to prepare GitHub, deployment, README, and final package."
+    ],
+    "brandColor": "#B86B43"
+  }
+}
