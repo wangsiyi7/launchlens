@@ -18,6 +18,19 @@ Latest re-check on June 5, 2026 (Asia/Shanghai): event metadata is still public,
 https://evol.epicconnector.ai/api/projects?eventId=364d3219-5907-48b6-a34d-e95f90b10579&sort=popular&limit=20&offset=0
 ```
 
+Additional live re-check on June 5, 2026 (Asia/Shanghai):
+
+- The public Project Wall HTML returns HTTP 200 and renders the Project Wall shell.
+- The static HTML does not embed project-card data or LaunchLens.
+- The visible public links include Sign In, sponsor links, and support email, but not direct project-detail links.
+- The active frontend chunks reference authenticated project operations:
+  - `/api/projects/can-submit?eventId=...` with `Authorization: Bearer ${token}` and `credentials: "include"`.
+  - `/api/projects/{projectId}/vote` with a token from localStorage.
+  - `PUT /api/projects` for project updates, with the token included in the request body.
+- Public web search did not expose a reliable index of the submitted UCWS Project Wall entries.
+
+Conclusion: the official Project Wall is publicly visible as a shell, but the complete project list and submission actions require an authenticated Epic Connector session. LaunchLens can therefore be completed as a repository, demo, and copy-ready Project Wall package, while official publication still requires manual login or `EPIC_TOKEN`.
+
 Event ID discovered:
 
 ```text
