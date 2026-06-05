@@ -56,6 +56,10 @@ UCWS is the first use case, but LaunchLens is designed as a long-term collaborat
 | LLM Slot | Optional OpenAI-compatible chat completion endpoint supplied by the user |
 | QA | Node.js tests, submission payload validator, public asset checks |
 
+## 4.1 External Methodology Reference
+
+This upgrade references [`Akasxh/re-forge`](https://github.com/Akasxh/re-forge) for its multi-agent adversarial gates, evidence substrate, cross-session memory, and capability-evolution patterns. LaunchLens translates those ideas into the in-product `Re-Forge Gate Agent`, Adversarial Gate process step, tool recommendation card, and changelog discipline. `re-forge` is MIT licensed. LaunchLens uses it as a methodology reference only and does not copy its source code, agent files, scripts, hooks, assets, or setup files. See `docs/ATTRIBUTION.md` for the attribution record.
+
 ## 5. UCWS Fit
 
 | UCWS requirement or judging lens | LaunchLens response |
@@ -120,4 +124,3 @@ node tools\validate-submission.mjs
   ]
 }
 ```
-

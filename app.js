@@ -969,6 +969,7 @@
       analysis,
       generated,
       repoScan,
+      externalReferences: Core.externalReferences(language),
     });
     return {
       kind: "launchlens.codex.workspace",
@@ -983,7 +984,9 @@
         "Read project, analysis, ideas, agentRuns, and generated materials before modifying the app.",
         "Use idea graph edges to understand why a feature exists before refactoring.",
         "Write new implementation notes back as ideas or agentRuns.",
+        "Apply the re-forge-inspired gate before major upgrades: challenge assumptions, verify evidence, then update the changelog.",
       ],
+      externalReferences: Core.externalReferences(language),
       snapshot,
     };
   }
@@ -1561,7 +1564,10 @@
     Core.toolRecommendations(language).forEach((tool) => {
       const node = document.createElement("div");
       node.className = "tool-item";
-      node.innerHTML = `<span>${tool.category}</span><strong>${tool.name}</strong><p>${tool.fit}</p>`;
+      const title = tool.url
+        ? `<a href="${tool.url}" target="_blank" rel="noopener noreferrer">${tool.name}</a>`
+        : tool.name;
+      node.innerHTML = `<span>${tool.category}</span><strong>${title}</strong><p>${tool.fit}</p>`;
       els.toolGrid.appendChild(node);
     });
   }

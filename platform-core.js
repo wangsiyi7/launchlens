@@ -63,6 +63,14 @@
         output: zh ? "想法图谱、材料包、复盘记录" : "Idea graph, pack, retrospectives",
       },
       {
+        id: "gate",
+        title: zh ? "对抗校验" : "Adversarial Gate",
+        body: zh
+          ? "参考 re-forge 的 skeptic、adversary、evaluator 思路，让项目在提交前被主动质疑。"
+          : "Borrow the re-forge pattern of skeptic, adversary, and evaluator checks before submission.",
+        output: zh ? "反驳清单、证据缺口、升级建议" : "Challenge list, evidence gaps, upgrade advice",
+      },
+      {
         id: "ship",
         title: zh ? "提交发布" : "Ship",
         body: zh
@@ -103,6 +111,13 @@
         action: zh
           ? "选择策略、证据或风险 Agent，生成一组具体行动。"
           : "Choose a strategy, evidence, or risk agent and generate concrete actions.",
+      },
+      {
+        id: "tour-forge",
+        title: zh ? "运行 Re-Forge Gate" : "Run Re-Forge Gate",
+        action: zh
+          ? "选择 Re-Forge Gate Agent，让它按对抗校验、证据沉淀和长期演进提出升级建议。"
+          : "Choose Re-Forge Gate Agent for adversarial checks, evidence memory, and long-horizon upgrade advice.",
       },
       {
         id: "tour-ideas",
@@ -159,6 +174,14 @@
         name: "OpenAI-compatible endpoint",
         fit: zh ? "保留可替换模型接口，避免把项目锁死在单一供应商。" : "Keep a replaceable model interface instead of locking into one vendor.",
       },
+      {
+        category: zh ? "方法论" : "Protocol",
+        name: "re-forge",
+        url: "https://github.com/Akasxh/re-forge",
+        fit: zh
+          ? "参考其多 Agent 对抗校验、证据基底和跨会话记忆，把 LaunchLens 升级成长期黑客松操作台。"
+          : "Reference its multi-agent adversarial gates, evidence substrate, and cross-session memory to harden LaunchLens as a long-term hackathon operating desk.",
+      },
     ];
   }
 
@@ -194,6 +217,27 @@
         id: "risk",
         label: zh ? "风险 Agent" : "Risk Agent",
         role: zh ? "识别商业、技术和提交风险。" : "Identify business, technical, and submission risks.",
+      },
+      {
+        id: "forge",
+        label: zh ? "Re-Forge Gate Agent" : "Re-Forge Gate Agent",
+        role: zh
+          ? "参考 re-forge 的对抗门、证据文件和演进团队，审计 LaunchLens 的长期升级路径。"
+          : "Use re-forge-inspired gates, evidence files, and evolution loops to audit the LaunchLens upgrade path.",
+      },
+    ];
+  }
+
+  function externalReferences(language = "en") {
+    const zh = language === "zh";
+    return [
+      {
+        name: "re-forge",
+        url: "https://github.com/Akasxh/re-forge",
+        license: "MIT",
+        use: zh
+          ? "作为方法论参考：多 Agent 对抗校验、证据基底、跨会话记忆和能力演进流程。LaunchLens 未复制其源码。"
+          : "Methodology reference for multi-agent adversarial gates, evidence substrate, cross-session memory, and capability evolution. LaunchLens does not copy source code from it.",
       },
     ];
   }
@@ -271,6 +315,15 @@
           ? ["Supabase 保存团队工作区。", "Playwright 做截图回归。", "OpenAI-compatible endpoint 负责文案增强。"]
           : ["Supabase stores team workspaces.", "Playwright runs screenshot regression.", "OpenAI-compatible endpoint enhances copy."],
       },
+      forge: {
+        title: zh ? "Re-Forge Gate 审计" : "Re-Forge Gate audit",
+        summary: zh
+          ? "把 LaunchLens 的每次升级都当作一个需要研究、实现、测试、文档和演进复盘的证据闭环。"
+          : "Treat every LaunchLens upgrade as a research, engineering, testing, documentation, and evolution evidence loop.",
+        checklist: zh
+          ? ["为每次升级写入 CHANGELOG。", "保留外部项目链接和许可声明。", "用对抗问题检查证据是否足以说服评委和后续开发者。"]
+          : ["Write each upgrade into CHANGELOG.", "Keep external project links and license attribution.", "Use adversarial questions to test whether evidence can convince judges and future maintainers."],
+      },
       risk: {
         title: zh ? "风险审计" : "Risk audit",
         summary: zh
@@ -331,7 +384,7 @@
     };
   }
 
-  function buildWorkspaceSnapshot({ project, platform, analysis, generated, repoScan }) {
+  function buildWorkspaceSnapshot({ project, platform, analysis, generated, repoScan, externalReferences = [] }) {
     return {
       schemaVersion,
       project: project || {},
@@ -339,6 +392,7 @@
       analysis: analysis || null,
       generated: generated || null,
       repoScan: repoScan || null,
+      externalReferences,
       savedAt: new Date().toISOString(),
     };
   }
@@ -394,6 +448,7 @@
     tutorialSteps,
     toolRecommendations,
     agentDefinitions,
+    externalReferences,
     buildAgentResult,
     createIdea,
     buildIdeaGraph,

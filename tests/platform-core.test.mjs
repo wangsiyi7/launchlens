@@ -43,14 +43,36 @@ assert.ok(agentResult.summary.includes("risk"));
 assert.ok(agentResult.checklist.length >= 3);
 assert.deepEqual(agentResult.linkedIdeas, ["Supabase workspace sync", "Codex API export"]);
 
+const forgeAgent = Core.buildAgentResult({
+  agentId: "forge",
+  language: "en",
+  project: { name: "LaunchLens" },
+  analysis: { overall: 80, has: {} },
+  ideas: [ideaA, ideaB],
+});
+
+assert.equal(forgeAgent.agentId, "forge");
+assert.ok(forgeAgent.title.includes("Re-Forge"));
+assert.ok(forgeAgent.checklist.some((item) => item.includes("CHANGELOG")));
+
+const tools = Core.toolRecommendations("en");
+const reForgeTool = tools.find((tool) => tool.name === "re-forge");
+assert.equal(reForgeTool?.url, "https://github.com/Akasxh/re-forge");
+
+const references = Core.externalReferences("en");
+assert.equal(references[0].license, "MIT");
+assert.ok(references[0].use.includes("does not copy source code"));
+
 const snapshot = Core.buildWorkspaceSnapshot({
   project: { name: "LaunchLens" },
   platform: { ideas: [ideaA, ideaB] },
   analysis: { overall: 72 },
+  externalReferences: references,
 });
 
 assert.equal(snapshot.schemaVersion, Core.schemaVersion);
 assert.equal(snapshot.project.name, "LaunchLens");
+assert.equal(snapshot.externalReferences[0].name, "re-forge");
 
 const requests = Core.buildSupabaseRequests(
   {

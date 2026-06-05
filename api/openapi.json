@@ -129,10 +129,27 @@
             "type": ["object", "null"],
             "description": "Public GitHub evidence scan."
           },
+          "externalReferences": {
+            "type": "array",
+            "description": "External projects or methodology references used by this workspace.",
+            "items": {
+              "$ref": "#/components/schemas/ExternalReference"
+            }
+          },
           "savedAt": {
             "type": "string",
             "format": "date-time"
           }
+        }
+      },
+      "ExternalReference": {
+        "type": "object",
+        "required": ["name", "url", "license", "use"],
+        "properties": {
+          "name": { "type": "string" },
+          "url": { "type": "string", "format": "uri" },
+          "license": { "type": "string" },
+          "use": { "type": "string" }
         }
       },
       "Idea": {

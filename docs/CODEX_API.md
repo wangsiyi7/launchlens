@@ -19,6 +19,7 @@ Open `Classic` mode and use `Copy Codex API JSON`. The copied payload contains:
 - `platform.agentRuns`: strategy, evidence, build, demo, tool, and risk agent outputs
 - `generated`: Markdown materials
 - `repoScan`: public GitHub evidence scan
+- `externalReferences`: third-party methodology or source references, currently including `re-forge`
 
 ## Static Contract
 
@@ -47,5 +48,6 @@ Use the anon key only for public/demo workspaces. For production, use Supabase A
 1. Read the snapshot.
 2. Inspect `platform.ideas` and `platform.agentRuns` before changing code.
 3. Make a scoped implementation change.
-4. Add a new idea or agent run summarizing the decision.
-5. Save the updated snapshot back to Supabase or copy the JSON into the project notes.
+4. Run the re-forge-inspired gate for major upgrades: challenge assumptions, verify evidence, and update `CHANGELOG.md`.
+5. Add a new idea or agent run summarizing the decision.
+6. Save the updated snapshot back to Supabase or copy the JSON into the project notes.

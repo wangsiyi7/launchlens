@@ -37,6 +37,16 @@ UCWS is the first use case, but LaunchLens is designed as a long-term collaborat
 
 HTML, CSS, JavaScript, Canvas star-map rendering, browser localStorage, optional Supabase REST backend, GitHub Pages, Vercel-ready static deployment, 2.5D generated bitmap background, GitHub public API repo scanning, OpenAPI JSON contract, optional OpenAI-compatible chat completion endpoint
 
+## External Methodology Reference
+
+LaunchLens references `Akasxh/re-forge` as an MIT-licensed methodology source for adversarial gates, evidence substrate, cross-session memory, and capability evolution:
+
+```text
+https://github.com/Akasxh/re-forge
+```
+
+LaunchLens does not copy source code from `re-forge`; it uses the project as a protocol reference and records attribution in `docs/ATTRIBUTION.md`.
+
 ## Team Members
 
 ```json

@@ -69,6 +69,10 @@ UCWS is the first use case, but LaunchLens is designed as a long-term collaborat
 | LLM Slot | Optional OpenAI-compatible chat completion endpoint supplied by the user |
 | QA | Node.js tests, submission payload validator, public asset checks |
 
+## 5.1 外部方法论引用
+
+LaunchLens 在本次升级中参考了 [`Akasxh/re-forge`](https://github.com/Akasxh/re-forge) 的多 Agent 对抗校验、证据基底、跨会话记忆和能力演进思路，并将其转化为产品内的 `Re-Forge Gate Agent`、Adversarial Gate 流程、工具推荐卡和更新日志纪律。`re-forge` 使用 MIT License。LaunchLens 仅做方法论参考，没有复制其源码、Agent 文件、脚本、hooks、assets 或安装文件。完整归因见 `docs/ATTRIBUTION.md`。
+
 ## 6. UCWS 标准适配
 
 | UCWS 要求或评审口径 | LaunchLens 对应能力 |
@@ -133,4 +137,3 @@ node tools\validate-submission.mjs
   ]
 }
 ```
-

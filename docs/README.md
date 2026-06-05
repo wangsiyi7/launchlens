@@ -13,6 +13,7 @@ This folder keeps supporting materials out of the repository root while preservi
 
 ## Product And Strategy
 
+- `../CHANGELOG.md`: release notes for product and demo updates
 - `SPACE_INTERACTION_SPEC.md`: Temple Mode and Classic Mode interaction specification
 - `JUDGING_BRIEF.md`: judging rationale and evidence brief
 - `DEMO_VIDEO_SCRIPT.md`: 60-90 second demo script
@@ -21,6 +22,8 @@ This folder keeps supporting materials out of the repository root while preservi
 - `CODEX_DELIVERY_RETROSPECTIVE.md`: full Codex delivery replay and reusable Skill/plugin specification
 - `CODEX_API.md`: machine-readable workspace contract for Codex and tool integrations
 - `SUPABASE.md`: optional Supabase backend setup for shared LaunchLens workspaces
+- `RE_FORGE_INTEGRATION.md`: re-forge methodology integration notes
+- `ATTRIBUTION.md`: external project links and license attribution
 
 ## Codex Skill And Plugin
 

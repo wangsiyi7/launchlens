@@ -10,7 +10,16 @@
   "suggestedCodexUse": [
     "Read project, analysis, ideas, agentRuns, and generated materials before modifying the app.",
     "Use idea graph edges to understand why a feature exists before refactoring.",
-    "Write new implementation notes back as ideas or agentRuns."
+    "Write new implementation notes back as ideas or agentRuns.",
+    "Apply the re-forge-inspired gate before major upgrades: challenge assumptions, verify evidence, then update the changelog."
+  ],
+  "externalReferences": [
+    {
+      "name": "re-forge",
+      "url": "https://github.com/Akasxh/re-forge",
+      "license": "MIT",
+      "use": "Methodology reference for multi-agent adversarial gates, evidence substrate, cross-session memory, and capability evolution. LaunchLens does not copy source code from it."
+    }
   ],
   "snapshot": {
     "schemaVersion": "2.0.0-platform",
@@ -55,6 +64,14 @@
     },
     "generated": null,
     "repoScan": null,
+    "externalReferences": [
+      {
+        "name": "re-forge",
+        "url": "https://github.com/Akasxh/re-forge",
+        "license": "MIT",
+        "use": "Methodology reference for multi-agent adversarial gates, evidence substrate, cross-session memory, and capability evolution. LaunchLens does not copy source code from it."
+      }
+    ],
     "savedAt": "2026-06-05T00:00:00.000Z"
   }
 }
