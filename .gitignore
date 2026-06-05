@@ -7,3 +7,5 @@ dist/
 .vercel/
 .netlify/
 vercel-deploy-result.*
+_submission_pack_tmp/
+*.baiduyun.uploading.cfg
