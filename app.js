@@ -35,12 +35,12 @@
       "brand.eyebrow": "UCWS Singapore 2026 / Builder Collaboration App",
       "mode.temple": "Temple",
       "mode.hub": "Hub",
-      "mode.classic": "Classic",
+      "mode.classic": "Form",
       "button.sample": "Load Sample",
       "button.reset": "Reset",
-      "button.copy": "Copy Markdown",
+      "button.copy": "Copy",
       "button.copied": "Copied",
-      "button.download": "Download Pack",
+      "button.download": "Export",
       "button.review": "Run Review Agent",
       "button.reviewShort": "Run Review",
       "button.generate": "Generate Pack",
@@ -48,6 +48,8 @@
       "button.enhance": "Enhance Current Pack",
       "button.enhancing": "Enhancing...",
       "button.copyPack": "Copy Pack",
+      "button.downloadStep": "Download Step",
+      "button.downloadedStep": "Downloaded",
       "button.buildStarMap": "Build Star Map",
       "button.openGuide": "Open Guide",
       "button.copyApi": "Copy Codex API JSON",
@@ -63,6 +65,21 @@
       "button.saveSupabase": "Save Snapshot",
       "button.loadSupabase": "Load Snapshot",
       "temple.eyebrow": "Submission Temple",
+      "temple.taglineFallback": "Turn rough build notes into a scored, ready-to-submit Project Wall package.",
+      "brief.value": "Value",
+      "brief.proof": "Proof",
+      "brief.export": "Export",
+      "brief.valueFallback": "Core value not written yet",
+      "brief.proofReady": "Demo and repo evidence ready",
+      "brief.proofMissing": "Add demo and repo evidence",
+      "brief.exportReady": "Downloadable pack ready",
+      "feedback.stepReady": "Step extract ready to download.",
+      "feedback.packCopied": "Submission pack copied.",
+      "feedback.packDownloaded": "Submission pack downloaded.",
+      "feedback.reviewRun": "Readiness review refreshed.",
+      "feedback.stepDownloaded": "Step file downloaded.",
+      "feedback.oracleOpened": "Oracle panel opened.",
+      "feedback.fieldsOpened": "Field editor opened.",
       "hub.eyebrow": "Hackathon Hub",
       "hub.title": "Idea star map",
       "hub.body": "Paste rough ideas, requirements, risks, or Codex notes. LaunchLens turns them into linked project nodes.",
@@ -223,6 +240,12 @@
       "mobile.llm": "LLM",
       "mobile.pack": "Pack",
       "mobile.submit": "Submit",
+      "runway.story": "Story",
+      "runway.proof": "Proof",
+      "runway.score": "Score",
+      "runway.agent": "Agent",
+      "runway.pack": "Pack",
+      "runway.ship": "Ship",
       "node.intake.short": "Project Altar",
       "node.evidence.short": "Evidence Steps",
       "node.score.short": "Score Gate",
@@ -287,12 +310,12 @@
       "brand.eyebrow": "UCWS Singapore 2026 / 开发者协作应用",
       "mode.temple": "神殿",
       "mode.hub": "星图",
-      "mode.classic": "经典",
+      "mode.classic": "表单",
       "button.sample": "载入示例",
       "button.reset": "重置",
-      "button.copy": "复制 Markdown",
+      "button.copy": "复制",
       "button.copied": "已复制",
-      "button.download": "下载材料包",
+      "button.download": "导出",
       "button.review": "运行评审助手",
       "button.reviewShort": "运行评审",
       "button.generate": "生成材料包",
@@ -300,6 +323,8 @@
       "button.enhance": "优化当前材料",
       "button.enhancing": "优化中...",
       "button.copyPack": "复制材料包",
+      "button.downloadStep": "下载步骤",
+      "button.downloadedStep": "已下载",
       "button.buildStarMap": "构建星图",
       "button.openGuide": "打开引导",
       "button.copyApi": "复制 Codex API JSON",
@@ -315,6 +340,21 @@
       "button.saveSupabase": "保存快照",
       "button.loadSupabase": "读取快照",
       "temple.eyebrow": "提交神殿",
+      "temple.taglineFallback": "把粗糙构建笔记转成带评分、可提交的 Project Wall 材料包。",
+      "brief.value": "价值",
+      "brief.proof": "证据",
+      "brief.export": "导出",
+      "brief.valueFallback": "核心价值还未填写",
+      "brief.proofReady": "Demo 和仓库证据已就绪",
+      "brief.proofMissing": "补充 Demo 和仓库证据",
+      "brief.exportReady": "材料包已可下载",
+      "feedback.stepReady": "该步骤材料已可下载。",
+      "feedback.packCopied": "提交材料包已复制。",
+      "feedback.packDownloaded": "提交材料包已下载。",
+      "feedback.reviewRun": "就绪度评审已刷新。",
+      "feedback.stepDownloaded": "步骤文件已下载。",
+      "feedback.oracleOpened": "模型面板已打开。",
+      "feedback.fieldsOpened": "字段编辑器已打开。",
       "hub.eyebrow": "黑客松 Hub",
       "hub.title": "想法星图",
       "hub.body": "粘贴粗糙想法、需求、风险或 Codex 笔记，LaunchLens 会把它们转成有关联的项目节点。",
@@ -475,6 +515,12 @@
       "mobile.llm": "模型",
       "mobile.pack": "材料",
       "mobile.submit": "提交",
+      "runway.story": "故事",
+      "runway.proof": "证据",
+      "runway.score": "评分",
+      "runway.agent": "Agent",
+      "runway.pack": "材料",
+      "runway.ship": "发布",
       "node.intake.short": "项目祭坛",
       "node.evidence.short": "证据台阶",
       "node.score.short": "评分之门",
@@ -562,6 +608,7 @@
     hubModeBtn: document.querySelector("#hubModeBtn"),
     classicModeBtn: document.querySelector("#classicModeBtn"),
     templeView: document.querySelector("#templeView"),
+    templeWorkbench: document.querySelector("#templeWorkbench"),
     hubView: document.querySelector("#hubView"),
     hubCanvas: document.querySelector("#hubCanvas"),
     hubIdeaInput: document.querySelector("#hubIdeaInput"),
@@ -615,16 +662,23 @@
     radarAssistBtn: document.querySelector("#radarAssistBtn"),
     radarAssist: document.querySelector("#radarAssist"),
     templeProjectName: document.querySelector("#templeProjectName"),
+    templeTagline: document.querySelector("#templeTagline"),
     templeScore: document.querySelector("#templeScore"),
+    templeValueBrief: document.querySelector("#templeValueBrief"),
+    templeProofBrief: document.querySelector("#templeProofBrief"),
+    templeExportBrief: document.querySelector("#templeExportBrief"),
     templeSpaceLabel: document.querySelector("#templeSpaceLabel"),
     templeSpaceTitle: document.querySelector("#templeSpaceTitle"),
     templeSpaceBody: document.querySelector("#templeSpaceBody"),
     templeCommunity: document.querySelector("#templeCommunity"),
     templeAi: document.querySelector("#templeAi"),
     templeExpert: document.querySelector("#templeExpert"),
+    templeFeedback: document.querySelector("#templeFeedback"),
     templePrimaryAction: document.querySelector("#templePrimaryAction"),
     templeReviewAction: document.querySelector("#templeReviewAction"),
     templeCopyAction: document.querySelector("#templeCopyAction"),
+    templeDownloadAction: document.querySelector("#templeDownloadAction"),
+    feedbackToast: document.querySelector("#feedbackToast"),
     llmBtn: document.querySelector("#llmBtn"),
     llmPanel: document.querySelector("#llmPanel"),
     enhanceBtn: document.querySelector("#enhanceBtn"),
@@ -777,6 +831,53 @@
     return strings[language][key] || strings.en[key] || key;
   }
 
+  function compactText(value, fallbackText, maxLength = 96) {
+    const text = String(value || "").replace(/\s+/g, " ").trim() || fallbackText;
+    return text.length > maxLength ? `${text.slice(0, maxLength - 3)}...` : text;
+  }
+
+  function slugify(value) {
+    return String(value || "launchlens")
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/^-+|-+$/g, "")
+      || "launchlens";
+  }
+
+  function announceFeedback(message, target) {
+    if (els.feedbackToast) {
+      els.feedbackToast.textContent = message;
+      els.feedbackToast.classList.add("visible");
+      window.clearTimeout(announceFeedback.timer);
+      announceFeedback.timer = window.setTimeout(() => {
+        els.feedbackToast.classList.remove("visible");
+      }, 1800);
+    }
+
+    if (target) {
+      target.classList.remove("feedback-pop");
+      void target.offsetWidth;
+      target.classList.add("feedback-pop");
+      window.setTimeout(() => target.classList.remove("feedback-pop"), 520);
+    }
+  }
+
+  function downloadBlob(content, filename, type = "text/markdown") {
+    const blob = new Blob([content], { type });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    URL.revokeObjectURL(url);
+  }
+
+  function templeSelectionMessage(space) {
+    return `${t(`space.${space}.label`)} - ${t("feedback.stepReady")}`;
+  }
+
   function applyTranslations() {
     document.documentElement.lang = language === "zh" ? "zh-CN" : "en";
     document.querySelectorAll("[data-i18n]").forEach((node) => {
@@ -867,7 +968,7 @@
     });
   }
 
-  function selectTempleSpace(space) {
+  function selectTempleSpace(space, source) {
     if (!templeSpaces[space]) return;
     activeTempleSpace = space;
     document.querySelectorAll("[data-space]").forEach((button) => {
@@ -877,6 +978,9 @@
       }
     });
     renderTemplePanel();
+    if (source) {
+      announceFeedback(templeSelectionMessage(space), source);
+    }
   }
 
   function renderTemplePanel() {
@@ -884,6 +988,8 @@
     els.templeSpaceTitle.textContent = t(`space.${activeTempleSpace}.title`);
     els.templeSpaceBody.textContent = t(`space.${activeTempleSpace}.body`);
     els.templePrimaryAction.textContent = t(`space.${activeTempleSpace}.primary`);
+    els.templeFeedback.textContent = templeSelectionMessage(activeTempleSpace);
+    els.templeDownloadAction.textContent = t("button.downloadStep");
     updateTempleStatus();
   }
 
@@ -894,6 +1000,15 @@
       analysis.dimensions.map((item) => [item.key, item.score]),
     );
     els.templeProjectName.textContent = project.name || "LaunchLens";
+    els.templeTagline.textContent = compactText(project.tagline, t("temple.taglineFallback"), 120);
+    els.templeValueBrief.textContent = compactText(
+      project.solution || project.problem || project.audience,
+      t("brief.valueFallback"),
+      86,
+    );
+    els.templeProofBrief.textContent =
+      project.demoUrl && project.repoUrl ? t("brief.proofReady") : t("brief.proofMissing");
+    els.templeExportBrief.textContent = `${analysis.overall}/100 - ${t("brief.exportReady")}`;
     els.templeScore.textContent = String(analysis.overall);
     els.templeCommunity.textContent = `${t("score.community")} ${scoreByKey.community || 0}`;
     els.templeAi.textContent = `${t("score.ai")} ${scoreByKey.ai || 0}`;
@@ -904,11 +1019,13 @@
     const space = templeSpaces[activeTempleSpace];
     if (space.focus) {
       focusClassicField(space.focus);
+      announceFeedback(t("feedback.fieldsOpened"), els.templePrimaryAction);
       return;
     }
 
     if (space.action === "score") {
       runAgent();
+      announceFeedback(t("feedback.reviewRun"), els.templePrimaryAction);
       return;
     }
 
@@ -919,6 +1036,7 @@
         els.llmEndpoint.scrollIntoView({ behavior: "smooth", block: "center" });
         els.llmEndpoint.focus();
       });
+      announceFeedback(t("feedback.oracleOpened"), els.templePrimaryAction);
       return;
     }
 
@@ -927,6 +1045,7 @@
       setActiveTab("pack");
       setViewMode("classic");
       requestAnimationFrame(() => els.output.focus());
+      announceFeedback(t("feedback.stepReady"), els.templePrimaryAction);
       return;
     }
 
@@ -935,6 +1054,7 @@
       setActiveTab("pack");
       setViewMode("classic");
       requestAnimationFrame(() => els.copyBtn.focus());
+      announceFeedback(t("feedback.stepReady"), els.templePrimaryAction);
     }
   }
 
@@ -2006,10 +2126,10 @@
 
   function emitTempleParticle(event) {
     if (!document.body.classList.contains("temple-mode")) return;
-    const target = event.target.closest(".temple-node, .temple-card, .temple-score");
+    const target = event.target.closest(".temple-runway button, .temple-card, .temple-score, .temple-mobile-nav button");
     if (!target) return;
     const now = performance.now();
-    if (now - particleCooldown < 65) return;
+    if (now - particleCooldown < 120) return;
     particleCooldown = now;
 
     const particle = document.createElement("span");
@@ -2021,6 +2141,319 @@
     particle.style.setProperty("--drift-y", `${-18 - Math.random() * 24}px`);
     els.templeView.appendChild(particle);
     window.setTimeout(() => particle.remove(), 720);
+  }
+
+  function initTempleWorkbench() {
+    const canvas = els.templeWorkbench;
+    if (!canvas) return;
+
+    const state = {
+      dragX: 0,
+      dragY: 0,
+      targetX: 0,
+      targetY: 0,
+      zoom: 0,
+      targetZoom: 0,
+      pointerId: null,
+      lastX: 0,
+      lastY: 0,
+    };
+    const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
+    const interactiveSelector = "button, input, textarea, select, a, .temple-card, .temple-score";
+
+    els.templeView.addEventListener("pointerdown", (event) => {
+      if (!document.body.classList.contains("temple-mode")) return;
+      if (event.target.closest(interactiveSelector)) return;
+      state.pointerId = event.pointerId;
+      state.lastX = event.clientX;
+      state.lastY = event.clientY;
+      els.templeView.classList.add("dragging-workbench");
+      els.templeView.setPointerCapture?.(event.pointerId);
+    });
+
+    els.templeView.addEventListener("pointermove", (event) => {
+      if (state.pointerId !== event.pointerId) return;
+      const dx = event.clientX - state.lastX;
+      const dy = event.clientY - state.lastY;
+      state.lastX = event.clientX;
+      state.lastY = event.clientY;
+      state.targetX = clamp(state.targetX + dx * 0.0032, -0.65, 0.65);
+      state.targetY = clamp(state.targetY + dy * 0.0022, -0.22, 0.26);
+    });
+
+    const endDrag = (event) => {
+      if (state.pointerId !== event.pointerId) return;
+      state.pointerId = null;
+      els.templeView.classList.remove("dragging-workbench");
+      els.templeView.releasePointerCapture?.(event.pointerId);
+    };
+
+    els.templeView.addEventListener("pointerup", endDrag);
+    els.templeView.addEventListener("pointercancel", endDrag);
+    els.templeView.addEventListener(
+      "wheel",
+      (event) => {
+        if (!document.body.classList.contains("temple-mode")) return;
+        state.targetZoom = clamp(state.targetZoom + event.deltaY * -0.00045, -0.5, 0.65);
+        state.targetY = clamp(state.targetY + event.deltaY * 0.00018, -0.22, 0.26);
+      },
+      { passive: true },
+    );
+
+    let workbenchStarted = false;
+    const startFallback = () => {
+      if (workbenchStarted) return;
+      workbenchStarted = true;
+      startCanvasWorkbench(canvas, state);
+    };
+    const fallbackTimer = window.setTimeout(startFallback, 900);
+
+    import("https://cdn.jsdelivr.net/npm/three@0.165.0/build/three.module.js")
+      .then((THREE) => {
+        if (workbenchStarted) return;
+        workbenchStarted = true;
+        window.clearTimeout(fallbackTimer);
+        startThreeWorkbench(THREE, canvas, state);
+      })
+      .catch(startFallback);
+  }
+
+  function startThreeWorkbench(THREE, canvas, state) {
+    const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+    renderer.setClearColor(0x000000, 0);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.6));
+
+    const scene = new THREE.Scene();
+    scene.fog = new THREE.Fog(0x0c0f0e, 7, 17);
+
+    const camera = new THREE.PerspectiveCamera(42, 1, 0.1, 40);
+    camera.position.set(0, 2.9, 8.8);
+
+    const rig = new THREE.Group();
+    rig.rotation.x = -0.16;
+    scene.add(rig);
+
+    const ambient = new THREE.AmbientLight(0xffffff, 0.72);
+    const key = new THREE.PointLight(0x63d6a4, 1.45, 16);
+    key.position.set(-3.5, 3.8, 4);
+    const rim = new THREE.PointLight(0xf0b85a, 1.1, 14);
+    rim.position.set(4.4, 2.4, -2.5);
+    scene.add(ambient, key, rim);
+
+    const slabMaterial = new THREE.MeshStandardMaterial({
+      color: 0x17201d,
+      metalness: 0.22,
+      roughness: 0.72,
+      transparent: true,
+      opacity: 0.86,
+    });
+    const slab = new THREE.Mesh(new THREE.BoxGeometry(9.6, 0.12, 5.3), slabMaterial);
+    slab.position.set(0, -1.62, 0);
+    rig.add(slab);
+
+    const grid = new THREE.GridHelper(14, 22, 0x63d6a4, 0x2a3a35);
+    grid.position.y = -1.52;
+    grid.material.transparent = true;
+    grid.material.opacity = 0.2;
+    rig.add(grid);
+
+    const lineMaterial = new THREE.LineBasicMaterial({
+      color: 0x63d6a4,
+      transparent: true,
+      opacity: 0.28,
+    });
+    const panelMaterial = new THREE.MeshStandardMaterial({
+      color: 0x1b2723,
+      emissive: 0x10251d,
+      metalness: 0.18,
+      roughness: 0.58,
+      transparent: true,
+      opacity: 0.9,
+    });
+    const activeMaterial = new THREE.MeshStandardMaterial({
+      color: 0x243a31,
+      emissive: 0x143b2a,
+      metalness: 0.12,
+      roughness: 0.48,
+      transparent: true,
+      opacity: 0.95,
+    });
+
+    const points = [
+      [-3.7, -1.18, 1.65],
+      [-2.12, -1.04, 0.15],
+      [-0.42, -1.1, 1.18],
+      [1.28, -0.98, -0.1],
+      [2.75, -1.08, 1.26],
+      [3.75, -1.02, -0.68],
+    ];
+    const panels = points.map((point, index) => {
+      const panel = new THREE.Mesh(
+        new THREE.BoxGeometry(index === 0 ? 1.38 : 1.16, 0.08, 0.72),
+        index === 0 || index === 3 ? activeMaterial : panelMaterial,
+      );
+      panel.position.set(point[0], point[1], point[2]);
+      panel.rotation.x = -0.18;
+      panel.rotation.y = (index - 2.5) * 0.05;
+      panel.userData.baseY = point[1];
+      rig.add(panel);
+
+      const glow = new THREE.Mesh(
+        new THREE.SphereGeometry(0.08, 18, 18),
+        new THREE.MeshBasicMaterial({
+          color: index === 0 || index === 3 ? 0x63d6a4 : 0xf0b85a,
+          transparent: true,
+          opacity: 0.82,
+        }),
+      );
+      glow.position.set(point[0] - 0.46, point[1] + 0.1, point[2] + 0.04);
+      panel.userData.glow = glow;
+      rig.add(glow);
+      return panel;
+    });
+
+    for (let index = 0; index < points.length - 1; index += 1) {
+      const geometry = new THREE.BufferGeometry().setFromPoints([
+        new THREE.Vector3(points[index][0], points[index][1] + 0.08, points[index][2]),
+        new THREE.Vector3(points[index + 1][0], points[index + 1][1] + 0.08, points[index + 1][2]),
+      ]);
+      rig.add(new THREE.Line(geometry, lineMaterial));
+    }
+
+    function resize() {
+      const width = Math.max(1, canvas.clientWidth || els.templeView.clientWidth || 1);
+      const height = Math.max(1, canvas.clientHeight || els.templeView.clientHeight || 1);
+      renderer.setSize(width, height, false);
+      camera.aspect = width / height;
+      camera.updateProjectionMatrix();
+    }
+
+    const resizeObserver = new ResizeObserver(resize);
+    resizeObserver.observe(els.templeView);
+    resize();
+
+    function animate(time = 0) {
+      state.dragX += (state.targetX - state.dragX) * 0.075;
+      state.dragY += (state.targetY - state.dragY) * 0.075;
+      state.zoom += (state.targetZoom - state.zoom) * 0.07;
+
+      const t = time * 0.001;
+      rig.rotation.y = state.dragX;
+      rig.rotation.x = -0.16 + state.dragY;
+      camera.position.z = 8.8 - state.zoom * 1.2;
+      camera.position.x = state.dragX * 0.8;
+      camera.lookAt(0, -0.9, 0);
+      grid.position.z = Math.sin(t * 0.35) * 0.18;
+
+      panels.forEach((panel, index) => {
+        panel.position.y = panel.userData.baseY + Math.sin(t * 1.25 + index * 0.72) * 0.045;
+        panel.userData.glow.position.y = panel.position.y + 0.1;
+        panel.rotation.z = Math.sin(t * 0.65 + index) * 0.018;
+      });
+
+      renderer.render(scene, camera);
+      requestAnimationFrame(animate);
+    }
+    requestAnimationFrame(animate);
+  }
+
+  function startCanvasWorkbench(canvas, state) {
+    const context = canvas.getContext("2d");
+    if (!context) return;
+    let width = 1;
+    let height = 1;
+
+    function resize() {
+      const ratio = Math.min(window.devicePixelRatio || 1, 1.8);
+      width = Math.max(1, canvas.clientWidth || els.templeView.clientWidth || 1);
+      height = Math.max(1, canvas.clientHeight || els.templeView.clientHeight || 1);
+      canvas.width = Math.floor(width * ratio);
+      canvas.height = Math.floor(height * ratio);
+      context.setTransform(ratio, 0, 0, ratio, 0, 0);
+    }
+
+    function roundedRect(x, y, w, h, r) {
+      context.beginPath();
+      context.moveTo(x + r, y);
+      context.arcTo(x + w, y, x + w, y + h, r);
+      context.arcTo(x + w, y + h, x, y + h, r);
+      context.arcTo(x, y + h, x, y, r);
+      context.arcTo(x, y, x + w, y, r);
+      context.closePath();
+    }
+
+    function draw(time = 0) {
+      state.dragX += (state.targetX - state.dragX) * 0.08;
+      state.dragY += (state.targetY - state.dragY) * 0.08;
+      state.zoom += (state.targetZoom - state.zoom) * 0.08;
+
+      const t = time * 0.001;
+      const cx = width * (0.54 + state.dragX * 0.08);
+      const horizon = height * (0.44 + state.dragY * 0.18);
+      const zoom = 1 + state.zoom * 0.12;
+
+      context.clearRect(0, 0, width, height);
+      const gradient = context.createLinearGradient(0, 0, width, height);
+      gradient.addColorStop(0, "rgba(20, 34, 30, 0.52)");
+      gradient.addColorStop(0.48, "rgba(14, 18, 17, 0.08)");
+      gradient.addColorStop(1, "rgba(12, 15, 14, 0.64)");
+      context.fillStyle = gradient;
+      context.fillRect(0, 0, width, height);
+
+      context.save();
+      context.translate(cx, horizon);
+      context.scale(zoom, zoom);
+      context.rotate(state.dragX * 0.16);
+
+      for (let row = 0; row < 15; row += 1) {
+        const depth = row / 14;
+        const y = depth * height * 0.58;
+        const half = (80 + depth * width * 0.52) * zoom;
+        context.strokeStyle = `rgba(99, 214, 164, ${0.22 - depth * 0.09})`;
+        context.lineWidth = 1;
+        context.beginPath();
+        context.moveTo(-half, y);
+        context.lineTo(half, y);
+        context.stroke();
+      }
+
+      for (let col = -7; col <= 7; col += 1) {
+        context.strokeStyle = "rgba(240, 184, 90, 0.12)";
+        context.beginPath();
+        context.moveTo(col * 16, 0);
+        context.lineTo(col * 70, height * 0.58);
+        context.stroke();
+      }
+
+      const nodes = [
+        [-230, 105, 118, 44, "01"],
+        [-70, 70, 104, 40, "02"],
+        [95, 116, 108, 42, "03"],
+        [238, 74, 118, 42, "04"],
+        [-145, 190, 112, 42, "05"],
+        [35, 218, 112, 42, "06"],
+      ];
+
+      nodes.forEach(([x, y, w, h, label], index) => {
+        const bob = Math.sin(t * 1.4 + index * 0.8) * 4;
+        roundedRect(x, y + bob, w, h, 8);
+        context.fillStyle = index === 0 || index === 3 ? "rgba(38, 72, 59, 0.82)" : "rgba(20, 28, 25, 0.78)";
+        context.strokeStyle = index === 0 || index === 3 ? "rgba(99, 214, 164, 0.7)" : "rgba(245, 241, 232, 0.16)";
+        context.fill();
+        context.stroke();
+        context.fillStyle = "#63d6a4";
+        context.font = "800 13px Inter, system-ui, sans-serif";
+        context.fillText(label, x + 12, y + bob + 26);
+      });
+
+      context.restore();
+      requestAnimationFrame(draw);
+    }
+
+    const resizeObserver = new ResizeObserver(resize);
+    resizeObserver.observe(els.templeView);
+    resize();
+    requestAnimationFrame(draw);
   }
 
   function renderProcessSteps() {
@@ -3009,12 +3442,93 @@ ${analysis.dimensions.map((item) => `- ${item.label}: ${item.score}/100 - ${item
     renderOutput();
   }
 
-  async function copyMarkdown() {
+  function buildTempleStepMarkdown(space) {
+    if (!generated) runAgent();
+    const project = getProject();
+    const analysis = currentAnalysis || analyze(project);
+    const empty = language === "zh" ? "[待补充]" : "[Add]";
+    const sectionTitle = t(`space.${space}.label`);
+    const fieldLine = (label, value) => `- ${label}: ${String(value || "").trim() || empty}`;
+    const fixes = analysis.fixes.length
+      ? analysis.fixes.slice(0, 5).map((item) => `- ${item}`).join("\n")
+      : `- ${t("fix.ready")}`;
+
+    const sections = {
+      intake: [
+        fieldLine(t("field.name"), project.name),
+        fieldLine(t("field.track"), project.track),
+        fieldLine(t("field.tagline"), project.tagline),
+        fieldLine(t("field.audience"), project.audience),
+        fieldLine(t("field.problem"), project.problem),
+        fieldLine(t("field.solution"), project.solution),
+      ].join("\n"),
+      evidence: [
+        fieldLine(t("field.demoUrl"), project.demoUrl),
+        fieldLine(t("field.repoUrl"), project.repoUrl),
+        fieldLine(t("field.techStack"), project.techStack),
+        fieldLine(t("field.screenshotUrls"), project.screenshotUrls),
+        fieldLine(t("field.logoUrl"), project.logoUrl),
+        fieldLine(t("field.demoVideoUrl"), project.demoVideoUrl),
+        fieldLine(t("field.demoFileUrl"), project.demoFileUrl),
+        fieldLine(t("field.teamMembers"), project.teamMembers),
+        fieldLine(t("field.notes"), project.notes),
+      ].join("\n"),
+      score: analysis.dimensions
+        .map((item) => `- ${item.label}: ${item.score}/100 - ${item.note}`)
+        .join("\n"),
+      oracle: [
+        language === "zh"
+          ? "## 可交给 LLM 的上下文"
+          : "## LLM-ready context",
+        generated.pitch,
+      ].join("\n\n"),
+      archive: [
+        language === "zh" ? "## 当前材料包" : "## Current submission pack",
+        generated.pack,
+        language === "zh" ? "## README 摘要" : "## README draft",
+        generated.readme,
+      ].join("\n\n"),
+      final: [
+        fieldLine(t("field.demoUrl"), project.demoUrl),
+        fieldLine(t("field.repoUrl"), project.repoUrl),
+        fieldLine(t("field.screenshotUrls"), project.screenshotUrls),
+        fieldLine(t("field.teamMembers"), project.teamMembers),
+        "",
+        language === "zh" ? "## 交付检查" : "## Handoff checks",
+        analysis.audit
+          .map((item) => `- ${t(item.labelKey)}: ${item.ready ? t("audit.ready") : t("audit.missing")}`)
+          .join("\n"),
+      ].join("\n"),
+    };
+
+    return `# ${project.name || "LaunchLens"} - ${sectionTitle}
+
+${t(`space.${space}.title`)}
+
+${t(`space.${space}.body`)}
+
+## ${language === "zh" ? "当前内容" : "Current extract"}
+${sections[space] || generated.pack}
+
+## ${language === "zh" ? "就绪度" : "Readiness"}
+- ${language === "zh" ? "总分" : "Overall"}: ${analysis.overall}/100
+${analysis.dimensions.map((item) => `- ${item.label}: ${item.score}/100`).join("\n")}
+
+## ${language === "zh" ? "下一步" : "Next fixes"}
+${fixes}
+
+---
+${language === "zh" ? "由 LaunchLens Temple 导出" : "Exported from LaunchLens Temple"}: ${new Date().toISOString()}
+`;
+  }
+
+  async function copyMarkdown(source = els.copyBtn) {
     if (!generated) runAgent();
     await navigator.clipboard.writeText(generated.pack);
-    els.copyBtn.textContent = t("button.copied");
+    source.textContent = t("button.copied");
+    announceFeedback(t("feedback.packCopied"), source);
     setTimeout(() => {
-      els.copyBtn.textContent = t("button.copy");
+      source.textContent = source === els.copyBtn ? t("button.copy") : t("button.copyPack");
     }, 1200);
   }
 
@@ -3028,17 +3542,27 @@ ${analysis.dimensions.map((item) => `- ${item.label}: ${item.score}/100 - ${item
       generated,
       exportedAt: new Date().toISOString(),
     };
-    const blob = new Blob([JSON.stringify(payload, null, 2)], {
-      type: "application/json",
-    });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = `${(project.name || "launchlens").toLowerCase().replace(/[^a-z0-9]+/g, "-")}-submission-pack.json`;
-    document.body.appendChild(a);
-    a.click();
-    a.remove();
-    URL.revokeObjectURL(url);
+    downloadBlob(
+      JSON.stringify(payload, null, 2),
+      `${slugify(project.name || "launchlens")}-submission-pack.json`,
+      "application/json",
+    );
+    announceFeedback(t("feedback.packDownloaded"), els.downloadBtn);
+  }
+
+  function downloadTempleStep() {
+    if (!generated) runAgent();
+    const project = getProject();
+    downloadBlob(
+      buildTempleStepMarkdown(activeTempleSpace),
+      `${slugify(project.name || "launchlens")}-${activeTempleSpace}-step.md`,
+      "text/markdown",
+    );
+    els.templeDownloadAction.textContent = t("button.downloadedStep");
+    announceFeedback(`${t(`space.${activeTempleSpace}.label`)} - ${t("feedback.stepDownloaded")}`, els.templeDownloadAction);
+    window.setTimeout(() => {
+      els.templeDownloadAction.textContent = t("button.downloadStep");
+    }, 1200);
   }
 
   async function enhanceWithLlm() {
@@ -3126,10 +3650,16 @@ ${analysis.dimensions.map((item) => `- ${item.label}: ${item.score}/100 - ${item
     runAgent();
   });
 
-  els.reviewBtn.addEventListener("click", runAgent);
-  els.generateBtn.addEventListener("click", runAgent);
+  els.reviewBtn.addEventListener("click", () => {
+    runAgent();
+    announceFeedback(t("feedback.reviewRun"), els.reviewBtn);
+  });
+  els.generateBtn.addEventListener("click", () => {
+    runAgent();
+    announceFeedback(t("feedback.stepReady"), els.generateBtn);
+  });
   els.sampleBtn.addEventListener("click", loadSample);
-  els.copyBtn.addEventListener("click", copyMarkdown);
+  els.copyBtn.addEventListener("click", () => copyMarkdown(els.copyBtn));
   els.downloadBtn.addEventListener("click", downloadPack);
   els.langEnBtn.addEventListener("click", () => setLanguage("en"));
   els.langZhBtn.addEventListener("click", () => setLanguage("zh"));
@@ -3137,8 +3667,12 @@ ${analysis.dimensions.map((item) => `- ${item.label}: ${item.score}/100 - ${item
   els.hubModeBtn.addEventListener("click", () => setViewMode("hub"));
   els.classicModeBtn.addEventListener("click", () => setViewMode("classic"));
   els.templePrimaryAction.addEventListener("click", runTemplePrimaryAction);
-  els.templeReviewAction.addEventListener("click", runAgent);
-  els.templeCopyAction.addEventListener("click", copyMarkdown);
+  els.templeReviewAction.addEventListener("click", () => {
+    runAgent();
+    announceFeedback(t("feedback.reviewRun"), els.templeReviewAction);
+  });
+  els.templeCopyAction.addEventListener("click", () => copyMarkdown(els.templeCopyAction));
+  els.templeDownloadAction.addEventListener("click", downloadTempleStep);
   els.enhanceBtn.addEventListener("click", enhanceWithLlm);
   els.scanRepoBtn.addEventListener("click", () => {
     scannedRepoUrl = getProject().repoUrl;
@@ -3354,14 +3888,14 @@ ${analysis.dimensions.map((item) => `- ${item.label}: ${item.score}/100 - ${item
 
   document.querySelectorAll("[data-space]").forEach((button) => {
     button.addEventListener("click", () => {
-      selectTempleSpace(button.dataset.space);
+      selectTempleSpace(button.dataset.space, button);
       if (button.closest(".workflow-rail")) {
         runTemplePrimaryAction();
       }
     });
   });
 
-  els.templeView.addEventListener("pointermove", emitTempleParticle);
+  els.templeView.addEventListener("pointerdown", emitTempleParticle);
 
   applyTranslations();
   loadPlatform();
@@ -3375,6 +3909,7 @@ ${analysis.dimensions.map((item) => `- ${item.label}: ${item.score}/100 - ${item
   renderRepoScan();
   renderPlatform();
   loadProjectWallData();
+  initTempleWorkbench();
   updateHubGraph();
   startHubAnimation();
   renderTemplePanel();

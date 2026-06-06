@@ -2,6 +2,46 @@
 
 All notable LaunchLens updates should be recorded here before pushing to GitHub and refreshing the public demo.
 
+## 2026-06-06 - Judge-Focused Demo Interaction Pass
+
+### Added
+
+- Added a full-bleed dynamic workbench background on the Temple demo surface, with Three.js when available and a local canvas fallback when offline.
+- Added drag and wheel-driven parallax controls so the homepage responds like a live demo workspace.
+- Added a concise judge-scan summary on the Temple demo surface for value, proof, and export readiness.
+- Added per-step Temple downloads so each selected Story, Proof, Score, Agent, Pack, or Ship section can be exported as Markdown.
+- Added visible toast and click feedback for review, copy, export, step selection, and step download actions.
+
+### Updated
+
+- Simplified the main demo surface by removing duplicate floating Temple nodes and using the Launch Path as the primary step selector.
+- Shortened top-level demo controls to make the web app feel faster to scan during judging.
+
+### Verified
+
+- Node.js syntax check and test suite passed.
+- Submission payload validation passed.
+- Chrome headless desktop and mobile screenshots were inspected.
+- Screenshot pixel sampling confirmed the dynamic workbench area is non-blank.
+
+## 2026-06-06 - Temple Launch Path Refinement
+
+### Added
+
+- Added a first-screen Launch Path strip in Temple Mode so users can see Story, Proof, Score, Agent, Pack, and Ship steps without leaving the spatial view.
+- Reused the existing workflow readiness states across Temple nodes, mobile navigation, workflow rail, and the new Launch Path strip.
+
+### Updated
+
+- Tightened mobile toolbar layout to avoid cramped or clipped controls on narrow screens.
+- Added page-level horizontal overflow guards for more stable mobile rendering.
+
+### Verified
+
+- Node.js test suite passed.
+- Submission payload validation passed.
+- Chrome headless desktop and mobile screenshots were inspected.
+
 ## 2026-06-06 - UCWS Project Searcher Skill Reference
 
 ### Updated

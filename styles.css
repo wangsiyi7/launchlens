@@ -20,6 +20,7 @@
 
 html {
   color-scheme: dark;
+  overflow-x: hidden;
 }
 
 body {
@@ -30,6 +31,7 @@ body {
     radial-gradient(circle at 80% 0%, rgba(99, 214, 164, 0.08), transparent 24rem),
     var(--bg);
   color: var(--text);
+  overflow-x: hidden;
   font-family:
     Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
     sans-serif;
@@ -211,35 +213,53 @@ body.view-switching .workspace {
   }
 }
 
+.temple-workbench,
 .temple-bg,
 .temple-shade {
   position: absolute;
   inset: 0;
 }
 
-.temple-bg {
+.temple-workbench {
   z-index: -3;
+  width: 100%;
+  height: 100%;
+  display: block;
+  cursor: grab;
+  opacity: 0.92;
+}
+
+.temple-view.dragging-workbench .temple-workbench {
+  cursor: grabbing;
+}
+
+.temple-bg {
+  z-index: -4;
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center;
+  opacity: 0.34;
+  filter: saturate(0.88) contrast(1.02);
 }
 
 .temple-shade {
   z-index: -2;
   background:
-    linear-gradient(90deg, rgba(8, 10, 9, 0.7), rgba(8, 10, 9, 0.22) 48%, rgba(8, 10, 9, 0.78)),
-    linear-gradient(0deg, rgba(8, 10, 9, 0.72), transparent 44%, rgba(8, 10, 9, 0.22));
+    radial-gradient(circle at 38% 48%, rgba(99, 214, 164, 0.08), transparent 22rem),
+    linear-gradient(90deg, rgba(8, 10, 9, 0.86), rgba(8, 10, 9, 0.4) 58%, rgba(8, 10, 9, 0.8)),
+    linear-gradient(0deg, rgba(8, 10, 9, 0.82), transparent 50%, rgba(8, 10, 9, 0.2));
 }
 
 .temple-hud {
   position: absolute;
   left: clamp(1rem, 3vw, 2rem);
   top: clamp(1rem, 3vw, 2rem);
-  display: flex;
-  align-items: flex-end;
-  gap: 1rem;
-  max-width: min(58rem, calc(100% - 2rem));
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+  gap: 0.8rem 1rem;
+  max-width: min(54rem, calc(100% - 31rem));
 }
 
 .temple-hud h2,
@@ -249,9 +269,21 @@ body.view-switching .workspace {
 }
 
 .temple-hud h2 {
-  font-size: clamp(2.3rem, 6vw, 5.5rem);
-  line-height: 0.95;
+  font-size: clamp(2.15rem, 5vw, 4.55rem);
+  line-height: 0.98;
   text-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
+}
+
+.temple-headline {
+  min-width: 0;
+}
+
+.temple-tagline {
+  max-width: 42rem;
+  margin: 0.55rem 0 0;
+  color: rgba(245, 241, 232, 0.78);
+  font-size: clamp(0.95rem, 1.5vw, 1.12rem);
+  line-height: 1.45;
 }
 
 .temple-score {
@@ -274,10 +306,119 @@ body.view-switching .workspace {
   font-weight: 800;
 }
 
+.temple-brief {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.5rem;
+}
+
+.temple-brief span {
+  min-width: 0;
+  padding: 0.64rem 0.72rem;
+  border: 1px solid rgba(245, 241, 232, 0.14);
+  border-radius: 8px;
+  background: rgba(12, 15, 14, 0.54);
+  backdrop-filter: blur(12px);
+}
+
+.temple-brief strong,
+.temple-brief small {
+  display: block;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.temple-brief strong {
+  color: var(--green);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+}
+
+.temple-brief small {
+  margin-top: 0.22rem;
+  color: var(--muted);
+  font-size: 0.8rem;
+  line-height: 1.35;
+  white-space: normal;
+}
+
 .temple-stage {
+  display: none;
+}
+
+.temple-runway {
   position: absolute;
-  inset: 0;
-  pointer-events: none;
+  left: clamp(1rem, 3vw, 2rem);
+  bottom: clamp(1rem, 3vw, 2rem);
+  z-index: 5;
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 0.45rem;
+  width: min(46rem, calc(100% - 31rem));
+  padding: 0.45rem;
+  border: 1px solid rgba(245, 241, 232, 0.16);
+  border-radius: 8px;
+  background: rgba(12, 15, 14, 0.62);
+  backdrop-filter: blur(16px);
+  box-shadow: var(--shadow);
+}
+
+.temple-runway button {
+  min-width: 0;
+  min-height: 4rem;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.12rem 0.42rem;
+  align-content: center;
+  text-align: left;
+  padding: 0.55rem;
+}
+
+.temple-runway span {
+  grid-row: span 2;
+  display: grid;
+  place-items: center;
+  width: 1.65rem;
+  height: 1.65rem;
+  border-radius: 999px;
+  background: rgba(99, 214, 164, 0.14);
+  color: var(--green);
+  font-size: 0.68rem;
+  font-weight: 900;
+}
+
+.temple-runway strong,
+.temple-runway small {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.temple-runway strong {
+  font-size: 0.82rem;
+}
+
+.temple-runway small {
+  color: var(--quiet);
+  font-size: 0.68rem;
+}
+
+.temple-runway button.active {
+  border-color: rgba(240, 184, 90, 0.72);
+  background: rgba(240, 184, 90, 0.13);
+}
+
+.temple-runway button.ready {
+  border-color: rgba(99, 214, 164, 0.4);
+}
+
+.temple-runway button.ready span {
+  background: var(--green);
+  color: var(--ink);
 }
 
 .temple-node {
@@ -439,8 +580,60 @@ body.view-switching .workspace {
   gap: 0.5rem;
 }
 
+.temple-feedback {
+  margin: 0.35rem 0 0.85rem;
+  padding: 0.5rem 0.62rem;
+  border: 1px solid rgba(99, 214, 164, 0.28);
+  border-radius: 8px;
+  background: rgba(99, 214, 164, 0.1);
+  color: rgba(245, 241, 232, 0.82);
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
 .temple-mobile-nav {
   display: none;
+}
+
+.feedback-toast {
+  position: fixed;
+  right: clamp(1rem, 3vw, 2rem);
+  bottom: clamp(1rem, 3vw, 2rem);
+  z-index: 60;
+  max-width: min(26rem, calc(100vw - 2rem));
+  padding: 0.72rem 0.86rem;
+  border: 1px solid rgba(99, 214, 164, 0.34);
+  border-radius: 8px;
+  background: rgba(12, 15, 14, 0.88);
+  color: var(--text);
+  box-shadow: var(--shadow);
+  opacity: 0;
+  transform: translateY(0.6rem);
+  pointer-events: none;
+  transition:
+    opacity 160ms ease,
+    transform 160ms ease;
+}
+
+.feedback-toast.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.feedback-pop {
+  animation: feedbackPop 420ms ease both;
+}
+
+@keyframes feedbackPop {
+  0% {
+    box-shadow: 0 0 0 0 rgba(99, 214, 164, 0.34);
+  }
+  45% {
+    box-shadow: 0 0 0 5px rgba(99, 214, 164, 0.14);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(99, 214, 164, 0);
+  }
 }
 
 .hub-view {
@@ -1464,8 +1657,8 @@ pre.tab-flash {
   }
 
   .temple-view {
-    min-height: calc(100vh - 9rem);
-    padding: 8rem 1rem 6rem;
+    min-height: auto;
+    padding: 1rem;
   }
 
   .hub-view {
@@ -1506,13 +1699,22 @@ pre.tab-flash {
   }
 
   .temple-hud {
-    align-items: flex-start;
-    flex-direction: column;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: end;
     max-width: none;
   }
 
-  .temple-stage {
-    display: none;
+  .temple-brief {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .temple-runway {
+    position: relative;
+    left: auto;
+    bottom: auto;
+    width: 100%;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    margin-top: 1rem;
   }
 
   .temple-card {
@@ -1521,18 +1723,7 @@ pre.tab-flash {
   }
 
   .temple-mobile-nav {
-    position: sticky;
-    z-index: 20;
-    bottom: 0.75rem;
-    margin-top: 1rem;
-    display: grid;
-    grid-template-columns: repeat(6, minmax(0, 1fr));
-    gap: 0.32rem;
-    padding: 0.35rem;
-    border: 1px solid var(--line);
-    border-radius: 8px;
-    background: rgba(12, 15, 14, 0.78);
-    backdrop-filter: blur(16px);
+    display: none;
   }
 
   body.classic-mode .temple-mobile-nav {
@@ -1588,6 +1779,17 @@ pre.tab-flash {
 }
 
 @media (max-width: 640px) {
+  .topbar {
+    max-width: 100vw;
+    overflow: hidden;
+  }
+
+  .brand-lockup,
+  .toolbar {
+    width: calc(100vw - 2rem);
+    max-width: calc(100vw - 2rem);
+  }
+
   .form-grid,
   .llm-grid,
   .sync-grid,
@@ -1606,25 +1808,84 @@ pre.tab-flash {
   }
 
   .toolbar {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.38rem;
     align-items: stretch;
   }
 
   .toolbar > button {
-    flex: 1 1 calc(50% - 0.5rem);
+    width: 100%;
+    min-width: 0;
+    min-height: 2.15rem;
+    padding: 0.45rem 0.42rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 0.88rem;
   }
 
   .view-toggle,
   .lang-toggle {
-    flex: 1 1 100%;
+    width: 100%;
     justify-content: center;
     min-width: 0;
+  }
+
+  .view-toggle {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .view-toggle button:last-child {
+    grid-column: 1 / -1;
+  }
+
+  .view-toggle,
+  .lang-toggle {
+    grid-column: 1 / -1;
   }
 
   .view-toggle button,
   .lang-toggle button {
     flex: 1;
     min-width: 0;
-    padding-inline: 0.35rem;
+    min-height: 1.95rem;
+    padding-inline: 0.28rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .view-toggle button {
+    font-size: 0.78rem;
+  }
+
+  .brand-lockup,
+  .brand-lockup > div {
+    min-width: 0;
+  }
+
+  .brand-lockup {
+    width: calc(100vw - 2rem);
+  }
+
+  .brand-lockup > div {
+    flex: 1 1 auto;
+    max-width: calc(100% - 4.05rem);
+  }
+
+  .eyebrow {
+    max-width: 100%;
+    letter-spacing: 0.08em;
+    line-height: 1.25;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .topbar .eyebrow {
+    display: none;
   }
 
   .span-2 {
@@ -1635,12 +1896,55 @@ pre.tab-flash {
     max-height: none;
   }
 
-  .temple-view {
-    padding-top: 6rem;
+  .temple-runway {
+    max-width: calc(100vw - 2rem);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .temple-runway button {
+    min-height: 3.45rem;
+  }
+
+  .temple-card {
+    max-width: calc(100vw - 2rem);
   }
 
   .temple-hud h2 {
-    font-size: clamp(2rem, 13vw, 3.5rem);
+    font-size: clamp(1.95rem, 10vw, 2.9rem);
+  }
+
+  .temple-hud {
+    grid-template-columns: 1fr;
+    width: 100%;
+    max-width: calc(100vw - 2rem);
+  }
+
+  .temple-score {
+    justify-self: start;
+    min-width: 5.8rem;
+    padding: 0.62rem 0.68rem;
+  }
+
+  .temple-score strong {
+    font-size: clamp(1.65rem, 9vw, 2.45rem);
+  }
+
+  .temple-tagline {
+    font-size: 0.92rem;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  .temple-bg {
+    opacity: 0.5;
+  }
+
+  .temple-brief {
+    grid-template-columns: 1fr;
+  }
+
+  .temple-brief small {
+    white-space: normal;
   }
 
   .temple-kpis {
@@ -1649,6 +1953,13 @@ pre.tab-flash {
 
   .temple-actions button {
     flex: 1 1 100%;
+  }
+
+  .feedback-toast {
+    left: 1rem;
+    right: 1rem;
+    bottom: 1rem;
+    max-width: none;
   }
 
   .workflow-rail {

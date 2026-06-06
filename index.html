@@ -43,17 +43,18 @@
             Hub
           </button>
           <button id="classicModeBtn" type="button" class="ghost" aria-pressed="false" data-i18n="mode.classic">
-            Classic
+            Form
           </button>
         </div>
         <button id="sampleBtn" type="button" data-i18n="button.sample">Load Sample</button>
         <button id="resetBtn" type="button" class="ghost" data-i18n="button.reset">Reset</button>
-        <button id="copyBtn" type="button" data-i18n="button.copy">Copy Markdown</button>
-        <button id="downloadBtn" type="button" class="primary" data-i18n="button.download">Download Pack</button>
+        <button id="copyBtn" type="button" data-i18n="button.copy">Copy</button>
+        <button id="downloadBtn" type="button" class="primary" data-i18n="button.download">Export</button>
       </div>
     </header>
 
     <section id="templeView" class="temple-view" aria-label="LaunchLens submission temple">
+      <canvas id="templeWorkbench" class="temple-workbench" aria-hidden="true"></canvas>
       <img
         class="temple-bg"
         src="assets/temple-background.png"
@@ -63,15 +64,65 @@
       <div class="temple-shade" aria-hidden="true"></div>
 
       <div class="temple-hud">
-        <div>
+        <div class="temple-headline">
           <p class="eyebrow" data-i18n="temple.eyebrow">Submission Temple</p>
           <h2 id="templeProjectName">LaunchLens</h2>
+          <p id="templeTagline" class="temple-tagline">
+            Turn a rough hackathon idea into a scored, ready-to-submit Project Wall package.
+          </p>
         </div>
         <div class="temple-score" aria-label="Current readiness score">
           <strong id="templeScore">0</strong>
           <span>/ 100</span>
         </div>
+        <div class="temple-brief" aria-label="Judge scan summary">
+          <span>
+            <strong data-i18n="brief.value">Value</strong>
+            <small id="templeValueBrief">Submission clarity</small>
+          </span>
+          <span>
+            <strong data-i18n="brief.proof">Proof</strong>
+            <small id="templeProofBrief">Demo and repo evidence</small>
+          </span>
+          <span>
+            <strong data-i18n="brief.export">Export</strong>
+            <small id="templeExportBrief">Pack ready</small>
+          </span>
+        </div>
       </div>
+
+      <nav class="temple-runway" aria-label="Launch path">
+        <button type="button" data-space="intake">
+          <span>01</span>
+          <strong data-i18n="runway.story">Story</strong>
+          <small data-i18n="node.intake.short">Project Altar</small>
+        </button>
+        <button type="button" data-space="evidence">
+          <span>02</span>
+          <strong data-i18n="runway.proof">Proof</strong>
+          <small data-i18n="node.evidence.short">Evidence Steps</small>
+        </button>
+        <button type="button" data-space="score">
+          <span>03</span>
+          <strong data-i18n="runway.score">Score</strong>
+          <small data-i18n="node.score.short">Score Gate</small>
+        </button>
+        <button type="button" data-space="oracle">
+          <span>04</span>
+          <strong data-i18n="runway.agent">Agent</strong>
+          <small data-i18n="node.oracle.short">Oracle LLM</small>
+        </button>
+        <button type="button" data-space="archive">
+          <span>05</span>
+          <strong data-i18n="runway.pack">Pack</strong>
+          <small data-i18n="node.archive.short">Archive Hall</small>
+        </button>
+        <button type="button" data-space="final">
+          <span>06</span>
+          <strong data-i18n="runway.ship">Ship</strong>
+          <small data-i18n="node.final.short">Final Door</small>
+        </button>
+      </nav>
 
       <div class="temple-stage" aria-label="Temple workflow nodes">
         <button class="temple-node active" type="button" data-space="intake">
@@ -111,10 +162,12 @@
           <span id="templeAi">AI 0</span>
           <span id="templeExpert">Expert 0</span>
         </div>
+        <div id="templeFeedback" class="temple-feedback">Step extract ready to download.</div>
         <div class="temple-actions">
           <button id="templePrimaryAction" type="button" class="primary">Open Fields</button>
           <button id="templeReviewAction" type="button" data-i18n="button.reviewShort">Run Review</button>
           <button id="templeCopyAction" type="button" class="ghost" data-i18n="button.copyPack">Copy Pack</button>
+          <button id="templeDownloadAction" type="button" class="ghost" data-i18n="button.downloadStep">Download Step</button>
         </div>
       </aside>
 
@@ -127,6 +180,8 @@
         <button type="button" data-space="final" data-i18n="mobile.submit">Submit</button>
       </nav>
     </section>
+
+    <div id="feedbackToast" class="feedback-toast" aria-live="polite" role="status"></div>
 
     <section id="hubView" class="hub-view" aria-label="LaunchLens hackathon hub">
       <canvas id="hubCanvas" aria-label="Hackathon idea star map"></canvas>
