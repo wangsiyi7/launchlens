@@ -9,8 +9,8 @@
 | 文件 | 用途 |
 | --- | --- |
 | `index.html` | LaunchLens 主界面，包含中英切换、Temple Mode、Hub Mode、Project Manager、Codex Bridge、Classic/Platform Console、Project Wall 表单、评分输出、Optional LLM 面板 |
-| `styles.css` | 页面视觉样式、Temple 背景层、Hub 星空 HUD、热点布局、平台控制台和响应式布局 |
-| `app.js` | 评分逻辑、材料生成、复制导出、本地保存、Temple 节点交互、可拖拽 Hub 星图、Project Manager、Codex Bridge、Agent Studio、Supabase 同步、大模型增强调用 |
+| `styles.css` | 页面视觉样式、动态 Temple 工作台、Hub 星空 HUD、热点布局、平台控制台和响应式布局 |
+| `app.js` | 评分逻辑、材料生成、复制导出、本地保存、Temple 拖拽/滚轮工作台、节点下载交互、可拖拽 Hub 星图、Project Manager、Codex Bridge、Agent Studio、Supabase 同步、大模型增强调用 |
 | `platform-core.js` | 平台核心数据模型：流程步骤、教程、工具推荐、本地 Agent、想法图谱、graph overview/neighborhood、Agent 互操作、Supabase 请求、Codex API 快照 |
 | `package.json` | 本地运行、测试、payload、GitHub 发布和提交脚本入口 |
 
@@ -20,12 +20,12 @@
 | --- | --- |
 | `assets/logo.svg` | 项目 logo，可用于 Project Wall logo 字段 |
 | `assets/social-card.svg` | 社交分享图 / GitHub 预览图备用 |
-| `assets/temple-background.png` | 原创生成的 2.5D 古迹空间背景，用于 Temple Mode |
+| `assets/temple-background.png` | 原创生成的古迹空间纹理背景，作为动态 Temple 工作台的视觉基底 |
 | `assets/screenshot-hub.png` | 英文桌面版 Hub Mode 星空项目图谱截图 |
 | `assets/screenshot-platform.png` | 英文桌面版 Platform Console 截图 |
-| `assets/screenshot.png` | 英文桌面版 Temple Mode 项目截图 |
-| `assets/screenshot-zh.png` | 中文桌面版 Temple Mode 项目截图 |
-| `assets/screenshot-mobile.png` | 移动版 Temple Mode 项目截图 |
+| `assets/screenshot.png` | 英文桌面版动态 Temple 工作台项目截图 |
+| `assets/screenshot-zh.png` | 中文桌面版动态 Temple 工作台项目截图 |
+| `assets/screenshot-mobile.png` | 移动版动态 Temple 工作台项目截图 |
 
 ## 比赛提交材料
 
