@@ -11,7 +11,7 @@
 | Tagline | Turn hackathon ideas into scored, linked, and ready-to-submit project workspaces. |
 | 中文一句话 | 把黑客松想法变成可评分、可关联、可提交的项目工作区。 |
 | Demo URL | https://wangsiyi7.github.io/launchlens/ |
-| 推荐演示入口 | https://wangsiyi7.github.io/launchlens/?mode=hub |
+| 推荐演示入口 | https://wangsiyi7.github.io/launchlens/ |
 | GitHub Repository URL | https://github.com/wangsiyi7/launchlens |
 | Logo URL | https://wangsiyi7.github.io/launchlens/assets/logo.svg |
 | Demo File URL | 不需要。当前 UCWS 官方事件接口显示 demoUploadEnabled=false，在线浏览器应用本身就是演示资产。 |
@@ -36,9 +36,11 @@ LaunchLens 是一个面向黑客松团队、独立开发者、社区评审和 De
 
 很多黑客松项目并不是没有做出来，而是在最后提交阶段失去清晰度：Demo 链接不稳定，GitHub 仓库信息不完整，截图、README、技术栈、证据链和评审叙事之间无法对应，最终很难同时满足社区投票、AI 评估和专家评审的检查方式。
 
-LaunchLens 把这个最后交付层变成一个可以持续运行的项目工作台。团队可以输入 Project Wall 字段，构建类似 RepoScape 的想法星图，拖拽并持久保存图谱节点，检查直接关系，运行本地项目 Agent，归档不同想法之间的关系，检查必须提交的证据，扫描公开 GitHub 仓库信号，并按 Community Vote、AI Evaluation、Expert Judges 三个维度评估提交准备度，最后生成可直接复制的提交材料。
+LaunchLens 把这个最后交付层变成一个可以持续运行的项目工作台。主页不再是静态 landing page，而是一个动态 Temple workbench：评委可以拖拽 3D 工作台，用鼠标滚轮触发轻微视差反馈，第一眼看到 Value、Proof、Export 三个信号，点击 Story、Proof、Score、Agent、Pack、Ship，并把每一步单独下载为 Markdown。
 
-当前版本包含 Hackathon Hub、Project Manager、Codex Bridge、2.5D Temple Mode、Platform Console、Agent Studio、Idea Archive、Evidence Gate、Repo Scanner、Codex API JSON 导出、可选 Supabase 同步、中英文界面，以及可选的 OpenAI-compatible LLM 文案优化入口。Codex Bridge 可导出给 Codex、Claude Code、ClaudeCodex 和其他图谱消费工具使用的 `graphOverview` 与 `selectedNeighborhood`。
+团队随后可以输入 Project Wall 字段，构建类似 RepoScape 的想法星图，拖拽并持久保存图谱节点，检查直接关系，运行本地项目 Agent，归档不同想法之间的关系，检查必须提交的证据，扫描公开 GitHub 仓库信号，并按 Community Vote、AI Evaluation、Expert Judges 三个维度评估提交准备度，最后生成可直接复制的提交材料。
+
+当前版本包含 Three.js 动态 Temple workbench 与本地 Canvas fallback、Hackathon Hub、Project Manager、Codex Bridge、Platform Console、Agent Studio、Idea Archive、Evidence Gate、Repo Scanner、Codex API JSON 导出、可选 Supabase 同步、中英文界面，以及可选的 OpenAI-compatible LLM 文案优化入口。Codex Bridge 可导出给 Codex、Claude Code、ClaudeCodex 和其他图谱消费工具使用的 `graphOverview` 与 `selectedNeighborhood`。
 
 UCWS 是 LaunchLens 的第一个完整使用场景，但它不是一次性填表工具。它被设计成一个长期黑客松协作平台，可以扩展到加速器 Demo Day、开源项目展示、内部创新评审和跨团队产品复盘。
 
@@ -48,9 +50,11 @@ LaunchLens is a browser-based hackathon collaboration hub for teams, solo builde
 
 Hackathon teams often build something real, but lose momentum at the final submission layer: unstable demo links, unclear repositories, missing screenshots, incomplete README paths, weak proof, and narratives that do not match how community voters, AI evaluators, and expert judges inspect work.
 
-LaunchLens turns that final handoff into an operating workspace. Teams can enter Project Wall fields, build a RepoScape-inspired idea star map, drag and persist graph nodes, inspect direct relationships, run focused project agents, archive relationships between ideas, audit required evidence, scan public GitHub repository signals, score readiness across Community Vote, AI Evaluation, and Expert Judges, and generate copy-ready submission materials.
+LaunchLens turns that final handoff into an operating workspace. The homepage is a live Temple workbench instead of a static landing page: judges can drag the 3D workspace, use the mouse wheel for subtle parallax, scan value/proof/export readiness, click Story/Proof/Score/Agent/Pack/Ship, and download a Markdown extract for each step.
 
-The current version includes Hackathon Hub, a full-screen draggable star-map view; Project Manager for persistent workspace snapshots; Codex Bridge for Codex, Claude Code, ClaudeCodex, and graph-consumer interoperability; Temple Mode, a 2.5D spatial workflow; Platform Console, a guided operating view; local strategy/evidence/build/demo/tool/risk agents; linked idea archive; Codex API JSON export; optional Supabase workspace sync; bilingual UX; and optional OpenAI-compatible LLM refinement.
+Teams can then enter Project Wall fields, build a RepoScape-inspired idea star map, drag and persist graph nodes, inspect direct relationships, run focused project agents, archive relationships between ideas, audit required evidence, scan public GitHub repository signals, score readiness across Community Vote, AI Evaluation, and Expert Judges, and generate copy-ready submission materials.
+
+The current version includes the dynamic Temple workbench with Three.js plus local Canvas fallback; Hackathon Hub, a full-screen draggable star-map view; Project Manager for persistent workspace snapshots; Codex Bridge for Codex, Claude Code, ClaudeCodex, and graph-consumer interoperability; Platform Console, a guided operating view; local strategy/evidence/build/demo/tool/risk agents; linked idea archive; Codex API JSON export; optional Supabase workspace sync; bilingual UX; and optional OpenAI-compatible LLM refinement.
 
 UCWS is the first use case, but LaunchLens is designed as a long-term collaboration platform for hackathons, accelerator demo days, open-source showcases, and internal product reviews.
 
@@ -59,7 +63,7 @@ UCWS is the first use case, but LaunchLens is designed as a long-term collaborat
 | 层级 | 技术 |
 | --- | --- |
 | Frontend | HTML, CSS, JavaScript |
-| Visual Interaction | Canvas draggable star-map rendering, 2.5D generated bitmap background, hover particles, spatial node interaction |
+| Visual Interaction | Three.js dynamic Temple workbench with local Canvas fallback, drag and wheel parallax controls, Canvas draggable star-map rendering, click feedback, per-step download actions |
 | State | Browser localStorage, structured workspace snapshot, persisted Hub coordinates |
 | Agents | Local strategy, evidence, build, demo, tool-scout, and risk agents in JavaScript |
 | Backend Option | Optional Supabase REST backend and SQL schema |
@@ -90,20 +94,23 @@ LaunchLens 也参考了 [`ThomasLix7/RepoScape`](https://github.com/ThomasLix7/R
 ## 7. 推荐评委阅读顺序
 
 1. 打开 Demo URL: https://wangsiyi7.github.io/launchlens/
-2. 进入 Hackathon Hub: https://wangsiyi7.github.io/launchlens/?mode=hub
-3. 在星图输入一个项目想法，观察自动生成的节点、证据关系和操作建议。
-4. 切换到 Platform Console，查看 Agent Studio、Demo Tutorial、Idea Archive、Evidence Gate、Repo Scanner 和 Export。
-5. 打开 GitHub 仓库查看测试、OpenAPI、Supabase schema、提交材料和长期 skill/plugin 资产。
+2. 拖拽 Temple workbench 背景，并用鼠标滚轮轻轻滚动一次，观察主页像工作台一样响应。
+3. 点击 Story、Proof、Score、Agent、Pack、Ship，并用 Download Step 导出当前步骤 Markdown。
+4. 进入 Hackathon Hub: https://wangsiyi7.github.io/launchlens/?mode=hub，观察自动生成的节点、证据关系和操作建议。
+5. 切换到 Platform Console，查看 Agent Studio、Demo Tutorial、Idea Archive、Evidence Gate、Repo Scanner 和 Export。
+6. 打开 GitHub 仓库查看测试、OpenAPI、Supabase schema、提交材料和长期 skill/plugin 资产。
 
 ## 8. 演示脚本
 
 1. 用一句话输入项目想法，例如：`A platform that helps hackathon teams turn rough ideas into final submissions.`
-2. 在 Hub 星图中查看 idea、agent、evidence、tool、delivery 节点。
-3. 点击节点，观察侧边详情、行动建议和关联关系。
-4. 进入 Platform Console，运行本地 Agent，生成下一步建议。
-5. 打开 Evidence Gate，确认 Demo、GitHub、截图、Logo、技术栈和团队信息是否完整。
-6. 使用 Repo Scanner 检查公开仓库信号。
-7. 导出 Project Wall copy 或 Codex/ClaudeCodex graph context，把内容传给后续开发、评审或提交流程。
+2. 在 Temple 首页拖拽背景工作台，滚动一次，然后点击每个 Launch Path 步骤。
+3. 下载 Proof 或 Pack 步骤，展示 Demo 能产出可携带的提交材料。
+4. 在 Hub 星图中查看 idea、agent、evidence、tool、delivery 节点。
+5. 点击节点，观察侧边详情、行动建议和关联关系。
+6. 进入 Platform Console，运行本地 Agent，生成下一步建议。
+7. 打开 Evidence Gate，确认 Demo、GitHub、截图、Logo、技术栈和团队信息是否完整。
+8. 使用 Repo Scanner 检查公开仓库信号。
+9. 导出 Project Wall copy 或 Codex/ClaudeCodex graph context，把内容传给后续开发、评审或提交流程。
 
 ## 9. 官方提交注意事项
 

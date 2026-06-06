@@ -16,6 +16,7 @@ All notable LaunchLens updates should be recorded here before pushing to GitHub 
 
 - Simplified the main demo surface by removing duplicate floating Temple nodes and using the Launch Path as the primary step selector.
 - Shortened top-level demo controls to make the web app feel faster to scan during judging.
+- Refreshed Project Wall payload, English/Chinese copy-ready submission files, and final readiness report to describe the dynamic Temple workbench as the recommended demo entry.
 
 ### Verified
 

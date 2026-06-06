@@ -10,7 +10,7 @@ Use this file as the copy source for UCWS Singapore Hackathon 2026 on Epic Conne
 | Track | Application |
 | Tagline | Turn hackathon ideas into scored, linked, and ready-to-submit project workspaces. |
 | Demo URL | https://wangsiyi7.github.io/launchlens/ |
-| Recommended Demo Entry | https://wangsiyi7.github.io/launchlens/?mode=hub |
+| Recommended Demo Entry | https://wangsiyi7.github.io/launchlens/ |
 | GitHub Repository URL | https://github.com/wangsiyi7/launchlens |
 | Logo URL | https://wangsiyi7.github.io/launchlens/assets/logo.svg |
 | Demo File URL | Not required. The official event API currently reports demoUploadEnabled=false, and the live browser app is the demo artifact. |
@@ -35,9 +35,11 @@ LaunchLens is a browser-based hackathon collaboration hub for teams, solo builde
 
 Hackathon teams often build something real, but lose momentum at the final submission layer: unstable demo links, unclear repositories, missing screenshots, incomplete README paths, weak proof, and narratives that do not match how community voters, AI evaluators, and expert judges inspect work.
 
-LaunchLens turns that final handoff into an operating workspace. Teams can enter Project Wall fields, build a RepoScape-inspired idea star map, drag and persist graph nodes, inspect direct relationships, run focused project agents, archive relationships between ideas, audit required evidence, scan public GitHub repository signals, score readiness across Community Vote, AI Evaluation, and Expert Judges, and generate copy-ready submission materials.
+LaunchLens turns that final handoff into an operating workspace. The homepage is a live Temple workbench instead of a static landing page: judges can drag the 3D workspace, use the mouse wheel for subtle parallax, scan value/proof/export readiness, click Story/Proof/Score/Agent/Pack/Ship, and download a Markdown extract for each step.
 
-The current version includes Hackathon Hub, a full-screen draggable star-map view; Project Manager for persistent workspace snapshots; Codex Bridge for Codex, Claude Code, ClaudeCodex, and graph-consumer interoperability; Temple Mode, a 2.5D spatial workflow; Platform Console, a guided operating view; local strategy/evidence/build/demo/tool/risk agents; linked idea archive; Codex API JSON export; optional Supabase workspace sync; bilingual UX; and optional OpenAI-compatible LLM refinement.
+Teams can then enter Project Wall fields, build a RepoScape-inspired idea star map, drag and persist graph nodes, inspect direct relationships, run focused project agents, archive relationships between ideas, audit required evidence, scan public GitHub repository signals, score readiness across Community Vote, AI Evaluation, and Expert Judges, and generate copy-ready submission materials.
+
+The current version includes the dynamic Temple workbench with Three.js plus local Canvas fallback; Hackathon Hub, a full-screen draggable star-map view; Project Manager for persistent workspace snapshots; Codex Bridge for Codex, Claude Code, ClaudeCodex, and graph-consumer interoperability; Platform Console, a guided operating view; local strategy/evidence/build/demo/tool/risk agents; linked idea archive; Codex API JSON export; optional Supabase workspace sync; bilingual UX; and optional OpenAI-compatible LLM refinement.
 
 UCWS is the first use case, but LaunchLens is designed as a long-term collaboration platform for hackathons, accelerator demo days, open-source showcases, and internal product reviews.
 
@@ -46,7 +48,7 @@ UCWS is the first use case, but LaunchLens is designed as a long-term collaborat
 | Layer | Technology |
 | --- | --- |
 | Frontend | HTML, CSS, JavaScript |
-| Visual Interaction | Canvas draggable star-map rendering, 2.5D generated bitmap background, hover particles, spatial node interaction |
+| Visual Interaction | Three.js dynamic Temple workbench with local Canvas fallback, drag and wheel parallax controls, Canvas draggable star-map rendering, click feedback, per-step download actions |
 | State | Browser localStorage, structured workspace snapshot, persisted Hub coordinates |
 | Agents | Local strategy, evidence, build, demo, tool-scout, and risk agents in JavaScript |
 | Backend Option | Optional Supabase REST backend and SQL schema |
@@ -77,20 +79,23 @@ This upgrade also references [`ThomasLix7/RepoScape`](https://github.com/ThomasL
 ## 6. Recommended Judge Flow
 
 1. Open the Demo URL: https://wangsiyi7.github.io/launchlens/
-2. Enter Hackathon Hub: https://wangsiyi7.github.io/launchlens/?mode=hub
-3. Type a project idea and inspect the generated idea, agent, evidence, tool, and delivery nodes.
-4. Switch to Platform Console and review Agent Studio, Demo Tutorial, Idea Archive, Evidence Gate, Repo Scanner, and Export.
-5. Open the GitHub repository to inspect tests, OpenAPI, Supabase schema, submission materials, and long-term skill/plugin assets.
+2. Drag the Temple workbench background and use the mouse wheel once to feel the live workspace response.
+3. Click Story, Proof, Score, Agent, Pack, and Ship. Use Download Step to export the selected step as Markdown.
+4. Enter Hackathon Hub: https://wangsiyi7.github.io/launchlens/?mode=hub and inspect the generated idea, agent, evidence, tool, and delivery nodes.
+5. Switch to Platform Console and review Agent Studio, Demo Tutorial, Idea Archive, Evidence Gate, Repo Scanner, and Export.
+6. Open the GitHub repository to inspect tests, OpenAPI, Supabase schema, submission materials, and long-term skill/plugin assets.
 
 ## 7. Demo Script
 
 1. Enter an idea, for example: `A platform that helps hackathon teams turn rough ideas into final submissions.`
-2. Review the Hub star map and its idea, agent, evidence, tool, and delivery nodes.
-3. Click nodes to inspect details, next actions, and linked relationships.
-4. Open Platform Console and run the local agents for structured next steps.
-5. Open Evidence Gate to confirm demo, GitHub, screenshots, logo, tech stack, and team coverage.
-6. Use Repo Scanner to inspect public repository signals.
-7. Export Project Wall copy or Codex/ClaudeCodex graph context for future development, judging, or submission flows.
+2. On the Temple homepage, drag the background workbench, scroll once, and click each Launch Path step.
+3. Download the Proof or Pack step to show that the demo produces portable submission artifacts.
+4. Review the Hub star map and its idea, agent, evidence, tool, and delivery nodes.
+5. Click nodes to inspect details, next actions, and linked relationships.
+6. Open Platform Console and run the local agents for structured next steps.
+7. Open Evidence Gate to confirm demo, GitHub, screenshots, logo, tech stack, and team coverage.
+8. Use Repo Scanner to inspect public repository signals.
+9. Export Project Wall copy or Codex/ClaudeCodex graph context for future development, judging, or submission flows.
 
 ## 8. Official Submission Notes
 
