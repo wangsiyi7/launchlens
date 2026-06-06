@@ -2,6 +2,18 @@
 
 All notable LaunchLens updates should be recorded here before pushing to GitHub and refreshing the public demo.
 
+## 2026-06-06 - UCWS Project Searcher Skill Reference
+
+### Updated
+
+- Clarified the sibling `ucws-project-aggregator` project as a UCWS Project Searcher Skill rather than a duplicated official-content archive.
+- Updated bilingual README wording to include bilingual submission forms, commit history, evidence norms, and Agent handoff flow.
+
+### Verified
+
+- Node.js test suite passed.
+- Submission payload validation passed.
+
 ## 2026-06-05 - UCWS Public Snapshot Refresh
 
 ### Updated
