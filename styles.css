@@ -87,7 +87,9 @@ button.ghost {
 .topbar {
   position: sticky;
   top: 0;
-  z-index: 10;
+  /* Above the view-transition curtain (z-index 90) so global controls
+     stay visible and legible during view switches. */
+  z-index: 100;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -199,17 +201,116 @@ body.temple-mode .workspace {
 body.view-switching .temple-view,
 body.view-switching .hub-view,
 body.view-switching .workspace {
-  animation: viewFade 240ms ease both;
+  animation: viewReveal 560ms cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
-@keyframes viewFade {
+/* Rack-focus reveal: incoming view resolves from blurred + lifted to sharp,
+   echoing the depth-of-field language of the 3D temple. */
+@keyframes viewReveal {
   from {
     opacity: 0;
-    transform: translateY(0.45rem);
+    transform: translateY(1rem) scale(0.99);
+    filter: blur(12px);
+  }
+  55% {
+    filter: blur(2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+body.view-switching.temple-mode .temple-hud,
+body.view-switching.temple-mode .temple-runway,
+body.view-switching.temple-mode .temple-card,
+body.view-switching.hub-mode .hub-left,
+body.view-switching.hub-mode .hub-right {
+  animation: hudRise 640ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+body.view-switching .temple-runway,
+body.view-switching .hub-right {
+  animation-delay: 90ms;
+}
+
+body.view-switching .temple-card {
+  animation-delay: 160ms;
+}
+
+@keyframes hudRise {
+  from {
+    opacity: 0;
+    transform: translateY(1.5rem);
   }
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+/* Enterprise curtain-wipe overlay that masks the swap between views. */
+.view-transition {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  pointer-events: none;
+  opacity: 0;
+}
+
+.view-transition span {
+  display: block;
+  height: 100%;
+  transform: scaleY(0);
+  transform-origin: top;
+  background: linear-gradient(180deg, rgba(99, 214, 164, 0.92), rgba(10, 13, 12, 0.98) 70%);
+  border-right: 1px solid rgba(8, 10, 9, 0.6);
+}
+
+.view-transition span:nth-child(2) {
+  background: linear-gradient(180deg, rgba(92, 141, 255, 0.9), rgba(10, 13, 12, 0.98) 70%);
+}
+
+.view-transition span:nth-child(3) {
+  background: linear-gradient(180deg, rgba(240, 184, 90, 0.92), rgba(10, 13, 12, 0.98) 70%);
+  border-right: 0;
+}
+
+.view-transition.is-active {
+  opacity: 1;
+}
+
+.view-transition.is-active span {
+  animation: curtainWipe 700ms cubic-bezier(0.7, 0, 0.2, 1) both;
+}
+
+.view-transition.is-active span:nth-child(2) {
+  animation-delay: 70ms;
+}
+
+.view-transition.is-active span:nth-child(3) {
+  animation-delay: 140ms;
+}
+
+@keyframes curtainWipe {
+  0% {
+    transform: scaleY(0);
+    transform-origin: top;
+  }
+  46% {
+    transform: scaleY(1);
+    transform-origin: top;
+  }
+  54% {
+    transform: scaleY(1);
+    transform-origin: bottom;
+  }
+  100% {
+    transform: scaleY(0);
+    transform-origin: bottom;
   }
 }
 
@@ -241,6 +342,21 @@ body.view-switching .workspace {
   object-position: center;
   opacity: 0.34;
   filter: saturate(0.88) contrast(1.02);
+  transition: opacity 700ms ease;
+}
+
+/* Once the WebGL scene renders the backdrop (with depth-of-field), the flat
+   fallback photo fades out so the 3D layer reads cleanly. */
+body.webgl-ready .temple-bg {
+  opacity: 0;
+}
+
+.temple-workbench {
+  transition: opacity 700ms ease;
+}
+
+body.webgl-ready .temple-workbench {
+  opacity: 1;
 }
 
 .temple-shade {
@@ -1964,5 +2080,93 @@ pre.tab-flash {
 
   .workflow-rail {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* ---- Motion & interaction polish ---- */
+html {
+  scroll-behavior: smooth;
+}
+
+button {
+  transition:
+    transform 160ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 160ms ease,
+    background 160ms ease,
+    box-shadow 200ms ease;
+  will-change: transform;
+}
+
+button:active {
+  transform: translateY(0) scale(0.97);
+}
+
+button.primary:hover {
+  box-shadow: 0 8px 24px rgba(99, 214, 164, 0.28);
+}
+
+.view-toggle button,
+.lang-toggle button,
+.tabs button,
+.hub-orbit-controls button {
+  transition:
+    color 180ms ease,
+    background 240ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 180ms ease,
+    transform 160ms ease;
+}
+
+/* Active workflow node gets a soft animated halo for a live, non-static feel. */
+.temple-runway button.active,
+.temple-node.active {
+  animation: nodePulse 2.8s ease-in-out infinite;
+}
+
+@keyframes nodePulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(240, 184, 90, 0);
+  }
+  50% {
+    box-shadow: 0 0 0 4px rgba(240, 184, 90, 0.16);
+  }
+}
+
+.temple-card,
+.hub-overlay,
+.temple-runway,
+.temple-score {
+  transition:
+    transform 240ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 200ms ease,
+    box-shadow 240ms ease;
+}
+
+.temple-card:hover,
+.hub-overlay:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 26px 60px rgba(0, 0, 0, 0.45);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+
+  .view-transition {
+    display: none !important;
+  }
+
+  .temple-card:hover,
+  .hub-overlay:hover {
+    transform: none;
   }
 }

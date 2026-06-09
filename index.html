@@ -16,8 +16,23 @@
     <meta property="og:image" content="assets/social-card.svg" />
     <link rel="icon" href="assets/logo.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="modulepreload"
+      href="https://cdn.jsdelivr.net/npm/three@0.165.0/build/three.module.js"
+    />
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://cdn.jsdelivr.net/npm/three@0.165.0/build/three.module.js",
+          "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.165.0/examples/jsm/"
+        }
+      }
+    </script>
   </head>
   <body class="temple-mode">
+    <div id="viewTransition" class="view-transition" aria-hidden="true">
+      <span></span><span></span><span></span>
+    </div>
     <header class="topbar">
       <div class="brand-lockup">
         <img src="assets/logo.svg" alt="" aria-hidden="true" />

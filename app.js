@@ -82,7 +82,7 @@
       "feedback.fieldsOpened": "Field editor opened.",
       "hub.eyebrow": "Hackathon Hub",
       "hub.title": "Idea star map",
-      "hub.body": "Paste rough ideas, requirements, risks, or Codex notes. LaunchLens turns them into linked project nodes.",
+      "hub.body": "Paste rough ideas — get a linked project star map.",
       "hub.inspect": "Inspect",
       "hub.filter.ideas": "Ideas",
       "hub.filter.agents": "Agents",
@@ -254,27 +254,27 @@
       "node.final.short": "Final Door",
       "space.intake.label": "Project Altar",
       "space.intake.title": "Shape the project story",
-      "space.intake.body": "Start with the project name, track, tagline, target users, problem, and solution.",
+      "space.intake.body": "Name, track, tagline, users, problem, solution.",
       "space.intake.primary": "Open Fields",
       "space.evidence.label": "Evidence Steps",
       "space.evidence.title": "Attach proof reviewers can inspect",
-      "space.evidence.body": "Add demo URL, GitHub repo, tech stack, screenshots, team members, and rough notes.",
+      "space.evidence.body": "Demo, repo, stack, screenshots, team.",
       "space.evidence.primary": "Add Evidence",
       "space.score.label": "Score Gate",
       "space.score.title": "Run the UCWS readiness review",
-      "space.score.body": "Score the project against community vote, AI evaluation, and expert judging signals.",
+      "space.score.body": "Score against community, AI, and expert signals.",
       "space.score.primary": "Run Score",
       "space.oracle.label": "Oracle LLM",
       "space.oracle.title": "Use your own model to refine copy",
-      "space.oracle.body": "Open the reserved OpenAI-compatible endpoint, model, and API key panel for optional enhancement.",
+      "space.oracle.body": "Polish the copy with your own model.",
       "space.oracle.primary": "Open Oracle",
       "space.archive.label": "Archive Hall",
       "space.archive.title": "Review the generated submission pack",
-      "space.archive.body": "Inspect the Markdown pack, README draft, pitch, sprint plan, and fix list before export.",
+      "space.archive.body": "Pack, README, pitch, sprint, fix list.",
       "space.archive.primary": "Open Pack",
       "space.final.label": "Final Door",
       "space.final.title": "Prepare GitHub and Project Wall handoff",
-      "space.final.body": "Use the copied pack with the final GitHub repo URL, stable demo URL, screenshots, and real team names.",
+      "space.final.body": "Ship with repo, demo, screenshots, team.",
       "space.final.primary": "Submit Checklist",
       "score.community": "Community Vote",
       "score.ai": "AI Evaluation",
@@ -357,7 +357,7 @@
       "feedback.fieldsOpened": "字段编辑器已打开。",
       "hub.eyebrow": "黑客松 Hub",
       "hub.title": "想法星图",
-      "hub.body": "粘贴粗糙想法、需求、风险或 Codex 笔记，LaunchLens 会把它们转成有关联的项目节点。",
+      "hub.body": "粘贴粗糙想法，生成关联的项目星图。",
       "hub.inspect": "检查",
       "hub.filter.ideas": "想法",
       "hub.filter.agents": "Agent",
@@ -529,27 +529,27 @@
       "node.final.short": "提交大门",
       "space.intake.label": "项目祭坛",
       "space.intake.title": "梳理项目故事",
-      "space.intake.body": "从项目名称、赛道、一句话介绍、目标用户、问题和解决方案开始。",
+      "space.intake.body": "名称、赛道、简介、用户、问题、方案。",
       "space.intake.primary": "打开字段",
       "space.evidence.label": "证据台阶",
       "space.evidence.title": "补齐评审可检查的证据",
-      "space.evidence.body": "添加 Demo 链接、GitHub 仓库、技术栈、截图、团队成员和草稿笔记。",
+      "space.evidence.body": "Demo、仓库、技术栈、截图、团队。",
       "space.evidence.primary": "补充证据",
       "space.score.label": "评分之门",
       "space.score.title": "运行 UCWS 就绪度评审",
-      "space.score.body": "按社区投票、AI 评估和专家评审信号检查项目。",
+      "space.score.body": "按社区、AI 与专家信号评分。",
       "space.score.primary": "运行评分",
       "space.oracle.label": "模型神谕",
       "space.oracle.title": "用你自己的模型润色文案",
-      "space.oracle.body": "打开预留的 OpenAI-compatible endpoint、model 和 API key 面板。",
+      "space.oracle.body": "用你自己的模型润色文案。",
       "space.oracle.primary": "打开神谕",
       "space.archive.label": "档案大厅",
       "space.archive.title": "查看生成的提交材料",
-      "space.archive.body": "检查 Submission Pack、README、演示稿、冲刺计划和修复清单。",
+      "space.archive.body": "材料包、README、演示、冲刺、修复清单。",
       "space.archive.primary": "打开材料",
       "space.final.label": "提交大门",
       "space.final.title": "准备 GitHub 与 Project Wall 交接",
-      "space.final.body": "用最终 GitHub 仓库、稳定 Demo、截图和真实团队成员完成提交。",
+      "space.final.body": "用仓库、Demo、截图与团队完成提交。",
       "space.final.primary": "提交清单",
       "score.community": "社区投票",
       "score.ai": "AI 评估",
@@ -937,6 +937,16 @@
     const temple = mode === "temple";
     const hub = mode === "hub";
     const classic = !temple && !hub;
+    const reduce =
+      window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const overlay = document.getElementById("viewTransition");
+    if (overlay && !reduce) {
+      overlay.dataset.target = mode;
+      overlay.classList.remove("is-active");
+      void overlay.offsetWidth;
+      overlay.classList.add("is-active");
+      window.setTimeout(() => overlay.classList.remove("is-active"), 760);
+    }
     document.body.classList.add("view-switching");
     document.body.classList.toggle("temple-mode", temple);
     document.body.classList.toggle("hub-mode", hub);
@@ -953,9 +963,13 @@
     if (temple || hub) {
       window.scrollTo({ top: 0, behavior: "auto" });
     }
+    if (hub) {
+      startHubAnimation();
+    }
     updateTempleStatus();
     updateHubGraph();
-    window.setTimeout(() => document.body.classList.remove("view-switching"), 260);
+    // Must outlast the longest entrance animation (160ms delay + 640ms rise).
+    window.setTimeout(() => document.body.classList.remove("view-switching"), 840);
   }
 
   function focusClassicField(field) {
@@ -2206,9 +2220,9 @@
       workbenchStarted = true;
       startCanvasWorkbench(canvas, state);
     };
-    const fallbackTimer = window.setTimeout(startFallback, 900);
+    const fallbackTimer = window.setTimeout(startFallback, 1500);
 
-    import("https://cdn.jsdelivr.net/npm/three@0.165.0/build/three.module.js")
+    import("three")
       .then((THREE) => {
         if (workbenchStarted) return;
         workbenchStarted = true;
@@ -2219,106 +2233,249 @@
   }
 
   function startThreeWorkbench(THREE, canvas, state) {
-    const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
-    renderer.setClearColor(0x000000, 0);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.6));
+    const motionQuery =
+      window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)");
+    let reduceMotion = motionQuery ? motionQuery.matches : false;
+    if (motionQuery && motionQuery.addEventListener) {
+      // React live to the OS setting instead of capturing it once at load.
+      motionQuery.addEventListener("change", (event) => {
+        reduceMotion = event.matches;
+      });
+    }
+
+    let renderer;
+    try {
+      renderer = new THREE.WebGLRenderer({
+        canvas,
+        antialias: true,
+        powerPreference: "high-performance",
+      });
+    } catch (error) {
+      startCanvasWorkbench(canvas, state);
+      return;
+    }
+    const maxRatio = reduceMotion ? 1 : 1.45;
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, maxRatio));
+    renderer.setClearColor(0x080b0a, 1);
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    renderer.toneMappingExposure = 1.12;
 
     const scene = new THREE.Scene();
-    scene.fog = new THREE.Fog(0x0c0f0e, 7, 17);
+    scene.fog = new THREE.FogExp2(0x080b0a, 0.03);
 
-    const camera = new THREE.PerspectiveCamera(42, 1, 0.1, 40);
-    camera.position.set(0, 2.9, 8.8);
+    const camera = new THREE.PerspectiveCamera(42, 1.6, 0.1, 90);
+    camera.position.set(0, 2.4, 9.4);
 
     const rig = new THREE.Group();
-    rig.rotation.x = -0.16;
+    rig.rotation.x = -0.14;
     scene.add(rig);
 
-    const ambient = new THREE.AmbientLight(0xffffff, 0.72);
-    const key = new THREE.PointLight(0x63d6a4, 1.45, 16);
-    key.position.set(-3.5, 3.8, 4);
-    const rim = new THREE.PointLight(0xf0b85a, 1.1, 14);
-    rim.position.set(4.4, 2.4, -2.5);
-    scene.add(ambient, key, rim);
+    // Lighting tuned for emissive + bloom workflow (no decay tuning needed).
+    scene.add(new THREE.AmbientLight(0x9fe9cf, 0.6));
+    const keyLight = new THREE.DirectionalLight(0x8ff0c4, 2.1);
+    keyLight.position.set(-5, 6, 6);
+    const rimLight = new THREE.DirectionalLight(0xffce85, 1.35);
+    rimLight.position.set(6, 3, -5);
+    const coolFill = new THREE.DirectionalLight(0x7fb6ff, 0.7);
+    coolFill.position.set(0, 4, -9);
+    scene.add(keyLight, rimLight, coolFill);
 
-    const slabMaterial = new THREE.MeshStandardMaterial({
-      color: 0x17201d,
-      metalness: 0.22,
-      roughness: 0.72,
+    // Far backdrop: temple photo placed deep in the scene so depth-of-field
+    // softens it into an atmospheric, out-of-focus haze.
+    let backdropReady = false;
+    const backdropMaterial = new THREE.MeshBasicMaterial({
+      color: 0x4a5a54,
       transparent: true,
-      opacity: 0.86,
+      opacity: 0.92,
+      depthWrite: true,
     });
-    const slab = new THREE.Mesh(new THREE.BoxGeometry(9.6, 0.12, 5.3), slabMaterial);
-    slab.position.set(0, -1.62, 0);
+    const backdrop = new THREE.Mesh(new THREE.PlaneGeometry(46, 26), backdropMaterial);
+    backdrop.position.set(0, 1.4, -11);
+    scene.add(backdrop);
+    new THREE.TextureLoader().load(
+      "assets/temple-background.png",
+      (texture) => {
+        if ("colorSpace" in texture) texture.colorSpace = THREE.SRGBColorSpace;
+        backdropMaterial.map = texture;
+        backdropMaterial.color.set(0x8c9b94);
+        backdropMaterial.needsUpdate = true;
+        backdropReady = true;
+      },
+      undefined,
+      () => {
+        // Texture failed: keep the tinted plane and proceed anyway.
+        backdropReady = true;
+      },
+    );
+
+    // Reflective floor + grid (the "workbench").
+    const slab = new THREE.Mesh(
+      new THREE.BoxGeometry(13, 0.1, 6.4),
+      new THREE.MeshStandardMaterial({
+        color: 0x121a17,
+        metalness: 0.55,
+        roughness: 0.42,
+        emissive: 0x06120d,
+      }),
+    );
+    slab.position.set(0, -1.7, 0);
     rig.add(slab);
 
-    const grid = new THREE.GridHelper(14, 22, 0x63d6a4, 0x2a3a35);
-    grid.position.y = -1.52;
+    const grid = new THREE.GridHelper(18, 30, 0x63d6a4, 0x223530);
+    grid.position.y = -1.63;
     grid.material.transparent = true;
-    grid.material.opacity = 0.2;
+    grid.material.opacity = 0.22;
     rig.add(grid);
 
+    // Mid-ground holographic workflow nodes — varied depth so navigating
+    // between them produces a visible rack-focus shift.
+    const spaceOrder = ["intake", "evidence", "score", "oracle", "archive", "final"];
+    const layout = [
+      [-4.0, -0.25, 1.7],
+      [-2.25, 0.35, -0.5],
+      [-0.35, -0.1, 1.05],
+      [1.7, 0.42, -0.65],
+      [3.35, -0.2, 0.85],
+      [4.75, 0.5, -1.25],
+    ];
+    const palette = [0x63d6a4, 0xf0b85a, 0x5c8dff, 0x63d6a4, 0xf0b85a, 0x9b8cff];
+
+    const nodes = layout.map((pos, index) => {
+      const group = new THREE.Group();
+      group.position.set(pos[0], pos[1], pos[2]);
+      group.userData = { baseY: pos[1], color: palette[index], space: spaceOrder[index] };
+
+      const slabMat = new THREE.MeshStandardMaterial({
+        color: 0x18241f,
+        emissive: palette[index],
+        emissiveIntensity: 0.32,
+        metalness: 0.3,
+        roughness: 0.5,
+      });
+      const card = new THREE.Mesh(new THREE.BoxGeometry(1.15, 0.09, 0.74), slabMat);
+      card.rotation.y = (index - 2.5) * 0.06;
+      group.add(card);
+      group.userData.cardMat = slabMat;
+
+      const ring = new THREE.Mesh(
+        new THREE.TorusGeometry(0.42, 0.018, 14, 40),
+        new THREE.MeshBasicMaterial({ color: palette[index], transparent: true, opacity: 0.55 }),
+      );
+      ring.rotation.x = Math.PI / 2;
+      ring.position.y = 0.06;
+      group.add(ring);
+      group.userData.ring = ring;
+
+      const core = new THREE.Mesh(
+        new THREE.IcosahedronGeometry(0.14, 1),
+        new THREE.MeshBasicMaterial({ color: palette[index] }),
+      );
+      core.position.y = 0.28;
+      group.add(core);
+      group.userData.core = core;
+
+      rig.add(group);
+      return group;
+    });
+
+    // Glowing connectors between consecutive nodes.
     const lineMaterial = new THREE.LineBasicMaterial({
       color: 0x63d6a4,
       transparent: true,
-      opacity: 0.28,
+      opacity: 0.3,
     });
-    const panelMaterial = new THREE.MeshStandardMaterial({
-      color: 0x1b2723,
-      emissive: 0x10251d,
-      metalness: 0.18,
-      roughness: 0.58,
-      transparent: true,
-      opacity: 0.9,
-    });
-    const activeMaterial = new THREE.MeshStandardMaterial({
-      color: 0x243a31,
-      emissive: 0x143b2a,
-      metalness: 0.12,
-      roughness: 0.48,
-      transparent: true,
-      opacity: 0.95,
-    });
-
-    const points = [
-      [-3.7, -1.18, 1.65],
-      [-2.12, -1.04, 0.15],
-      [-0.42, -1.1, 1.18],
-      [1.28, -0.98, -0.1],
-      [2.75, -1.08, 1.26],
-      [3.75, -1.02, -0.68],
-    ];
-    const panels = points.map((point, index) => {
-      const panel = new THREE.Mesh(
-        new THREE.BoxGeometry(index === 0 ? 1.38 : 1.16, 0.08, 0.72),
-        index === 0 || index === 3 ? activeMaterial : panelMaterial,
+    for (let index = 0; index < layout.length - 1; index += 1) {
+      const a = layout[index];
+      const b = layout[index + 1];
+      const curve = new THREE.QuadraticBezierCurve3(
+        new THREE.Vector3(a[0], a[1] + 0.28, a[2]),
+        new THREE.Vector3((a[0] + b[0]) / 2, Math.max(a[1], b[1]) + 0.85, (a[2] + b[2]) / 2),
+        new THREE.Vector3(b[0], b[1] + 0.28, b[2]),
       );
-      panel.position.set(point[0], point[1], point[2]);
-      panel.rotation.x = -0.18;
-      panel.rotation.y = (index - 2.5) * 0.05;
-      panel.userData.baseY = point[1];
-      rig.add(panel);
-
-      const glow = new THREE.Mesh(
-        new THREE.SphereGeometry(0.08, 18, 18),
-        new THREE.MeshBasicMaterial({
-          color: index === 0 || index === 3 ? 0x63d6a4 : 0xf0b85a,
-          transparent: true,
-          opacity: 0.82,
-        }),
-      );
-      glow.position.set(point[0] - 0.46, point[1] + 0.1, point[2] + 0.04);
-      panel.userData.glow = glow;
-      rig.add(glow);
-      return panel;
-    });
-
-    for (let index = 0; index < points.length - 1; index += 1) {
-      const geometry = new THREE.BufferGeometry().setFromPoints([
-        new THREE.Vector3(points[index][0], points[index][1] + 0.08, points[index][2]),
-        new THREE.Vector3(points[index + 1][0], points[index + 1][1] + 0.08, points[index + 1][2]),
-      ]);
+      const geometry = new THREE.BufferGeometry().setFromPoints(curve.getPoints(28));
       rig.add(new THREE.Line(geometry, lineMaterial));
     }
+
+    // Foreground embers near the camera — always out of focus, so they bloom
+    // into soft bokeh orbs that frame the scene.
+    const embers = [];
+    const emberCount = reduceMotion ? 0 : 16;
+    for (let index = 0; index < emberCount; index += 1) {
+      const ember = new THREE.Mesh(
+        new THREE.IcosahedronGeometry(0.05 + Math.random() * 0.05, 0),
+        new THREE.MeshBasicMaterial({
+          color: index % 2 ? 0xf0b85a : 0x63d6a4,
+          transparent: true,
+          opacity: 0.9,
+        }),
+      );
+      ember.position.set((Math.random() - 0.5) * 11, (Math.random() - 0.4) * 5, 4 + Math.random() * 4);
+      ember.userData = {
+        speed: 0.12 + Math.random() * 0.22,
+        sway: Math.random() * Math.PI * 2,
+        baseX: ember.position.x,
+      };
+      scene.add(ember);
+      embers.push(ember);
+    }
+
+    // Post-processing (depth-of-field + bloom). Loads lazily; until ready —
+    // or if it fails — the scene renders directly with no visual break.
+    let composer = null;
+    let bokehPass = null;
+    let firstFrameDone = false;
+    const focusPoint = new THREE.Vector3(layout[0][0], layout[0][1], layout[0][2]);
+    if (!reduceMotion) {
+      Promise.all([
+        import("three/addons/postprocessing/EffectComposer.js"),
+        import("three/addons/postprocessing/RenderPass.js"),
+        import("three/addons/postprocessing/BokehPass.js"),
+        import("three/addons/postprocessing/UnrealBloomPass.js"),
+        import("three/addons/postprocessing/OutputPass.js"),
+      ])
+        .then(([composerMod, renderMod, bokehMod, bloomMod, outputMod]) => {
+          const { EffectComposer } = composerMod;
+          const { RenderPass } = renderMod;
+          const { BokehPass } = bokehMod;
+          const { UnrealBloomPass } = bloomMod;
+          const { OutputPass } = outputMod;
+          const built = new EffectComposer(renderer);
+          built.addPass(new RenderPass(scene, camera));
+          bokehPass = new BokehPass(scene, camera, {
+            focus: camera.position.distanceTo(focusPoint),
+            aperture: 0.0017,
+            maxblur: 0.013,
+          });
+          built.addPass(bokehPass);
+          built.addPass(
+            new UnrealBloomPass(new THREE.Vector2(1, 1), 0.72, 0.6, 0.2),
+          );
+          built.addPass(new OutputPass());
+          // Cap post-processing resolution independently of the canvas so the
+          // multi-pass DoF + bloom stays smooth on integrated GPUs.
+          if (typeof built.setPixelRatio === "function") {
+            built.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1));
+          }
+          composer = built;
+          resize();
+        })
+        .catch(() => {
+          composer = null;
+        });
+    }
+
+    // Subtle pointer parallax (independent of click-drag).
+    const parallax = { x: 0, y: 0, tx: 0, ty: 0 };
+    els.templeView.addEventListener(
+      "pointermove",
+      (event) => {
+        if (state.pointerId !== null) return;
+        const rect = els.templeView.getBoundingClientRect();
+        parallax.tx = ((event.clientX - rect.left) / rect.width - 0.5) * 2;
+        parallax.ty = ((event.clientY - rect.top) / rect.height - 0.5) * 2;
+      },
+      { passive: true },
+    );
 
     function resize() {
       const width = Math.max(1, canvas.clientWidth || els.templeView.clientWidth || 1);
@@ -2326,33 +2483,95 @@
       renderer.setSize(width, height, false);
       camera.aspect = width / height;
       camera.updateProjectionMatrix();
+      if (composer) {
+        composer.setSize(width, height);
+        if (bokehPass && bokehPass.uniforms && bokehPass.uniforms.aspect) {
+          bokehPass.uniforms.aspect.value = camera.aspect;
+        }
+      }
     }
 
-    const resizeObserver = new ResizeObserver(resize);
+    let resizeQueued = false;
+    const resizeObserver = new ResizeObserver(() => {
+      if (resizeQueued) return;
+      resizeQueued = true;
+      requestAnimationFrame(() => {
+        resizeQueued = false;
+        resize();
+      });
+    });
     resizeObserver.observe(els.templeView);
     resize();
 
     function animate(time = 0) {
-      state.dragX += (state.targetX - state.dragX) * 0.075;
-      state.dragY += (state.targetY - state.dragY) * 0.075;
+      requestAnimationFrame(animate);
+      // Skip the heavy render entirely while the temple view is hidden.
+      if (!document.body.classList.contains("temple-mode")) return;
+
+      state.dragX += (state.targetX - state.dragX) * 0.07;
+      state.dragY += (state.targetY - state.dragY) * 0.07;
       state.zoom += (state.targetZoom - state.zoom) * 0.07;
+      parallax.x += (parallax.tx - parallax.x) * 0.045;
+      parallax.y += (parallax.ty - parallax.y) * 0.045;
 
-      const t = time * 0.001;
-      rig.rotation.y = state.dragX;
-      rig.rotation.x = -0.16 + state.dragY;
-      camera.position.z = 8.8 - state.zoom * 1.2;
-      camera.position.x = state.dragX * 0.8;
-      camera.lookAt(0, -0.9, 0);
-      grid.position.z = Math.sin(t * 0.35) * 0.18;
+      // With reduced motion, freeze every time-driven oscillator: the scene
+      // becomes a still composition that only responds to deliberate input.
+      const t = reduceMotion ? 0 : time * 0.001;
+      rig.rotation.y = state.dragX + parallax.x * 0.12;
+      rig.rotation.x = -0.14 + state.dragY + parallax.y * 0.05;
+      camera.position.z = 9.4 - state.zoom * 1.5;
+      camera.position.x = state.dragX * 0.9 + parallax.x * 0.4;
+      camera.position.y = 2.4 - parallax.y * 0.3;
+      camera.lookAt(0, -0.6, 0);
+      grid.position.z = Math.sin(t * 0.3) * 0.2;
 
-      panels.forEach((panel, index) => {
-        panel.position.y = panel.userData.baseY + Math.sin(t * 1.25 + index * 0.72) * 0.045;
-        panel.userData.glow.position.y = panel.position.y + 0.1;
-        panel.rotation.z = Math.sin(t * 0.65 + index) * 0.018;
+      const activeIndex = Math.max(0, spaceOrder.indexOf(activeTempleSpace));
+      nodes.forEach((node, index) => {
+        const isActive = index === activeIndex;
+        node.position.y = node.userData.baseY + Math.sin(t * 1.1 + index * 0.7) * 0.05;
+        node.rotation.z = Math.sin(t * 0.55 + index) * 0.02;
+        if (!reduceMotion) {
+          node.userData.core.rotation.y += 0.01 + (isActive ? 0.02 : 0);
+          node.userData.ring.rotation.z += isActive ? 0.018 : 0.006;
+        }
+        const targetScale = isActive ? 1.18 : 1;
+        node.scale.x += (targetScale - node.scale.x) * 0.08;
+        node.scale.y = node.scale.z = node.scale.x;
+        const targetEmissive = isActive ? 0.95 : 0.32;
+        node.userData.cardMat.emissiveIntensity +=
+          (targetEmissive - node.userData.cardMat.emissiveIntensity) * 0.08;
       });
 
-      renderer.render(scene, camera);
-      requestAnimationFrame(animate);
+      if (!reduceMotion) {
+        embers.forEach((ember) => {
+          ember.position.y += ember.userData.speed * 0.016;
+          ember.position.x = ember.userData.baseX + Math.sin(t * 0.6 + ember.userData.sway) * 0.5;
+          if (ember.position.y > 3.4) ember.position.y = -2.4;
+        });
+      }
+
+      // Rack-focus toward the active node (the depth-of-field showcase).
+      const activeNode = nodes[activeIndex];
+      focusPoint.lerp(
+        activeNode.getWorldPosition(new THREE.Vector3()),
+        reduceMotion ? 1 : 0.05,
+      );
+      if (bokehPass && bokehPass.uniforms && bokehPass.uniforms.focus) {
+        bokehPass.uniforms.focus.value = camera.position.distanceTo(focusPoint);
+      }
+
+      if (composer) {
+        composer.render();
+      } else {
+        renderer.render(scene, camera);
+      }
+
+      // Hand off from the flat fallback photo only after the 3D scene has
+      // actually painted with its backdrop texture — never on a blank canvas.
+      if (!firstFrameDone && backdropReady) {
+        firstFrameDone = true;
+        document.body.classList.add("webgl-ready");
+      }
     }
     requestAnimationFrame(animate);
   }
@@ -2917,6 +3136,11 @@
   function drawHub() {
     const canvas = els.hubCanvas;
     if (!canvas) return;
+    // Park the loop entirely while the hub is hidden; setViewMode restarts it.
+    if (!document.body.classList.contains("hub-mode")) {
+      hubAnimationFrame = null;
+      return;
+    }
     const rect = canvas.getBoundingClientRect();
     const dpr = window.devicePixelRatio || 1;
     if (canvas.width !== Math.floor(rect.width * dpr) || canvas.height !== Math.floor(rect.height * dpr)) {
